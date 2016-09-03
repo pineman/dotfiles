@@ -25,7 +25,9 @@ alias nmap="nmap -v"
 alias startx="startx ~/.xinitrc"
 alias mupdf="mupdf -r 144"
 alias vim="vim -i ~/.vim/viminfo -p"
+alias clearvim="rm -rf $HOME/.vim/{undo,swap,backup}/*"
 alias xz="xz -T 0"
+alias inxi="inxi -F"
 [ -f $HOME/.vim/bundle/vimpager/vimcat ] &>/dev/null && \
 	alias cat="$HOME/.vim/bundle/vimpager/vimcat"
 [ -f $HOME/.vim/bundle/vimpager/vimpager ] &>/dev/null && \
