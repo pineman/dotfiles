@@ -1,0 +1,13 @@
+[user]
+	name = pineman
+	email = joao.castropinheiro@gmail.com
+[push]
+	default = tracking
+[pull]
+	default = tracking
+[color]
+	diff = false
+[merge]
+	tool = vimdiff
+[status]
+	showUntrackedFiles = no

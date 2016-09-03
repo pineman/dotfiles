@@ -1,0 +1,10 @@
+source .vimrc
+
+" use a red cursor otherwise
+let &t_EI = "\<Esc>]12;8\x7"
+silent !echo -ne "\033]12;8\007"
+" reset cursor when vim exits
+autocmd VimLeave * silent !echo -ne "\033]12;12\007"
+" use \003]12;gray\007 for gnome-terminal
+
+" vim: ft=vim

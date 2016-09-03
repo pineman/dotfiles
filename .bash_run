@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source ~/.bashrc
+
+one_command_execute() {
+    eval $(echo "$READLINE_LINE") &
+    exit
+}
+bind -x '"\C-m":"one_command_execute"'
+
+alias n="i3-sensible-terminal -e ncmpcpp"
+alias htop="i3-sensible-terminal -e htop"
+alias gparted="gparted_polkit"
+alias unison="unison-gtk2 -logfile /dev/null"
+alias trans="systemd-inhibit transmission-gtk"
+alias wire="wireshark-gtk"

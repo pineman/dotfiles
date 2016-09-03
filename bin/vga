@@ -1,0 +1,13 @@
+#!/bin/bash
+
+LOG_FILE=~/.screen.log
+rm -rf LOG_FILE
+exec 2>&1
+exec 1<>$LOG_FILE
+
+xrandr --output VGA-0 --primary --mode 1920x1080 --pos 0x0 --output LVDS-0 --mode 1366x768 --pos 277x1080
+#xrandr --output VGA-0 --primary --mode 1280x1024 --pos 86x0 --output LVDS-0 --mode 1366x768 --pos 0x1024
+
+feh --no-fehbg --bg-fill "$HOME/.background.jpg"
+xset -dpms
+i3-msg restart
