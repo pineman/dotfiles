@@ -5,7 +5,7 @@ rm -rf LOG_FILE
 exec 2>&1
 exec 1<>$LOG_FILE
 
-xrandr --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output LVDS-0 --mode 1366x768 --pos 277x1080 --rotate normal --output VGA1 --off
+xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output LVDS-1 --mode 1366x768 --pos 277x1080 --rotate normal --output VGA-1 --off
 
 pactl set-card-profile 0 output:hdmi-stereo
 feh --no-fehbg --bg-fill "$HOME/.background.jpg"

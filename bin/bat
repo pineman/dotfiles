@@ -1,0 +1,3 @@
+#!/bin/bash
+
+su - pineman -c "DISPLAY=:0 xset +dpms"

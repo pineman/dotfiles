@@ -18,12 +18,12 @@ offset=""
 # this is my pulse output. It could also be the mic input.
 pulse_device="alsa_output.pci-0000_00_1b.0.analog-stereo.monitor"
 
-audio_codec="libvorbis"
-audio_bitrate="320k"
+audio_codec="libvorbis -b:a 128k -ac 2"
 
-video_codec="h264 -preset ultrafast"
+video_codec="h264 -preset ultrafast -framerate 60"
+ext="mp4"
 
-ffmpeg -f x11grab -r 30 -s $area -i :0.0$offset \
-	-f pulse -i $pulse_device -ac 2 -acodec $audio_codec -b:a $audio_bitrate \
+ffmpeg -f x11grab -s $area -i :0.0$offset -threads 1 \
+	-f pulse -i $pulse_device -acodec $audio_codec \
 	-vcodec $video_codec \
-	$output_basename.mp4
+	$output_basename.$ext

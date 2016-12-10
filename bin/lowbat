@@ -1,6 +1,6 @@
 #!/bin/bash
 
-percent=7
+percent=10
 
 function test {
 	acpi -b | awk -F'[,:%]' '{print $2, $3}' | {
@@ -8,12 +8,13 @@ function test {
 
 		if [ "$status" = Discharging -a "$capacity" -lt $percent ]; then
 			logger "Critical battery threshold reached: hibernating."
-			sudo systemctl poweroff
+			notify-send -u critical "Critical battery threshold reached: hibernating." -i battery
+			sudo systemctl hibernate
 		fi
 	}
 }
 
 while :; do
 	test
-	sleep 120
+	sleep 30
 done

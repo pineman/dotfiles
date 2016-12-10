@@ -1,13 +1,16 @@
 [user]
-	name = pineman
+	name = João Pinheiro
 	email = joao.castropinheiro@gmail.com
 [push]
 	default = tracking
 [pull]
 	default = tracking
+	rebase = yes
 [color]
 	diff = false
 [merge]
 	tool = vimdiff
 [status]
 	showUntrackedFiles = no
+[fetch]
+	prune = true

@@ -65,7 +65,7 @@ wireless wlp0s29u1u2 {
 
 load {
 	#format = "%1min %5min %15min"
-	format = "  %1min"
+	format = "  %1min "
 	max_threshold = "2"
 }
 

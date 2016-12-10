@@ -5,10 +5,9 @@ rm -rf LOG_FILE
 exec 2>&1
 exec 1<>$LOG_FILE
 
-xrandr --output LVDS-0 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VGA-0 --off
+xrandr --output LVDS1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output VGA1 --off --output HDMI1 --off
 
 pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
 feh --no-fehbg --bg-fill "$HOME/.background.jpg"
 xset +dpms
-xset dpms 0 0 60
 i3-msg restart

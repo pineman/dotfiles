@@ -39,60 +39,60 @@
 ! #define S_base2         #073642
 ! #define S_base3         #002b36
 
-*background:              S_base03
-*foreground:              S_base0
-*cursorColor:             S_base1
-*pointerColorBackground:  S_base01
-*pointerColorForeground:  S_base1
+urxvt*background:              S_base03
+urxvt*foreground:              S_base0
+urxvt*cursorColor:             S_base1
+urxvt*pointerColorBackground:  S_base01
+urxvt*pointerColorForeground:  S_base1
 
-*.color0:                  S_base02
-*.color1:                  S_red
-*.color2:                  S_green
-*.color3:                  S_yellow
-*.color4:                  S_blue
-*.color5:                  S_magenta
-*.color6:                  S_cyan
-*.color7:                  S_base2
-*.color8:                  S_base03
-*.color9:                  S_orange
-*.color10:                 S_base01
-*.color11:                 S_base00
-*.color12:                 S_base0
-*.color13:                 S_violet
-*.color14:                 S_base1
-*.color15:                 S_base3
+urxvt*.color0:                  S_base02
+urxvt*.color1:                  S_red
+urxvt*.color2:                  S_green
+urxvt*.color3:                  S_yellow
+urxvt*.color4:                  S_blue
+urxvt*.color5:                  S_magenta
+urxvt*.color6:                  S_cyan
+urxvt*.color7:                  S_base2
+urxvt*.color8:                  S_base03
+urxvt*.color9:                  S_orange
+urxvt*.color10:                 S_base01
+urxvt*.color11:                 S_base00
+urxvt*.color12:                 S_base0
+urxvt*.color13:                 S_violet
+urxvt*.color14:                 S_base1
+urxvt*.color15:                 S_base3
 
 
 !!-------------------------------------------------------
 !! Base16 Monokai
 !! special
-!*.foreground:   #f8f8f2
-!*.background:   #272822
-!*.cursorColor:  #f8f8f2
+!urxvt*.foreground:   #f8f8f2
+!urxvt*.background:   #272822
+!urxvt*.cursorColor:  #f8f8f2
 !! black
-!*.color0:       #272822
-!*.color8:       #75715e
+!urxvt*.color0:       #272822
+!urxvt*.color8:       #75715e
 !! red
-!*.color1:       #f92672
-!*.color9:       #f92672
+!urxvt*.color1:       #f92672
+!urxvt*.color9:       #f92672
 !! green
-!*.color2:       #a6e22e
-!*.color10:      #a6e22e
+!urxvt*.color2:       #a6e22e
+!urxvt*.color10:      #a6e22e
 !! yellow
-!*.color3:       #f4bf75
-!*.color11:      #f4bf75
+!urxvt*.color3:       #f4bf75
+!urxvt*.color11:      #f4bf75
 !! blue
-!*.color4:       #66d9ef
-!*.color12:      #66d9ef
+!urxvt*.color4:       #66d9ef
+!urxvt*.color12:      #66d9ef
 !! magenta
-!*.color5:       #ae81ff
-!*.color13:      #ae81ff
+!urxvt*.color5:       #ae81ff
+!urxvt*.color13:      #ae81ff
 !! cyan
-!*.color6:       #a1efe4
-!*.color14:      #a1efe4
+!urxvt*.color6:       #a1efe4
+!urxvt*.color14:      #a1efe4
 !! white
-!*.color7:       #f8f8f2
-!*.color15:      #f9f8f5
+!urxvt*.color7:       #f8f8f2
+!urxvt*.color15:      #f9f8f5
 
 
 !-------------------------------------------------------

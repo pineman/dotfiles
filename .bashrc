@@ -15,9 +15,10 @@ shopt -s nocaseglob
 set -o vi
 bind -x $'"\C-l":clear;'
 bind -x $'"\C-r":reset;'
+bind -x '"\C-x"':"fg"
 #compopt -o bashdefault ls
 
-export HISTSIZE=10000
+export HISTSIZE=1000000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 

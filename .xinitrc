@@ -29,7 +29,7 @@ fi
 
 function no_desktop_environment {
 	urxvtd -f -q -o
-	xset r rate 150 37
+	xset r rate 150 50
 	xset s off
 	xset +dpms
 	xset dpms 0 0 60

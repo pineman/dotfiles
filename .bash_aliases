@@ -28,12 +28,11 @@ alias vim="vim -i ~/.vim/viminfo -p"
 alias clearvim="rm -rf $HOME/.vim/{undo,swap,backup}/*"
 alias xz="xz -T 0"
 alias inxi="inxi -F"
+which colordiff &>/dev/null && alias diff='colordiff'
 [ -f $HOME/.vim/bundle/vimpager/vimcat ] &>/dev/null && \
 	alias cat="$HOME/.vim/bundle/vimpager/vimcat"
 [ -f $HOME/.vim/bundle/vimpager/vimpager ] &>/dev/null && \
 	alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
-which colordiff &>/dev/null && alias diff='colordiff'
-which colormake &>/dev/null && alias make='colormake'
 
 
 # Helpful things
@@ -66,7 +65,7 @@ alias fbi="fbi --autodown"
 # Digital Ocean Server
 alias pinecone="ssh -t pineman@pineman.win"
 # IST Sigma
-alias sigma="ssh ist425386@sigma.tecnico.ulisboa.pt"
+alias sigma="ssh -K ist425386@sigma01.tecnico.ulisboa.pt"
 
 # web stuff
 #alias www="rsync -avhzlu --exclude '.git' --progress /home/pineman/www/ -e 'ssh -p 62000' pineman@pineman.me:/home/pineman/www/"
@@ -79,22 +78,22 @@ alias sigma="ssh ist425386@sigma.tecnico.ulisboa.pt"
 
 # Personal things
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias winboot="sudo efibootmgr -n 0019 && reboot"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
-alias n="ncmpcpp"
+alias n="ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings"
 alias nh="ssh -t 192.168.1.2 ncmpcpp"
 alias mpc="mpc -h ~/.config/mpd/socket"
 alias p="mpc toggle"
 alias mon="systemctl --user start mpd"
 alias moff="systemctl --user stop mpd"
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 999k --prefer-ffmpeg"
-alias sshtunnel="echo 'SOCKS proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.win -D 1337"
+alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.win -D 1337"
 #alias addradio="mpc add http://lainchan.org:8000/lain.ogg ; mpc add http://cyberadio.pw:8000/stream"
 #alias ocsync="owncloudcmd Pictures https://owncloud.pineman.sexy/remote.php/webdav/pictures && owncloudcmd Documents https://owncloud.pineman.sexy/remote.php/webdav/documents"
-alias h="feh ~/tecnico/a1s2/horas.png"
-alias d="feh ~/tecnico/a1s2/duvidas.png"
+alias h="feh ~/ist/a2s1/horas.png"
+alias d="feh ~/ist/a2s1/duvidas.png"
 alias t="trackpoint"
-alias hack_audio='pactl load-module module-tunnel-sink "server=192.168.1.2 sink=alsa_output.pci-0000_00_1b.0.analog-stereo sink_name=hackmobile"'
 alias pt="setxkbmap pt && xmodmap ~/.Xmodmap.PT"
 alias us="setxkbmap us && xmodmap ~/.Xmodmap.US"
 
@@ -112,10 +111,8 @@ alias colorrainbow='yes "$(seq 1 255)" | while read i; do printf "\x1b[48;5;${i}
 alias screenfetch="echo; screenfetch -c 41,12"
 
 # power-related aliases
-alias poff="systemctl poweroff"
-alias rboot="systemctl reboot"
 alias physlock="physlock -dsm"
-alias lock="dm-tool switch-to-greeter"
+alias lock="dm-tool lock"
 #alias lock="lxdm -c USER_SWITCH"
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
@@ -167,4 +164,9 @@ function up()
 		P=$P/..
 	done
 	cd $P
+}
+
+function u()
+{
+	urxvtc -cd $PWD
 }

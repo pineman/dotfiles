@@ -48,6 +48,7 @@ set smartcase
 set colorcolumn=80
 set linebreak
 set title
+set tabpagemax=100
 
 nnoremap j gj
 nnoremap k gk
@@ -86,13 +87,15 @@ if has("gui_running")
 endif
 if has("autocmd")
 	autocmd BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php,*.md setlocal shiftwidth=2 tabstop=2 softtabstop=2
-	autocmd BufRead,BufNewFile *.as setlocal filetype=asm
-	autocmd BufRead,BufNewFile *.py setlocal expandtab | retab
+	au Filetype python setlocal ts=4 sts=4 sw=4 expandtab | retab
+
 	autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+		\ if line("'\"") > 1 && line("'\"") <= line("$") |
+		\   exe "normal! g`\"" |
+		\ endif
+
     let blacklist = ['markdown']
     autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
+
 	"autocmd BufWinEnter * NERDTreeMirror " Show NERDTree in all tabs
 endif
