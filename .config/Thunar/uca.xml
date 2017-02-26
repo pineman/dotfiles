@@ -3,8 +3,8 @@
 <action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
-	<unique-id>1451574577089796-2</unique-id>
-	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<unique-id>1487567127538965-3</unique-id>
+	<command>st -d %f</command>
 	<description></description>
 	<patterns>*</patterns>
 	<startup-notify/>
@@ -13,8 +13,8 @@
 <action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
-	<unique-id>1451574607068781-3</unique-id>
-	<command>exo-open --working-directory %d --launch TerminalEmulator</command>
+	<unique-id>1487567094481361-2</unique-id>
+	<command>st</command>
 	<description></description>
 	<patterns>*</patterns>
 	<startup-notify/>
