@@ -15,11 +15,8 @@ general {
 }
 
 order += "mpd"
-order += "wireless wlp3s0"
-order += "ethernet enp0s25"
-#order += "ethernet enp0s29u1u2"
-#order += "wireless wlp0s29u1u2"
-#order += "disk /"
+order += "ethernet _first_"
+order += "wireless _first_"
 order += "load"
 #order += "cpu_usage"
 order += "cpu_temperature 0"
@@ -27,45 +24,35 @@ order += "battery 0"
 order += "volume master"
 order += "tztime date"
 order += "tztime time"
-#order += "cpu_temperature 0"
 
 mpd {
-	#format_up = "%track. %title - %artist  [%date] %album"
-	#format_up = "%track. %title - %artist"
-	format_up = " %artist - %title"
-	#format_up = "%path"
+	#format_up = "  %track. %title - %artist  [%date] %album"
+	#format_up = "  %track. %title - %artist"
+	format_up = "%artist - %title|%title|%path"
 
-	format_down = ""
+	status_play = "⏵"
+	status_pause = "⏸"
+	status_stop = "⏹"
+	format_down = "⏹"
 
 	host = "/home/pineman/.config/mpd/socket"
-	#host = "192.168.1.2"
 }
 
-ethernet enp0s25 {
+ethernet _first_ {
 	# if you use %speed, i3status requires root privileges
-	format_up = " %ip"
+	format_up = " %speed"
 	format_down = ""
 }
 
-ethernet enp0s29u1u2 {
-	# if you use %speed, i3status requires root privileges
-	format_up = " %ip"
-	format_down = ""
-}
 
-wireless wlp3s0 {
-	format_up = " %ip (%essid)"
-	format_down = ""
-}
-
-wireless wlp0s29u1u2 {
-	format_up = " %ip (%essid)"
+wireless _first_ {
+	format_up = " %essid"
 	format_down = ""
 }
 
 load {
 	#format = "%1min %5min %15min"
-	format = "  %1min "
+	format = "  %1min"
 	max_threshold = "2"
 }
 
@@ -74,13 +61,12 @@ cpu_usage {
 }
 
 cpu_temperature 0 {
-	format = "  %degrees ºC"
+	format = " %degrees ºC"
 }
 
 battery 0 {
 	integer_battery_capacity = "true"
 	hide_seconds = "true"
-	path = "/sys/class/power_supply/BAT%d/uevent"
 	format = "%status %percentage %remaining"
 	status_chr = ""
 	status_bat = ""
@@ -91,20 +77,14 @@ battery 0 {
 	last_full_capacity = "true"
 }
 
-#disk "/" {
-#	prefix_type = "binary"
-#	format = "/ : %free"
-#	low_threshold = 5
-#}
-
 volume master {
 	device = "pulse"
 	format = " %volume"
-	format_muted = " muted (%volume)"
+	format_muted = "  muted (%volume)"
 }
 
 tztime date {
-	format = "  %a %d/%m/%Y"
+	format = " %a %d/%m/%Y"
 }
 
 tztime time {

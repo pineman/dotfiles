@@ -38,8 +38,10 @@ bindsym --whole-window $mod+button2 kill
 bindsym --border button3 floating toggle
 #bindsym --border button3 fullscreen
 
-# 'bashrun' launcher -> just urxvt with a special rcfile
-bindsym $mod+d exec urxvtc -title bashrun -geometry 70x4 -e sh -c 'bash --rcfile /home/pineman/.bash_run'
+# 'bash_run' launcher -> just a small floating terminal with a special rcfile
+bindsym $mod+d exec urxvt -T "bash_run" -g 70x4 -e sh -c 'bash --rcfile /home/pineman/.bash_run'
+for_window [title="bash_run"] floating enable
+for_window [title="bash_run"] border pixel 3
 
 # change focus
 bindsym $mod+h focus left
@@ -96,6 +98,8 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -121,15 +125,15 @@ bindsym $mod+Shift+q exec zenity --question --text="Really quit i3?" --icon-name
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        bindsym l resize grow width 10 px or 2 ppt
-        bindsym h resize shrink width 10 px or 2 ppt
-        bindsym j resize grow height 10 px or 2 ppt
-        bindsym k resize shrink height 10 px or 2 ppt
+		# These bindings trigger as soon as you enter the resize mode
+		bindsym l resize grow width 10 px or 2 ppt
+		bindsym h resize shrink width 10 px or 2 ppt
+		bindsym j resize grow height 10 px or 2 ppt
+		bindsym k resize shrink height 10 px or 2 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		# back to normal: Enter or Escape
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -139,56 +143,45 @@ bindsym $mod+r mode "resize"
 bar {
 	status_command i3status
 	position bottom
-	font pango:Droid Sans, Icons 10
+	font pango:Monospace, Icons 10
 	separator_symbol "|"
-	tray_output LVDS1
+	tray_output primary
 	tray_padding 0
 	height 20
-    colors {
-        background #0D0D0D
-        statusline #ffffff
-        separator #666666
+	colors {
+		background #0D0D0D
+		statusline #ffffff
+		separator #666666
 
-        focused_workspace  #8F3124 #75281E #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #75281E #d64937 #ffffff
-    }
-
+		focused_workspace  #8F3124 #75281E #ffffff
+		active_workspace   #333333 #5f676a #ffffff
+		inactive_workspace #333333 #222222 #888888
+		urgent_workspace   #75281E #d64937 #ffffff
+	}
 }
 
 # Colors
-# class                 border  backgr. text    indicator
+# class					border	backgr. text	indicator
 # Defaults (blue theme)
-#client.focused          #4c7899 #285577 #ffffff #2e9ef4
+#client.focused			 #4c7899 #285577 #ffffff #2e9ef4
 #client.focused_inactive #333333 #5f676a #ffffff #484e50
-#client.unfocused        #333333 #222222 #888888 #292d2e
-#client.urgent           #2f343a #900000 #ffffff #900000
-#client.placeholder      #000000 #0c0c0c #ffffff #000000
+#client.unfocused		 #333333 #222222 #888888 #292d2e
+#client.urgent			 #2f343a #900000 #ffffff #900000
+#client.placeholder		 #000000 #0c0c0c #ffffff #000000
 
 # Red Theme
-client.focused          #5E2018 #75281E #ffffff #A13729
+client.focused			#5E2018 #75281E #ffffff #A13729
 client.focused_inactive #333333 #474d4f #ffffff #484e50
-client.unfocused        #333333 #222222 #888888 #292d2e
-client.urgent           #2f343a #900000 #ffffff #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000
+client.unfocused		#333333 #222222 #888888 #292d2e
+client.urgent			#2f343a #900000 #ffffff #900000
+client.placeholder		#000000 #0c0c0c #ffffff #000000
 
 # Gaps
 #gaps inner 10
 #gaps outer 0
 #smart_gaps on
+smart_borders on
 
-# Autostart
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec nm-applet
-exec redshift-gtk
-exec pasystray
-exec urxvtd -f -q -o
-exec trackpoint
-exec thunar --daemon
-exec firewall-applet
-
-# Keybindings
 # These don't work on toshiba for no reason, use xfce4-power-manager
 #bindsym XF86MonBrightnessUp exec xbacklight -set 100%
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 1
@@ -203,43 +196,32 @@ bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
 
 bindsym XF86Display exec arandr
-#bindsym XF86Launch1 exec setxkbmap pt && xmodmap ~/.Xmodmap # ThinkVantage
+bindsym XF86Launch1 exec lvds
+bindsym Shift+XF86Launch1 exec vga
 
 bindsym XF86TouchpadToggle exec touchpad-toggle
-#bindsym XF86Sleep exec systemctl suspend && physlock -dsm
-#bindsym XF86Suspend exec systemctl hibernate && physlock -dsm
-bindsym XF86ScreenSaver exec dm-tool lock
+bindsym XF86ScreenSaver exec physlock -d
 
-bindsym Print exec scrot -u
+# Fullscreen
+bindsym Print exec scrot
+# Active window
+bindsym Shift+Print exec scrot -u
+# Region
 bindsym Ctrl+Print exec xfce4-screenshooter
+
+# Program keybindings
 bindsym $mod+f exec thunar
-bindsym $mod+g exec qutebrowser --backend=webengine
-bindsym $mod+p exec thunderbird
-bindsym $mod+i exec nextcloud
-bindsym $mod+Ctrl+i exec dropbox
-bindsym $mod+u exec virtualbox
+bindsym $mod+p exec firefox
+bindsym $mod+c exec chromium
+bindsym $mod+g exec qutebrowser
+bindsym $mod+o exec thunderbird
 bindsym $mod+y exec qalculate-gtk
 bindsym $mod+t exec telegram-desktop
-bindsym $mod+o exec firefox
-bindsym $mod+c exec chromium
-bindsym $mod+m exec java -jar /opt/shiginima/shiginima.jar
-bindsym $mod+Ctrl+m exec minecraft
-bindsym $mod+Tab workspace next_on_output
-bindsym $mod+Shift+Tab workspace prev_on_output
-bindsym $mod+F12 exec vboxmanage startvm wangblows
-bindsym $mod+Ctrl+s exec skypeforlinux
-bindsym $mod+s exec steam
-bindsym $mod+Ctrl+d exec discord
-bindsym $mod+Ctrl+n exec playonlinux
-bindsym $mod+n exec wine "$HOME/.wine/drive_c/Program Files (x86)/Battle.net/Battle.net.exe"
-bindsym $mod+Ctrl+r exec runescape-launcher
+bindsym $mod+u exec virtualbox
+bindsym $mod+i exec keepassx2
 
-# Borders and things
+# Borders
 for_window [class="^.*"] border pixel 2
-for_window [class="^.*qutebrowser"] border none
-for_window [class="Firefox"] border none
-for_window [class="Chromium"] border none
-for_window [class="Runescape"] border none
 
 # Window Rules
 for_window [class="Qalculate"] floating enable
@@ -249,25 +231,16 @@ for_window [title="Battle.net"] floating enable
 for_window [class="Wine"] floating enable
 for_window [class="Viewnior"] border normal
 
-# bashrun launcher
-for_window [title="bashrun"] floating enable
-for_window [title="bashrun"] border pixel 3
-
 # Assignment
 assign [class="Firefox"] 10
 assign [class="Chromium"] 10
 assign [class="^.*qutebrowser"] 10
 
-assign [class="Thunderbird"] 9
+assign [class="TelegramDesktop"] 9
+# 9 ncmpcpp
+# 9 transmission
 
-assign [class="TelegramDesktop"] 8
-assign [class="skype"] 8
-
-# 7 for ncmpcpp
-
-assign [class="Steam"] 6
-assign [title="Hearthstone"] 6
-assign [title="Battle.net"] 6
-assign [class="Runescape"] 6
+assign [class="Thunderbird"] 8
+#assign [class="Keepassx2"] 8
 
 focus_on_window_activation urgent

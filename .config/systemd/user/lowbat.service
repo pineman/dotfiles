@@ -2,7 +2,7 @@
 Description=Hibernate on low battery
 
 [Service]
-ExecStart=/home/pineman/bin/lowbat
+ExecStart=/home/pineman/code/bin/lowbat
 
 [Install]
 WantedBy=default.target

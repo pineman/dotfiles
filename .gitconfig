@@ -1,11 +1,12 @@
 [user]
 	name = João Pinheiro
 	email = joao.castropinheiro@gmail.com
+	signingKey = 8E3D6E3CDD7C3466
 [push]
 	default = tracking
 [pull]
 	default = tracking
-	rebase = yes
+	rebase = true
 [color]
 	diff = false
 [merge]
@@ -14,3 +15,5 @@
 	showUntrackedFiles = no
 [fetch]
 	prune = true
+[commit]
+	gpgsign = true

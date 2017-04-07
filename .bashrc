@@ -1,54 +1,43 @@
 # .bashrc
 eval $(dircolors ~/.dircolors)
 
+set -o vi
 complete -cf sudo
 shopt -s autocd
 shopt -s cdspell
+shopt -s dirspell
 shopt -s checkwinsize
 shopt -s cmdhist
-shopt -s dirspell
 shopt -s dotglob
 shopt -s extglob
+shopt -s globstar
 shopt -s histappend
 shopt -s hostcomplete
-shopt -s nocaseglob
-set -o vi
+# This allows you to bookmark your favorite places across the file system
+# Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
+shopt -s cdable_vars
+# Examples:
+# export dotfiles="$HOME/dotfiles"
+# export projects="$HOME/projects"
+# export documents="$HOME/Documents"
+# export dropbox="$HOME/Dropbox"
+export ist="$HOME/ist/a2s2"
 bind -x $'"\C-l":clear;'
 bind -x $'"\C-r":reset;'
 bind -x '"\C-x"':"fg"
-#compopt -o bashdefault ls
 
-export HISTSIZE=1000000
-export HISTFILESIZE=${HISTSIZE}
-export HISTCONTROL=ignoreboth
-
-orange='\[\e[38;5;166m\]'
-baseblue='\[\e[38;5;4m\]'
-white='\[\e[38;5;7m\]'
-green='\[\e[38;5;2m\]'
+white='\[\e[38;5;15m\]'
 yellow='\[\e[38;5;3m\]'
-blue='\[\e[38;5;27m\]'
-red='\[\e[38;5;1m\]'
-myred='\[\e[38;5;9m\]'
 grey='\[\e[38;5;10m\]'
+red='\[\e[38;5;1m\]'
 reset='\[\e[0m\]'
-underline=`tput smul`
-bold=`tput bold`
-toshiba='\[\e[38;5;14m\]'
-hackmobile='\[\e[38;5;4m\]'
-oceanical='\[\e[38;5;27m\]'
-aquaris='\[\e[38;5;155m\]'
-minileet='\[\e[38;5;10m\]'
+
+memepad=$red
 pinecone='\[\e[38;5;94m\]'
 
-set_prompt () {
-	PS1="[$grey\u$reset@$red\h$reset] "
-	PS1+="- [$yellow$(date +"%H:%M:%S %d/%m/%Y")$reset] "
-	PS1+="\n$white\$?$reset [$red\w$reset] $ "
-}
-
-PROMPT_COMMAND='set_prompt && echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
-
-TERM=linux setterm -regtabs 4 # always set tabstop to 4
+PS1="[$grey\u$reset@$memepad\h$reset] "
+PS1+="[$yellow$(date +"%H:%M:%S %d/%m/%Y")$reset] "
+PS1+="[$red\w$reset]\n"
+PS1+="$white\$?$reset $ "
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases

@@ -2,15 +2,22 @@
 # ~/.bash_profile
 #
 
-[[ -d ~/bin ]] && export PATH=$PATH:~/bin
+export PATH=$HOME/code/bin:$PATH
+
+export HISTSIZE=1000000
+export HISTFILESIZE=${HISTSIZE}
+export HISTCONTROL="erasedups:ignoreboth"
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+
 
 export EDITOR="vim"
+export GOPATH="$HOME/proj/go"
+export PYTHONSTARTUP="$HOME/.pythonrc"
+
 [ -f $HOME/.vim/bundle/vimpager/vimpager ] &>/dev/null && \
 	export PAGER="$HOME/.vim/bundle/vimpager/vimpager"
 
-if [ "$TERM" == "linux" ]
-then
-	setfont ter-116v
+if [ "$TERM" == "linux" ]; then
 	redshift -m drm -o
 	setterm --powerdown 60
 	setterm --powersave on
@@ -19,5 +26,3 @@ then
 fi
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-#eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-#export SSH_AUTH_SOCK

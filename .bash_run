@@ -8,9 +8,11 @@ one_command_execute() {
 }
 bind -x '"\C-m":"one_command_execute"'
 
-alias n="i3-sensible-terminal -e ncmpcpp"
-alias htop="i3-sensible-terminal -e htop"
 alias gparted="gparted_polkit"
 alias unison="unison-gtk2 -logfile /dev/null"
-alias trans="systemd-inhibit --why='Downloading or uploading torrents' transmission-gtk"
-alias wire="wireshark-gtk"
+alias transmission="systemd-inhibit --why='Downloading or uploading torrents' transmission-gtk"
+alias trans="transmission"
+alias wireshark="wireshark-gtk"
+alias wire="wireshark"
+alias octave="octave --force-gui"
+alias oct="octave"

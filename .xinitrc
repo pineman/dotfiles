@@ -27,21 +27,9 @@ if [ -s ~/.Xmodmap ]; then
     xmodmap ~/.Xmodmap
 fi
 
-function no_desktop_environment {
-	urxvtd -f -q -o
-	xset r rate 150 50
-	xset s off
-	xset +dpms
-	xset dpms 0 0 60
-	xset m 0 0
-	#xset -dpms
-	~/bin/lvds
-	feh --no-fehbg --bg-scale "$HOME/.background.jpg"
-}
-
 function i3 {
-	no_desktop_environment
-	echo "Starting at $(date)-----------------------------------" > ~/.local/share/xorg/i3.log
+	feh --no-fehbg --bg-scale "$HOME/.background.jpg"
+
 	exec dbus-launch /usr/bin/i3 > ~/.local/share/xorg/i3.log
 }
 
@@ -59,6 +47,7 @@ function twm {
 
 default=i3
 session=${1:-$default}
+export XSESSION=$session
 case $session in
 	twm			) twm;;
     i3			) i3;;

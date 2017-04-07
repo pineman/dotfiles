@@ -7,7 +7,7 @@ set input-meta on
 set convert-meta off
 set output-meta on
 set editing-mode vi
-set show-mode-in-prompt off
+#set show-mode-in-prompt off
 set echo-control-characters off
 
 $if mode=vi
