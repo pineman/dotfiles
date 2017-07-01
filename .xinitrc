@@ -28,9 +28,12 @@ if [ -s ~/.Xmodmap ]; then
 fi
 
 function i3 {
-	feh --no-fehbg --bg-scale "$HOME/.background.jpg"
-
+	#feh --no-fehbg --bg-scale "$HOME/.background.jpg"
 	exec dbus-launch /usr/bin/i3 > ~/.local/share/xorg/i3.log
+}
+
+function bspwm {
+	exec bspwm
 }
 
 function xfce {

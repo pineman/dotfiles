@@ -12,7 +12,6 @@ call vundle#begin()
 	Plugin 'mbbill/undotree'
 	Plugin 'PotatoesMaster/i3-vim-syntax'
 	Plugin 'othree/yajs.vim'
-	"Plugin 'scrooloose/nerdtree'
 
 	Plugin 'altercation/vim-colors-solarized'
 	"Plugin 'jnurmine/Zenburn'
@@ -35,7 +34,6 @@ set mouse=a
 set ttyfast
 set wildmenu
 set number
-set cursorline
 set colorcolumn=80
 set lazyredraw
 set printoptions=paper:A4,syntax:y,wrap:y,duplex:off,number:y,left:13mm,right:13mm,top:20mm,bottom:20mm
@@ -44,7 +42,9 @@ set showcmd
 set showmode
 set copyindent
 set ignorecase
+set smartcase
 set linebreak
+set cursorline
 
 nnoremap j gj
 nnoremap k gk
@@ -84,6 +84,7 @@ if has("gui_running")
 	let g:solarized_hitrail=1
 	set guioptions=aim
 	set mousemodel=popup
+	set guifont=xos4\ Terminus\ Regular
 endif
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab

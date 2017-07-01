@@ -1,3 +1,8 @@
+# temporary
+alias h="feh ~/ist/a2s2/meec-drive/horario/horas.png"
+alias d="feh ~/ist/a2s2/d.png"
+
+# General system aliases
 alias sudo="sudo " # this enables sudo to use these aliases
 alias chown="chown -h"
 alias ls='ls -hX --group-directories-first --time-style=+"%d/%m/%Y %H:%M:%S" --color=auto -F --quoting-style=literal'
@@ -8,9 +13,9 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias df='df -h'
-alias grep="grep --color"
+alias grep="grep --color -n"
 alias free='free -m'
-alias dfc='dfc -d -t -tmpfs,devtmpfs -w'
+alias dfc='dfc -d -t -tmpfs,devtmpfs'
 alias telnet="telnet --escape='^E'"
 alias du='du -h'
 alias nmcli='nmcli -a'
@@ -30,6 +35,8 @@ alias inxi="inxi -F"
 alias units="units --verbose"
 alias python="python -O"
 alias py="python"
+alias node="NODE_NO_READLINE=1 rlwrap node"
+alias mit-scheme="rlwrap mit-scheme"
 which colordiff &>/dev/null && \
 	alias diff='colordiff'
 
@@ -41,7 +48,7 @@ function cd {
 	builtin cd "$@" && ll
 }
 function u {
-	(urxvtc -cd $PWD &)
+	(urxvtc -cd $PWD &>/dev/null &)
 }
 alias pacro="yaourt -Rns \$(yaourt -Qttdq)"
 alias hddpoff="udisksctl power-off -b"
@@ -58,7 +65,8 @@ alias mon="systemctl --user start mpd"
 alias moff="systemctl --user stop mpd"
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 999k --prefer-ffmpeg"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.win -D 1337"
-alias addradio="mpc add http://lainchan.org:8000/lain.ogg; mpc add http://cyberadio.pw:8000/stream; mpc add http://streaming.radionomy.com/DRIVE"
+alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:pineman.win:9091 -N -T pineman.win"
+alias addradio="mpc add https://lainon.life/radio/everything.ogg; mpc add https://lainon.life/radio/cyberia.ogg; mpc add http://cyberadio.pw:8000/stream; mpc add http://streaming.radionomy.com/DRIVE; mpc add http://radio.2f30.org:8000/live.mp3"
 alias t="trackpoint"
 alias pt="setxkbmap pt && xmodmap ~/.Xmodmap.PT"
 alias us="setxkbmap us && xmodmap ~/.Xmodmap.US"
@@ -73,8 +81,6 @@ alias enable_susp="killall systemd-inhibit sleep"
 
 # IST Sigma
 alias sigma="ssh -K ist425386@sigma01.tecnico.ulisboa.pt"
-alias h="feh ~/ist/a2s2/meec-drive/horario/horas.png"
-alias d="feh ~/ist/a2s2/d.png"
 
 # git-related aliases
 alias gs="git status"
@@ -84,6 +90,7 @@ alias gc="git checkout"
 alias gf="git fetch --all"
 alias gp="git pull"
 alias gr="git remote -vvv"
+alias ga="git add"
 
 # TTY-things
 alias startx="killall redshift &>/dev/null; \startx ~/.xinitrc; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
@@ -100,30 +107,45 @@ alias pinecone="ssh -t pineman@pineman.win"
 # usage: ex <file>
 function ex ()
 {
-	if [ -f $1 ] ; then
-		case $1 in
-			*.tar)		tar -xf $1		;;
-			*.tar.xz)	tar -xJf $1		;;
-			*.txz)		tar -xJf $1		;;
-			*.tar.bz2)	tar -xjf $1		;;
-			*.tbz2)		tar -xjf $1		;;
-			*.tar.gz)	tar -xzf $1		;;
-			*.tgz)		tar -xzf $1		;;
-			*.tar.pixz)	tar -Ipixz -xf $1;;
-			*.tpxz)		tar -Ipixz -xf $1;;
-			*.xz)		xz -d $1		;;
-			*.pixz)		pixz -d $1		;;
-			*.gz)		gunzip $1		;;
-			*.bz2)		bunzip2 $1		;;
-			*.rar)		unrar -x $1		;;
-			*.zip)		unzip $1		;;
-			*.Z)		uncompress $1	;;
-			*.7z)		7z -x $1		;;
-			*)			echo "'$1' cannot be extracted via ex()" ;;
-		esac
-	else
-		echo "'$1' is not a valid file"
+	if [[ ! -f "$1" ]]; then
+		echo "No such file or directoy: '$1'"
+		return 2
 	fi
+	case $1 in
+		#*.tar)		mkdir -p ${1%.tar.xz}	&& cd $_ && tar -xvf ../$1 ;;
+		#*.tar.xz)	mkdir -p ${1%.tar.xz}	&& cd $_ && tar -xvJf ../$1 ;;
+		#*.txz)		mkdir -p ${1%.txz}		&& cd $_ && tar -xvJf ../$1 ;;
+		#*.tar.pixz)	mkdir -p ${1%.tar.pixz}	&& cd $_ && tar -Ipixz -xvf ../$1 ;;
+		#*.tpxz)		mkdir -p ${1%.tpxz}		&& cd $_ && tar -Ipixz -xvf ../$1 ;;
+		#*.tar.bz2)	mkdir -p ${1%.tar.bz2}	&& cd $_ && tar -xvjf ../$1 ;;
+		#*.tbz2)		mkdir -p ${1%.tbz2}		&& cd $_ && tar -xvjf ../$1 ;;
+		#*.tar.gz)	mkdir -p ${1%.tar.gz}	&& cd $_ && tar -xvzf ../$1 ;;
+		#*.tgz)		mkdir -p ${1%.tgz}		&& cd $_ && tar -xvzf ../$1 ;;
+		#*.rar)		mkdir -p ${1%.rar}		&& cd $_ && unrar -x ../$1 ;;
+		#*.zip)		mkdir -p ${1%.zip}		&& cd $_ && unzip ../$1 ;;
+		#*.7z)		mkdir -p ${1%.7z}		&& cd $_ && 7z -x ../$1 ;;
+
+		*.tar)		tar -xvf $1 ;;
+		*.tar.xz)	tar -xvJf $1 ;;
+		*.txz)		tar -xvJf $1 ;;
+		*.tar.pixz)	tar -Ipixz -xvf $1 ;;
+		*.tpxz)		tar -Ipixz -xvf $1 ;;
+		*.tar.bz2)	tar -xvjf $1 ;;
+		*.tbz2)		tar -xvjf $1 ;;
+		*.tar.gz)	tar -xvzf $1 ;;
+		*.tgz)		tar -xvzf $1 ;;
+		*.rar)		unrar -x $1 ;;
+		*.zip)		unzip $1 ;;
+		*.7z)		7z -x $1 ;;
+
+		*.xz)		xz -d $1 ;;
+		*.pixz)		pixz -d $1 ;;
+		*.gz)		gunzip $1 ;;
+		*.bz2)		bunzip2 $1 ;;
+		*.Z)		uncompress -xf $1 ;;
+
+		*)			echo "'$1' cannot be extracted via ex"	;;
+	esac
 }
 
 # Fun stuff
@@ -138,3 +160,11 @@ alias matrix5='tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=lcase
 alias colorrainbow='yes "$(seq 1 255)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .01; done'
 alias screenfetch="echo; screenfetch -c 41,12"
 alias emacs="sl"
+function minor()
+{
+	cat /dev/urandom | hexdump -v -e '/1 "%u\n"' | awk '{ split("0,2,3,5,7,8,10,12",a,","); for (i = 0; i < 1; i+= 0.00001) printf("%08X\n", 100*sin(1382*exp((a[$1 % 8]/12)*log(2))*i)) }' | xxd -r -p | aplay -c 2 -f S32_LE -r 16000
+}
+function major()
+{
+	cat /dev/urandom | hexdump -v -e '/1 "%u\n"' | awk '{ split("0,2,4,5,7,9,11,12",a,","); for (i = 0; i < 1; i+= 0.00001) printf("%08X\n", 100*sin(1382*exp((a[$1 % 8]/12)*log(2))*i)) }' | xxd -r -p | aplay -c 2 -f S32_LE -r 16000
+}

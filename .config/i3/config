@@ -12,14 +12,14 @@
 
 set $mod Mod1
 
-font pango:Monospace 10
+font pango:xos4 Terminus 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Ctrl+Return exec xterm
+bindsym Ctrl+Return exec uxterm
 
 # kill focused window
 bindsym $mod+q kill
@@ -98,8 +98,19 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+Control+1 workspace 11
+bindsym $mod+Control+2 workspace 12
+bindsym $mod+Control+3 workspace 13
+bindsym $mod+Control+4 workspace 14
+bindsym $mod+Control+5 workspace 15
+bindsym $mod+Control+6 workspace 16
+bindsym $mod+Control+7 workspace 17
+bindsym $mod+Control+8 workspace 18
+bindsym $mod+Control+9 workspace 19
+bindsym $mod+Control+0 workspace 20
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
+workspace_auto_back_and_forth yes
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -113,8 +124,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-bindsym $mod+Shift+apostrophe move scratchpad
-bindsym $mod+apostrophe scratchpad show
+#bindsym $mod+Shift+apostrophe move scratchpad
+#bindsym $mod+apostrophe scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -143,11 +154,10 @@ bindsym $mod+r mode "resize"
 bar {
 	status_command i3status
 	position bottom
-	font pango:Monospace, Icons 10
+	font pango:xos4 Terminus, Icons 10
 	separator_symbol "|"
 	tray_output primary
 	tray_padding 0
-	height 20
 	colors {
 		background #0D0D0D
 		statusline #ffffff
@@ -176,13 +186,6 @@ client.unfocused		#333333 #222222 #888888 #292d2e
 client.urgent			#2f343a #900000 #ffffff #900000
 client.placeholder		#000000 #0c0c0c #ffffff #000000
 
-# Gaps
-#gaps inner 10
-#gaps outer 0
-#smart_gaps on
-smart_borders on
-
-# These don't work on toshiba for no reason, use xfce4-power-manager
 #bindsym XF86MonBrightnessUp exec xbacklight -set 100%
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 1
 bindsym XF86AudioMute exec pamixer --toggle-mute
@@ -218,10 +221,17 @@ bindsym $mod+o exec thunderbird
 bindsym $mod+y exec qalculate-gtk
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+u exec virtualbox
-bindsym $mod+i exec keepassx2
+bindsym $mod+i exec keepassxc
 
 # Borders
-for_window [class="^.*"] border pixel 2
+new_window pixel 2
+new_float pixel 2
+
+# Gaps
+gaps inner 5
+gaps outer 0
+smart_gaps on
+hide_edge_borders smart
 
 # Window Rules
 for_window [class="Qalculate"] floating enable
@@ -229,18 +239,16 @@ for_window [window_role="pop-up"] floating enable
 for_window [title="Hearthstone"] floating enable
 for_window [title="Battle.net"] floating enable
 for_window [class="Wine"] floating enable
-for_window [class="Viewnior"] border normal
 
 # Assignment
-assign [class="Firefox"] 10
-assign [class="Chromium"] 10
-assign [class="^.*qutebrowser"] 10
+assign [class="Firefox"] 1
+assign [class="Chromium"] 1
+assign [class="^.*qutebrowser"] 1
 
 assign [class="TelegramDesktop"] 9
 # 9 ncmpcpp
 # 9 transmission
 
-assign [class="Thunderbird"] 8
-#assign [class="Keepassx2"] 8
+assign [class="Thunderbird"] 10
 
-focus_on_window_activation urgent
+focus_on_window_activation smart

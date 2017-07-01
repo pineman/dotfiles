@@ -2,6 +2,7 @@ source	~/.vimrc
 
 set nomodeline
 set colorcolumn=0
-set nonu noma
+set nonu
+set nomodifiable
 
 " vim: ft=vim

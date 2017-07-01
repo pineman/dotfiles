@@ -1,8 +1,0 @@
-[Unit]
-Description=Suspend when idle
-
-[Service]
-ExecStart=/usr/bin/xautolock -detectsleep -time 3 -locker "%h/bin/susp"
-
-[Install]
-WantedBy=default.target

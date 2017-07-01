@@ -1,6 +1,4 @@
 # .bashrc
-eval $(dircolors ~/.dircolors)
-
 set -o vi
 complete -cf sudo
 shopt -s autocd
@@ -36,8 +34,10 @@ memepad=$red
 pinecone='\[\e[38;5;94m\]'
 
 PS1="[$grey\u$reset@$memepad\h$reset] "
-PS1+="[$yellow$(date +"%H:%M:%S %d/%m/%Y")$reset] "
+PS1+="[$yellow\$(date +'%H:%M:%S %d/%m/%Y')$reset] "
 PS1+="[$red\w$reset]\n"
 PS1+="$white\$?$reset $ "
+
+TERM=linux setterm -regtabs 4 # always set tabstop to 4
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
