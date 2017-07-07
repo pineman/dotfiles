@@ -19,6 +19,14 @@ call vundle#begin()
 	"Plugin 'fatih/molokai'
 call vundle#end()
 
+if has("gui_running")
+	let g:solarized_hitrail=1
+	let g:solarized_italic=0
+	set guioptions=aim
+	set mousemodel=popup
+	set guifont=xos4\ Terminus\ Regular
+endif
+
 colorscheme solarized
 set background=dark
 set shiftwidth=4
@@ -79,13 +87,6 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/
 set autowrite
 set autochdir
-
-if has("gui_running")
-	let g:solarized_hitrail=1
-	set guioptions=aim
-	set mousemodel=popup
-	set guifont=xos4\ Terminus\ Regular
-endif
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab

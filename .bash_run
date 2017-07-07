@@ -3,6 +3,7 @@
 source ~/.bashrc
 
 one_command_execute() {
+	echo "$READLINE_LINE" >> ~/.bash_history
     eval $(echo "$READLINE_LINE") &
     exit
 }

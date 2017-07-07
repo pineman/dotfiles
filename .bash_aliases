@@ -63,14 +63,18 @@ alias mpc="mpc -h ~/.config/mpd/socket"
 alias p="mpc toggle"
 alias mon="systemctl --user start mpd"
 alias moff="systemctl --user stop mpd"
+function addradio {
+	mpc add https://lainon.life/radio/everything.ogg
+	mpc add https://lainon.life/radio/cyberia.ogg
+	mpc add http://cyberadio.pw:8000/stream
+	mpc add http://streaming.radionomy.com/DRIVE
+	mpc add http://radio.2f30.org:8000/live.mp3
+}
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 999k --prefer-ffmpeg"
-alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.win -D 1337"
-alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:pineman.win:9091 -N -T pineman.win"
-alias addradio="mpc add https://lainon.life/radio/everything.ogg; mpc add https://lainon.life/radio/cyberia.ogg; mpc add http://cyberadio.pw:8000/stream; mpc add http://streaming.radionomy.com/DRIVE; mpc add http://radio.2f30.org:8000/live.mp3"
 alias t="trackpoint"
 alias pt="setxkbmap pt && xmodmap ~/.Xmodmap.PT"
 alias us="setxkbmap us && xmodmap ~/.Xmodmap.US"
-# power-related aliases
+# Power-related
 alias lock="physlock"
 alias slock="systemctl suspend && physlock -d"
 alias s="xset dpms force off"
@@ -102,6 +106,8 @@ alias fbi="fbi --autodown"
 
 # Digital Ocean Server
 alias pinecone="ssh -t pineman@pineman.win"
+alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.win -D 1337"
+alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:pineman.win:9091 -N -T pineman.win"
 
 # ex - archive extractor
 # usage: ex <file>
@@ -157,9 +163,8 @@ alias matrix2='echo -e "\e[31m"; while $t; do for i in `seq 1 30`;do r="$[($RAND
 alias matrix3='COL=$(( $(tput cols) / 2 )); clear; tput setaf 2; while :; do tput cup $((RANDOM%COL)) $((RANDOM%COL)); printf "%$((RANDOM%COL))s" $((RANDOM%2)); done'
 alias matrix4='echo -ne "\e[32m" ; while true ; do echo -ne "\e[$(($RANDOM % 2 + 1))m" ; tr -c "[:print:]" " " < /dev/urandom | dd count=1 bs=50 2> /dev/null ; done'
 alias matrix5='tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=lcase,unblock | GREP_COLOR="1;32" grep --color "[^ ]"'
-alias colorrainbow='yes "$(seq 1 255)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .01; done'
+alias colorrainbow='seq 1 255 | while read i; do printf "${i-1}: \x1b[48;5;${i}m\n"; sleep .01; done'
 alias screenfetch="echo; screenfetch -c 41,12"
-alias emacs="sl"
 function minor()
 {
 	cat /dev/urandom | hexdump -v -e '/1 "%u\n"' | awk '{ split("0,2,3,5,7,8,10,12",a,","); for (i = 0; i < 1; i+= 0.00001) printf("%08X\n", 100*sin(1382*exp((a[$1 % 8]/12)*log(2))*i)) }' | xxd -r -p | aplay -c 2 -f S32_LE -r 16000

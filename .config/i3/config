@@ -222,6 +222,7 @@ bindsym $mod+y exec qalculate-gtk
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+u exec virtualbox
 bindsym $mod+i exec keepassxc
+bindsym $mod+s exec steam
 
 # Borders
 new_window pixel 2
