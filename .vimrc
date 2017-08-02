@@ -1,9 +1,8 @@
 set nocompatible
 filetype plugin on
-filetype indent off
 
 runtime macros/matchit.vim
-syntax on
+syntax enable
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -19,16 +18,16 @@ call vundle#begin()
 	"Plugin 'fatih/molokai'
 call vundle#end()
 
+let g:solarized_italic=0
+let g:solarized_hitrail=0
+set background=dark
+colorscheme solarized
 if has("gui_running")
-	let g:solarized_hitrail=1
-	let g:solarized_italic=0
 	set guioptions=aim
 	set mousemodel=popup
 	set guifont=xos4\ Terminus\ Regular
 endif
 
-colorscheme solarized
-set background=dark
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
@@ -36,29 +35,43 @@ set shiftround
 set encoding=utf-8
 set fileformat=unix
 set autoindent
+filetype indent off
 let $BASH_ENV = '~/.bash_aliases'
 set backspace=eol,indent,start
 set mouse=a
 set ttyfast
 set wildmenu
 set number
-set colorcolumn=80
 set lazyredraw
 set printoptions=paper:A4,syntax:y,wrap:y,duplex:off,number:y,left:13mm,right:13mm,top:20mm,bottom:20mm
 set printfont=Times\ New\ Roman\ 12 " doesnt work on loonix
-set showcmd
-set showmode
 set copyindent
 set ignorecase
 set smartcase
 set linebreak
-set cursorline
+set path=**
+set foldmethod=indent
+set foldlevel=99
+set splitbelow
+set splitright
+set hlsearch
+set undofile
+set backup
+set undodir=~/.vim/undo/
+set backupdir=~/.vim/backup/
+set directory=~/.vim/swap/,/tmp
+set autowrite
 
 nnoremap j gj
 nnoremap k gk
 nnoremap e el
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+nnoremap <esc><esc> :silent! noh<cr>
 nnoremap <F5> :Lexplore<cr>
 nnoremap <F6> :UndotreeToggle<cr>
 nnoremap <F7> :make<cr>
@@ -70,23 +83,6 @@ cmap W w
 cmap Q q
 cmap q1 q!
 cmap Q1 q!
-
-set foldmethod=indent
-set foldlevel=99
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-set splitbelow
-set splitright
-set hlsearch
-set undofile
-set backup
-set undodir=~/.vim/undo/
-set backupdir=~/.vim/backup/
-set directory=~/.vim/swap/
-set autowrite
-set autochdir
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab
@@ -104,8 +100,23 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 15
 
-"set statusline=%m%=%y\ %l-%c\ %p%%\ %r
-"set laststatus=2
-set rulerformat=%40(%=%y[%{&fenc?&fenc:&enc}][%{&ff}]\ %l-%c\ %p%%\ %r\ %m%)
+set colorcolumn=80
+set titlestring=%F
+set cursorline
+set showcmd
+set showmode
 set shortmess+=a
-"autocmd InsertLeave * file
+
+hi User1 ctermbg=1
+"set laststatus=2
+"set stl=%0*%1*%m%r%0*
+"set stl+=[%n]asdd
+"set stl+=\ %<%fasdad
+"set stl+=\ %y
+"set stl+=\ [%{&fenc?&fenc:&enc}/%{&ff}]
+"set stl+=%=
+"set stl+=\ %l-%c\ %p%%
+"set stl+=\ [%LL]
+"set stl+=%1*%m%0*
+set rulerformat=%40(%=[%n]\ %y[%{&fenc?&fenc:&enc}][%{&ff}]\ %l-%c\ %p%%\ %r%1*%m%)
+autocmd InsertLeave * file

@@ -13,6 +13,7 @@ export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 setxkbmap -option terminate:ctrl_alt_bksp
 # Swap escape and caps lock
 setxkbmap -option caps:swapescape
+#setxkbmap -option altwin:swap_alt_win
 
 xhost -
 xset r rate 150 50

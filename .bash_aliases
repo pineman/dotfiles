@@ -15,7 +15,7 @@ alias rm="rm -i"
 alias df='df -h'
 alias grep="grep --color -n"
 alias free='free -m'
-alias dfc='dfc -d -t -tmpfs,devtmpfs'
+alias dfc='dfc -d -t -tmpfs,dev'
 alias telnet="telnet --escape='^E'"
 alias du='du -h'
 alias nmcli='nmcli -a'
@@ -31,6 +31,7 @@ alias mupdf="mupdf -r 144"
 alias vim="vim -p"
 alias clearvim="rm -rf $HOME/.vim/{undo,swap,backup}/* $HOME/.viminfo"
 alias xz="xz -T 0"
+alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias inxi="inxi -F"
 alias units="units --verbose"
 alias python="python -O"
