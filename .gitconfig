@@ -1,7 +1,7 @@
 [user]
 	name = João Pinheiro
 	email = joao.castropinheiro@gmail.com
-	signingKey = 8E3D6E3CDD7C3466
+	signingKey = CA439ECD5D4F3704
 [push]
 	default = tracking
 [pull]

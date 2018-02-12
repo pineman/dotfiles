@@ -1,7 +1,7 @@
 import sys
 import os
 
-from math import *
-import cmath as c
+from cmath import *
 from decimal import *
 from statistics import *
+from itertools import *

@@ -450,8 +450,12 @@ def_key "K"
 #def_key "I"
 #  show_artist_info
 #
-#def_key "g"
-#  jump_to_position_in_song
+def_key "g"
+	move_home
+def_key "G"
+	move_end
+def_key "t"
+  jump_to_position_in_song
 #
 #def_key "l"
 #  show_lyrics

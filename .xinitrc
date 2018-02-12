@@ -29,15 +29,16 @@ fi
 
 function i3 {
 	#feh --no-fehbg --bg-scale "$HOME/.background.jpg"
-	exec dbus-launch /usr/bin/i3 > ~/.local/share/xorg/i3.log
+	xsetroot -solid "#171717"
+	exec dbus-launch --exit-with-session i3 > ~/.local/share/xorg/i3.log
 }
 
 function bspwm {
-	exec bspwm
+	exec dbus-launch --exit-with-session bspwm
 }
 
 function xfce {
-	exec dbus-launch startxfce4
+	exec dbus-launch --exit-with-session startxfce4
 }
 
 function twm {

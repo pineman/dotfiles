@@ -1,7 +1,7 @@
 #
 # ~/.bash_profile
 #
-export PATH="/usr/lib/ccache/bin:$HOME/code/bin:$PATH"
+export PATH="/usr/lib/ccache/bin:$HOME/code/bin:$PATH:/opt/microchip/xc16/v1.33/bin"
 
 export HISTSIZE=1000000
 export HISTFILESIZE=${HISTSIZE}
@@ -13,8 +13,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export GOPATH="$HOME/proj/go"
 export PYTHONSTARTUP="$HOME/.pythonrc"
 
-[ -f $HOME/.vim/bundle/vimpager/vimpager ] &>/dev/null && \
-	export PAGER="$HOME/.vim/bundle/vimpager/vimpager"
+export PAGER="vimpager"
 
 eval $(dircolors ~/.dircolors)
 

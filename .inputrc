@@ -9,6 +9,7 @@ set output-meta on
 set editing-mode vi
 #set show-mode-in-prompt off
 set echo-control-characters off
+set blink-matching-paren off
 
 $if mode=vi
 	set keymap vi-command

@@ -1,8 +1,0 @@
-source	~/.vimrc
-
-set nomodeline
-set colorcolumn=0
-set nonu
-set nomodifiable
-
-" vim: ft=vim

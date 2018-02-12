@@ -3,10 +3,13 @@
 <action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
-	<unique-id>1494018037116228-4</unique-id>
+	<unique-id>1511694523604164-1</unique-id>
 	<command>urxvtc -cd %d</command>
 	<description>Open a terminal at this location</description>
+	<upper>-1</upper>
+	<lower>-1</lower>
 	<patterns>*</patterns>
+	<directories/>
 	<audio-files/>
 	<image-files/>
 	<other-files/>
@@ -14,20 +17,13 @@
 	<video-files/>
 </action>
 <action>
-	<icon>utilities-terminal</icon>
-	<name>Open Terminal Here</name>
-	<unique-id>1494018070158280-5</unique-id>
-	<command>urxvtc -cd %f</command>
-	<description>Open a terminal at this location</description>
-	<patterns>*</patterns>
-	<directories/>
-</action>
-<action>
 	<icon>find</icon>
 	<name>Search</name>
-	<unique-id>1494018248329020-8</unique-id>
+	<unique-id>1506934358432902-3</unique-id>
 	<command>catfish %d</command>
 	<description>Find files or folders</description>
+	<upper>-1</upper>
+	<lower>-1</lower>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<audio-files/>
@@ -39,11 +35,39 @@
 <action>
 	<icon>find</icon>
 	<name>Search</name>
-	<unique-id>1494018277013776-9</unique-id>
+	<unique-id>1506934355959009-2</unique-id>
 	<command>catfish %f</command>
 	<description>Find files or folders</description>
+	<upper>-1</upper>
+	<lower>-1</lower>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<directories/>
+</action>
+<action>
+	<icon>mpv</icon>
+	<name>mpv Play Directory</name>
+	<unique-id>1508321838443779-2</unique-id>
+	<command>mpv %f</command>
+	<description>Play directory in mpv</description>
+	<upper>-1</upper>
+	<lower>-1</lower>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>mpv</icon>
+	<name>mpv Play Directory</name>
+	<unique-id>1508321881853730-3</unique-id>
+	<command>mpv %d</command>
+	<description>Play directory in mpv</description>
+	<upper>-1</upper>
+	<lower>-1</lower>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
 </action>
 </actions>

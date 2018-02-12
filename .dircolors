@@ -113,16 +113,19 @@ STICKY_OTHER_WRITABLE	48;5;64;38;5;230
 OTHER_WRITABLE			48;5;235;38;5;33
 STICKY					48;5;33;38;5;230
 EXEC					38;5;64
+.exe					38;5;64
 
 # Documents
 .txt					38;5;188
 .tex					38;5;188
+.bib					38;5;188
 .textile				38;5;188
 .html					38;5;188
 .xml					38;5;188
 .vbox					38;5;188
 .htm					38;5;188
 .xhtml					38;5;188
+.mhtml					38;5;188
 .phtml					38;5;188
 .shtml					38;5;188
 .jhtm					38;5;188
@@ -136,6 +139,7 @@ EXEC					38;5;64
 .org					38;5;188
 .pandoc					38;5;188
 .pdc					38;5;188
+.epub					38;5;188
 .pdf					38;5;188
 .PDF					38;5;188
 .pod					38;5;188
@@ -213,10 +217,14 @@ EXEC					38;5;64
 *CONTRIBUTING			04;38;5;188
 *CONTRIBUTING.md		04;38;5;188
 *CONTRIBUTING.txt		04;38;5;188
+*TODO					04;38;5;188
+*TODO.txt				04;38;5;188
+*TODO.md				04;38;5;188
 
 # Disk images
 .iso					38;5;214
 .img					38;5;214
+.fs						38;5;214
 .bin					38;5;214
 .nrg					38;5;214
 .qcow					38;5;214
@@ -224,6 +232,7 @@ EXEC					38;5;64
 .toast					38;5;214
 .vcd					38;5;214
 .vmdk					38;5;214
+.vhd					38;5;214
 .vdi					38;5;214
 .squashfs				38;5;214
 
@@ -828,6 +837,7 @@ EXEC					38;5;64
 .H						38;5;192
 .h++					38;5;192
 .hpp					38;5;192
+.hh						38;5;192
 .hxx					38;5;192
 .ahk					38;5;192
 .awk					38;5;192
@@ -847,7 +857,12 @@ EXEC					38;5;64
 .gitmodules				38;5;5
 
 # Build files
-*file					38;5;211
+*Makefile				38;5;211
+*Dockerfile				38;5;211
+*Vagrantfile			38;5;211
+*makefile				38;5;211
+*dockerfile				38;5;211
+*vagrantfile			38;5;211
 .dockerignore			38;5;211
 *CMakeLists.txt			38;5;211
 .cabal					38;5;211
@@ -958,15 +973,14 @@ EXEC					38;5;64
 .RData					38;5;136
 .rdata					38;5;136
 
-.pcf					1
-.psf					1
-
 .afm					38;5;66
 .fon					38;5;66
 .fnt					38;5;66
 .pfb					38;5;66
 .pfm					38;5;66
 .ttf					38;5;66
+.pcf					38;5;66
+.bdf					38;5;66
 .otf					38;5;66
 # Postscript fonts
 .PFA					38;5;66
@@ -1053,7 +1067,6 @@ EXEC					38;5;64
 .pod					38;5;7
 .gbr					38;5;7
 .spl					38;5;7
-.scm					38;5;7
 .sis					38;5;7
 .1p						38;5;7
 .3p						38;5;7

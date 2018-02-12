@@ -9,10 +9,10 @@ one_command_execute() {
 }
 bind -x '"\C-m":"one_command_execute"'
 
-alias gparted="gparted_polkit"
 alias unison="unison-gtk2 -logfile /dev/null"
 alias transmission="systemd-inhibit --why='Downloading or uploading torrents' transmission-gtk"
 alias trans="transmission"
 alias wire="wireshark"
 alias octave="octave --force-gui"
 alias oct="octave"
+alias mpv="mpv --player-operation-mode=pseudo-gui"

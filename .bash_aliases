@@ -1,6 +1,6 @@
 # temporary
-alias h="feh ~/ist/a2s2/meec-drive/horario/horas.png"
-alias d="feh ~/ist/a2s2/d.png"
+alias h="feh ~/ist/a3s2/horas.png"
+alias d="feh ~/ist/a3s2/duvidas.png"
 
 # General system aliases
 alias sudo="sudo " # this enables sudo to use these aliases
@@ -13,7 +13,9 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias df='df -h'
-alias grep="grep --color -n"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
 alias free='free -m'
 alias dfc='dfc -d -t -tmpfs,dev'
 alias telnet="telnet --escape='^E'"
@@ -52,6 +54,7 @@ function u {
 	(urxvtc -cd $PWD &>/dev/null &)
 }
 alias pacro="yaourt -Rns \$(yaourt -Qttdq)"
+alias up="yaourt -Syua --noconfirm"
 alias hddpoff="udisksctl power-off -b"
 alias xev=" xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 alias winboot="sudo efibootmgr -n 0019 && reboot"
@@ -70,17 +73,23 @@ function addradio {
 	mpc add http://cyberadio.pw:8000/stream
 	mpc add http://streaming.radionomy.com/DRIVE
 	mpc add http://radio.2f30.org:8000/live.mp3
+	mpc add http://ice2.somafm.com/defcon-64-aac
+	mpc add http://nectarine.ers35.net:8000/necta192.mp3
 }
-alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 999k --prefer-ffmpeg"
+alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 alias t="trackpoint"
 alias pt="setxkbmap pt && xmodmap ~/.Xmodmap.PT"
 alias us="setxkbmap us && xmodmap ~/.Xmodmap.US"
+alias edit_dns="sudo chattr -i /etc/resolv.conf && sudo vim /etc/resolv.conf && sudo chattr +i /etc/resolv.conf"
+
 # Power-related
 alias lock="physlock"
 alias slock="systemctl suspend && physlock -d"
 alias s="xset dpms force off"
 alias inhib_charge="sudo tpacpi-bat -s IC 1 1"
 alias enable_charge="sudo tpacpi-bat -s IC 1 0"
+alias susp="systemctl suspend"
+alias hib="systemctl hibernate"
 alias inhib_susp="setsid systemd-inhibit --what=sleep --who='\$USER' --why='Suspend deliberately inhibited by user.' sleep 500d"
 alias enable_susp="killall systemd-inhibit sleep"
 
@@ -96,6 +105,7 @@ alias gf="git fetch --all"
 alias gp="git pull"
 alias gr="git remote -vvv"
 alias ga="git add"
+alias gitk="gitk --all"
 
 # TTY-things
 alias startx="killall redshift &>/dev/null; \startx ~/.xinitrc; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
