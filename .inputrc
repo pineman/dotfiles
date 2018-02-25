@@ -7,11 +7,20 @@ set input-meta on
 set convert-meta off
 set output-meta on
 set editing-mode vi
-#set show-mode-in-prompt off
 set echo-control-characters off
 set blink-matching-paren off
+set match-hidden-files off
+
+set completion-ignore-case on
+#set completion-query-items -1
+set show-all-if-ambiguous on
+#set colored-completion-prefix on
+set colored-stats on
 
 $if mode=vi
+	#set show-mode-in-prompt on
+	#set vi-ins-mode-string "> "
+	#set vi-cmd-mode-string ": "
 	set keymap vi-command
 	"dw": kill-word
 	"dd": kill-whole-line
@@ -21,29 +30,29 @@ $if mode=vi
 $endif
 
 $if mode=emacs
-# for linux console and RH/Debian xterm
-"\e[1~": beginning-of-line
-"\e[4~": end-of-line
-"\e[5~": beginning-of-history
-"\e[6~": end-of-history
-"\e[7~": beginning-of-line
-"\e[3~": delete-char
-"\e[2~": quoted-insert
-"\e[5C": forward-word
-"\e[5D": backward-word
-"\e\e[C": forward-word
-"\e\e[D": backward-word
-"\e[1;5C": forward-word
-"\e[1;5D": backward-word
+	# for linux console and RH/Debian xterm
+	"\e[1~": beginning-of-line
+	"\e[4~": end-of-line
+	"\e[5~": beginning-of-history
+	"\e[6~": end-of-history
+	"\e[7~": beginning-of-line
+	"\e[3~": delete-char
+	"\e[2~": quoted-insert
+	"\e[5C": forward-word
+	"\e[5D": backward-word
+	"\e\e[C": forward-word
+	"\e\e[D": backward-word
+	"\e[1;5C": forward-word
+	"\e[1;5D": backward-word
 
-# for rxvt
-"\e[8~": end-of-line
+	# for rxvt
+	"\e[8~": end-of-line
 
-# for non RH/Debian xterm, can't hurt for RH/DEbian xterm
-"\eOH": beginning-of-line
-"\eOF": end-of-line
+	# for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+	"\eOH": beginning-of-line
+	"\eOF": end-of-line
 
-# for freebsd console
-"\e[H": beginning-of-line
-"\e[F": end-of-line
+	# for freebsd console
+	"\e[H": beginning-of-line
+	"\e[F": end-of-line
 $endif

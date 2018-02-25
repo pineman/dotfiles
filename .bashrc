@@ -1,4 +1,8 @@
-# .bashrc
+export HISTSIZE=1000
+export HISTFILE=~/.history
+export HISTFILESIZE=${HISTSIZE}
+export HISTCONTROL="erasedups:ignoreboth"
+
 set -o vi
 complete -cf sudo
 shopt -s autocd
@@ -29,6 +33,4 @@ PS1+="[$yellow\$(date +'%d/%m/%Y %H:%M:%S')$reset] "
 PS1+="[$red\w$reset]\n"
 PS1+="$white\$?$reset $ "
 
-TERM=linux setterm -regtabs 4 # always set tabstop to 4
-
-[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+[[ -f ~/.aliases ]] && . ~/.aliases
