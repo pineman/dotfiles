@@ -197,10 +197,8 @@ client.background		#000000
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 1
 bindsym XF86AudioMute exec amixer sset Master toggle
 bindsym XF86AudioMicMute exec amixer set Capture toggle
-bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
-bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
-#bindsym XF86AudioLowerVolume exec pamixer --decrease 5
-#bindsym XF86AudioRaiseVolume exec pamixer --increase 5
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioStop exec echo 'cycle pause' | socat - /tmp/mpv
@@ -228,7 +226,8 @@ bindsym $mod+f exec thunar
 bindsym $mod+p exec firefox
 bindsym $mod+c exec chromium
 bindsym $mod+g exec qutebrowser
-bindsym $mod+o exec thunderbird
+bindsym $mod+o exec octave --force-gui
+bindsym $mod+shift+o exec thunderbird
 bindsym $mod+y exec qalculate-gtk
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+u exec virtualbox

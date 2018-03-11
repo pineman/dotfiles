@@ -27,4 +27,4 @@ pasystray &
 redshift-gtk &
 Thunar --daemon &
 urxvtd -f -q -o
-/usr/lib/kdeconnectd &
+mconnect &

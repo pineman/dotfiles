@@ -18,7 +18,6 @@ call vundle#begin()
 call vundle#end()
 
 if exists('g:vimpager.enabled')
-	let g:vimpager.passthrough=0
 	autocmd BufRead,BufWinEnter * setlocal readonly nomodifiable
 	set colorcolumn=0
 	set t_ve=
@@ -51,8 +50,9 @@ set mouse=a
 set ttyfast
 set wildmenu
 "set lazyredraw
+" To print with correct colors, use gvim.
 set printoptions=paper:A4,syntax:y,wrap:y,duplex:off,number:y,left:13mm,right:13mm,top:20mm,bottom:20mm
-set printfont=Times\ New\ Roman\ 12 " doesnt work on loonix
+set printfont=Times\ New\ Roman\ 12 " Doesnt work on linux?
 set copyindent
 set ignorecase
 set smartcase
@@ -83,17 +83,18 @@ nnoremap <esc><esc> :silent! noh<cr> :w <cr>
 nnoremap <F5> :Lexplore<cr>
 nnoremap <F6> :UndotreeToggle<cr>
 nnoremap <F7> :make<cr>
-"map K <Nop>
-"cmap WQ wq
-"cmap Wq wq
-"cmap W w
-"cmap Q q
-"cmap q1 q!
-"cmap Q1 q!
+"nnoremap ; :
+"nnoremap : ;
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab
 au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php,*.tex setlocal sw=2 ts=2 sts=2
+au Filetype tex setlocal makeprg=latexmk
+function! Synctex()
+        " remove 'silent' for debugging
+        execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
+endfunction
+map <F8> :call Synctex()<cr>
 
 " Remember cursor position
 autocmd BufReadPost *
@@ -109,7 +110,7 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 15
 
-set titlestring=%F
+au BufEnter * setlocal titlestring=vim:\ %F
 set showcmd
 set showmode
 set shortmess+=a

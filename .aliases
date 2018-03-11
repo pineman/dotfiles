@@ -1,6 +1,6 @@
+# vim: ft=sh
 # temporary
-alias h="feh ~/ist/a3s2/horas.png"
-alias d="feh ~/ist/a3s2/duvidas.png"
+alias h="mupdf ~/ist/a3s2/horas.pdf"
 
 # General system aliases
 alias sudo="sudo " # this enables sudo to use these aliases
