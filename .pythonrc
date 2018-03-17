@@ -1,6 +1,7 @@
 import sys
 import os
 
+from math import *
 from cmath import *
 from decimal import *
 from statistics import *

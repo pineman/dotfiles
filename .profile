@@ -10,9 +10,5 @@ export PAGER="vimpager"
 eval $(dircolors ~/.dircolors)
 
 redshift -m drm -o
-setterm --powerdown 60
-setterm --powersave on
-setterm --regtabs 4
+setterm --powerdown 2
 setterm --blength 0
-
-TERM=linux setterm -regtabs 4 # always set tabstop to 4

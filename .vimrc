@@ -19,6 +19,7 @@ call vundle#end()
 
 if exists('g:vimpager.enabled')
 	autocmd BufRead,BufWinEnter * setlocal readonly nomodifiable
+	let g:vimpager.passthrough=0
 	set colorcolumn=0
 	set t_ve=
 else
@@ -44,6 +45,7 @@ set shiftround
 set encoding=utf-8
 set fileformat=unix
 set autoindent
+set breakindent
 filetype indent off
 set backspace=eol,indent,start
 set mouse=a
@@ -79,7 +81,7 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
-nnoremap <esc><esc> :silent! noh<cr> :w <cr>
+nnoremap <esc><esc> :w<cr> :silent! noh <cr>
 nnoremap <F5> :Lexplore<cr>
 nnoremap <F6> :UndotreeToggle<cr>
 nnoremap <F7> :make<cr>
@@ -88,13 +90,19 @@ nnoremap <F7> :make<cr>
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab
-au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php,*.tex setlocal sw=2 ts=2 sts=2
-au Filetype tex setlocal makeprg=latexmk
+au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php setlocal sw=2 ts=2 sts=2
+
+au Filetype tex setlocal makeprg=latexmk sw=2 ts=2 sts=2
 function! Synctex()
-        " remove 'silent' for debugging
-        execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
+	execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
 endfunction
 map <F8> :call Synctex()<cr>
+function! SoftHardWrap() " Create a vsplit at 80 columns to simulate hard wrap
+	execute "vs /dev/null/"
+	execute "windo wincmd h"
+	execute "vertical resize 84"
+endfunction
+map <F9> :call SoftHardWrap()<cr>
 
 " Remember cursor position
 autocmd BufReadPost *

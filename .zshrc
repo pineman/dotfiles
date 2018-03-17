@@ -14,13 +14,15 @@ zmodload zsh/complist
 zstyle ':completion:*' menu select
 zstyle ':completion:*:descriptions' format 'completing %B%d%b'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.*' insert-sections   true
 
 # use the vi navigation keys (hjkl) besides cursor keys in menu completion
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect '^I' accept-search # Tab to accept
+#bindkey -M menuselect '^I' accept-search # Tab to accept
 bindkey -M menuselect '^[' undo
 
 # Launch vim to edit buffer
@@ -45,7 +47,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^L' autosuggest-accept
-bindkey '^[M' autosuggest-execute
+bindkey '^H' autosuggest-execute
 
 #autoload predict-on
 #predict-on
@@ -73,5 +75,7 @@ precmd() {
 ZLE_RPROMPT_INDENT=0
 PROMPT='[%F{10}%n%f@%F{1}%M%f] [%F{3}%D{%H:%M}%f] [%F{5}%~%f] ${vcs_info_msg_0_}
 %F{15}%?%f $ '
+
+TERM=linux setterm -regtabs 4 # always set tabstop to 4
 
 [[ -f ~/.aliases ]] && . ~/.aliases
