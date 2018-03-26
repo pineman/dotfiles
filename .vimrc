@@ -19,7 +19,7 @@ call vundle#end()
 
 if exists('g:vimpager.enabled')
 	autocmd BufRead,BufWinEnter * setlocal readonly nomodifiable
-	let g:vimpager.passthrough=0
+	"let g:vimpager.passthrough=0
 	set colorcolumn=0
 	set t_ve=
 else
@@ -45,10 +45,11 @@ set shiftround
 set encoding=utf-8
 set fileformat=unix
 set autoindent
-set breakindent
+"set breakindent
 filetype indent off
 set backspace=eol,indent,start
 set mouse=a
+set clipboard=autoselect
 set ttyfast
 set wildmenu
 "set lazyredraw
@@ -93,11 +94,14 @@ au Filetype json setlocal expandtab
 au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php setlocal sw=2 ts=2 sts=2
 
 au Filetype tex setlocal makeprg=latexmk sw=2 ts=2 sts=2
+" Only works on gvim for some reason
 function! Synctex()
 	execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
 endfunction
 map <F8> :call Synctex()<cr>
-function! SoftHardWrap() " Create a vsplit at 80 columns to simulate hard wrap
+
+" Create a vsplit at 80 columns to simulate hard wrap
+function! SoftHardWrap()
 	execute "vs /dev/null/"
 	execute "windo wincmd h"
 	execute "vertical resize 84"

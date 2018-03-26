@@ -12,3 +12,4 @@ eval $(dircolors ~/.dircolors)
 redshift -m drm -o
 setterm --powerdown 2
 setterm --blength 0
+TERM=linux setterm -regtabs 4 # always set tabstop to 4

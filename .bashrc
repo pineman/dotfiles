@@ -3,7 +3,6 @@ export HISTFILE=~/.history
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL="erasedups:ignoreboth"
 
-set -o vi
 complete -cf sudo
 shopt -s autocd
 shopt -s cdspell
@@ -32,7 +31,5 @@ PS1="[$grey\u$reset@$memepad\h$reset] "
 PS1+="[$yellow\$(date +'%d/%m/%Y %H:%M:%S')$reset] "
 PS1+="[$red\w$reset]\n"
 PS1+="$white\$?$reset $ "
-
-TERM=linux setterm -regtabs 4 # always set tabstop to 4
 
 [[ -f ~/.aliases ]] && . ~/.aliases

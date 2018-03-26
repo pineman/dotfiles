@@ -60,12 +60,10 @@ bindkey '^H' autosuggest-execute
 autoload -Uz vcs_info
 setopt PROMPT_SUBST
 zstyle ':vcs_info:git:*' stagedstr '+'
-zstyle ':vcs_info:git:*' unstagedstr ' -'
+zstyle ':vcs_info:git:*' unstagedstr '-'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' actionformats '%a'
-zstyle ':vcs_info:git:*' formats '[%F{2}%b%f%F{1}%u%f%F{2}%c%f]'
-zstyle ':vcs_info:git:*:/home/pineman' actionformats ' '
-zstyle ':vcs_info:git:*:/home/pineman' formats ' '
+zstyle ':vcs_info:git:*' formats '[%F{4}%r%f %F{2}%b%f%F{1}%u%f%F{2}%c%f]'
 zstyle ':vcs_info:*' enable git
 precmd() {
 	print -Pn "\e]0;%~\a"; # Change the terminal's title to current dir.
@@ -75,7 +73,5 @@ precmd() {
 ZLE_RPROMPT_INDENT=0
 PROMPT='[%F{10}%n%f@%F{1}%M%f] [%F{3}%D{%H:%M}%f] [%F{5}%~%f] ${vcs_info_msg_0_}
 %F{15}%?%f $ '
-
-TERM=linux setterm -regtabs 4 # always set tabstop to 4
 
 [[ -f ~/.aliases ]] && . ~/.aliases

@@ -3,18 +3,28 @@
 <action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
-	<unique-id>1511694523604164-1</unique-id>
+	<unique-id>1522105927453061-7</unique-id>
 	<command>urxvtc -cd %d</command>
-	<description>Open a terminal at this location</description>
+	<description>Open a terminal here</description>
 	<upper>-1</upper>
 	<lower>-1</lower>
 	<patterns>*</patterns>
-	<directories/>
 	<audio-files/>
 	<image-files/>
 	<other-files/>
 	<text-files/>
 	<video-files/>
+</action>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1522105931861047-8</unique-id>
+	<command>urxvtc -cd %f</command>
+	<description>Open a terminal on this directory</description>
+	<upper>-1</upper>
+	<lower>-1</lower>
+	<patterns>*</patterns>
+	<directories/>
 </action>
 <action>
 	<icon>find</icon>
