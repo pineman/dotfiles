@@ -1,7 +1,8 @@
 export HISTSIZE=200000
-export HISTFILE=~/.history
+export HISTFILE=~/.bash_history
 export HISTFILESIZE=${HISTSIZE}
-export HISTCONTROL="erasedups:ignoreboth"
+export HISTCONTROL="ignoredups"
+export HISTTIMEFORMAT="%x %X"
 
 complete -cf sudo
 shopt -s autocd
@@ -31,5 +32,7 @@ PS1="[$grey\u$reset@$memepad\h$reset] "
 PS1+="[$yellow\$(date +'%d/%m/%Y %H:%M:%S')$reset] "
 PS1+="[$red\w$reset]\n"
 PS1+="$white\$?$reset $ "
+
+[[ "$(uname -s)" == "Linux" ]] && setterm --tabs 4
 
 [[ -f ~/.aliases ]] && . ~/.aliases

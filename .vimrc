@@ -49,7 +49,7 @@ set autoindent
 filetype indent off
 set backspace=eol,indent,start
 set mouse=a
-set clipboard=autoselect
+set clipboard=unnamed
 set ttyfast
 set wildmenu
 "set lazyredraw

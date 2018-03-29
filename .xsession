@@ -11,6 +11,9 @@ export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun
 export JAVA_FONTS="/usr/share/fonts"
 export CALIBRE_USE_SYSTEM_THEME=1
 
+# Ctrl + Alt + backspace to kill the X server
+setxkbmap -option terminate:ctrl_alt_bksp
+
 # Autostart
 keyboard
 trackpoint &

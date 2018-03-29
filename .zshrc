@@ -1,4 +1,4 @@
-HISTFILE=~/.history
+HISTFILE=~/.zsh_history
 HISTSIZE=200000
 SAVEHIST=200000
 
@@ -37,7 +37,7 @@ bindkey '^B' history-beginning-search-menu
 bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 
-setopt APPEND_HISTORY HIST_IGNORE_DUPS
+setopt APPEND_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE EXTENDED_HISTORY
 setopt AUTO_CD extendedglob nomatch notify nohup completeinword correct COMPLETE_ALIASES
 bindkey -v
 KEYTIMEOUT=1
@@ -73,5 +73,7 @@ precmd() {
 ZLE_RPROMPT_INDENT=0
 PROMPT='[%F{10}%n%f@%F{1}%M%f] [%F{3}%D{%H:%M}%f] [%F{5}%~%f] ${vcs_info_msg_0_}
 %F{15}%?%f $ '
+
+[[ "$(uname -s)" == "Linux" ]] && setterm --tabs 4
 
 [[ -f ~/.aliases ]] && . ~/.aliases
