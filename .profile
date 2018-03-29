@@ -9,4 +9,4 @@ export PATH="/usr/lib/ccache/bin:$PATH:/opt/microchip/xc16/v1.33/bin"
 
 eval $(dircolors ~/.dircolors)
 
-redshift -m drm -o
+command -v redshift &>/dev/null && redshift -m drm -o
