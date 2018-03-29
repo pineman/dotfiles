@@ -43,7 +43,7 @@ bindkey -v
 KEYTIMEOUT=1
 bindkey '^?' backward-delete-char
 
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^L' autosuggest-accept
