@@ -1,5 +1,5 @@
 export EDITOR="vim"
-command -v vimpager &>/dev/null && export PAGER="vimpager"
+if [ $(command -v vimpager) ]; then export PAGER="vimpager"; fi
 export XDG_CONFIG_HOME="$HOME/.config"
 export PYTHONSTARTUP="$HOME/.pythonrc"
 export GOPATH="$HOME/code/proj/go"
@@ -9,4 +9,4 @@ export PATH="/usr/lib/ccache/bin:$PATH:/opt/microchip/xc16/v1.33/bin"
 
 eval $(dircolors ~/.dircolors)
 
-command -v redshift &>/dev/null && redshift -m drm -o
+if [ $(command -v redshift) ]; then redshift -m drm -o; fi
