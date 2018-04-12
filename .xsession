@@ -18,8 +18,8 @@ setxkbmap -option terminate:ctrl_alt_bksp
 keyboard
 trackpoint &
 xhost -
-#xset m 0 0
-xinput --set-prop 12 "libinput Accel Speed" 0.7
+xset m 0 0
+#xinput --set-prop 12 "libinput Accel Speed" 0.7
 xset +dpms
 xset dpms 0 0 180
 if xrandr --query | grep "HDMI2 connected" &>/dev/null; then dvi; else lvds; fi

@@ -39,6 +39,7 @@ bindkey "^J" history-beginning-search-forward
 
 setopt APPEND_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE EXTENDED_HISTORY
 setopt AUTO_CD extendedglob nomatch notify nohup completeinword correct COMPLETE_ALIASES
+setopt AUTO_CONTINUE
 bindkey -v
 KEYTIMEOUT=1
 bindkey '^?' backward-delete-char

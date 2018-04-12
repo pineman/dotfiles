@@ -21,21 +21,22 @@ if exists('g:vimpager.enabled')
 	autocmd BufRead,BufWinEnter * setlocal readonly nomodifiable
 	"let g:vimpager.passthrough=0
 	set colorcolumn=0
-	set t_ve=
+	let aux = &t_ve
+	set t_ve= "Hide cursor
+	au VimLeave * let &t_ve=aux "Restore cursor upon exit
 else
 	set number
 	set colorcolumn=80
 	"set cursorline " TODO: lots of cpu
 endif
 
-let g:solarized_italic=0
-let g:solarized_hitrail=0
 set background=dark
 colorscheme solarized
 if has("gui_running")
 	set guioptions=aim
 	set mousemodel=popup
 	set guifont=xos4\ Terminus\ Regular
+	au BufEnter * let g:solarized_bold=0 | colorscheme solarized
 endif
 
 set shiftwidth=4
@@ -49,7 +50,7 @@ set autoindent
 filetype indent off
 set backspace=eol,indent,start
 set mouse=a
-set clipboard=unnamed
+set clipboard=autoselect
 set ttyfast
 set wildmenu
 "set lazyredraw
