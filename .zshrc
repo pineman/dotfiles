@@ -6,9 +6,10 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 
-zstyle ':completion:*' completer _expand _complete _match _correct _approximate _prefix
+#zstyle ':completion:*' completer _expand _complete _match _correct _approximate _prefix
+#zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+zstyle ':completion:*' completer _expand _complete _correct _approximate _prefix
 zstyle ':completion:*' max-errors 1
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle ':completion:*' rehash true
 zmodload zsh/complist
 zstyle ':completion:*' menu select
@@ -48,7 +49,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^L' autosuggest-accept
-bindkey '^H' autosuggest-execute
+#bindkey '^H' autosuggest-execute
 
 #autoload predict-on
 #predict-on
@@ -72,9 +73,13 @@ precmd() {
 }
 
 ZLE_RPROMPT_INDENT=0
-PROMPT='[%F{10}%n%f@%F{1}%M%f] [%F{3}%D{%H:%M}%f] [%F{5}%~%f] ${vcs_info_msg_0_}
+PROMPT='[%F{10}%n%f@%F{1}$(hostname -f)%f] [%F{3}%D{%H:%M}%f] [%F{5}%~%f] ${vcs_info_msg_0_}
 %F{15}%?%f $ '
 
 [[ "$(uname -s)" == "Linux" ]] && setterm --tabs 4
 
 [[ -f ~/.aliases ]] && . ~/.aliases
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi

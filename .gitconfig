@@ -17,3 +17,7 @@
 	prune = true
 [commit]
 	gpgsign = true
+[alias]
+	lg = log --color --graph --pretty=format:'%h (%Cgreen%cd%Creset) %s %C(6)<%an>%Creset %C(blue)%d%Creset' --abbrev-commit --date=format:'%x %X'
+[pager]
+	branch = false

@@ -11,3 +11,4 @@ import quantities as pq
 from si_prefix import si_format as SI
 import numpy as np
 import matplotlib.pyplot as plt
+import sympy as sp

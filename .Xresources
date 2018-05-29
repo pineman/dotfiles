@@ -142,9 +142,13 @@ URxvt*saveLines: 65535
 URxvt*internalBorder: 0
 URxvt*externalBorder: 0
 
-URxvt.perl-ext-common: default,clipboard,url-select
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,font-size
 URxvt.url-select.launcher: chromium
 URxvt.url-select.underline: true
 URxvt.keysym.M-C-o: perl:url-select:select_next
 URxvt.keysym.M-C-c: perl:clipboard:copy
 URxvt.keysym.M-C-v: perl:clipboard:paste
+URxvt.keysym.M-C-f: perl:keyboard-select:search
+URxvt.keysym.M-C-minus: perl:font-size:decrease
+URxvt.keysym.M-C-equal: perl:font-size:increase
+URxvt.font-size.step: 1

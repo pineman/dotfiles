@@ -77,10 +77,14 @@ set autowrite
 nnoremap j gj
 nnoremap k gk
 nnoremap e el
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+"map <C-h> <C-w>h
+"map <C-j> <C-w>j
+"map <C-k> <C-w>k
+"map <C-l> <C-w>l
+map <C-h> gT
+map <C-j> :tablast<cr>
+map <C-k> :tabfirst<cr>
+map <C-l> gt
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 nnoremap <esc><esc> :w<cr> :silent! noh <cr>

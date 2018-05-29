@@ -7,8 +7,9 @@ export TERMINAL="urxvtc"
 export BROWSER="chromium"
 
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
-export JAVA_FONTS="/usr/share/fonts"
+#export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+export JAVA_FONTS="/usr/share/fonts/ttf"
 export CALIBRE_USE_SYSTEM_THEME=1
 
 # Ctrl + Alt + backspace to kill the X server

@@ -5,7 +5,7 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 export GOPATH="$HOME/code/proj/go"
 
 export PATH="$HOME/code/bin:$PATH:$GOPATH/bin"
-export PATH="/usr/lib/ccache/bin:$PATH:/opt/microchip/xc16/v1.33/bin"
+export PATH="/usr/lib/ccache/bin:$PATH"
 
 eval $(dircolors ~/.dircolors)
 
