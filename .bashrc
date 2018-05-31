@@ -16,10 +16,6 @@ shopt -s globstar
 shopt -s histappend
 shopt -s hostcomplete
 
-bind -x $'"\C-l":clear;'
-bind -x $'"\C-r":reset;'
-bind -x '"\C-x"':"fg"
-
 white='\[\e[38;5;15m\]'
 yellow='\[\e[38;5;3m\]'
 grey='\[\e[38;5;10m\]'

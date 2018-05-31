@@ -1,0 +1,16 @@
+{
+    "editor.wordWrap": "on",
+    "editor.cursorBlinking": "solid",
+    "editor.cursorStyle": "line-thin",
+    "editor.autoClosingBrackets": false,
+    "editor.codeLens": false,
+    "window.zoomLevel": 0,
+    "editor.fontSize": 13,
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "cquery.cacheDirectory": "/tmp/cquery/",
+    "workbench.colorTheme": "Solarized Dark",
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "afterDelay",
+    "editor.multiCursorModifier": "ctrlCmd"
+}
