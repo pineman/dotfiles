@@ -29,6 +29,4 @@ PS1+="[$yellow\A$reset] "
 PS1+="[$red\w$reset]\n"
 PS1+="$white\$?$reset $ "
 
-[[ "$(uname -s)" == "Linux" ]] && setterm --tabs 4
-
-[[ -f ~/.aliases ]] && . ~/.aliases
+. ~/.aliases

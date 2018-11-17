@@ -126,7 +126,7 @@ UXTerm*background: black
 UXTerm*foreground: white
 
 !URxvt*font: xft:Monospace:size=11, xft:Icons
-URxvt*font: -*-terminus-medium-*-*-*-16-*-*-*-*-*-*-*, -*-unifont-medium-*-*-*-16-*-*-*-*-*-*-*
+URxvt*font: -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
 URxvt*boldFont:
 URxvt*italicFont:
 URxvt*boldItalicFont:
@@ -141,6 +141,7 @@ URxvt*saveLines: 65535
 
 URxvt*internalBorder: 0
 URxvt*externalBorder: 0
+URxvt*geometry: 118x32
 
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,font-size
 URxvt.url-select.launcher: chromium

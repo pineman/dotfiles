@@ -28,8 +28,6 @@ if [ -s ~/.Xmodmap ]; then
 fi
 
 function i3 {
-	#feh --no-fehbg --bg-scale "$HOME/.background.jpg"
-	xsetroot -solid "#171717"
 	exec dbus-launch --exit-with-session i3 > ~/.local/share/xorg/i3.log
 }
 

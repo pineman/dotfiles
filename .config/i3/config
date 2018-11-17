@@ -151,6 +151,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+	i3bar_command i3bar -t
 	status_command i3status
 	position bottom
 	font pango:xos4 Terminus, Unifont, Icons 10
@@ -162,8 +163,8 @@ bar {
 # Colors
 client.background		#000000
 
-#bindsym XF86MonBrightnessUp exec xbacklight -set 100%
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 1
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 bindsym XF86AudioMute exec amixer sset Master toggle
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -184,11 +185,11 @@ bindsym XF86ScreenSaver exec physlock -d
 bindsym XF86Calculator exec qalculate-gtk
 
 # Fullscreen
-bindsym Print exec scrot
+bindsym Print exec i3-scrot -d
 # Active window
-bindsym Shift+Print exec scrot -u
+bindsym Shift+Print exec i3-scrot -w
 # Region
-bindsym Ctrl+Print exec xfce4-screenshooter
+bindsym Ctrl+Print exec i3-scrot -s
 
 # Program keybindings
 bindsym $mod+f exec thunar
@@ -201,6 +202,8 @@ bindsym $mod+y exec qalculate-gtk
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+u exec virtualbox
 bindsym $mod+i exec keepassxc
+bindsym Pause exec desktop-pause.sh -a
+bindsym $mod+F5 exec restart_wifi
 
 # Borders
 new_window pixel 2

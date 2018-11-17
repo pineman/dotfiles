@@ -7,6 +7,8 @@ export GOPATH="$HOME/code/proj/go"
 export PATH="$HOME/code/bin:$PATH:$GOPATH/bin"
 export PATH="/usr/lib/ccache/bin:$PATH"
 
-eval $(dircolors ~/.dircolors)
+#eval $(dircolors $HOME/.dircolors)
 
-if [ $(command -v redshift) ]; then redshift -m drm -o; fi
+if [ $(command -v redshift) ]; then redshift -o -m drm &>/dev/null; fi
+
+[[ "$(uname -s)" == "Linux" ]] && setterm --tabs 4

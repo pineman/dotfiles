@@ -14,3 +14,4 @@ alias transmission="systemd-inhibit --why='Downloading or uploading torrents' tr
 alias trans="transmission"
 alias wire="wireshark-gtk"
 alias mpv="mpv --player-operation-mode=pseudo-gui"
+alias minecraft="java -jar /opt/shiginima/shiginima.jar"

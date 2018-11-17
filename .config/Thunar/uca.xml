@@ -3,13 +3,10 @@
 <action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
-	<unique-id>1522143919738375-9</unique-id>
+	<unique-id>1538523536547904-1</unique-id>
 	<command>urxvtc -cd %d</command>
-	<description>Open a terminal</description>
-	<upper>-1</upper>
-	<lower>-1</lower>
+	<description></description>
 	<patterns>*</patterns>
-	<directories/>
 	<audio-files/>
 	<image-files/>
 	<other-files/>
@@ -18,52 +15,19 @@
 </action>
 <action>
 	<icon>utilities-terminal</icon>
-	<name>Open Terminal Selected</name>
-	<unique-id>1522143985570617-1</unique-id>
+	<name>Open Terminal Here</name>
+	<unique-id>1538523593649580-2</unique-id>
 	<command>urxvtc -cd %f</command>
-	<description>Open a terminal on selected directory</description>
-	<upper>-1</upper>
-	<lower>-1</lower>
+	<description></description>
 	<patterns>*</patterns>
 	<directories/>
 </action>
 <action>
 	<icon>find</icon>
-	<name>Search Here</name>
-	<unique-id>1522144040369529-5</unique-id>
-	<command>catfish %d</command>
-	<description>Find files</description>
-	<upper>-1</upper>
-	<lower>-1</lower>
-	<patterns>*</patterns>
-	<startup-notify/>
-	<directories/>
-	<audio-files/>
-	<image-files/>
-	<other-files/>
-	<text-files/>
-	<video-files/>
-</action>
-<action>
-	<icon>find</icon>
-	<name>Search Selected</name>
-	<unique-id>1522144048978486-6</unique-id>
+	<name>Search</name>
+	<unique-id>1540597916026512-1</unique-id>
 	<command>catfish %f</command>
-	<description>Find files on selected directory</description>
-	<upper>-1</upper>
-	<lower>-1</lower>
-	<patterns>*</patterns>
-	<startup-notify/>
-	<directories/>
-</action>
-<action>
-	<icon>mpv</icon>
-	<name>mpv Play Directory Here</name>
-	<unique-id>1522144075378752-9</unique-id>
-	<command>mpv %f</command>
-	<description>Play directory in mpv</description>
-	<upper>-1</upper>
-	<lower>-1</lower>
+	<description></description>
 	<patterns>*</patterns>
 	<directories/>
 	<audio-files/>

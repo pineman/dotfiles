@@ -1,21 +1,23 @@
 set nocompatible
-filetype plugin on
 
 runtime macros/matchit.vim
 syntax enable
 
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 	Plugin 'VundleVim/Vundle.vim'
 	Plugin 'mbbill/undotree'
 	Plugin 'PotatoesMaster/i3-vim-syntax'
 	Plugin 'othree/yajs.vim'
+	Plugin 'elixir-editors/vim-elixir'
 
 	Plugin 'altercation/vim-colors-solarized'
 	"Plugin 'jnurmine/Zenburn'
 	"Plugin 'sickill/vim-monokai'
 	"Plugin 'fatih/molokai'
 call vundle#end()
+filetype on
 
 if exists('g:vimpager.enabled')
 	autocmd BufRead,BufWinEnter * setlocal readonly nomodifiable

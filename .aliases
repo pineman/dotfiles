@@ -1,6 +1,6 @@
 # vim: ft=sh
 # temporary
-alias h="zathura ~/ist/a3s2/horas.pdf"
+alias h="zathura ~/ist/a4s1/horas.pdf"
 
 # General system aliases
 alias sudo="sudo " # this enables sudo to use these aliases
@@ -43,9 +43,13 @@ alias node="NODE_NO_READLINE=1 rlwrap node"
 alias mit-scheme="rlwrap mit-scheme"
 which colordiff &>/dev/null && \
 	alias diff='colordiff'
+alias make="make -j$(nproc)"
+alias nload="nload -u M"
+alias erl="erl +K true"
+alias lsblk="lsblk -o name,label,size,fstype,mountpoint,parttype"
 
 # Helpful things
-alias dc=cd # I've got more calculators
+alias dc=cd # I've got other calculators
 alias ..="cd -- .."
 alias ...="cd -- ../.."
 alias ....="cd -- ../../.."
@@ -66,7 +70,6 @@ function tobg {
 }
 alias pacro="yaourt -Rns \$(yaourt -Qqtd)"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
-alias up="yaourt -Syua --noconfirm"
 alias hddpoff="udisksctl power-off -b"
 alias xev=" xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 alias winboot="sudo efibootmgr -n 0019 && reboot"
@@ -96,6 +99,7 @@ alias gop="cd $GOPATH/src/github.com/pineman"
 alias k="keyboard"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes"
+alias restart_wifi="sudo modprobe -r wl && sudo modprobe wl"
 
 # Power-related
 alias lock="physlock"
@@ -177,7 +181,7 @@ function ex ()
 		*.bz2)		bunzip2 $1 ;;
 		*.Z)		uncompress -xf $1 ;;
 
-		*)			echo "'$1' cannot be extracted via ex"	;;
+		*)			echo "'$1' cannot be extracted via ex" ;;
 	esac
 }
 
@@ -190,7 +194,7 @@ alias matrix2='echo -e "\e[31m"; while $t; do for i in `seq 1 30`;do r="$[($RAND
 alias matrix3='COL=$(( $(tput cols) / 2 )); clear; tput setaf 2; while :; do tput cup $((RANDOM%COL)) $((RANDOM%COL)); printf "%$((RANDOM%COL))s" $((RANDOM%2)); done'
 alias matrix4='echo -ne "\e[32m" ; while true ; do echo -ne "\e[$(($RANDOM % 2 + 1))m" ; tr -c "[:print:]" " " < /dev/urandom | dd count=1 bs=50 2> /dev/null ; done'
 alias matrix5='tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=lcase,unblock | GREP_COLOR="1;32" grep --color "[^ ]"'
-alias colorrainbow='seq 1 255 | while read i; do printf "${i-1}: \x1b[48;5;${i}m\n"; sleep .01; done'
+alias colorrainbow='seq 0 255 | while read i; do printf "${i-1}: \x1b[48;5;${i}m\n"; sleep .01; done'
 alias screenfetch="echo; screenfetch -c 41,12"
 function minor()
 {

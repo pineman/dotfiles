@@ -7,7 +7,7 @@ compinit
 promptinit
 
 #zstyle ':completion:*' completer _expand _complete _match _correct _approximate _prefix
-#zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle ':completion:*' completer _expand _complete _correct _approximate _prefix
 zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' rehash true
@@ -59,6 +59,26 @@ bindkey '^L' autosuggest-accept
 #bindkey '^J' predict-off
 #zstyle ':predict:*' toggle on
 
+autoload -U select-quoted select-bracketed surround
+zle -N select-quoted
+zle -N select-bracketed
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+
+for m in visual viopp; do
+    for c in {a,i}{\',\",\`}; do
+        bindkey -M $m $c select-quoted
+    done
+    for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+        bindkey -M $m $c select-bracketed
+    done
+done
+
+bindkey -a cs change-surround
+bindkey -a ds delete-surround
+bindkey -a ys add-surround
+
 autoload -Uz vcs_info
 setopt PROMPT_SUBST
 zstyle ':vcs_info:git:*' stagedstr '+'
@@ -76,10 +96,5 @@ ZLE_RPROMPT_INDENT=0
 PROMPT='[%F{10}%n%f@%F{1}$(hostname -f)%f] [%F{3}%D{%H:%M}%f] [%F{5}%~%f] ${vcs_info_msg_0_}
 %F{15}%?%f $ '
 
-[[ "$(uname -s)" == "Linux" ]] && setterm --tabs 4
-
-[[ -f ~/.aliases ]] && . ~/.aliases
-
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
+. ~/.aliases
+eval "$(dircolors $HOME/.dircolors)"

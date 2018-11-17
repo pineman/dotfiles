@@ -7,8 +7,6 @@
 [pull]
 	default = tracking
 	rebase = true
-[color]
-	diff = false
 [merge]
 	tool = vimdiff
 [status]
