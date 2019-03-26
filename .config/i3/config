@@ -184,12 +184,7 @@ bindsym XF86ScreenSaver exec physlock -d
 
 bindsym XF86Calculator exec qalculate-gtk
 
-# Fullscreen
-bindsym Print exec i3-scrot -d
-# Active window
-bindsym Shift+Print exec i3-scrot -w
-# Region
-bindsym Ctrl+Print exec i3-scrot -s
+bindsym Print exec deepin-screenshot
 
 # Program keybindings
 bindsym $mod+f exec thunar
@@ -198,8 +193,12 @@ bindsym $mod+c exec chromium
 bindsym $mod+g exec qutebrowser
 bindsym $mod+o exec octave --force-gui
 bindsym $mod+Shift+o exec thunderbird
+bindsym $mod+m exec matlab -desktop
+bindsym $mod+Shift+m exec Mathematica
 bindsym $mod+y exec qalculate-gtk
+bindsym $mod+Shift+y exec hexchat
 bindsym $mod+t exec telegram-desktop
+bindsym $mod+Shift+t exec restart_telegram
 bindsym $mod+u exec virtualbox
 bindsym $mod+i exec keepassxc
 bindsym Pause exec desktop-pause.sh -a
@@ -225,6 +224,7 @@ assign [class="Chromium"] 1
 assign [class="^.*qutebrowser"] 1
 
 assign [class="TelegramDesktop"] 9
+#$for_window [title="ncmpcpp"] move to workspace 9
 # 9 ncmpcpp
 # 9 transmission
 

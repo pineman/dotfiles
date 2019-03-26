@@ -5,19 +5,19 @@
 # Executed by startx (run your window manager from here)
 #
 
+# Commented as both tasks are automatically done by lightdm
 # Run system shell scripts
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-	for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-		[ -x "$f" ] && . "$f"
-	done
- 	unset f
-fi
-
+#if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+#	for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+#		[ -x "$f" ] && . "$f"
+#	done
+# 	unset f
+#fi
 # Run user xsession shell script
-script="$HOME/.xsession"
-if [ -x "$script" -a ! -d "$script" ]; then
-    . "$script"
-fi
+#script="$HOME/.xsession"
+#if [ -x "$script" -a ! -d "$script" ]; then
+#    . "$script"
+#fi
 
 if [ -s ~/.Xresources ]; then
     xrdb ~/.Xresources

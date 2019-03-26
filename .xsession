@@ -17,20 +17,19 @@ setxkbmap -option terminate:ctrl_alt_bksp
 #feh --no-fehbg --bg-scale "$HOME/.background.jpg"
 xsetroot -solid "#171717"
 
-# Autostart
-keyboard
+keyboard &
 trackpoint &
 xhost -
 xset +dpms
 xset dpms 0 0 180
 if xrandr --query | grep "HDMI2 connected" &>/dev/null; then dvi; fi
 
+# Autostart
+mconnect &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 nm-applet &
 pasystray &
 redshift-gtk &
 Thunar --daemon &
-urxvtd -q -o &
-mconnect &
-rm_mconnect
+urxvtd -q -o -f
 menutray &

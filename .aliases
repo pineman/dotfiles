@@ -1,6 +1,7 @@
 # vim: ft=sh
 # temporary
-alias h="zathura ~/ist/a4s1/horas.pdf"
+alias h="zathura ~/ist/a4s2/horas.pdf"
+alias idal="ristretto ~/idal.png"
 
 # General system aliases
 alias sudo="sudo " # this enables sudo to use these aliases
@@ -31,7 +32,7 @@ alias htop="htop -d 4"
 alias tee="tee -a"
 alias nmap="nmap -v"
 alias mupdf="mupdf -r 144"
-alias vim="vim -p"
+alias vim="nvim -p"
 alias clearvim="rm -rf $HOME/.vim/{undo,swap,backup}/* $HOME/.viminfo"
 alias xz="xz -T 0"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
@@ -46,7 +47,9 @@ which colordiff &>/dev/null && \
 alias make="make -j$(nproc)"
 alias nload="nload -u M"
 alias erl="erl +K true"
-alias lsblk="lsblk -o name,label,size,fstype,mountpoint,parttype"
+alias lsblk="lsblk -o name,label,size,fstype,mountpoint,uuid"
+alias pandoc="pandoc -s"
+alias killall="killall -v -I"
 
 # Helpful things
 alias dc=cd # I've got other calculators
@@ -68,14 +71,19 @@ alias t="(thunar &>/dev/null &)"
 function tobg {
 	($* &>/dev/null &)
 }
-alias pacro="yaourt -Rns \$(yaourt -Qqtd)"
+function oct {
+	tobg octave --gui --persist --eval "edit $1"
+}
+alias mcli="matlab -nodisplay -nosplash -nojvm"
+alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
 alias xev=" xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
-alias winboot="sudo efibootmgr -n 0019 && reboot"
+alias winboot="sudo efibootmgr -n 0008 && reboot"
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
+alias ethspeed="while :; do sleep 0.2; cat /sys/class/net/enp0s25/speed; done"
 alias n="ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings"
 alias nh="ssh -t 192.168.1.2 ncmpcpp"
 alias mpc="mpc -h ~/.config/mpd/socket"
@@ -94,12 +102,14 @@ function addradio {
 	mpc add http://nectarine.ers35.net:8000/necta192.mp3
 }
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
+alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
 alias edit_dns="sudo chattr -i /etc/resolv.conf && sudo vim /etc/resolv.conf && sudo chattr +i /etc/resolv.conf"
 alias gop="cd $GOPATH/src/github.com/pineman"
 alias k="keyboard"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes"
 alias restart_wifi="sudo modprobe -r wl && sudo modprobe wl"
+alias open="xdg-open"
 
 # Power-related
 alias lock="physlock"
@@ -109,6 +119,7 @@ alias inhib_charge="sudo tpacpi-bat -s IC 1 1"
 alias enable_charge="sudo tpacpi-bat -s IC 1 0"
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
+alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="setsid systemd-inhibit --what=sleep --who='\$USER' --why='Suspend deliberately inhibited by user.' sleep 500d"
 alias enable_susp="killall systemd-inhibit sleep"
 
@@ -139,6 +150,7 @@ alias fbi="fbi --autodown"
 alias pinecone="ssh -t pineman@pineman.win"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.win -D 1337"
 alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:pineman.win:9091 -N -T pineman.win"
+alias irctunnel="echo 'Remote ZNC running on http://127.0.0.1:6668 through encrypted ssh tunnel'; ssh -L 6668:pineman.win:6668 -N -T pineman.win"
 
 # ex - archive extractor
 # usage: ex <file>

@@ -13,25 +13,29 @@ call vundle#begin()
 	Plugin 'elixir-editors/vim-elixir'
 
 	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'JulioJu/neovim-qt-colors-solarized-truecolor-only'
 	"Plugin 'jnurmine/Zenburn'
 	"Plugin 'sickill/vim-monokai'
 	"Plugin 'fatih/molokai'
 call vundle#end()
 filetype on
 
-if exists('g:vimpager.enabled')
+if exists('g:vimpager')
 	autocmd BufRead,BufWinEnter * setlocal readonly nomodifiable
 	"let g:vimpager.passthrough=0
 	set colorcolumn=0
 	let aux = &t_ve
 	set t_ve= "Hide cursor
 	au VimLeave * let &t_ve=aux "Restore cursor upon exit
+	set laststatus=0
 else
+	set laststatus=2
 	set number
 	set colorcolumn=80
-	"set cursorline " TODO: lots of cpu
+	set cursorline " TODO: lots of cpu
 endif
 
+let g:solarized_underline=1
 set background=dark
 colorscheme solarized
 if has("gui_running")
@@ -52,7 +56,8 @@ set autoindent
 filetype indent off
 set backspace=eol,indent,start
 set mouse=a
-set clipboard=autoselect
+"set clipboard=autoselect
+set clipboard=unnamedplus
 set ttyfast
 set wildmenu
 "set lazyredraw
@@ -69,6 +74,7 @@ set foldlevel=99
 set splitbelow
 set splitright
 set hlsearch
+set noincsearch
 set undofile
 set backup
 set undodir=~/.vim/undo/
@@ -135,7 +141,6 @@ set showmode
 set shortmess+=a
 
 hi User1 ctermbg=1
-set laststatus=2
 set stl=%0*%1*%m%r%0*
 set stl+=[%n]
 set stl+=\ %<%f

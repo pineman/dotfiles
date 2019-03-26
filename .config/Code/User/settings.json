@@ -8,9 +8,48 @@
     "editor.fontSize": 13,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "cquery.cacheDirectory": "/tmp/cquery/",
     "workbench.colorTheme": "Solarized Dark",
     "files.trimTrailingWhitespace": true,
     "files.autoSave": "afterDelay",
-    "editor.multiCursorModifier": "ctrlCmd"
+    "editor.multiCursorModifier": "ctrlCmd",
+    "workbench.startupEditor": "newUntitledFile",
+    "breadcrumbs.enabled": true,
+    "spellright.language": [
+        "en_US"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+    "window.titleBarStyle": "custom",
+/*     "ccls.highlighting.enabled.types": true,
+    "ccls.highlighting.enabled.freeStandingFunctions": true,
+    "ccls.highlighting.enabled.memberFunctions": true,
+    "ccls.highlighting.enabled.freeStandingVariables": true,
+    "ccls.highlighting.enabled.memberVariables": true,
+    "ccls.highlighting.enabled.namespaces": true,
+    "ccls.highlighting.enabled.macros": true,
+    "ccls.highlighting.enabled.enums": true,
+    "ccls.highlighting.enabled.typeAliases": true,
+    "ccls.highlighting.enabled.enumConstants": true,
+    "ccls.highlighting.enabled.staticMemberFunctions": true,
+    "ccls.highlighting.enabled.parameters": true,
+    "ccls.highlighting.enabled.templateParameters": true,
+    "ccls.highlighting.enabled.staticMemberVariables": true,
+    "ccls.highlighting.enabled.globalVariables": true, */
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.formatting": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "editor.rulers": [80],
+    "files.associations": {"*.m": "matlab"},
+    "[html]": {
+        "editor.tabSize": 2
+	},
+	"[css]": {
+        "editor.tabSize": 2
+    },
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false
 }

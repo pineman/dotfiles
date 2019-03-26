@@ -3,7 +3,16 @@
 <action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
-	<unique-id>1538523536547904-1</unique-id>
+	<unique-id>1538523593649580-2</unique-id>
+	<command>urxvtc -cd %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1544465741011403-1</unique-id>
 	<command>urxvtc -cd %d</command>
 	<description></description>
 	<patterns>*</patterns>
@@ -12,15 +21,6 @@
 	<other-files/>
 	<text-files/>
 	<video-files/>
-</action>
-<action>
-	<icon>utilities-terminal</icon>
-	<name>Open Terminal Here</name>
-	<unique-id>1538523593649580-2</unique-id>
-	<command>urxvtc -cd %f</command>
-	<description></description>
-	<patterns>*</patterns>
-	<directories/>
 </action>
 <action>
 	<icon>find</icon>
@@ -35,5 +35,14 @@
 	<other-files/>
 	<text-files/>
 	<video-files/>
+</action>
+<action>
+	<icon>visual-studio-code</icon>
+	<name>Open Folder in VSCode</name>
+	<unique-id>1544465882800178-2</unique-id>
+	<command>code %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
 </action>
 </actions>

@@ -18,6 +18,10 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.*' insert-sections   true
 
+bindkey -v  # vi mode
+KEYTIMEOUT=1
+bindkey '^?' backward-delete-char
+
 # use the vi navigation keys (hjkl) besides cursor keys in menu completion
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
@@ -33,17 +37,16 @@ bindkey -M vicmd V edit-command-line
 
 # Search in history from buffer
 autoload -Uz history-beginning-search-menu
-zle -N history-beginning-search-menu
-bindkey '^B' history-beginning-search-menu
+zle -N history-beginning-search-menu-end-space history-beginning-search-menu
+# start a string with a space and you can search in the entire string (arguments)
+# instead of just the first word (command)
+bindkey '^B' history-beginning-search-menu-end-space
 bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 
 setopt APPEND_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE EXTENDED_HISTORY
 setopt AUTO_CD extendedglob nomatch notify nohup completeinword correct COMPLETE_ALIASES
 setopt AUTO_CONTINUE
-bindkey -v
-KEYTIMEOUT=1
-bindkey '^?' backward-delete-char
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
@@ -90,6 +93,20 @@ zstyle ':vcs_info:*' enable git
 precmd() {
 	print -Pn "\e]0;%~\a"; # Change the terminal's title to current dir.
 	vcs_info
+}
+
+zle -N zle-keymap-select
+zle-keymap-select () {
+	if [ $KEYMAP = vicmd ]; then
+		printf "\033[2 q"
+	else
+		printf "\033[6 q"
+	fi
+}
+zle -N zle-line-init
+zle-line-init () {
+	zle -K viins
+	printf "\033[6 q"
 }
 
 ZLE_RPROMPT_INDENT=0

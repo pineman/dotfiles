@@ -154,7 +154,8 @@ visualizer_color = green, yellow, red
 ## %P - priority
 ## $R - begin right alignment
 ##
-song_window_title_format = {%n. %t - %a - [%y] %b}|{%a - %t (%b)}|{%a - %t}|{%D - %f}|{%t}
+#song_window_title_format = {%n. %t - %a - [%y] %b}|{%a - %t (%b)}|{%a - %t}|{%D - %f}|{%t}
+song_window_title_format = ncmpcpp
 ## If you want to make sure that a part of the format is displayed
 ## only when certain tags are present, you can archieve it by
 ## grouping them with brackets, e.g. '{%a - %t}' will be evaluated
