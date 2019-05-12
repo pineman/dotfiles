@@ -33,3 +33,4 @@ redshift-gtk &
 Thunar --daemon &
 urxvtd -q -o -f
 menutray &
+xfce4-clipman &

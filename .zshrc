@@ -8,13 +8,15 @@ promptinit
 
 #zstyle ':completion:*' completer _expand _complete _match _correct _approximate _prefix
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-zstyle ':completion:*' completer _expand _complete _correct _approximate _prefix
-zstyle ':completion:*' max-errors 1
+#zstyle ':completion:*' completer _expand _complete _correct _approximate _prefix
+#zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' rehash true
 zmodload zsh/complist
 zstyle ':completion:*' menu select
-zstyle ':completion:*:descriptions' format 'completing %B%d%b'
+zstyle ':completion:*:descriptions' format $'completing %B%d%b'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' verbose true
+zstyle ':completion:*' group-name ''
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.*' insert-sections   true
 
@@ -44,9 +46,10 @@ bindkey '^B' history-beginning-search-menu-end-space
 bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 
-setopt APPEND_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE EXTENDED_HISTORY
-setopt AUTO_CD extendedglob nomatch notify nohup completeinword correct COMPLETE_ALIASES
-setopt AUTO_CONTINUE
+setopt APPEND_HISTORY HIST_IGNORE_DUPS NO_HIST_IGNORE_SPACE EXTENDED_HISTORY NO_SH_WORD_SPLIT
+setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS EXTENDED_GLOB NOMATCH NOTIFY NO_HUP LONG_LIST_JOBS
+setopt AUTO_CONTINUE RM_STAR_WAIT
+setopt COMPLETE_IN_WORD CORRECT COMPLETE_ALIASES INTERACTIVE_COMMENTS
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
@@ -114,4 +117,30 @@ PROMPT='[%F{10}%n%f@%F{1}$(hostname -f)%f] [%F{3}%D{%H:%M}%f] [%F{5}%~%f] ${vcs_
 %F{15}%?%f $ '
 
 . ~/.aliases
+alias -g F='find | grep -i'
+alias -g G='| grep -i'
+alias -g V='| vim -'
+alias -g X='$(xclip -o)'
+alias d='dirs -v | head -10'
+alias 1='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias 5='cd -5'
+alias 6='cd -6'
+alias 7='cd -7'
+alias 8='cd -8'
+alias 9='cd -9'
+alias -s txt=cat
+alias -s {timer,service}="sudo vim"
+
+# fasd
+eval "$(fasd --init auto)"
+bindkey '^A' fasd-complete
+bindkey '^F' fasd-complete-f
+bindkey '^E' fasd-complete-d
+
+bindkey -s '^[r' 'rr\n'
+bindkey -s '^X^P' 'zathura --fork pdf^X^F'
+
 eval "$(dircolors $HOME/.dircolors)"

@@ -1,6 +1,5 @@
 # vim: ft=sh
 # temporary
-alias h="zathura ~/ist/a4s2/horas.pdf"
 alias idal="ristretto ~/idal.png"
 
 # General system aliases
@@ -14,7 +13,7 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i --one-file-system"
 alias df='df -h'
-alias grep="grep --color=auto"
+alias grep="grep -n --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias free='free -m'
@@ -47,7 +46,7 @@ which colordiff &>/dev/null && \
 alias make="make -j$(nproc)"
 alias nload="nload -u M"
 alias erl="erl +K true"
-alias lsblk="lsblk -o name,label,size,fstype,mountpoint,uuid"
+alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias pandoc="pandoc -s"
 alias killall="killall -v -I"
 
@@ -87,10 +86,10 @@ alias ethspeed="while :; do sleep 0.2; cat /sys/class/net/enp0s25/speed; done"
 alias n="ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings"
 alias nh="ssh -t 192.168.1.2 ncmpcpp"
 alias mpc="mpc -h ~/.config/mpd/socket"
-alias p="mpc toggle"
 alias mon="systemctl --user start mpd"
 alias moff="systemctl --user stop mpd"
 function addradio {
+	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
 	mpc add https://lainon.life/radio/cafe.ogg
 	mpc add https://lainon.life/radio/cyberia.ogg
 	mpc add https://lainon.life/radio/everything.ogg
@@ -110,6 +109,16 @@ alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # 
 alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes"
 alias restart_wifi="sudo modprobe -r wl && sudo modprobe wl"
 alias open="xdg-open"
+alias f="find"
+function l {
+	# 1st argument: filename to search
+	# 2nd argument: match given basename
+	basename=""
+	[ "$#" -gt 1 ] && basename="$2"
+	locate -i -r "$basename.*$1.*"
+}
+alias m="vim notes.md"
+alias c="cd ~/Documents/computer"
 
 # Power-related
 alias lock="physlock"
@@ -123,13 +132,10 @@ alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="setsid systemd-inhibit --what=sleep --who='\$USER' --why='Suspend deliberately inhibited by user.' sleep 500d"
 alias enable_susp="killall systemd-inhibit sleep"
 
-# IST Sigma
-alias sigma="ssh -K ist425386@sigma01.tecnico.ulisboa.pt"
-
 # git-related aliases
 alias gs="git status"
 alias gb="git branch -vvaa"
-alias gd="git diff"
+alias gd="PAGER=vimpager git diff"
 alias gc="git checkout"
 alias gf="git fetch --all"
 alias gp="git pull"
@@ -146,11 +152,16 @@ alias vlcascii="cvlc -I ncurses -V caca"
 # Display images in a TTY
 alias fbi="fbi --autodown"
 
-# Digital Ocean Server
+# Personal Server
 alias pinecone="ssh -t pineman@pineman.win"
+alias p="pinecone"
+alias h="p ./homepage.sh"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.win -D 1337"
 alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:pineman.win:9091 -N -T pineman.win"
-alias irctunnel="echo 'Remote ZNC running on http://127.0.0.1:6668 through encrypted ssh tunnel'; ssh -L 6668:pineman.win:6668 -N -T pineman.win"
+alias irctunnel="echo 'Remote ZNC running on https://127.0.0.1:6668 through encrypted ssh tunnel'; ssh -L 6668:pineman.win:6668 -N -T pineman.win"
+
+# IST Sigma
+alias sigma="ssh -K ist425386@sigma01.tecnico.ulisboa.pt"
 
 # ex - archive extractor
 # usage: ex <file>

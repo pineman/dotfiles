@@ -120,7 +120,8 @@ URxvt*.color15:					S_base3
 st*font: xos4 Terminus:pixelsize=14
 st*bold_font: xos4 Terminus:pixelsize=14
 
-UXTerm*font: -*-misc-fixed-*-*-*-14-*-*-*-*-*-*-*
+!UXTerm*font: -*-misc-fixed-*-*-*-14-*-*-*-*-*-*-*
+UXTerm*font: -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
 UXTerm*allowBoldFonts: false
 UXTerm*background: black
 UXTerm*foreground: white

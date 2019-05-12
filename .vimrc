@@ -11,6 +11,7 @@ call vundle#begin()
 	Plugin 'PotatoesMaster/i3-vim-syntax'
 	Plugin 'othree/yajs.vim'
 	Plugin 'elixir-editors/vim-elixir'
+	Plugin 'JuliaEditorSupport/julia-vim'
 
 	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'JulioJu/neovim-qt-colors-solarized-truecolor-only'
@@ -28,15 +29,18 @@ if exists('g:vimpager')
 	set t_ve= "Hide cursor
 	au VimLeave * let &t_ve=aux "Restore cursor upon exit
 	set laststatus=0
+	set mouse=
 else
 	set laststatus=2
 	set number
 	set colorcolumn=80
 	set cursorline " TODO: lots of cpu
+	set mouse=a
 endif
 
 let g:solarized_underline=1
 set background=dark
+"colorscheme solarized
 colorscheme solarized
 if has("gui_running")
 	set guioptions=aim
@@ -55,7 +59,6 @@ set autoindent
 "set breakindent
 filetype indent off
 set backspace=eol,indent,start
-set mouse=a
 "set clipboard=autoselect
 set clipboard=unnamedplus
 set ttyfast
@@ -135,7 +138,7 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 15
 
-au BufEnter * setlocal titlestring=vim:\ %F
+set title
 set showcmd
 set showmode
 set shortmess+=a
@@ -151,3 +154,8 @@ set stl+=\ %l-%c\ %p%%
 set stl+=\ [%LL]
 set stl+=%1*%m%0*
 "set rulerformat=%40(%=[%n]\ %y[%{&fenc?&fenc:&enc}][%{&ff}]\ %l-%c\ %p%%\ %r%1*%m%)
+
+if executable('rg')
+	set grepprg=rg\ --no-heading\ --vimgrep
+	set grepformat=%f:%l:%c:%m
+endif

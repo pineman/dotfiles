@@ -1,4 +1,5 @@
 export EDITOR="vim"
+#if [ $(command -v nvimpager) ]; then export PAGER="nvimpager"; fi
 if [ $(command -v vimpager) ]; then export PAGER="vimpager"; fi
 export XDG_CONFIG_HOME="$HOME/.config"
 export PYTHONSTARTUP="$HOME/.pythonrc"

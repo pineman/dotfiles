@@ -1,7 +1,7 @@
 [user]
 	name = João Pinheiro
 	email = joao.castropinheiro@gmail.com
-	signingKey = CA439ECD5D4F3704
+	signingKey = CE2609DCF2E675F825AF4956CA439ECD5D4F3704
 [push]
 	default = tracking
 [pull]
@@ -22,3 +22,5 @@
 	filehist = log -p --follow
 [pager]
 	branch = false
+[tag]
+	forceSignAnnotated = true

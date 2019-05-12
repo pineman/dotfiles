@@ -1,11 +1,12 @@
 {
     "editor.wordWrap": "on",
     "editor.cursorBlinking": "solid",
-    "editor.cursorStyle": "line-thin",
-    "editor.autoClosingBrackets": false,
+    "editor.cursorStyle": "line",
+	"editor.autoClosingBrackets": "never",
+	"html.autoClosingTags": false,
     "editor.codeLens": false,
-    "window.zoomLevel": 0,
-    "editor.fontSize": 13,
+	"window.zoomLevel": 0,
+    "editor.fontSize": 14,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "workbench.colorTheme": "Solarized Dark",
@@ -17,13 +18,13 @@
     "spellright.language": [
         "en_US"
     ],
-    "spellright.documentTypes": [
+    /* "spellright.documentTypes": [
         "markdown",
         "latex",
         "plaintext"
-    ],
+    ], */
     "window.titleBarStyle": "custom",
-/*     "ccls.highlighting.enabled.types": true,
+    /* "ccls.highlighting.enabled.types": true,
     "ccls.highlighting.enabled.freeStandingFunctions": true,
     "ccls.highlighting.enabled.memberFunctions": true,
     "ccls.highlighting.enabled.freeStandingVariables": true,
@@ -38,18 +39,25 @@
     "ccls.highlighting.enabled.templateParameters": true,
     "ccls.highlighting.enabled.staticMemberVariables": true,
     "ccls.highlighting.enabled.globalVariables": true, */
-    "C_Cpp.autocomplete": "Disabled",
-    "C_Cpp.formatting": "Disabled",
-    "C_Cpp.errorSquiggles": "Disabled",
-    "C_Cpp.intelliSenseEngine": "Disabled",
-    "editor.rulers": [80],
+    /*"editor.rulers": [80],*/
     "files.associations": {"*.m": "matlab"},
     "[html]": {
         "editor.tabSize": 2
 	},
 	"[css]": {
         "editor.tabSize": 2
-    },
+	},
+	"[less]": {
+        "editor.tabSize": 2
+	},
+	"[php]": {
+        "editor.tabSize": 2
+	},
+	"[python]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4
+	},
     "editor.detectIndentation": false,
-    "editor.insertSpaces": false
+	"editor.insertSpaces": false,
+	"git.enabled": false,
 }

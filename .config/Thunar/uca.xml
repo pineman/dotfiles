@@ -45,4 +45,13 @@
 	<patterns>*</patterns>
 	<directories/>
 </action>
+<action>
+	<icon>mpv</icon>
+	<name>Open Folder in mpv</name>
+	<unique-id>1555946828206690-1</unique-id>
+	<command>mpv %d</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
 </actions>
