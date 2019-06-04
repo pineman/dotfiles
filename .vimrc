@@ -12,6 +12,8 @@ call vundle#begin()
 	Plugin 'othree/yajs.vim'
 	Plugin 'elixir-editors/vim-elixir'
 	Plugin 'JuliaEditorSupport/julia-vim'
+	Plugin 'peterhoeg/vim-qml'
+	Plugin 'leafgarland/typescript-vim'
 
 	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'JulioJu/neovim-qt-colors-solarized-truecolor-only'
@@ -87,6 +89,8 @@ set autowrite
 
 nnoremap j gj
 nnoremap k gk
+nnoremap gl $
+nnoremap gh ^
 nnoremap e el
 "map <C-h> <C-w>h
 "map <C-j> <C-w>j

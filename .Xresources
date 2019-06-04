@@ -126,8 +126,7 @@ UXTerm*allowBoldFonts: false
 UXTerm*background: black
 UXTerm*foreground: white
 
-!URxvt*font: xft:Monospace:size=11, xft:Icons
-URxvt*font: -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
+URxvt*font: xft:monospace:size=12
 URxvt*boldFont:
 URxvt*italicFont:
 URxvt*boldItalicFont:

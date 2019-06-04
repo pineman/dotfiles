@@ -40,10 +40,15 @@
 	<icon>visual-studio-code</icon>
 	<name>Open Folder in VSCode</name>
 	<unique-id>1544465882800178-2</unique-id>
-	<command>code %f</command>
+	<command>code %d</command>
 	<description></description>
 	<patterns>*</patterns>
 	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
 </action>
 <action>
 	<icon>mpv</icon>

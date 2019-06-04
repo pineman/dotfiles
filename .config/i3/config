@@ -6,6 +6,7 @@
 set $mod Mod1
 
 font pango:xos4 Terminus, Unifont 10
+#font pango:Monospace, Unifont 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -192,7 +193,7 @@ bindsym $mod+f exec thunar
 bindsym $mod+p exec firefox
 bindsym $mod+c exec chromium
 bindsym $mod+Shift+c exec catfish --thumbnails
-#bindsym $mod+Shift+o exec octave --force-gui
+bindsym $mod+Shift+o exec octave --force-gui
 bindsym $mod+o exec thunderbird
 #bindsym $mod+m exec matlab -desktop
 #bindsym $mod+Shift+m exec Mathematica

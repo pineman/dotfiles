@@ -6,40 +6,13 @@
 	"html.autoClosingTags": false,
     "editor.codeLens": false,
 	"window.zoomLevel": 0,
-    "editor.fontSize": 14,
     "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
-    "workbench.colorTheme": "Solarized Dark",
+	"telemetry.enableCrashReporter": false,
     "files.trimTrailingWhitespace": true,
     "files.autoSave": "afterDelay",
     "editor.multiCursorModifier": "ctrlCmd",
-    "workbench.startupEditor": "newUntitledFile",
+    "workbench.startupEditor": "none",
     "breadcrumbs.enabled": true,
-    "spellright.language": [
-        "en_US"
-    ],
-    /* "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext"
-    ], */
-    "window.titleBarStyle": "custom",
-    /* "ccls.highlighting.enabled.types": true,
-    "ccls.highlighting.enabled.freeStandingFunctions": true,
-    "ccls.highlighting.enabled.memberFunctions": true,
-    "ccls.highlighting.enabled.freeStandingVariables": true,
-    "ccls.highlighting.enabled.memberVariables": true,
-    "ccls.highlighting.enabled.namespaces": true,
-    "ccls.highlighting.enabled.macros": true,
-    "ccls.highlighting.enabled.enums": true,
-    "ccls.highlighting.enabled.typeAliases": true,
-    "ccls.highlighting.enabled.enumConstants": true,
-    "ccls.highlighting.enabled.staticMemberFunctions": true,
-    "ccls.highlighting.enabled.parameters": true,
-    "ccls.highlighting.enabled.templateParameters": true,
-    "ccls.highlighting.enabled.staticMemberVariables": true,
-    "ccls.highlighting.enabled.globalVariables": true, */
-    /*"editor.rulers": [80],*/
     "files.associations": {"*.m": "matlab"},
     "[html]": {
         "editor.tabSize": 2
@@ -60,4 +33,63 @@
     "editor.detectIndentation": false,
 	"editor.insertSpaces": false,
 	"git.enabled": false,
+	//"editor.rulers": [80],
+	"todohighlight.defaultStyle": {
+        "color": "#ffffff"
+    },
+
+    "spellright.language": [
+        "en_US"
+    ],
+    /* "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+	], */
+
+/* 	"C_Cpp.autocomplete": "Disabled",
+	"C_Cpp.formatting": "Disabled",
+	"C_Cpp.errorSquiggles": "Disabled",
+	"C_Cpp.intelliSenseEngine": "Disabled",
+ */
+/* 	"cquery.launch.command": "/usr/bin/cquery",
+	"cquery.cacheDirectory": "/home/pineman/.cquery-cache/",
+	"cquery.highlighting.enabled.types": true,
+	"cquery.highlighting.enabled.freeStandingFunctions": true,
+	"cquery.highlighting.enabled.memberFunctions": true,
+	"cquery.highlighting.enabled.freeStandingVariables": true,
+	"cquery.highlighting.enabled.memberVariables": true,
+	"cquery.highlighting.enabled.namespaces": true,
+	"cquery.highlighting.enabled.macros": true,
+	"cquery.highlighting.enabled.enums": true,
+	"cquery.highlighting.enabled.typeAliases": true,
+	"cquery.highlighting.enabled.enumConstants": true,
+	"cquery.highlighting.enabled.staticMemberFunctions": true,
+	"cquery.highlighting.enabled.parameters": true,
+	"cquery.highlighting.enabled.templateParameters": true,
+	"cquery.highlighting.enabled.staticMemberVariables": true,
+	"cquery.highlighting.enabled.globalVariables": true, */
+
+	"ccls.cache.directory": "/home/pineman/.cache/ccls-cache",
+	"go.useLanguageServer": true,
+	"editor.fontFamily": "'monospace'",
+	"editor.fontSize": 15,
+	"workbench.colorTheme": "Solarized Dark",
+	"editor.fontLigatures": false,
+	"todohighlight.isEnable": true,
+/*     "ccls.highlighting.enabled.types": true,
+    "ccls.highlighting.enabled.freeStandingFunctions": true,
+    "ccls.highlighting.enabled.memberFunctions": true,
+    "ccls.highlighting.enabled.freeStandingVariables": true,
+    "ccls.highlighting.enabled.memberVariables": true,
+    "ccls.highlighting.enabled.namespaces": true,
+    "ccls.highlighting.enabled.macros": true,
+    "ccls.highlighting.enabled.enums": true,
+    "ccls.highlighting.enabled.typeAliases": true,
+    "ccls.highlighting.enabled.enumConstants": true,
+    "ccls.highlighting.enabled.staticMemberFunctions": true,
+    "ccls.highlighting.enabled.parameters": true,
+    "ccls.highlighting.enabled.templateParameters": true,
+    "ccls.highlighting.enabled.staticMemberVariables": true,
+    "ccls.highlighting.enabled.globalVariables": true, */
 }

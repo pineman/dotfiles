@@ -23,7 +23,7 @@ color_high = red
 
 # Values in percent when color changes in the graph
 # starting value from which usage is considered medium
-graph_medium = 70
+graph_medium = 65
 # starting value from which usage is considered high
 graph_high = 80
 

@@ -47,7 +47,7 @@ bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 
 setopt APPEND_HISTORY HIST_IGNORE_DUPS NO_HIST_IGNORE_SPACE EXTENDED_HISTORY NO_SH_WORD_SPLIT
-setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS EXTENDED_GLOB NOMATCH NOTIFY NO_HUP LONG_LIST_JOBS
+setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS EXTENDED_GLOB GLOBDOTS NOMATCH NOTIFY NO_HUP LONG_LIST_JOBS
 setopt AUTO_CONTINUE RM_STAR_WAIT
 setopt COMPLETE_IN_WORD CORRECT COMPLETE_ALIASES INTERACTIVE_COMMENTS
 
@@ -98,21 +98,6 @@ precmd() {
 	vcs_info
 }
 
-zle -N zle-keymap-select
-zle-keymap-select () {
-	if [ $KEYMAP = vicmd ]; then
-		printf "\033[2 q"
-	else
-		printf "\033[6 q"
-	fi
-}
-zle -N zle-line-init
-zle-line-init () {
-	zle -K viins
-	printf "\033[6 q"
-}
-
-ZLE_RPROMPT_INDENT=0
 PROMPT='[%F{10}%n%f@%F{1}$(hostname -f)%f] [%F{3}%D{%H:%M}%f] [%F{5}%~%f] ${vcs_info_msg_0_}
 %F{15}%?%f $ '
 
@@ -134,11 +119,11 @@ alias 9='cd -9'
 alias -s txt=cat
 alias -s {timer,service}="sudo vim"
 
-# fasd
+# fasd - recently used files and dirs
 eval "$(fasd --init auto)"
 bindkey '^A' fasd-complete
-bindkey '^F' fasd-complete-f
-bindkey '^E' fasd-complete-d
+bindkey '^E' fasd-complete-f
+bindkey '^R' fasd-complete-d
 
 bindkey -s '^[r' 'rr\n'
 bindkey -s '^X^P' 'zathura --fork pdf^X^F'
