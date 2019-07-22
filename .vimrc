@@ -14,12 +14,10 @@ call vundle#begin()
 	Plugin 'JuliaEditorSupport/julia-vim'
 	Plugin 'peterhoeg/vim-qml'
 	Plugin 'leafgarland/typescript-vim'
+	Plugin 'artoj/qmake-syntax-vim'
 
 	Plugin 'altercation/vim-colors-solarized'
-	Plugin 'JulioJu/neovim-qt-colors-solarized-truecolor-only'
-	"Plugin 'jnurmine/Zenburn'
-	"Plugin 'sickill/vim-monokai'
-	"Plugin 'fatih/molokai'
+	"Plugin 'JulioJu/neovim-qt-colors-solarized-truecolor-only'
 call vundle#end()
 filetype on
 
@@ -40,14 +38,11 @@ else
 	set mouse=a
 endif
 
-let g:solarized_underline=1
 set background=dark
-"colorscheme solarized
 colorscheme solarized
 if has("gui_running")
 	set guioptions=aim
 	set mousemodel=popup
-	set guifont=xos4\ Terminus\ Regular
 	au BufEnter * let g:solarized_bold=0 | colorscheme solarized
 endif
 

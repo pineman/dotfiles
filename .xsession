@@ -32,5 +32,5 @@ pasystray &
 redshift-gtk &
 Thunar --daemon &
 urxvtd -q -o -f
-menutray -gtk3 -i &
 xfce4-clipman &
+menutray -gtk3 -i &

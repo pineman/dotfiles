@@ -12,6 +12,7 @@ general {
 	color_good = "#31AB00"
 	color_degraded = "#C4A000"
 	color_bad = "#FF2026"
+	output_format = i3bar
 }
 
 #order += "mpd"

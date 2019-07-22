@@ -3,6 +3,7 @@
     "editor.cursorBlinking": "solid",
     "editor.cursorStyle": "line",
 	"editor.autoClosingBrackets": "never",
+	"editor.autoClosingQuotes": "never",
 	"html.autoClosingTags": false,
     "editor.codeLens": false,
 	"window.zoomLevel": 0,
@@ -12,7 +13,22 @@
     "files.autoSave": "afterDelay",
     "editor.multiCursorModifier": "ctrlCmd",
     "workbench.startupEditor": "none",
-    "breadcrumbs.enabled": true,
+	"breadcrumbs.enabled": true,
+	"vim.useSystemClipboard": true,
+	"vim.useCtrlKeys": false,
+	"vim.hlsearch": true,
+	"keyboard.dispatch": "keyCode",
+    "editor.detectIndentation": false,
+	"editor.autoIndent": false,
+	"editor.insertSpaces": false,
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+		  "before":["<Esc>"],
+		  "commands": [
+			":nohl"
+		  ]
+		}
+	],
     "files.associations": {"*.m": "matlab"},
     "[html]": {
         "editor.tabSize": 2
@@ -30,9 +46,7 @@
 		"editor.insertSpaces": true,
 		"editor.tabSize": 4
 	},
-    "editor.detectIndentation": false,
-	"editor.insertSpaces": false,
-	"git.enabled": false,
+	"git.enabled": true,
 	//"editor.rulers": [80],
 	"todohighlight.defaultStyle": {
         "color": "#ffffff"
@@ -73,10 +87,11 @@
 	"ccls.cache.directory": "/home/pineman/.cache/ccls-cache",
 	"go.useLanguageServer": true,
 	"editor.fontFamily": "'monospace'",
-	"editor.fontSize": 15,
+	"editor.fontSize": 16,
 	"workbench.colorTheme": "Solarized Dark",
 	"editor.fontLigatures": false,
 	"todohighlight.isEnable": true,
+	"editor.minimap.enabled": false,
 /*     "ccls.highlighting.enabled.types": true,
     "ccls.highlighting.enabled.freeStandingFunctions": true,
     "ccls.highlighting.enabled.memberFunctions": true,

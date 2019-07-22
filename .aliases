@@ -1,7 +1,4 @@
 # vim: ft=sh
-# temporary
-alias idal="ristretto ~/idal.png"
-
 # General system aliases
 alias sudo="sudo " # this enables sudo to use these aliases
 alias chown="chown -h"
@@ -43,6 +40,7 @@ alias py="python"
 alias irb="rlwrap irb"
 alias node="NODE_NO_READLINE=1 rlwrap node"
 alias mit-scheme="rlwrap mit-scheme"
+alias sbcl="rlwrap sbcl"
 which colordiff &>/dev/null && \
 	alias diff='colordiff'
 alias make="make -j$(nproc)"
@@ -90,16 +88,18 @@ alias mpc="mpc -h ~/.config/mpd/socket"
 alias mon="systemctl --user start mpd"
 alias moff="systemctl --user stop mpd"
 function addradio {
-	mpc add https://lainon.life/radio/cafe.ogg
-	mpc add https://lainon.life/radio/cyberia.ogg
-	mpc add https://lainon.life/radio/everything.ogg
-	mpc add https://lainon.life/radio/swing.ogg
-	mpc add http://cyberadio.pw:8000/stream
-	mpc add http://streaming.radionomy.com/DRIVE
-	mpc add http://radio.2f30.org:8000/live.mp3
-	mpc add http://ice2.somafm.com/defcon-64-aac
-	mpc add http://nectarine.ers35.net:8000/necta192.mp3
 	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
+	mpc add "https://lainon.life/radio/cafe.ogg"
+	mpc add "https://lainon.life/radio/cyberia.ogg"
+	mpc add "https://lainon.life/radio/everything.ogg"
+	mpc add "https://lainon.life/radio/swing.ogg"
+	mpc add "http://cyberadio.pw:8000/stream"
+	mpc add "http://streaming.radionomy.com/DRIVE"
+	mpc add "http://radio.2f30.org:8000/live.mp3"
+	mpc add "http://ice2.somafm.com/defcon-64-aac"
+	mpc add "http://nectarine.ers35.net:8000/necta192.mp3"
+	#mpc add "http://stream.cdm-smoothsax.com:8024/stream-mp3-Smooth"
+	mpc add "http://stream.cdm-chillout.com:8012/stream-mp3-Deep"
 }
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
@@ -123,6 +123,11 @@ alias c="cd ~/Documents/computer"
 alias sstp="sudo ss -antp"
 alias rg="rg -S"
 alias rt="rg TODO"
+alias r='ranger --choosedir=/tmp/.rangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "$LASTDIR"'
+alias v="vim"
+alias s="rg --no-ignore"
+alias mu="mpc volume 0"
+alias mun="mpc volume 70"
 
 alias dc="docker container ls -a"
 alias di="docker image ls -a"
@@ -131,7 +136,7 @@ alias dclean="docker container prune -f; docker image prune -f"
 # Power-related
 alias lock="physlock"
 alias slock="systemctl suspend && physlock -d"
-alias s="xset dpms force off"
+#alias s="xset dpms force off"
 alias inhib_charge="sudo tpacpi-bat -s IC 1 1"
 alias enable_charge="sudo tpacpi-bat -s IC 1 0"
 alias susp="systemctl suspend"

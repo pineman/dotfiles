@@ -1,11 +1,10 @@
-file:///home/pineman/Documents
-file:///home/pineman/Downloads
-file:///home/pineman/Documents/computer
+file:///home/pineman/code/learn/lisp/sicp-summer/pineman
+file:///home/pineman/Documents Documents
+file:///home/pineman/Documents/computer computer
+file:///home/pineman/Downloads Downloads
 file:///home/pineman/code
-file:///home/pineman/code/proj
-file:///home/pineman/Pictures
-file:///home/pineman/Music
-file:///home/pineman/Videos
-file:///home/pineman/VirtualBox%20VMs/Windows%2010%20Local/Shared
-sftp://pineman@pineman.win/home/pineman
-smb://pineman.win/pineman/
+file:///home/pineman/Pictures Pictures
+file:///home/pineman/Music Music
+file:///home/pineman/Videos Videos
+sftp://pineman@pineman.win/home/pineman pineman
+smb://pineman.win/pineman/ pineman

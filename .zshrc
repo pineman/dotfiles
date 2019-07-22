@@ -6,10 +6,10 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 
-#zstyle ':completion:*' completer _expand _complete _match _correct _approximate _prefix
+zstyle ':completion:*' completer _expand _complete _match _correct _approximate _prefix
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 #zstyle ':completion:*' completer _expand _complete _correct _approximate _prefix
-#zstyle ':completion:*' max-errors 1
+zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' rehash true
 zmodload zsh/complist
 zstyle ':completion:*' menu select
@@ -19,6 +19,7 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.*' insert-sections   true
+zstyle ':completion::complete:*' gain-privileges 1
 
 bindkey -v  # vi mode
 KEYTIMEOUT=1
@@ -98,13 +99,35 @@ precmd() {
 	vcs_info
 }
 
-PROMPT='[%F{10}%n%f@%F{1}$(hostname -f)%f] [%F{3}%D{%H:%M}%f] [%F{5}%~%f] ${vcs_info_msg_0_}
+PROMPT='[%F{10}%n%f@%F{1}$(hostname -f)%f] [%F{3}%D{%H:%M}%f] ${vcs_info_msg_0_} [%F{5}%~%f]
 %F{15}%?%f $ '
+
+# Bind file manager keys
+cdUndoKey() {
+  popd
+  zle       reset-prompt
+}
+
+cdParentKey() {
+  pushd ..
+  zle      reset-prompt
+}
+
+zle -N                 cdParentKey
+zle -N                 cdUndoKey
+bindkey '^[^[[A'      cdParentKey
+bindkey '^[^[[D'      cdUndoKey
+
+# fasd - recently used files and dirs
+eval "$(fasd --init auto)"
+bindkey '^A' fasd-complete
+bindkey '^E' fasd-complete-d
+bindkey '^R' fasd-complete-f
 
 . ~/.aliases
 alias -g F='find | grep -i'
 alias -g G='| grep -i'
-alias -g V='| vim -'
+alias -g VI='| vim -'
 alias -g X='$(xclip -o)'
 alias d='dirs -v | head -10'
 alias 1='cd -'
@@ -118,14 +141,16 @@ alias 8='cd -8'
 alias 9='cd -9'
 alias -s txt=cat
 alias -s {timer,service}="sudo vim"
-
-# fasd - recently used files and dirs
-eval "$(fasd --init auto)"
-bindkey '^A' fasd-complete
-bindkey '^E' fasd-complete-f
-bindkey '^R' fasd-complete-d
-
-bindkey -s '^[r' 'rr\n'
-bindkey -s '^X^P' 'zathura --fork pdf^X^F'
+#bindkey -s '^[r' 'rr\n'
+#bindkey -s '^X^P' 'zathura --fork pdf^X^F'
 
 eval "$(dircolors $HOME/.dircolors)"
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=magenta'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=magenta'
+#ZSH_HIGHLIGHT_STYLES[default]='fg=red'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
