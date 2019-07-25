@@ -187,7 +187,7 @@ bar {
 }
 
 # Colors
-client.background		#000000
+client.background #000000
 
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 10
@@ -224,8 +224,7 @@ bindsym $mod+o exec thunderbird
 bindsym $mod+y exec code
 bindsym $mod+Shift+y exec gitkraken
 bindsym $mod+u exec qalculate-gtk
-bindsym $mod+Shift+u exec virtualbox
-bindsym $mod+Ctrl+u exec virt-manager
+bindsym $mod+Shift+u exec virt-manager
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+i exec keepassxc
 bindsym $mod+g exec retext

@@ -36,6 +36,8 @@ else
 	set colorcolumn=80
 	set cursorline " TODO: lots of cpu
 	set mouse=a
+	nnoremap j gj
+	nnoremap k gk
 endif
 
 set background=dark
@@ -82,8 +84,6 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/,/tmp
 set autowrite
 
-nnoremap j gj
-nnoremap k gk
 nnoremap gl $
 nnoremap gh ^
 nnoremap e el

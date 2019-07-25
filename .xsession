@@ -25,7 +25,7 @@ xset dpms 0 0 180
 if xrandr --query | grep "HDMI2 connected" &>/dev/null; then dvi; fi
 
 # Autostart
-mconnect &
+#mconnect &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 nm-applet &
 pasystray &

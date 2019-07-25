@@ -103,20 +103,20 @@ PROMPT='[%F{10}%n%f@%F{1}$(hostname -f)%f] [%F{3}%D{%H:%M}%f] ${vcs_info_msg_0_}
 %F{15}%?%f $ '
 
 # Bind file manager keys
+# Alt + up - go to parent dir
+# alt + left - go to last dir
 cdUndoKey() {
   popd
   zle       reset-prompt
 }
-
 cdParentKey() {
   pushd ..
   zle      reset-prompt
 }
-
-zle -N                 cdParentKey
-zle -N                 cdUndoKey
-bindkey '^[^[[A'      cdParentKey
-bindkey '^[^[[D'      cdUndoKey
+zle -N cdParentKey
+zle -N cdUndoKey
+bindkey '^[^[[A' cdParentKey
+bindkey '^[^[[D' cdUndoKey
 
 # fasd - recently used files and dirs
 eval "$(fasd --init auto)"
