@@ -99,7 +99,7 @@ precmd() {
 	vcs_info
 }
 
-PROMPT='[%F{10}%n%f@%F{1}$(hostname -f)%f] [%F{3}%D{%H:%M}%f] ${vcs_info_msg_0_} [%F{5}%~%f]
+PROMPT='[%F{10}%n%f@%F{248}$(hostname -f)%f] [%F{3}%D{%H:%M}%f] ${vcs_info_msg_0_} [%F{5}%~%f]
 %F{15}%?%f $ '
 
 # Bind file manager keys
@@ -141,12 +141,13 @@ alias 8='cd -8'
 alias 9='cd -9'
 alias -s txt=cat
 alias -s {timer,service}="sudo vim"
+
 #bindkey -s '^[r' 'rr\n'
 #bindkey -s '^X^P' 'zathura --fork pdf^X^F'
 
 eval "$(dircolors $HOME/.dircolors)"
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
