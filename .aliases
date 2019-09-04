@@ -35,7 +35,6 @@ alias xz="xz -T 0"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias inxi="inxi -F"
 alias units="units --verbose"
-alias python="python -O"
 alias py="python"
 alias irb="rlwrap irb"
 alias node="NODE_NO_READLINE=1 rlwrap node"
@@ -76,19 +75,44 @@ alias mcli="matlab -nodisplay -nosplash -nojvm"
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
-alias xev=" xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
+alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 alias winboot="sudo efibootmgr -n 0008 && reboot"
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
 alias ethspeed="while :; do sleep 0.2; cat /sys/class/net/enp0s25/speed; done"
-alias n="ncmpcpp --bindings $HOME/.config/ncmpcpp/bindings"
-alias nh="ssh -t 192.168.1.2 ncmpcpp"
+alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
+alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
+alias edit_dns="sudo chattr -i /etc/resolv.conf && sudo vim /etc/resolv.conf && sudo chattr +i /etc/resolv.conf"
+alias gop="cd $GOPATH/src/github.com/pineman"
+alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
+alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes"
+alias restart_wifi="sudo modprobe -r wl && sudo modprobe wl"
+alias open="xdg-open"
+function l {
+	# 1st argument: filename to search
+	# 2nd argument: match given basename
+	basename=""
+	[ "$#" -gt 1 ] && basename="$2"
+	locate -i -r "$basename.*$1.*"
+}
+alias f="find"
+alias m="vim notes.md"
+alias sstp="sudo ss -antp"
+alias rg="rg -S"
+alias rt="rg TODO"
+alias r='ranger --choosedir=/tmp/.rangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "$LASTDIR"'
+alias s="rg --no-ignore"
+alias k="keyboard"
+alias dc="docker container ls -a"
+alias di="docker image ls -a"
+alias dclean="docker container prune -f; docker image prune -f"
+alias mu="mpc volume 0"
+alias mun="mpc volume 70"
 alias mpc="mpc -h ~/.config/mpd/socket"
 alias mon="systemctl --user start mpd"
 alias moff="systemctl --user stop mpd"
 function addradio {
-	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
 	mpc add "https://lainon.life/radio/cafe.ogg"
 	mpc add "https://lainon.life/radio/cyberia.ogg"
 	mpc add "https://lainon.life/radio/everything.ogg"
@@ -98,40 +122,10 @@ function addradio {
 	mpc add "http://radio.2f30.org:8000/live.mp3"
 	mpc add "http://ice2.somafm.com/defcon-64-aac"
 	mpc add "http://nectarine.ers35.net:8000/necta192.mp3"
-	#mpc add "http://stream.cdm-smoothsax.com:8024/stream-mp3-Smooth"
+	mpc add "http://stream.cdm-smoothsax.com:8024/stream-mp3-Smooth"
 	mpc add "http://stream.cdm-chillout.com:8012/stream-mp3-Deep"
+	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
 }
-alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
-alias edit_dns="sudo chattr -i /etc/resolv.conf && sudo vim /etc/resolv.conf && sudo chattr +i /etc/resolv.conf"
-alias gop="cd $GOPATH/src/github.com/pineman"
-alias k="keyboard"
-alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
-alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes"
-alias restart_wifi="sudo modprobe -r wl && sudo modprobe wl"
-alias open="xdg-open"
-alias f="find"
-function l {
-	# 1st argument: filename to search
-	# 2nd argument: match given basename
-	basename=""
-	[ "$#" -gt 1 ] && basename="$2"
-	locate -i -r "$basename.*$1.*"
-}
-alias m="vim notes.md"
-alias c="cd ~/Documents/computer"
-alias sstp="sudo ss -antp"
-alias rg="rg -S"
-alias rt="rg TODO"
-alias r='ranger --choosedir=/tmp/.rangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "$LASTDIR"'
-alias v="vim"
-alias s="rg --no-ignore"
-alias mu="mpc volume 0"
-alias mun="mpc volume 70"
-
-alias dc="docker container ls -a"
-alias di="docker image ls -a"
-alias dclean="docker container prune -f; docker image prune -f"
 
 # Power-related
 alias lock="physlock"
@@ -167,14 +161,14 @@ alias vlcascii="cvlc -I ncurses -V caca"
 alias fbi="fbi --autodown"
 
 # Personal Server
-alias pinecone="ssh -t pineman@pineman.win"
-alias p="pinecone"
-alias h="p ./homepage.sh"
-alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.win -D 1337"
-alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:pineman.win:9091 -N -T pineman.win"
-alias irctunnel="echo 'Remote ZNC running on https://127.0.0.1:6668 through encrypted ssh tunnel'; ssh -L 6668:pineman.win:6668 -N -T pineman.win"
+alias p="mosh pineman@pineman.eu"
+alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=3"
+alias c="sshfs pineman.eu: /p &>/dev/null; cd /p/Documents/computer"
+alias h="sshfs pineman.eu: /p &>/dev/null; cd /p"
+alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
+alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
+alias irctunnel="echo 'Remote ZNC running on https://127.0.0.1:6668 through encrypted ssh tunnel'; ssh -L 6668:pineman.eu:6668 -N -T pineman.eu"
 
-# IST Sigma
 alias sigma="ssh -K ist425386@sigma01.tecnico.ulisboa.pt"
 
 # ex - archive extractor
