@@ -26,6 +26,7 @@ if xrandr --query | grep "HDMI2 connected" &>/dev/null; then dvi; fi
 
 # Autostart
 #mconnect &
+kdeconnect-indicator &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 nm-applet &
 pasystray &
@@ -34,3 +35,4 @@ Thunar --daemon &
 urxvtd -q -o -f
 xfce4-clipman &
 menutray -gtk3 -i &
+sudo tlp bat

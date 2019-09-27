@@ -186,13 +186,13 @@ def_key "j"
 #def_key "page_up"
 #  page_up
 #
-def_key "ctrl-u"
+def_key "ctrl-y"
   page_up
 #
 #def_key "page_down"
 #  page_down
 #
-def_key "ctrl-d"
+def_key "ctrl-e"
   page_down
 #
 #def_key "home"

@@ -136,7 +136,7 @@ alias enable_charge="sudo tpacpi-bat -s IC 1 0"
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
-alias inhib_susp="setsid systemd-inhibit --what=sleep --who='\$USER' --why='Suspend deliberately inhibited by user.' sleep 500d"
+alias inhib_susp="setsid systemd-inhibit --what=sleep --who='\$USER' --why='Suspend deliberately inhibited by user.' sleep 99999d"
 alias enable_susp="killall systemd-inhibit sleep"
 
 # git-related aliases

@@ -5,8 +5,9 @@
 
 set $mod Mod1
 
-font pango:xos4 Terminus, Unifont 10
-#font pango:Monospace, Unifont 10
+#font pango: xos4 Terminus, Unifont 10
+#font pango: Monospace, Unifont, Icons 10
+font pango:Sans, Unifont, Icons 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -179,11 +180,10 @@ bar {
 	#status_command exec /home/pineman/code/bin/net-speed.sh
 	status_command i3status
 	position bottom
-	font pango:xos4 Terminus, Unifont, Icons 10
 	separator_symbol "|"
 	#tray_output VGA1
 	tray_output primary
-	tray_padding 0
+	tray_padding 3
 }
 
 # Colors
