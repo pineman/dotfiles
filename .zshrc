@@ -1,6 +1,6 @@
 HISTFILE=~/.zsh_history
-HISTSIZE=200000
-SAVEHIST=200000
+HISTSIZE=900000
+SAVEHIST=900000
 
 autoload -Uz compinit promptinit
 compinit
@@ -8,7 +8,6 @@ promptinit
 
 zstyle ':completion:*' completer _expand _complete _match _correct _approximate _prefix
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
-#zstyle ':completion:*' completer _expand _complete _correct _approximate _prefix
 zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' rehash true
 zmodload zsh/complist
@@ -86,20 +85,12 @@ bindkey -a cs change-surround
 bindkey -a ds delete-surround
 bindkey -a ys add-surround
 
-autoload -Uz vcs_info
 setopt PROMPT_SUBST
-zstyle ':vcs_info:git:*' stagedstr '+'
-zstyle ':vcs_info:git:*' unstagedstr '-'
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' actionformats '%a'
-zstyle ':vcs_info:git:*' formats '[%F{4}%r%f %F{2}%b%f%F{1}%u%f%F{2}%c%f]'
-zstyle ':vcs_info:*' enable git
 precmd() {
 	print -Pn "\e]0;%~\a"; # Change the terminal's title to current dir.
-	vcs_info
 }
 
-PROMPT='[%F{10}%n%f@%F{248}$(hostname -f)%f] [%F{3}%D{%H:%M}%f] ${vcs_info_msg_0_} [%F{5}%~%f]
+PROMPT='%F{10}%n%f@%F{248}$(hostname -f)%f:%F{5}%~%f [%F{3}%D{%H:%M}%f]
 %F{15}%?%f $ '
 
 # Bind file manager keys

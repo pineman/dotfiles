@@ -161,8 +161,9 @@ alias vlcascii="cvlc -I ncurses -V caca"
 alias fbi="fbi --autodown"
 
 # Personal Server
-alias p="mosh pineman@pineman.eu"
-alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=3"
+alias autossh="autossh -M 0 -o 'ServerAliveInterval 10' -o 'ServerAliveCountMax 2'"
+alias p="autossh -tt pineman@pineman.eu '\$SHELL -l -c '\''tmux -CC attach -d || tmux -CC new'\'''"
+alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,ssh_command='autossh -M 0'"
 alias c="sshfs pineman.eu: /p &>/dev/null; cd /p/Documents/computer"
 alias h="sshfs pineman.eu: /p &>/dev/null; cd /p"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
