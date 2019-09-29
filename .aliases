@@ -47,6 +47,19 @@ alias nload="nload -u M"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias pandoc="pandoc -s"
 alias killall="killall -v -I"
+alias dc="docker container ls -a"
+alias di="docker image ls -a"
+alias dclean="docker container prune -f; docker image prune -f"
+alias gs="git status"
+alias gb="git branch -vvaa"
+alias gd="PAGER=vimpager git diff"
+alias gc="git checkout"
+alias gf="git fetch --all"
+alias gp="git pull"
+alias gr="git remote -vvv"
+alias ga="git add"
+alias gitk="gitk --all"
+alias gl="PAGER= git lg"
 
 # Helpful things
 alias dc=cd # I've got other calculators
@@ -64,7 +77,7 @@ function cd {
 function u {
 	(urxvtc -cd $PWD &>/dev/null &)
 }
-alias t="(thunar &>/dev/null &)"
+alias o="(thunar &>/dev/null &)"
 function tobg {
 	($* &>/dev/null &)
 }
@@ -104,14 +117,9 @@ alias rt="rg TODO"
 alias r='ranger --choosedir=/tmp/.rangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "$LASTDIR"'
 alias s="rg --no-ignore"
 alias k="keyboard"
-alias dc="docker container ls -a"
-alias di="docker image ls -a"
-alias dclean="docker container prune -f; docker image prune -f"
 alias mu="mpc volume 0"
 alias mun="mpc volume 70"
-alias mpc="mpc -h ~/.config/mpd/socket"
-alias mon="systemctl --user start mpd"
-alias moff="systemctl --user stop mpd"
+alias n="ncmpcpp"
 function addradio {
 	mpc add "https://lainon.life/radio/cafe.ogg"
 	mpc add "https://lainon.life/radio/cyberia.ogg"
@@ -139,19 +147,6 @@ alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="setsid systemd-inhibit --what=sleep --who='\$USER' --why='Suspend deliberately inhibited by user.' sleep 99999d"
 alias enable_susp="killall systemd-inhibit sleep"
 
-# git-related aliases
-alias gs="git status"
-alias gb="git branch -vvaa"
-alias gd="PAGER=vimpager git diff"
-alias gco="git checkout"
-alias gc="git clone"
-alias gf="git fetch --all"
-alias gp="git pull"
-alias gr="git remote -vvv"
-alias ga="git add"
-alias gitk="gitk --all"
-alias gl="PAGER= git lg"
-
 # TTY-things
 alias startx="killall redshift &>/dev/null; \startx ~/.xinitrc; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
 # Use VLC in a virtual console
@@ -161,11 +156,11 @@ alias vlcascii="cvlc -I ncurses -V caca"
 alias fbi="fbi --autodown"
 
 # Personal Server
-alias autossh="autossh -M 0 -o 'ServerAliveInterval 10' -o 'ServerAliveCountMax 2'"
-alias p="autossh -tt pineman@pineman.eu '\$SHELL -l -c '\''tmux -CC attach -d || tmux -CC new'\'''"
-alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=2,ssh_command='autossh -M 0'"
-alias c="sshfs pineman.eu: /p &>/dev/null; cd /p/Documents/computer"
-alias h="sshfs pineman.eu: /p &>/dev/null; cd /p"
+alias p="mosh pineman@pineman.eu"
+alias tm="tmux -CC attach -d || tmux -CC new"
+alias t="tmux attach -d || tmux new"
+alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=3"
+alias c="cd ~/Documents/computer"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
 alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
 alias irctunnel="echo 'Remote ZNC running on https://127.0.0.1:6668 through encrypted ssh tunnel'; ssh -L 6668:pineman.eu:6668 -N -T pineman.eu"

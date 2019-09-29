@@ -90,7 +90,7 @@ precmd() {
 	print -Pn "\e]0;%~\a"; # Change the terminal's title to current dir.
 }
 
-PROMPT='%F{10}%n%f@%F{248}$(hostname -f)%f:%F{5}%~%f [%F{3}%D{%H:%M}%f]
+PROMPT='%F{10}%n%f@%F{1}$(hostname -f)%f:%F{5}%~%f [%F{3}%D{%H:%M}%f]
 %F{15}%?%f $ '
 
 # Bind file manager keys
