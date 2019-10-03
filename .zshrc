@@ -109,6 +109,9 @@ zle -N cdUndoKey
 bindkey '^[^[[A' cdParentKey
 bindkey '^[^[[D' cdUndoKey
 
+# alt + enter to insert literal newline without accepting the command
+bindkey '^[^M' self-insert-unmeta
+
 # fasd - recently used files and dirs
 eval "$(fasd --init auto)"
 bindkey '^A' fasd-complete
