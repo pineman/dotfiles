@@ -13,8 +13,4 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export PATH="$HOME/code/bin:$PATH:$GOPATH/bin"
 export PATH="/usr/lib/ccache/bin:$PATH"
 
-#eval $(dircolors $HOME/.dircolors)
-
-if [ $(command -v redshift) ]; then redshift -o -m drm &>/dev/null; fi
-
-#[[ "$(uname -s)" == "Linux" ]] && setterm --tabs 4
+eval $(dircolors $HOME/.dircolors)

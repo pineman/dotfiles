@@ -2,6 +2,7 @@
 # General system aliases
 alias sudo="sudo " # this enables sudo to use these aliases
 alias chown="chown -h"
+alias which="which -a"
 alias ls='ls -hX --group-directories-first --time-style=+"%d/%m/%Y %H:%M:%S" --color=auto -F --quoting-style=literal'
 alias ll='ls -l'
 alias la='ls -Al'
