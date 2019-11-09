@@ -86,7 +86,7 @@ alias node="NODE_NO_READLINE=1 rlwrap node"
 alias mit-scheme="rlwrap mit-scheme"
 alias sbcl="rlwrap sbcl"
 alias gop="cd $GOPATH/src/github.com/pineman"
-alias rg="rg -S"
+alias rg="rg -S -F"
 alias rt="rg TODO"
 # Docker
 alias dc="docker container ls -a"
