@@ -120,6 +120,7 @@ alias mu="mpc volume 0"
 alias mun="mpc volume 70"
 alias n="ncmpcpp"
 function addradio {
+	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
 	mpc add "https://lainon.life/radio/cafe.ogg"
 	mpc add "https://lainon.life/radio/cyberia.ogg"
 	mpc add "https://lainon.life/radio/everything.ogg"
@@ -131,7 +132,6 @@ function addradio {
 	mpc add "http://nectarine.ers35.net:8000/necta192.mp3"
 	mpc add "http://stream.cdm-smoothsax.com:8024/stream-mp3-Smooth"
 	mpc add "http://stream.cdm-chillout.com:8012/stream-mp3-Deep"
-	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
 }
 
 # Power-related
