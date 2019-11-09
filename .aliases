@@ -15,11 +15,12 @@ alias grep="grep -n --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias free='free -m'
-alias dfc='dfc -d -t -tmpfs,dev'
+alias dfc='dfc -d -t -tmpfs,dev -m'
 alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -h'
 alias nmcli='nmcli -a'
+which colordiff &>/dev/null && alias diff='colordiff'
 alias diff='diff -u'
 alias vmstat="vmstat -S m"
 alias w="w -i"
@@ -28,41 +29,11 @@ alias pinky="pinky -w"
 alias htop="htop -d 4"
 alias tee="tee -a"
 alias nmap="nmap -v"
-alias mupdf="mupdf -r 144"
 alias vim="nvim -p"
 alias clearvim="rm -rf $HOME/.vim/{undo,swap,backup}/* $HOME/.viminfo"
 alias xz="xz -T 0"
-alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
-alias inxi="inxi -F"
-alias units="units --verbose"
-alias py="python"
-alias irb="rlwrap irb"
-alias node="NODE_NO_READLINE=1 rlwrap node"
-alias mit-scheme="rlwrap mit-scheme"
-alias sbcl="rlwrap sbcl"
-which colordiff &>/dev/null && \
-	alias diff='colordiff'
-alias make="make -j$(nproc)"
-alias nload="nload -u M"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
-alias pandoc="pandoc -s"
 alias killall="killall -v -I"
-alias dc="docker container ls -a"
-alias di="docker image ls -a"
-alias dclean="docker container prune -f; docker image prune -f"
-alias gs="git status"
-alias gb="git branch -vvaa"
-alias gd="PAGER=vimpager git diff"
-alias gc="git checkout"
-alias gf="git fetch --all"
-alias gp="git pull"
-alias gr="git remote -vvv"
-alias ga="git add"
-alias gitk="gitk --all"
-alias gl="PAGER= git lg"
-
-# Helpful things
-alias dc=cd # I've got other calculators
 alias ..="cd -- .."
 alias ...="cd -- ../.."
 alias ....="cd -- ../../.."
@@ -71,36 +42,21 @@ alias ......="cd -- ../../../../.."
 alias .......="cd -- ../../../../../.."
 alias ........="cd -- ../../../../../../.."
 alias .........="cd -- ../../../../../../../.."
-function cd {
-	builtin cd "$@" && ll
-}
-function u {
-	(urxvtc -cd $PWD &>/dev/null &)
-}
+function cd { builtin cd "$@" && ll }
+function u { (urxvtc -cd $PWD &>/dev/null &) }
+function tobg { ($* &>/dev/null &) }
 alias o="(thunar &>/dev/null &)"
-function tobg {
-	($* &>/dev/null &)
-}
-function oct {
-	tobg octave --gui --persist --eval "edit $1"
-}
-alias mcli="matlab -nodisplay -nosplash -nojvm"
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
-alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 alias winboot="sudo efibootmgr -n 0008 && reboot"
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
 alias ethspeed="while :; do sleep 0.2; cat /sys/class/net/enp0s25/speed; done"
-alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
-alias edit_dns="sudo chattr -i /etc/resolv.conf && sudo vim /etc/resolv.conf && sudo chattr +i /etc/resolv.conf"
-alias gop="cd $GOPATH/src/github.com/pineman"
-alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
-alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes"
 alias restart_wifi="sudo modprobe -r wl && sudo modprobe wl"
+alias edit_dns="sudo chattr -i /etc/resolv.conf && sudo vim /etc/resolv.conf && sudo chattr +i /etc/resolv.conf"
+alias sstp="sudo ss -antp"
 alias open="xdg-open"
 function l {
 	# 1st argument: filename to search
@@ -110,14 +66,55 @@ function l {
 	locate -i -r "$basename.*$1.*"
 }
 alias f="find"
-alias m="vim notes.md"
-alias t="vim todo.md"
-alias sstp="sudo ss -antp"
-alias rg="rg -S"
-alias rt="rg TODO"
+alias tm="tmux -CC attach -d || tmux -CC new"
+alias ta="tmux attach -d || tmux new"
 alias r='ranger --choosedir=/tmp/.rangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "$LASTDIR"'
 alias s="rg --no-ignore"
-alias k="keyboard"
+alias m="vim notes.md"
+alias t="vim todo.md"
+alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
+alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
+
+# Dev
+alias make="make -j$(nproc)"
+alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes"
+alias py="python"
+alias rlwrap="rlwrap -a placeholder" # https://github.com/technomancy/grenchman/issues/36
+alias irb="rlwrap irb"
+alias node="NODE_NO_READLINE=1 rlwrap node"
+alias mit-scheme="rlwrap mit-scheme"
+alias sbcl="rlwrap sbcl"
+alias gop="cd $GOPATH/src/github.com/pineman"
+alias rg="rg -S"
+alias rt="rg TODO"
+# Docker
+alias dc="docker container ls -a"
+alias di="docker image ls -a"
+alias dclean="docker system prune -a"
+# Git
+alias gs="git status"
+alias gb="git branch -vvaa"
+alias gd="PAGER=vimpager git diff"
+alias gc="git checkout"
+alias gf="git fetch --all"
+alias gp="git pull"
+alias gr="git remote -vvv"
+alias ga="git add"
+alias gitk="gitk --all &"
+alias gl="PAGER= git lg"
+
+# Connections
+alias p="mosh pineman@pineman.eu"
+#alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=3"
+alias h="sshfs pineman.eu: /p; cd /p"
+alias uh="umount /p"
+alias c="~/Documents/computer"
+alias cl="cd ~/code/learn"
+alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
+alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
+alias irctunnel="echo 'Remote ZNC running on https://127.0.0.1:6668 through encrypted ssh tunnel'; ssh -L 6668:pineman.eu:6668 -N -T pineman.eu"
+alias sigma="ssh -K ist425386@sigma01.tecnico.ulisboa.pt"
+# Music
 alias mu="mpc volume 0"
 alias mun="mpc volume 70"
 alias n="ncmpcpp"
@@ -139,7 +136,7 @@ function addradio {
 # Power-related
 alias lock="physlock"
 alias slock="systemctl suspend && physlock -d"
-#alias s="xset dpms force off"
+alias soff="xset dpms force off"
 alias inhib_charge="sudo tpacpi-bat -s IC 1 1"
 alias enable_charge="sudo tpacpi-bat -s IC 1 0"
 alias susp="systemctl suspend"
@@ -148,6 +145,17 @@ alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="setsid systemd-inhibit --what=sleep --who='\$USER' --why='Suspend deliberately inhibited by user.' sleep 99999d"
 alias enable_susp="killall systemd-inhibit sleep"
 
+# etc
+alias mupdf="mupdf -r 144"
+alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
+alias inxi="inxi -F"
+alias units="units --verbose"
+alias nload="nload -u M"
+alias pandoc="pandoc -s"
+function oct { tobg octave --gui --persist --eval "edit $1" }
+alias mcli="matlab -nodisplay -nosplash -nojvm"
+alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
+alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 # TTY-things
 alias startx="killall redshift &>/dev/null; \startx ~/.xinitrc; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
 # Use VLC in a virtual console
@@ -155,18 +163,6 @@ alias vlctty="cvlc -I ncurses -V fb"
 alias vlcascii="cvlc -I ncurses -V caca"
 # Display images in a TTY
 alias fbi="fbi --autodown"
-
-# Personal Server
-alias p="mosh pineman@pineman.eu"
-alias tm="tmux -CC attach -d || tmux -CC new"
-alias ta="tmux attach -d || tmux new"
-alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=3"
-alias c="cd ~/Documents/computer"
-alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
-alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
-alias irctunnel="echo 'Remote ZNC running on https://127.0.0.1:6668 through encrypted ssh tunnel'; ssh -L 6668:pineman.eu:6668 -N -T pineman.eu"
-
-alias sigma="ssh -K ist425386@sigma01.tecnico.ulisboa.pt"
 
 # ex - archive extractor
 # usage: ex <file>

@@ -24,3 +24,5 @@
 	branch = false
 [tag]
 	forceSignAnnotated = true
+[gui]
+	tabsize = 4
