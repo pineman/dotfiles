@@ -90,7 +90,7 @@ precmd() {
 	print -Pn "\e]0;%~\a"; # Change the terminal's title to current dir.
 }
 
-PROMPT='%F{10}%n%f@%F{1}$(hostname -f)%f:%F{5}%~%f [%F{3}%D{%H:%M}%f] (%F{2}$(git branch 2>/dev/null | \grep "^*" | colrm 1 2)%f)
+PROMPT='%F{3}%D{%H:%M}%f %F{10}%n%f@%F{1}$(hostname -f)%f:%F{5}%~%f (%F{2}$(git branch 2>/dev/null | \grep "^*" | colrm 1 2)%f)
 %F{15}%?%f $ '
 
 # Bind file manager keys
