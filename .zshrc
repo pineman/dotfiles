@@ -54,6 +54,7 @@ setopt COMPLETE_IN_WORD CORRECT COMPLETE_ALIASES INTERACTIVE_COMMENTS
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_USE_ASYNC=1
+bindkey '^H' forward-word
 bindkey '^L' autosuggest-accept
 #bindkey '^H' autosuggest-execute
 
