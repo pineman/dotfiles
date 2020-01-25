@@ -104,26 +104,26 @@ bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 workspace_auto_back_and_forth yes
 bindsym $mod+Ctrl+r exec i3-rename-workspace
-workspace 1 output VGA1
-workspace 2 output VGA1
-workspace 3 output VGA1
-workspace 4 output VGA1
-workspace 5 output VGA1
-workspace 6 output VGA1
-workspace 7 output VGA1
-workspace 8 output VGA1
-workspace 9 output VGA1
-workspace 10 output VGA1
-workspace 11 output HDMI2
-workspace 12 output HDMI2
-workspace 13 output HDMI2
-workspace 14 output HDMI2
-workspace 15 output HDMI2
-workspace 16 output HDMI2
-workspace 17 output HDMI2
-workspace 18 output HDMI2
-workspace 19 output HDMI2
-workspace 20 output HDMI2
+#workspace 1 output VGA1
+#workspace 2 output VGA1
+#workspace 3 output VGA1
+#workspace 4 output VGA1
+#workspace 5 output VGA1
+#workspace 6 output VGA1
+#workspace 7 output VGA1
+#workspace 8 output VGA1
+#workspace 9 output VGA1
+#workspace 10 output VGA1
+#workspace 11 output HDMI2
+#workspace 12 output HDMI2
+#workspace 13 output HDMI2
+#workspace 14 output HDMI2
+#workspace 15 output HDMI2
+#workspace 16 output HDMI2
+#workspace 17 output HDMI2
+#workspace 18 output HDMI2
+#workspace 19 output HDMI2
+#workspace 20 output HDMI2
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
@@ -203,10 +203,11 @@ bindsym XF86AudioPrev exec mpc prev
 
 bindsym XF86Display exec arandr
 bindsym XF86Launch1 exec lvds
-bindsym Shift+XF86Launch1 exec dvi
+bindsym Shift+XF86Launch1 exec dp
 
 bindsym XF86TouchpadToggle exec touchpad-toggle
-bindsym XF86ScreenSaver exec physlock -d
+#bindsym XF86ScreenSaver exec physlock -d
+bindsym Mod4+l exec physlock -d
 
 bindsym XF86Calculator exec qalculate-gtk
 
@@ -250,12 +251,12 @@ assign [class="Firefox"] 1
 assign [class="Chromium"] 1
 assign [class="^.*qutebrowser"] 1
 
-assign [class="TelegramDesktop"] 9
+assign [class="TelegramDesktop"] 10
 #$for_window [title="ncmpcpp"] move to workspace 9
-# 9 ncmpcpp
-# 9 transmission
+# 10 ncmpcpp
+# 10 transmission
 
-assign [class="Thunderbird"] 10
+#assign [class="Thunderbird"] 10
 
 focus_on_window_activation smart
 #focus_follows_mouse no

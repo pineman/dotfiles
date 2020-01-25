@@ -47,7 +47,8 @@ bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 
 setopt APPEND_HISTORY HIST_IGNORE_DUPS NO_HIST_IGNORE_SPACE EXTENDED_HISTORY NO_SH_WORD_SPLIT
-setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS EXTENDED_GLOB GLOBDOTS NOMATCH NOTIFY NO_HUP LONG_LIST_JOBS
+setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_MINUS
+setopt EXTENDED_GLOB GLOBDOTS NOMATCH NOTIFY NO_HUP LONG_LIST_JOBS
 setopt AUTO_CONTINUE RM_STAR_WAIT
 setopt COMPLETE_IN_WORD CORRECT COMPLETE_ALIASES INTERACTIVE_COMMENTS
 
@@ -126,8 +127,8 @@ alias -g VI='| vim -'
 alias -g X='$(xclip -o)'
 alias -g H='| head'
 alias -g T='| tail'
-alias d='dirs -v | head -10'
-alias 1='cd -'
+alias d='dirs -v | tail -n +2 | head -10'
+alias 1='cd -1'
 alias 2='cd -2'
 alias 3='cd -3'
 alias 4='cd -4'

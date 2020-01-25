@@ -22,7 +22,7 @@ trackpoint &
 xhost -
 xset +dpms
 xset dpms 0 0 180
-if xrandr --query | grep "HDMI2 connected" &>/dev/null; then dvi; fi
+if xrandr --query | grep "DP2 connected" &>/dev/null; then dp; fi
 
 # Autostart
 #mconnect &

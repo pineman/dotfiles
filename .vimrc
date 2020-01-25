@@ -17,6 +17,7 @@ call vundle#begin()
 	Plugin 'artoj/qmake-syntax-vim'
 
 	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'mhartington/oceanic-next'
 	"Plugin 'JulioJu/neovim-qt-colors-solarized-truecolor-only'
 call vundle#end()
 filetype on
@@ -42,6 +43,7 @@ endif
 
 set background=dark
 colorscheme solarized
+"colorscheme peachpuff
 if has("gui_running")
 	set guioptions=aim
 	set mousemodel=popup
@@ -103,6 +105,7 @@ nnoremap <F6> :UndotreeToggle<cr>
 nnoremap <F7> :make<cr>
 "nnoremap ; :
 "nnoremap : ;
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab

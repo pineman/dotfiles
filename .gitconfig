@@ -26,3 +26,4 @@
 	forceSignAnnotated = true
 [gui]
 	tabsize = 4
+	warndetachedcommit = true

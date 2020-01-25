@@ -108,6 +108,7 @@ alias gp="git pull"
 alias gr="git remote -vvv"
 alias ga="git add"
 alias gitk="gitk --all &"
+alias gg="git gui"
 alias gl="PAGER= git lg"
 
 # Connections
@@ -115,7 +116,7 @@ alias p="mosh pineman@pineman.eu"
 #alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=3"
 alias h="sshfs pineman.eu: /p; cd /p"
 alias uh="umount /p"
-alias c="~/Documents/computer"
+alias c="cd ~/Documents/computer"
 alias cl="cd ~/code/learn"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
 alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
@@ -138,6 +139,8 @@ function addradio {
 	mpc add "http://nectarine.ers35.net:8000/necta192.mp3"
 	mpc add "http://stream.cdm-smoothsax.com:8024/stream-mp3-Smooth"
 	mpc add "http://stream.cdm-chillout.com:8012/stream-mp3-Deep"
+	mpc add "http://trace.dnbradio.com:8000/dnbradio_main.mp3"
+	mpc add "http://trace.dnbradio.com:8000/dnbradio_darkstep.mp3"
 }
 
 # Power-related
