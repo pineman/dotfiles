@@ -223,7 +223,8 @@ bindsym $mod+o exec thunderbird
 #bindsym $mod+m exec matlab -desktop
 #bindsym $mod+Shift+m exec Mathematica
 bindsym $mod+y exec code
-bindsym $mod+Shift+y exec gitkraken
+bindsym $mod+Shift+y exec idea
+bindsym $mod+Shift+Ctrl+y exec qtcreator
 bindsym $mod+u exec qalculate-gtk
 bindsym $mod+Shift+u exec virt-manager
 bindsym $mod+t exec telegram-desktop

@@ -50,6 +50,9 @@ if has("gui_running")
 	au BufEnter * let g:solarized_bold=0 | colorscheme solarized
 endif
 
+au CursorHold,CursorHoldI * checktime
+au FocusGained,BufEnter * checktime
+set autoread
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
@@ -106,6 +109,8 @@ nnoremap <F7> :make<cr>
 "nnoremap ; :
 "nnoremap : ;
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+"nnoremap d "_d
+"vnoremap d "_d
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab
