@@ -1,10 +1,12 @@
 {
     "editor.fontSize": 14,
-    "workbench.colorTheme": "Oceanic Next",
+    "workbench.colorTheme": "Oceanic Plus",
+    //"workbench.colorTheme": "Oceanic Next",
     "editor.fontLigatures": false,
-    "todohighlight.isEnable": true,
     "editor.minimap.enabled": false,
     "editor.wordWrap": "on",
+    "git.enabled": true,
+    "editor.rulers": [80],
     "editor.cursorBlinking": "solid",
     "editor.cursorStyle": "line",
     "editor.autoClosingBrackets": "never",
@@ -19,13 +21,14 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "workbench.startupEditor": "none",
     "breadcrumbs.enabled": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": false,
-    "vim.hlsearch": true,
     "keyboard.dispatch": "keyCode",
     "editor.detectIndentation": false,
     "editor.autoIndent": false,
     "editor.insertSpaces": false,
+
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false,
+    "vim.hlsearch": true,
     "vim.normalModeKeyBindingsNonRecursive": [
         {
           "before":["<Esc>"],
@@ -34,6 +37,7 @@
           ]
         }
     ],
+
     "files.associations": {"*.m": "matlab"},
     "[html]": {
         "editor.tabSize": 2
@@ -54,54 +58,23 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 4
     },
-    "git.enabled": true,
-    //"editor.rulers": [80],
+
+    "todohighlight.isEnable": true,
     "todohighlight.defaultStyle": {
-    },
-    "[python]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4
-    },
-    "git.enabled": true,
-    //"editor.rulers": [80],
-    "todohighlight.defaultStyle": {
-        "color": "#ffffff"
     },
 
     "spellright.language": [
         "en_US"
     ],
-    /* "spellright.documentTypes": [
+    "spellright.documentTypes": [
         "markdown",
         "latex",
         "plaintext"
-    ], */
+    ],
 
-/*  "C_Cpp.autocomplete": "Disabled",
-    "C_Cpp.formatting": "Disabled",
-    "C_Cpp.errorSquiggles": "Disabled",
-    "C_Cpp.intelliSenseEngine": "Disabled",
- */
-/*  "cquery.launch.command": "/usr/bin/cquery",
-    "cquery.cacheDirectory": "/home/pineman/.cquery-cache/",
-    "cquery.highlighting.enabled.types": true,
-    "cquery.highlighting.enabled.freeStandingFunctions": true,
-    "cquery.highlighting.enabled.memberFunctions": true,
-    "cquery.highlighting.enabled.freeStandingVariables": true,
-    "cquery.highlighting.enabled.memberVariables": true,
-    "cquery.highlighting.enabled.namespaces": true,
-    "cquery.highlighting.enabled.macros": true,
-    "cquery.highlighting.enabled.enums": true,
-    "cquery.highlighting.enabled.typeAliases": true,
-    "cquery.highlighting.enabled.enumConstants": true,
-    "cquery.highlighting.enabled.staticMemberFunctions": true,
-    "cquery.highlighting.enabled.parameters": true,
-    "cquery.highlighting.enabled.templateParameters": true,
-    "cquery.highlighting.enabled.staticMemberVariables": true,
-    "cquery.highlighting.enabled.globalVariables": true, */
+    "go.useLanguageServer": true,
 
     "ccls.cache.directory": "/home/pineman/.cache/ccls-cache",
-    "go.useLanguageServer": true,
 /*     "ccls.highlighting.enabled.types": true,
     "ccls.highlighting.enabled.freeStandingFunctions": true,
     "ccls.highlighting.enabled.memberFunctions": true,

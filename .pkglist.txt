@@ -95,6 +95,7 @@ boost-libs
 borg
 botan
 bridge-utils
+brltty
 brotli
 brotli06
 btrfs-progs
@@ -127,10 +128,11 @@ ceph-libs
 certbot
 certbot-nginx
 cfr
+checkbashisms
 chicken
 chmlib
 chromaprint
-chromium
+chromium-vaapi-bin
 chromium-widevine
 cifs-utils
 clang
@@ -175,6 +177,14 @@ curlftpfs
 customizepkg-git
 dav1d
 db
+dbeaver
+dbeaver-plugin-apache-poi
+dbeaver-plugin-batik
+dbeaver-plugin-bouncycastle
+dbeaver-plugin-office
+dbeaver-plugin-sshj
+dbeaver-plugin-sshj-lib
+dbeaver-plugin-svg-format
 dbus
 dbus-glib
 dcd
@@ -285,6 +295,7 @@ flac
 flex
 fltk
 fluidsynth
+flyway
 fman
 fontconfig
 fortune-mod
@@ -484,6 +495,7 @@ haskell-digest
 haskell-dlist
 haskell-doclayout
 haskell-doctemplates
+haskell-emojis
 haskell-erf
 haskell-errors
 haskell-exceptions
@@ -505,6 +517,7 @@ haskell-hxt-regex-xmlschema
 haskell-hxt-unicode
 haskell-integer-logarithms
 haskell-ipynb
+haskell-jira-wiki-markup
 haskell-juicypixels
 haskell-memory
 haskell-mime-types
@@ -628,7 +641,7 @@ json-c
 json-glib
 jsoncpp
 jstest-gtk-git
-jucipp
+jucipp-git
 jupyter
 jupyter-nbconvert
 jupyter-nbformat
@@ -699,6 +712,7 @@ ktextwidgets
 kube
 kubectl
 kubernetes-helm
+kuserfeedback
 kwallet
 kwayland
 kwidgetsaddons
@@ -929,6 +943,7 @@ libcroco
 libcups
 libcurl-compat
 libcurl-gnutls
+libcurl-openssl-1.0
 libdaemon
 libdatrie
 libdazzle
@@ -1104,6 +1119,7 @@ libshout
 libsidplay
 libsigc++
 libsigsegv
+libslirp
 libsm
 libsmbios
 libsndfile
@@ -1243,6 +1259,7 @@ lsof
 lua
 lua52
 luajit
+lv2
 lvm2
 lxappearance-gtk3
 lxc
@@ -1792,6 +1809,7 @@ python-pyopenssl
 python-pyparsing
 python-pyperclip
 python-pyqt5
+python-pyqt5-sip
 python-pyqtchart
 python-pyqtwebengine
 python-pyrfc3339
@@ -1809,6 +1827,7 @@ python-requests-toolbelt
 python-retrying
 python-rsa
 python-ruamel-yaml
+python-ruamel.yaml.clib
 python-scipy
 python-send2trash
 python-setuptools
@@ -1954,6 +1973,7 @@ python2-pwntools
 python2-py
 python2-pyasn1
 python2-pyasn1-modules
+python2-pychm
 python2-pycparser
 python2-pydrive
 python2-pyelftools
@@ -2182,9 +2202,12 @@ spigot
 spirv-tools
 splint
 spotifyd-full
+sqlite
 sqlite-replication
 sqlitebrowser
 squashfs-tools
+squeak-image
+squeak-vm
 sratom
 srt
 sshcode
@@ -2257,6 +2280,7 @@ tinycdb
 tinyxml
 tk
 tlp
+tlp-rdw
 tmux
 tor-browser
 tp_smapi-dkms
@@ -2384,7 +2408,6 @@ xdg-utils
 xdotool
 xf86-input-joystick
 xf86-input-libinput
-xf86-input-synaptics
 xf86-video-intel
 xfce4-clipman-plugin
 xfce4-notifyd

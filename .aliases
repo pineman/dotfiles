@@ -35,6 +35,7 @@ alias clearvim="rm -rf $HOME/.vim/{undo,swap,backup}/* $HOME/.viminfo"
 alias xz="xz -T 0"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias killall="killall -v -I"
+alias pgrep="pgrep -l"
 alias ..="cd -- .."
 alias ...="cd -- ../.."
 alias ....="cd -- ../../.."
@@ -72,7 +73,6 @@ function l {
 	[ "$#" -gt 1 ] && basename="$2"
 	locate -i -r "$basename.*$1.*"
 }
-alias f="find"
 alias tm="tmux -CC attach -d || tmux -CC new"
 alias ta="tmux attach -d || tmux new"
 alias r='ranger --choosedir=/tmp/.rangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "$LASTDIR"'
@@ -86,7 +86,7 @@ alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
 alias make="make -j$(nproc)"
 alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes"
 alias py="python"
-alias rlwrap="rlwrap -a placeholder" # https://github.com/technomancy/grenchman/issues/36
+alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
 alias irb="rlwrap irb"
 alias node="NODE_NO_READLINE=1 rlwrap node"
 alias mit-scheme="rlwrap mit-scheme"

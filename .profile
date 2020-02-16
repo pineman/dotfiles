@@ -8,9 +8,9 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export MATLAB_LOG_DIR="/dev/null"
 export GCC_COLORS=1
 export ERL_AFLAGS="-kernel shell_history enabled"
-export IDF_PATH="/opt/esp-idf"
-. /opt/esp-idf/export.sh &>/dev/null
-. ${IDF_PATH}/add_path.sh &>/dev/null
+#export IDF_PATH="/opt/esp-idf"
+#. /opt/esp-idf/export.sh &>/dev/null
+#. ${IDF_PATH}/add_path.sh &>/dev/null
 
 #export PATH="$HOME/.mathinstall/Executables:$HOME/.matlabinstall/bin:$PATH"
 export PATH="$HOME/code/bin:$PATH:$GOPATH/bin"

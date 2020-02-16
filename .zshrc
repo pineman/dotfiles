@@ -121,7 +121,6 @@ bindkey '^E' fasd-complete-d
 bindkey '^R' fasd-complete-f
 
 . ~/.aliases
-alias -g F='find | grep -i'
 alias -g G='| grep -i'
 alias -g VI='| vim -'
 alias -g X='$(xclip -o)'
@@ -144,6 +143,7 @@ alias -s {timer,service}="sudo vim"
 #bindkey -s '^X^P' 'zathura --fork pdf^X^F'
 
 eval "$(dircolors $HOME/.dircolors)"
+eval "$(direnv hook zsh)"
 
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 typeset -A ZSH_HIGHLIGHT_STYLES
