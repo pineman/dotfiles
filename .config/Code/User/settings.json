@@ -1,9 +1,14 @@
 {
     "editor.fontSize": 14,
+	"editor.fontFamily": "'monospace', monospace, 'Droid Sans Fallback'",,
+	"workbench.editor.enablePreviewFromQuickOpen": false,
+	"workbench.editor.enablePreview": false,
     "workbench.colorTheme": "Oceanic Plus",
+	"window.titleBarStyle": "custom",
     //"workbench.colorTheme": "Oceanic Next",
     "editor.fontLigatures": false,
     "editor.minimap.enabled": false,
+	// "editor.renderWhitespace": "all",
     "editor.wordWrap": "on",
     "git.enabled": true,
     "editor.rulers": [80],
@@ -16,7 +21,7 @@
     "window.zoomLevel": 0,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespace": false,
     "files.autoSave": "afterDelay",
     "editor.multiCursorModifier": "ctrlCmd",
     "workbench.startupEditor": "none",
@@ -59,6 +64,10 @@
     "[python]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 4
+    },
+    "[javascript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
     },
 
     "todohighlight.isEnable": true,
