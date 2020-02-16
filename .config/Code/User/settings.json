@@ -25,6 +25,8 @@
     "editor.detectIndentation": false,
     "editor.autoIndent": false,
     "editor.insertSpaces": false,
+	"editor.suggestSelection": "first",
+	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": false,
