@@ -12,7 +12,6 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 #. /opt/esp-idf/export.sh &>/dev/null
 #. ${IDF_PATH}/add_path.sh &>/dev/null
 
-#export PATH="$HOME/.mathinstall/Executables:$HOME/.matlabinstall/bin:$PATH"
 export PATH="$HOME/code/bin:$PATH:$GOPATH/bin"
 export PATH="/usr/lib/ccache/bin:$PATH"
 

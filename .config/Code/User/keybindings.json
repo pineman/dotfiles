@@ -42,4 +42,34 @@
 		"command": "C_Cpp.SwitchHeaderSource",
 		"when": "editorTextFocus && editorLangId == 'c'"
 	},
+	{
+		"key": "f2",
+		"command": "editor.action.marker.next",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "alt+f8",
+		"command": "-editor.action.marker.next",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "f8",
+		"command": "-editor.action.marker.nextInFiles",
+		"when": "editorFocus && !editorReadonly"
+	},
+	{
+		"key": "shift+f8",
+		"command": "-editor.action.marker.prevInFiles",
+		"when": "editorFocus && !editorReadonly"
+	},
+	{
+		"key": "shift+f2",
+		"command": "editor.action.marker.prev",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "shift+alt+f8",
+		"command": "-editor.action.marker.prev",
+		"when": "editorTextFocus && !editorReadonly"
+	},
 ]

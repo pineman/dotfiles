@@ -94,6 +94,7 @@ alias sbcl="rlwrap sbcl"
 alias gop="cd $GOPATH/src/github.com/pineman"
 alias rg="rg -S -F --hidden"
 alias rt="rg TODO"
+alias fd="fd -H"
 # Docker
 alias dc="docker container ls -a"
 alias di="docker images"
