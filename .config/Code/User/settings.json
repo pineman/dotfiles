@@ -31,6 +31,7 @@
     "editor.autoIndent": "full",
     "editor.insertSpaces": false,
 	"editor.suggestSelection": "first",
+	"explorer.confirmDragAndDrop": false,
 	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
     "vim.useSystemClipboard": true,
@@ -84,4 +85,5 @@
     ],
 
     "go.useLanguageServer": true,
+	"go.formatTool": "goimports",
 }
