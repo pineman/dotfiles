@@ -857,6 +857,7 @@ EXEC					38;5;64
 .ats					38;5;190
 .nim					38;5;190
 .nimble					38;5;190
+.gls					38;5;190
 .h						38;5;9
 .H						38;5;9
 .h++					38;5;9
@@ -1047,6 +1048,7 @@ EXEC					38;5;64
 .zwc					38;5;241
 # tcpdump, network traffic capture
 .pcap					38;5;116
+.pcapng					38;5;116
 .cap					38;5;116
 .dmp					38;5;116
 # macOS

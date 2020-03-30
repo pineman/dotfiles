@@ -72,4 +72,12 @@
 		"command": "-editor.action.marker.prev",
 		"when": "editorTextFocus && !editorReadonly"
 	},
+	{
+		"key": "ctrl+j",
+		"command": "editor.action.joinLines"
+	},
+	{
+		"key": "ctrl+j",
+		"command": "-workbench.action.togglePanel"
+	},
 ]

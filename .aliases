@@ -77,7 +77,6 @@ function l {
 alias tm="tmux -CC attach -d || tmux -CC new"
 alias ta="tmux attach -d || tmux new"
 alias r='ranger --choosedir=/tmp/.rangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "$LASTDIR"'
-alias s="rg --no-ignore"
 alias m="vim notes.md"
 alias t="vim todo.md"
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
@@ -94,9 +93,13 @@ alias mit-scheme="rlwrap mit-scheme"
 alias sbcl="rlwrap sbcl"
 alias yaegi="rlwrap yaegi"
 alias gop="cd $GOPATH"
-alias rg="rg -S -F --hidden"
+function rg {
+	rm -rf $HOME/.gitignore && /usr/bin/rg -S -F --hidden "$@" && echo '*' > $HOME/.gitignore
+}
 alias rt="rg TODO"
-alias fd="fd -H"
+function fd {
+	rm -rf $HOME/.gitignore && /usr/bin/fd -H "$@" && echo '*' > $HOME/.gitignore
+}
 # Docker
 alias dc="docker container ls -a"
 alias di="docker images"
@@ -105,15 +108,22 @@ alias dclean="docker system prune --volumes"
 alias gs="git status"
 alias gb="git branch -vvaa"
 alias gd="PAGER=vimpager git diff"
+alias gdc="PAGER=vimpager git diff --cached"
 alias gf="git fetch --all"
 alias gp="git pull"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
+alias grm="git stash && git rebase -i master && git stash pop"
 alias ga="git add"
 alias gitk="gitk --all &"
 alias gg="git gui"
 alias gl="PAGER= git lg"
 alias gss="git submodule update --init --recursive"
+function rm-worktree {
+	for b in "$@"; do rm -rf ../"$i"; done
+	git worktree prune
+	git branch -D $@
+}
 
 # Connections
 alias p="mosh pineman@pineman.eu"
@@ -213,7 +223,7 @@ function ex ()
 		*.tgz)		tar -xvzf $1 ;;
 		*.rar)		unrar -x $1 ;;
 		*.zip)		unzip $1 ;;
-		*.7z)		7z -x $1 ;;
+		*.7z)		7z x $1 ;;
 
 		*.xz)		xz -d $1 ;;
 		*.pixz)		pixz -d $1 ;;

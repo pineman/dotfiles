@@ -1,10 +1,10 @@
-<?xml encoding="UTF-8" version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
 	<unique-id>1538523593649580-2</unique-id>
-	<command>urxvtc -cd %f</command>
+	<command>alacritty --working-directory %f</command>
 	<description></description>
 	<patterns>*</patterns>
 	<directories/>
@@ -13,7 +13,7 @@
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
 	<unique-id>1544465741011403-1</unique-id>
-	<command>urxvtc -cd %d</command>
+	<command>alacritty --working-directory %d</command>
 	<description></description>
 	<patterns>*</patterns>
 	<audio-files/>
@@ -57,6 +57,16 @@
 	<command>mpv %d</command>
 	<description></description>
 	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>sublime-text</icon>
+	<name>Open Folder in Sublime Text</name>
+	<unique-id>1583526831749024-1</unique-id>
+	<command>subl3 .</command>
+	<description></description>
+	<patterns>*</patterns>
+	<startup-notify/>
 	<directories/>
 </action>
 </actions>

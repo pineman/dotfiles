@@ -17,7 +17,7 @@ call vundle#begin()
 	Plugin 'artoj/qmake-syntax-vim'
 
 	Plugin 'altercation/vim-colors-solarized'
-	Plugin 'mhartington/oceanic-next'
+	Plugin 'chriskempson/base16-vim'
 	"Plugin 'JulioJu/neovim-qt-colors-solarized-truecolor-only'
 call vundle#end()
 filetype on
@@ -35,19 +35,19 @@ else
 	set laststatus=2
 	set number
 	set colorcolumn=80
-	set cursorline " TODO: lots of cpu
+	"set cursorline " TODO: lots of cpu
 	set mouse=a
 	nnoremap j gj
 	nnoremap k gk
 endif
 
-set background=dark
-colorscheme solarized
-"colorscheme peachpuff
+"colorscheme solarized
+set termguicolors
+colorscheme base16-oceanicnext
 if has("gui_running")
 	set guioptions=aim
 	set mousemodel=popup
-	au BufEnter * let g:solarized_bold=0 | colorscheme solarized
+	"au BufEnter * let g:solarized_bold=0 | colorscheme solarized
 endif
 
 au CursorHold,CursorHoldI * checktime
@@ -60,6 +60,7 @@ set shiftround
 set encoding=utf-8
 set fileformat=unix
 set autoindent
+set nofixendofline
 "set breakindent
 filetype indent off
 set backspace=eol,indent,start
