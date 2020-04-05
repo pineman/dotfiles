@@ -13,7 +13,7 @@ font pango:Sans, Unifont, Icons 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec urxvtc
 bindsym $mod+Ctrl+Return exec uxterm
 
 # kill focused window

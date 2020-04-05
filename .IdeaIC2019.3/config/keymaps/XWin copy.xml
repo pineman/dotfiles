@@ -29,6 +29,9 @@
   <action id="PreviousTab">
     <keyboard-shortcut first-keystroke="shift ctrl tab" />
   </action>
+  <action id="ReformatCode">
+    <keyboard-shortcut first-keystroke="shift ctrl o" />
+  </action>
   <action id="Switcher" />
   <action id="Vcs.Push" />
 </keymap>

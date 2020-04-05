@@ -33,7 +33,6 @@ if exists('g:vimpager')
 	set mouse=
 else
 	set laststatus=2
-	set number
 	set colorcolumn=80
 	"set cursorline " TODO: lots of cpu
 	set mouse=a
@@ -52,6 +51,7 @@ endif
 
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * checktime
+set number
 set autoread
 set shiftwidth=4
 set tabstop=4

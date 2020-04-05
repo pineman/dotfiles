@@ -34,6 +34,7 @@ alias nmap="nmap -v"
 alias vim="nvim -p"
 alias clearvim="rm -rf $HOME/.vim/{undo,swap,backup}/* $HOME/.viminfo"
 alias xz="xz -T 0"
+alias zstd="zstdmt"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias killall="killall -v -I"
 alias pgrep="pgrep -l"
@@ -95,6 +96,9 @@ alias yaegi="rlwrap yaegi"
 alias gop="cd $GOPATH"
 function rg {
 	rm -rf $HOME/.gitignore && /usr/bin/rg -S -F --hidden "$@" && echo '*' > $HOME/.gitignore
+}
+function rrg {
+	rm -rf $HOME/.gitignore && /usr/bin/rg -S --hidden "$@" && echo '*' > $HOME/.gitignore
 }
 alias rt="rg TODO"
 function fd {
