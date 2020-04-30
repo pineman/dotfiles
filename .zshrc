@@ -1,6 +1,11 @@
 HISTFILE=~/.zsh_history
-HISTSIZE=900000
-SAVEHIST=900000
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY_TIME
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt NO_HIST_IGNORE_SPACE
 
 autoload -Uz compinit promptinit
 compinit
@@ -46,11 +51,11 @@ bindkey '^B' history-beginning-search-menu-end-space
 bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 
-setopt APPEND_HISTORY HIST_IGNORE_DUPS NO_HIST_IGNORE_SPACE EXTENDED_HISTORY NO_SH_WORD_SPLIT
 setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_MINUS
 setopt EXTENDED_GLOB GLOBDOTS NOMATCH NOTIFY NO_HUP LONG_LIST_JOBS
-setopt AUTO_CONTINUE RM_STAR_WAIT
+setopt AUTO_CONTINUE
 setopt COMPLETE_IN_WORD CORRECT COMPLETE_ALIASES INTERACTIVE_COMMENTS
+setopt NO_SH_WORD_SPLIT
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
@@ -87,12 +92,17 @@ bindkey -a cs change-surround
 bindkey -a ds delete-surround
 bindkey -a ys add-surround
 
+#REPORTTIME=10 # Output `time` for commands that take user+system time > 1 s -- not wall clock
+TMOUT=30
+TRAPALRM() {
+	zle reset-prompt
+}
 setopt PROMPT_SUBST
 precmd() {
 	print -Pn "\e]0;%~\a"; # Change the terminal's title to current dir.
 }
 
-PROMPT='%F{3}%D{%H:%M}%f %F{244}%n%f@%F{4}$(hostname -f)%f:%F{5}%~%f (%F{2}$(git branch 2>/dev/null | \grep "^*" | colrm 1 2)%f $(basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null))
+PROMPT='%F{3}%D{%H:%M:%S}%f %F{244}%n%f@%F{4}$(hostname -f)%f:%F{5}%~%f (%F{2}$(git branch 2>/dev/null | \grep "^*" | colrm 1 2)%f $(basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null))
 %F{15}%?%f $ '
 
 # Bind file manager keys

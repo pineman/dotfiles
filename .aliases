@@ -21,6 +21,7 @@ alias dfc='dfc -d -t -tmpfs,dev -m'
 alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -h'
+alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 which colordiff &>/dev/null && alias diff='colordiff'
 alias diff='diff -u'
@@ -106,8 +107,23 @@ function fd {
 }
 # Docker
 alias dc="docker container ls -a"
+alias dcc="docker stop $(docker ps -aq) ; docker rm $(docker ps -aq)"
 alias di="docker images"
-alias dclean="docker system prune --volumes"
+alias dv='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Mounts}}" --no-trunc'
+alias dclean="docker system prune --all --volumes --force"
+function docker-show-layers {
+	docker history $1 --format '{{.CreatedBy}}' --no-trunc
+}
+# Kubernetes
+function kubectlgetall {
+	for ns in $(kubectl get namespaces -o name | cut -d'/' -f2); do
+		echo "\n\nNamespace" $ns "---------------------------------------------------------"
+		for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
+			echo "Resource:" $i
+			kubectl -n ${ns} get --ignore-not-found ${i}
+		done
+	done
+}
 # Git
 alias gs="git status"
 alias gb="git branch -vvaa"
@@ -117,7 +133,7 @@ alias gf="git fetch --all"
 alias gp="git pull"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
-alias grm="git stash && git rebase -i master && git stash pop"
+alias grm="git stash && git rebase -i master"
 alias ga="git add"
 alias gitk="gitk --all &"
 alias gg="git gui"
@@ -131,10 +147,10 @@ function rm-worktree {
 
 # Connections
 alias p="mosh pineman@pineman.eu"
-#alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=3"
+alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=3"
+alias c="sshfs pineman.eu: /p; cd /p/Documents/computer"
 alias h="sshfs pineman.eu: /p; cd /p"
 alias uh="umount /p"
-alias c="cd ~/Documents/computer"
 alias cl="cd ~/code/learn"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
 alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
