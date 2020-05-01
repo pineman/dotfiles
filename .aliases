@@ -95,14 +95,14 @@ alias sbcl="rlwrap sbcl"
 alias yaegi="rlwrap yaegi"
 alias gop="cd $GOPATH"
 function rg {
-	rm -rf $HOME/.gitignore && /usr/bin/rg -S -F --hidden "$@" && echo '*' > $HOME/.gitignore
+	rm -rf $HOME/.gitignore; /usr/local/bin/rg -S -F --hidden "$@"; echo '*' > $HOME/.gitignore
 }
 function rrg {
 	rm -rf $HOME/.gitignore && /usr/bin/rg -S --hidden "$@" && echo '*' > $HOME/.gitignore
 }
 alias rt="rg TODO"
 function fd {
-	rm -rf $HOME/.gitignore && /usr/bin/fd -H "$@" && echo '*' > $HOME/.gitignore
+	rm -rf $HOME/.gitignore; /usr/local/bin/fd -H "$@"; echo '*' > $HOME/.gitignore
 }
 # Docker
 alias dc="docker container ls -a"
