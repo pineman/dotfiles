@@ -89,7 +89,7 @@ alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all
 alias py="python"
 alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
 alias irb="rlwrap irb"
-alias node="NODE_NO_READLINE=1 rlwrap node"
+#alias node="NODE_NO_READLINE=1 rlwrap node"
 alias mit-scheme="rlwrap mit-scheme"
 alias sbcl="rlwrap sbcl"
 alias yaegi="rlwrap yaegi"
@@ -141,7 +141,7 @@ alias gl="PAGER= git lg"
 alias gss="git submodule update --init --recursive"
 alias gsu="git submodule foreach 'git checkout master && git pull'"
 function rm-worktree {
-	for b in "$@"; do rm -rf ../"$i"; done
+	for b in "$@"; do rm -rf ../"$b"; done
 	git worktree prune
 	git branch -D $@
 }
