@@ -56,19 +56,17 @@ function u {
 function tobg {
 	($* &>/dev/null &)
 }
+alias open="xdg-open"
 alias o="(thunar &>/dev/null &)"
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
-alias winboot="sudo efibootmgr -n 0008 && reboot"
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
 alias ethspeed="while :; do sleep 0.2; cat /sys/class/net/enp0s25/speed; done"
-alias restart_wifi="sudo modprobe -r wl && sudo modprobe wl"
 alias edit_dns="sudo chattr -i /etc/resolv.conf && sudo vim /etc/resolv.conf && sudo chattr +i /etc/resolv.conf"
 alias sstp="sudo ss -antp"
-alias open="xdg-open"
 function l {
 	# 1st argument: filename to search
 	# 2nd argument: match given basename
@@ -83,6 +81,7 @@ alias m="vim notes.md"
 alias t="vim todo.md"
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
+alias borg="borg -p"
 
 # Dev
 alias make="make -j$(nproc)"
@@ -115,6 +114,7 @@ function docker-show-layers {
 	docker history $1 --format '{{.CreatedBy}}' --no-trunc
 }
 # Kubernetes
+alias k=kubectl
 function kubectlgetall {
 	for ns in $(kubectl get namespaces -o name | cut -d'/' -f2); do
 		echo "\n\nNamespace" $ns "---------------------------------------------------------"
@@ -139,6 +139,7 @@ alias gitk="gitk --all &"
 alias gg="git gui"
 alias gl="PAGER= git lg"
 alias gss="git submodule update --init --recursive"
+alias gsu="git submodule foreach 'git checkout master && git pull'"
 function rm-worktree {
 	for b in "$@"; do rm -rf ../"$i"; done
 	git worktree prune
@@ -147,15 +148,12 @@ function rm-worktree {
 
 # Connections
 alias p="mosh pineman@pineman.eu"
-alias sshfs="sshfs -o reconnect,ServerAliveInterval=10,ServerAliveCountMax=3"
 alias c="sshfs pineman.eu: /p; cd /p/Documents/computer"
 alias h="sshfs pineman.eu: /p; cd /p"
 alias uh="umount /p"
 alias cl="cd ~/code/learn"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
 alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
-alias irctunnel="echo 'Remote ZNC running on https://127.0.0.1:6668 through encrypted ssh tunnel'; ssh -L 6668:pineman.eu:6668 -N -T pineman.eu"
-alias sigma="ssh -K ist425386@sigma01.tecnico.ulisboa.pt"
 # Music
 alias mu="mpc volume 0"
 alias mun="mpc volume 70"
@@ -173,16 +171,16 @@ function addradio {
 	mpc add "http://nectarine.ers35.net:8000/necta192.mp3"
 	mpc add "http://stream.cdm-smoothsax.com:8024/stream-mp3-Smooth"
 	mpc add "http://stream.cdm-chillout.com:8012/stream-mp3-Deep"
+	mpc add "http://stream.trap.fm:6002"
 	mpc add "http://trace.dnbradio.com:8000/dnbradio_main.mp3"
 	mpc add "http://trace.dnbradio.com:8000/dnbradio_darkstep.mp3"
+	mpc add "http://stream.drumandbass.fm:9002"
 }
 
 # Power-related
 alias lock="physlock"
 alias slock="systemctl suspend && physlock -d"
 alias soff="xset dpms force off"
-alias inhib_charge="sudo tpacpi-bat -s IC 1 1"
-alias enable_charge="sudo tpacpi-bat -s IC 1 0"
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
@@ -203,7 +201,8 @@ alias mcli="matlab -nodisplay -nosplash -nojvm"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 # TTY-things
-alias startx="killall redshift &>/dev/null; \startx ~/.xinitrc; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
+#alias startx="killall redshift &>/dev/null; \startx ~/.xinitrc; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
+alias startx="killall redshift &>/dev/null; sudo systemctl start lightdm; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
 # Use VLC in a virtual console
 alias vlctty="cvlc -I ncurses -V fb"
 alias vlcascii="cvlc -I ncurses -V caca"

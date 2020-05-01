@@ -4,7 +4,8 @@ abcl
 accountsservice
 acl
 acpi
-acpi_call-dkms
+acpi_call
+acpi_call-lts
 adapta-gtk-theme
 adobe-source-code-pro-fonts
 adwaita-icon-theme
@@ -19,6 +20,7 @@ alsa-ucm-conf
 alsa-utils
 android-tools
 android-udev
+ant
 aom
 apfs-fuse-git
 appstream
@@ -61,7 +63,6 @@ augeas
 autoconf
 autogen
 automake
-autopep8
 avahi
 avr-binutils
 avr-gcc
@@ -96,7 +97,6 @@ botan
 bridge-utils
 brltty
 brotli
-brotli06
 btrfs-progs
 bubblewrap
 bup
@@ -134,7 +134,6 @@ chmlib
 chromaprint
 chromium
 chromium-widevine
-chrpath
 cifs-utils
 clang
 clazy
@@ -197,7 +196,6 @@ deepin-qt5dxcb-plugin
 deepin-qt5integration
 deepin-screenshot
 deepin-turbo
-deja-dup
 desktop-file-utils
 detox
 device-mapper
@@ -211,6 +209,7 @@ direnv
 discord
 discount
 discover
+dive
 djvulibre
 dkms
 dmd
@@ -241,7 +240,7 @@ dtkwidget
 dtkwm
 dtools
 dub
-duplicity
+duplicacy
 dvdbackup
 e2fsprogs
 ebtables
@@ -250,7 +249,6 @@ ed
 editorconfig-core-c
 efibootmgr
 efivar
-electron6
 electron7
 elfutils
 elixir
@@ -269,6 +267,7 @@ esp-idf
 esptool
 ethtool
 evince
+exfat-utils
 exiv2
 exo
 expac
@@ -378,11 +377,7 @@ gmrun
 gnome-desktop
 gnome-disk-utility
 gnome-font-viewer
-gnome-icon-theme
-gnome-icon-theme-extras
-gnome-icon-theme-symbolic
 gnome-keyring
-gnome-online-accounts
 gnome-screenshot
 gnome-system-monitor
 gnome-themes-extra
@@ -505,7 +500,6 @@ haskell-doctemplates
 haskell-emojis
 haskell-erf
 haskell-errors
-haskell-exceptions
 haskell-glob
 haskell-haddock-library
 haskell-hashable
@@ -786,7 +780,6 @@ lib32-libasyncns
 lib32-libcaca
 lib32-libcanberra
 lib32-libcap
-lib32-libcroco
 lib32-libcups
 lib32-libcurl-compat
 lib32-libcurl-gnutls
@@ -948,7 +941,6 @@ libcroco
 libcups
 libcurl-compat
 libcurl-gnutls
-libcurl-openssl-1.0
 libdaemon
 libdatrie
 libdazzle
@@ -1015,7 +1007,6 @@ libheif
 libibus
 libical
 libice
-libiconv
 libid3tag
 libidn
 libidn11
@@ -1117,7 +1108,6 @@ libreoffice-fresh
 libreoffice-fresh-pt
 librevenge
 librsvg
-librsync
 librtmp0
 libsamplerate
 libsasl
@@ -1188,7 +1178,6 @@ libvpx
 libvpx1.3
 libvterm
 libwacom
-libwbclient
 libwebp
 libwmf
 libwnck3
@@ -1255,6 +1244,7 @@ lldb
 llvm
 llvm-libs
 llvm7-libs
+llvm9-libs
 lm_sensors
 lmdb
 localepurge
@@ -1270,7 +1260,6 @@ lsof
 lua
 lua52
 luajit
-lv2
 lvm2
 lxappearance-gtk3
 lxc
@@ -1690,10 +1679,8 @@ python-black
 python-bleach
 python-blinker
 python-brotli
-python-brotlipy
 python-cachecontrol
 python-cached-property
-python-cachetools
 python-cairo
 python-capstone
 python-cffi
@@ -1705,7 +1692,6 @@ python-configobj
 python-contextlib2
 python-coverage
 python-cryptography
-python-cssselect
 python-cycler
 python-dateutil
 python-dbus
@@ -1722,7 +1708,6 @@ python-docopt
 python-docutils
 python-ecdsa
 python-entrypoints
-python-fasteners
 python-flask
 python-flask-babelex
 python-flask-login
@@ -1733,17 +1718,11 @@ python-flask-wtf
 python-future
 python-gmpy2
 python-gobject
-python-google-api-core
-python-google-api-python-client
-python-google-auth
-python-google-auth-httplib2
-python-googleapis-common-protos
 python-greenlet
 python-h11
 python-h2
 python-hpack
 python-html5lib
-python-httplib2
 python-hyperframe
 python-idna
 python-imagesize
@@ -1775,11 +1754,9 @@ python-matplotlib
 python-mccabe
 python-mistune
 python-mock
-python-monotonic
 python-mpmath
 python-msgpack
 python-numpy
-python-oauth2client
 python-ordered-set
 python-packaging
 python-pandas
@@ -1801,17 +1778,14 @@ python-progress
 python-prometheus_client
 python-prompt_toolkit
 python-protobuf
-python-psutil
 python-ptyprocess
 python-publicsuffix2
 python-pyaes
 python-pyasn1
-python-pyasn1-modules
 python-pycodestyle
 python-pycparser
 python-pycups
 python-pycurl
-python-pydrive
 python-pyelftools
 python-pyenchant
 python-pygments
@@ -1829,6 +1803,7 @@ python-pyrsistent
 python-pyserial
 python-pytoml
 python-pytz
+python-pyxdg
 python-pyzmq
 python-qscintilla-qt5
 python-quantities
@@ -1836,9 +1811,9 @@ python-regex
 python-requests
 python-requests-toolbelt
 python-retrying
-python-rsa
 python-ruamel-yaml
 python-ruamel.yaml.clib
+python-scandir
 python-scipy
 python-send2trash
 python-setuptools
@@ -1867,7 +1842,6 @@ python-tornado
 python-tqdm
 python-traitlets
 python-typed-ast
-python-uritemplate
 python-urllib3
 python-urwid
 python-vobject
@@ -1878,7 +1852,6 @@ python-werkzeug
 python-wrapt
 python-wsproto
 python-wtforms
-python-xdg
 python-yaml
 python-zipp
 python-zope-component
@@ -1923,7 +1896,6 @@ python2-decorator
 python2-distlib
 python2-distro
 python2-dnspython
-python2-docutils
 python2-enum34
 python2-feedparser
 python2-filelock
@@ -1946,7 +1918,6 @@ python2-iniconfig
 python2-intervaltree
 python2-ipaddress
 python2-isort
-python2-jedi
 python2-lazy-object-proxy
 python2-lockfile
 python2-lxml
@@ -1962,7 +1933,6 @@ python2-numpy
 python2-ordered-set
 python2-packaging
 python2-paramiko
-python2-parso
 python2-pathlib
 python2-pathlib2
 python2-pep517
@@ -2078,7 +2048,6 @@ qt5-xcb-private-headers
 qt5-xmlpatterns
 qt5ct
 qtcreator
-qtkeychain
 qtpass
 quazip
 quickjs
@@ -2101,9 +2070,9 @@ recode
 redis
 redland
 redshift
-refind-efi
 refind-theme-regular-git
 remmina
+renameutils
 repo
 rest
 retext
@@ -2148,8 +2117,8 @@ run-parts
 runc
 runescape-launcher
 rust
-rxvt-unicode-pixbuf
 rxvt-unicode-terminfo
+rxvt-unicode-truecolor
 s-nail
 samba
 sbc
@@ -2290,7 +2259,8 @@ tlp
 tlp-rdw
 tmux
 tor-browser
-tp_smapi-dkms
+tp_smapi
+tp_smapi-lts
 tpacpi-bat
 traceroute
 transmission-cli
@@ -2378,8 +2348,6 @@ wget
 which
 whois
 wildmidi
-wireguard-arch
-wireguard-lts
 wireguard-tools
 wireless-regdb
 wireless_tools
@@ -2491,7 +2459,6 @@ yaegi
 yaft
 yajl
 yaml-cpp
-yapf
 yarn
 yay
 ympd
