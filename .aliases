@@ -106,7 +106,10 @@ function fd {
 }
 # Docker
 alias dc="docker container ls -a"
-alias dcc="docker stop $(docker ps -aq) ; docker rm $(docker ps -aq)"
+function dcc {
+	docker stop $(docker ps -aq)
+	docker rm $(docker ps -aq)
+}
 alias di="docker images"
 alias dv='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dclean="docker system prune --all --volumes --force"
