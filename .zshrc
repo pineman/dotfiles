@@ -93,7 +93,7 @@ bindkey -a ds delete-surround
 bindkey -a ys add-surround
 
 #REPORTTIME=10 # Output `time` for commands that take user+system time > 1 s -- not wall clock
-TMOUT=30
+TMOUT=15
 TRAPALRM() {
 	zle reset-prompt
 }

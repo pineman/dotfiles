@@ -20,7 +20,6 @@ alsa-ucm-conf
 alsa-utils
 android-tools
 android-udev
-ant
 aom
 apfs-fuse-git
 appstream
@@ -43,7 +42,6 @@ arduino-docs
 argon2
 aribb24
 arpack
-asciidoc
 asciinema
 asp
 aspell
@@ -211,7 +209,6 @@ discount
 discover
 dive
 djvulibre
-dkms
 dmd
 dmd-docs
 dmenu
@@ -247,6 +244,7 @@ ebtables
 ecl
 ed
 editorconfig-core-c
+edk2-ovmf
 efibootmgr
 efivar
 electron7
@@ -330,6 +328,7 @@ gdb
 gdb-common
 gdbm
 gdk-pixbuf2
+gdl
 gegl
 geoclue
 geocode-glib
@@ -435,12 +434,10 @@ gtk2
 gtk2-perl
 gtk3
 gtkd
-gtkmm
 gtkmm3
 gtksourceview3
 gtksourceview4
 gtksourceviewmm
-gtkspell
 gtkspell3
 gts
 gtypist
@@ -470,7 +467,6 @@ haskell-async
 haskell-attoparsec
 haskell-base-compat
 haskell-base-compat-batteries
-haskell-base-noprelude
 haskell-base-orphans
 haskell-base16-bytestring
 haskell-base64-bytestring
@@ -623,19 +619,17 @@ java-jline
 java-rhino
 java-runtime-common
 jbig2dec
-jdk-openjdk
+jdk-adoptopenjdk
 jdk11-openjdk
-jdk8-openjdk
+jdk8-adoptopenjdk
 jemalloc
 jmtpfs
 joyutils
 jq
-jre-openjdk
-jre-openjdk-headless
 jre11-openjdk
 jre11-openjdk-headless
-jre8-openjdk
-jre8-openjdk-headless
+jre8-adoptopenjdk
+jre8-adoptopenjdk-headless
 js60
 json-c
 json-glib
@@ -1090,6 +1084,7 @@ libpeas
 libpgm
 libphobos
 libpipeline
+libpipewire02
 libplacebo
 libplist
 libpng
@@ -1243,7 +1238,6 @@ lld
 lldb
 llvm
 llvm-libs
-llvm7-libs
 llvm9-libs
 lm_sensors
 lmdb
@@ -1401,7 +1395,6 @@ opencore-amr
 openexr
 openimagedenoise
 openimageio
-openjpeg
 openjpeg2
 openmotif
 openmpi
@@ -1420,7 +1413,6 @@ opusfile
 orc
 original-awk
 osinfo-db
-ovmf
 p11-kit
 p7zip
 pacman
@@ -1606,8 +1598,6 @@ perl-xml-sax-base
 perl-xml-writer
 pharo
 phodav
-phonon-qt5
-phonon-qt5-gstreamer
 php
 php-fpm
 php-gd
@@ -1813,7 +1803,6 @@ python-requests-toolbelt
 python-retrying
 python-ruamel-yaml
 python-ruamel.yaml.clib
-python-scandir
 python-scipy
 python-send2trash
 python-setuptools
@@ -1903,7 +1892,6 @@ python2-funcsigs
 python2-fuse
 python2-futures
 python2-gevent
-python2-gobject
 python2-gobject2
 python2-greenlet
 python2-html2text
@@ -2158,7 +2146,6 @@ smbclient
 smlnj
 smpeg
 snappy
-sndio
 socat
 solid
 sonnet
@@ -2225,6 +2212,8 @@ terminus-font
 terminus-font-ttf
 terraform
 tesseract
+tesseract-data-eng
+tesseract-data-por
 testdisk
 tevent
 texinfo
@@ -2397,11 +2386,9 @@ xfsprogs
 xinit-xsession
 xkeyboard-config
 xmlsec
-xmlto
 xorg-bdftopcf
 xorg-font-util
 xorg-font-utils
-xorg-fonts-75dpi
 xorg-fonts-alias
 xorg-fonts-encodings
 xorg-fonts-misc
@@ -2474,6 +2461,9 @@ zathura-ps
 zbar
 zenity
 zeromq
+zfs-linux
+zfs-linux-lts
+zfs-utils
 zig
 zip
 zita-alsa-pcmi
