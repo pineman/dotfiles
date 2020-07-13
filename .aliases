@@ -150,7 +150,7 @@ function rm-worktree {
 }
 
 # Connections
-alias p="mosh pineman@pineman.eu"
+alias p="ssh pineman@pineman.eu"
 alias c="[[ -d /p ]] && sshfs pineman.eu: /p; cd /p/Documents/computer || cd ~/Documents/computer"
 alias h="sshfs pineman.eu: /p; cd /p"
 alias uh="umount /p"

@@ -12,7 +12,8 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 #. /opt/esp-idf/export.sh &>/dev/null
 #. ${IDF_PATH}/add_path.sh &>/dev/null
 
-export PATH="$HOME/code/bin:$PATH:$GOPATH/bin"
+export PATH="$HOME/code/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
 export PATH="/usr/lib/ccache/bin:$PATH"
 export PATH="$HOME/.gem/ruby/*/bin:$PATH"
 

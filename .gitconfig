@@ -13,6 +13,7 @@
 	color = false
 [status]
 	showUntrackedFiles = no
+	showStash = true
 [fetch]
 	prune = true
 [commit]
