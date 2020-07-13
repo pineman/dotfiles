@@ -82,6 +82,7 @@ alias t="vim todo.md"
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
 alias borg="borg -p"
+alias zlist='sudo zfs list -t all -o name,type,mountpoint,creation,readonly,encryption,dedup'
 
 # Dev
 alias make="make -j$(nproc)"
