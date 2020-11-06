@@ -1,14 +1,6 @@
-!UXTerm*font: -*-misc-fixed-*-*-*-14-*-*-*-*-*-*-*
-UXTerm*font: -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
-UXTerm*allowBoldFonts: false
-UXTerm*background: black
-UXTerm*foreground: white
-Xcursor.size: 16
-
 ! Solarized color scheme for the X Window System
 ! http://ethanschoonover.com/solarized
 ! Common
-
 !#define S_base02		#073642
 !#define S_red			#dc322f
 !#define S_green			#859900
@@ -30,7 +22,6 @@ Xcursor.size: 16
 !URxvt*cursorColor:				S_base1
 !URxvt*pointerColorBackground:	S_base01
 !URxvt*pointerColorForeground:	S_base1
-
 ! Oceanic Next https://github.com/mhartington/oceanic-next
 #define S_base02		#343d46
 #define S_red			#EC5f67
@@ -41,8 +32,8 @@ Xcursor.size: 16
 #define S_cyan			#5fb3b3
 #define S_base2			#d8dee9
 #define S_base03		#343d46
-#define S_orange			#EC5f67
-#define S_base01			#99C794
+#define S_orange		#EC5f67
+#define S_base01		#99C794
 #define S_base00		#FAC863
 #define S_base0			#6699cc
 #define S_violet		#c594c5
@@ -51,7 +42,6 @@ Xcursor.size: 16
 URxvt*background:				#1b2b34
 URxvt*foreground:				#d8dee9
 URxvt*cursorColor:				#ffffff
-
 !URxvt*.color0:					S_base02
 URxvt*.color0:					#1b2b34
 URxvt*.color1:					S_red
@@ -69,25 +59,22 @@ URxvt*.color12:					S_base0
 URxvt*.color13:					S_violet
 URxvt*.color14:					S_base1
 URxvt*.color15:					S_base3
-
 URxvt*font: xft:monospace:size=12, xft:Droid Sans Fallback:size=12, xft:Icons, xft:Noto Color Emoji
 !URxvt*font: -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1, -*-unifont-medium-*-*-*-16-*-*-*-*-*-*-*
 URxvt*boldFont: xft:monospace:size=12:style=bold
 URxvt*italicFont:
 URxvt*boldItalicFont:
-URxvt*skipBuiltinGlyphs: true
-!URxvt*letterSpace: -2
-
+URxvt*skipBuiltinGlyphs: false
+URxvt*letterSpace: 0
+URxvt*lineSpace: -1
 URxvt*scrollBar: False
 URxvt*scrollTtyOutput: False
 URxvt*scrollWithBuffer: True
 URxvt*scrollTtyKeypress: True
 URxvt*saveLines: 65535
-
 URxvt*internalBorder: 0
 URxvt*externalBorder: 0
 URxvt*geometry: 118x32
-
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,resize-font
 URxvt.url-select.launcher: chromium
 URxvt.url-select.underline: true
@@ -95,3 +82,13 @@ URxvt.keysym.M-C-o: perl:url-select:select_next
 URxvt.keysym.M-C-c: perl:clipboard:copy
 URxvt.keysym.M-C-v: perl:clipboard:paste
 URxvt.keysym.M-C-f: perl:keyboard-select:search
+
+!UXTerm*font: -*-misc-fixed-*-*-*-14-*-*-*-*-*-*-*
+UXTerm*font: -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
+UXTerm*allowBoldFonts: false
+UXTerm*background: black
+UXTerm*foreground: white
+Xcursor.size: 16
+
+Xft.dpi: 96
+!Xft.dpi: 192

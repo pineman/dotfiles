@@ -55,7 +55,7 @@ bindkey "^J" history-beginning-search-forward
 setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_MINUS
 setopt EXTENDED_GLOB GLOBDOTS NOMATCH NOTIFY NO_HUP LONG_LIST_JOBS
 setopt AUTO_CONTINUE
-setopt COMPLETE_IN_WORD CORRECT COMPLETE_ALIASES INTERACTIVE_COMMENTS
+setopt COMPLETE_IN_WORD COMPLETE_ALIASES INTERACTIVE_COMMENTS
 setopt NO_SH_WORD_SPLIT
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -94,17 +94,17 @@ bindkey -a ds delete-surround
 bindkey -a ys add-surround
 
 #REPORTTIME=10 # Output `time` for commands that take user+system time > 1 s -- not wall clock
-TMOUT=15
-TRAPALRM() {
-	zle reset-prompt
-}
+#TMOUT=15
+#TRAPALRM() {
+#	zle reset-prompt
+#}
 setopt PROMPT_SUBST
 precmd() {
 	print -Pn "\e]0;%~\a"; # Change the terminal's title to current dir.
 }
 
 HOST_COLOR=1
-PROMPT='%F{3}%D{%H:%M:%S}%f %F{244}%n%f@%F{$HOST_COLOR}$(hostname -f)%f:%F{5}%~%f (%F{1}$(if [[ $(git stash list) ]]; then echo +; fi)%f%F{2}$(git branch 2>/dev/null | \grep "^*" | colrm 1 2)%f $(basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null))
+PROMPT='%F{3}%D{%H:%M:%S}%f %F{244}%n%f@%F{$HOST_COLOR}$(hostname -f)%f:%F{5}%~%f (%F{1}$(if [[ $(git stash list 2>/dev/null) ]]; then echo +; fi)%f%F{2}$(git branch 2>/dev/null | \grep "^*" | colrm 1 2)%f $(basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null))
 %F{15}%?%f $ '
 
 # Bind file manager keys
@@ -123,22 +123,19 @@ zle -N cdUndoKey
 bindkey '^[^[[A' cdParentKey
 bindkey '^[^[[D' cdUndoKey
 
-# alt + enter to insert literal newline without accepting the command
-bindkey '^[^M' self-insert-unmeta
-
 # fasd - recently used files and dirs
 eval "$(fasd --init auto)"
-bindkey '^A' fasd-complete
+#bindkey '^A' fasd-complete
 bindkey '^E' fasd-complete-d
 bindkey '^R' fasd-complete-f
 
 . ~/.aliases
-alias -g G='| grep -i'
-alias -g VI='| vim -'
+alias -g G='|& grep -i'
+alias -g VI='|& vim -'
 alias -g X='$(xclip -o)'
-alias -g H='| head'
-alias -g T='| tail'
-alias -g L='| less'
+alias -g H='|& head'
+alias -g T='|& tail'
+alias -g L='|& less -R'
 alias d='dirs -v | tail -n +2 | head -10'
 alias 1='cd -1'
 alias 2='cd -2'

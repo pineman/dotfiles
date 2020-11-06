@@ -23,6 +23,9 @@
 	filehist = log -p --follow
 	pushf = push --force-with-lease
 	co = checkout
+	stash-show = stash show -p
+	fetcha = fetch --all --tags --force
+	fetch-tags = fetch --all --tags --force --prune --prune-tags
 [pager]
 	branch = false
 [tag]

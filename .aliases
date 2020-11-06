@@ -6,8 +6,7 @@ alias which="which -a"
 alias ls='ls -hX --group-directories-first --time-style=+"%d/%m/%Y %H:%M:%S" --color=auto -F --quoting-style=literal'
 alias ll='ls -l'
 alias la='ls -Al'
-alias cal='cal -3'
-alias caly='\cal -y'
+alias cal='cal -y'
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i --one-file-system"
@@ -16,6 +15,7 @@ alias ps='ps auxf'
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
+alias less="less -R"
 alias free='free -m'
 alias dfc='dfc -d -t -tmpfs,dev -m'
 alias telnet="telnet --escape='^E'"
@@ -23,13 +23,12 @@ alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -h'
 alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
-which colordiff &>/dev/null && alias diff='colordiff'
 alias diff='diff -u'
-alias vmstat="vmstat -S m"
+which colordiff &>/dev/null && alias diff='colordiff -u'
+alias vmstat="vmstat -S M"
 alias w="w -i"
 alias last="last -w"
 alias pinky="pinky -w"
-alias htop="htop -d 4"
 alias tee="tee -a"
 alias nmap="nmap -v"
 alias vim="nvim -p"
@@ -56,7 +55,7 @@ function u {
 function tobg {
 	($* &>/dev/null &)
 }
-alias open="xdg-open"
+alias open="tobg xdg-open"
 alias o="(thunar &>/dev/null &)"
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
@@ -80,9 +79,13 @@ alias r='ranger --choosedir=/tmp/.rangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "
 alias m="vim notes.md"
 alias t="vim todo.md"
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
+alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias borg="borg -p"
 alias zlist='sudo zfs list -t all -o name,type,mountpoint,creation,readonly,encryption,dedup'
+alias picom='picom -b --experimental-backends'
+alias kpicom='killall picom'
+alias ps_mem='sudo ps_mem -S'
+alias smem='sudo smem -t -a -k -s swap'
 
 # Dev
 alias make="make -j$(nproc)"
@@ -113,16 +116,24 @@ function dcc {
 }
 alias di="docker images"
 alias dv='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Mounts}}" --no-trunc'
-alias dclean="docker system prune --all --volumes --force"
+alias dvv='docker volume prune -f'
+alias dclean="dcc; docker system prune --all --volumes --force"
 function docker-show-layers {
 	docker history $1 --format '{{.CreatedBy}}' --no-trunc
 }
+alias dspace="docker system df -v"
+alias docker-tui="lazydocker"
 # Kubernetes
 alias k=kubectl
 function kubectlgetall {
+	kubectl api-resources --verbs=list --namespaced -o name |
+	grep -v events | sort -u |
+	parallel kubectl get --all-namespaces --ignore-not-found --show-kind
+}
+function kubectlgetallforns {
 	for ns in $(kubectl get namespaces -o name | cut -d'/' -f2); do
 		echo "\n\nNamespace" $ns "---------------------------------------------------------"
-		for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
+		for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events" | sort -u); do
 			echo "Resource:" $i
 			kubectl -n ${ns} get --ignore-not-found ${i}
 		done
@@ -137,13 +148,14 @@ alias gf="git fetch --all"
 alias gp="git pull"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
-alias grm="git stash && git rebase -i master"
+alias grm="git stash && git rebase -i master && git stash pop"
 alias ga="git add"
 alias gitk="gitk --all &"
 alias gg="git gui"
 alias gl="PAGER= git lg"
 alias gss="git submodule update --init --recursive"
 alias gsu="git submodule foreach 'git checkout master && git pull'"
+alias git-clean-tags="git tag -l | xargs git tag -d ; git fetch --tags"
 function rm-worktree {
 	for b in "$@"; do rm -rf ../"$b"; done
 	git worktree prune
@@ -153,8 +165,8 @@ function rm-worktree {
 # Connections
 alias p="ssh pineman@pineman.eu"
 alias c="[[ -d /p ]] && sshfs pineman.eu: /p; cd /p/Documents/computer || cd ~/Documents/computer"
-alias h="sshfs pineman.eu: /p; cd /p"
-alias uh="umount /p"
+alias h="sshfs -o reconnect -o ServerAliveInterval=10 pineman.eu: /p; cd /p"
+alias uh="sudo umount -f /p"
 alias cl="cd ~/code/learn"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
 alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
