@@ -1,3 +1,4 @@
+#!/bin/bash
 # vim: ft=sh
 # General system aliases
 alias sudo="sudo " # this enables sudo to use these aliases
@@ -11,7 +12,7 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i --one-file-system"
 alias df='df -h'
-alias ps='ps auxf'
+alias ps='ps auxfww'
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
@@ -21,6 +22,8 @@ alias dfc='dfc -d -t -tmpfs,dev -m'
 alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -h'
+alias rsync='rsync -vPhr'
+alias scp='rsync'
 alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 alias diff='diff -u'
@@ -46,14 +49,11 @@ alias ......="cd -- ../../../../.."
 alias .......="cd -- ../../../../../.."
 alias ........="cd -- ../../../../../../.."
 alias .........="cd -- ../../../../../../../.."
-function cd {
+cd() {
 	builtin cd "$@" && ll
 }
-function u {
-	(urxvtc -cd $PWD &>/dev/null &)
-}
-function tobg {
-	($* &>/dev/null &)
+tobg() {
+	("$@" &>/dev/null &)
 }
 alias open="tobg xdg-open"
 alias o="(thunar &>/dev/null &)"
@@ -66,7 +66,7 @@ alias i6="curl ipv6.icanhazip.com"
 alias ethspeed="while :; do sleep 0.2; cat /sys/class/net/enp0s25/speed; done"
 alias edit_dns="sudo chattr -i /etc/resolv.conf && sudo vim /etc/resolv.conf && sudo chattr +i /etc/resolv.conf"
 alias sstp="sudo ss -antp"
-function l {
+l() {
 	# 1st argument: filename to search
 	# 2nd argument: match given basename
 	basename=""
@@ -86,56 +86,62 @@ alias picom='picom -b --experimental-backends'
 alias kpicom='killall picom'
 alias ps_mem='sudo ps_mem -S'
 alias smem='sudo smem -t -a -k -s swap'
+alias timer='echo timer started, use ctrl-c to stop; time cat'
+alias dmesg='dmesg -T'
 
 # Dev
-alias make="make -j$(nproc)"
+alias make='make -j$(nproc)'
 alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes"
 alias py="python"
 alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
-alias irb="rlwrap irb"
 #alias node="NODE_NO_READLINE=1 rlwrap node"
+#alias mvn="mvn --ntp"
 alias mit-scheme="rlwrap mit-scheme"
 alias sbcl="rlwrap sbcl"
 alias yaegi="rlwrap yaegi"
-alias gop="cd $GOPATH"
-function rg {
-	rm -rf $HOME/.gitignore; /usr/bin/rg -S -F --hidden "$@"; echo '*' > $HOME/.gitignore
-}
-function rrg {
-	rm -rf $HOME/.gitignore && /usr/bin/rg -S --hidden "$@" && echo '*' > $HOME/.gitignore
+alias gop='cd $GOPATH'
+#alias gradle="gradle --parallel -t --watch-fs"
+alias gradle="gradle --parallel"
+rg() {
+	rm -rf "$HOME"/.gitignore
+	/usr/bin/rg -SL --hidden "$@"
+	echo '*' > "$HOME"/.gitignore
 }
 alias rt="rg TODO"
-function fd {
-	rm -rf $HOME/.gitignore; /usr/bin/fd -H "$@"; echo '*' > $HOME/.gitignore
+fd() {
+	rm -rf "$HOME"/.gitignore
+	/usr/bin/fd -H "$@"
+	echo '*' > "$HOME"/.gitignore
 }
+alias find="fd -I"
 # Docker
-alias dc="docker container ls -a"
-function dcc {
-	docker stop -t 3 $(docker ps -aq)
-	docker rm $(docker ps -aq)
+alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
+dcc() {
+	docker stop -t 3 $(docker ps -aq) &>/dev/null
+	docker rm $(docker ps -aq) &>/dev/null
 }
 alias di="docker images"
-alias dv='docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Mounts}}" --no-trunc'
+alias dv='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dvv='docker volume prune -f'
 alias dclean="dcc; docker system prune --all --volumes --force"
-function docker-show-layers {
-	docker history $1 --format '{{.CreatedBy}}' --no-trunc
+docker_show_layers() {
+	docker history "$1" --format '{{.CreatedBy}}' --no-trunc
 }
 alias dspace="docker system df -v"
 alias docker-tui="lazydocker"
 # Kubernetes
 alias k=kubectl
-function kubectlgetall {
+kubectlgetall() {
 	kubectl api-resources --verbs=list --namespaced -o name |
 	grep -v events | sort -u |
 	parallel kubectl get --all-namespaces --ignore-not-found --show-kind
 }
-function kubectlgetallforns {
+kubectlgetallforns() {
 	for ns in $(kubectl get namespaces -o name | cut -d'/' -f2); do
-		echo "\n\nNamespace" $ns "---------------------------------------------------------"
+		printf "\n\nNamespace %s ---------------------------------------------------------" "$ns"
 		for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events" | sort -u); do
-			echo "Resource:" $i
-			kubectl -n ${ns} get --ignore-not-found ${i}
+			echo "Resource: $i"
+			kubectl -n "$ns" get --ignore-not-found "$i"
 		done
 	done
 }
@@ -148,7 +154,7 @@ alias gf="git fetch --all"
 alias gp="git pull"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
-alias grm="git stash && git rebase -i master && git stash pop"
+alias grm="git rebase -i master"
 alias ga="git add"
 alias gitk="gitk --all &"
 alias gg="git gui"
@@ -156,11 +162,19 @@ alias gl="PAGER= git lg"
 alias gss="git submodule update --init --recursive"
 alias gsu="git submodule foreach 'git checkout master && git pull'"
 alias git-clean-tags="git tag -l | xargs git tag -d ; git fetch --tags"
-function rm-worktree {
+rm_worktree() {
 	for b in "$@"; do rm -rf ../"$b"; done
 	git worktree prune
-	git branch -D $@
+	git branch -D "$@"
 }
+#git() {
+#  if [[ "$1" == "clone" && "$@" != *"--help"* ]]; then
+#    shift 1
+#    command git cl "$@"
+#  else
+#    command git "$@"
+#  fi
+#}
 
 # Connections
 alias p="ssh pineman@pineman.eu"
@@ -170,11 +184,12 @@ alias uh="sudo umount -f /p"
 alias cl="cd ~/code/learn"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
 alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
+alias sync_mc="(cd ~/.minecraft/saves; rsync 'pineman.eu:/srv/craftbukkit/world*' .)"
 # Music
 alias mu="mpc volume 0"
 alias mun="mpc volume 70"
 alias n="ncmpcpp"
-function addradio {
+addradio() {
 	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
 	mpc add "https://lainon.life/radio/cafe.ogg"
 	mpc add "https://lainon.life/radio/cyberia.ogg"
@@ -210,7 +225,7 @@ alias inxi="inxi -F"
 alias units="units --verbose"
 alias nload="nload -u M"
 alias pandoc="pandoc -s"
-function oct {
+oct() {
 	tobg octave --gui --persist --eval "edit $1"
 }
 alias mcli="matlab -nodisplay -nosplash -nojvm"
@@ -227,8 +242,7 @@ alias fbi="fbi --autodown"
 
 # ex - archive extractor
 # usage: ex <file>
-function ex ()
-{
+ex() {
 	if [[ ! -f "$1" ]]; then
 		echo "No such file or directoy: '$1'"
 		return 2
@@ -247,24 +261,24 @@ function ex ()
 		#*.zip)		mkdir -p ${1%.zip}		&& cd $_ && unzip ../$1 ;;
 		#*.7z)		mkdir -p ${1%.7z}		&& cd $_ && 7z -x ../$1 ;;
 
-		*.tar)		tar -xvf $1 ;;
-		*.tar.xz)	tar -xvJf $1 ;;
-		*.txz)		tar -xvJf $1 ;;
-		*.tar.pixz)	tar -Ipixz -xvf $1 ;;
-		*.tpxz)		tar -Ipixz -xvf $1 ;;
-		*.tar.bz2)	tar -xvjf $1 ;;
-		*.tbz2)		tar -xvjf $1 ;;
-		*.tar.gz)	tar -xvzf $1 ;;
-		*.tgz)		tar -xvzf $1 ;;
-		*.rar)		unrar -x $1 ;;
-		*.zip)		unzip $1 ;;
-		*.7z)		7z x $1 ;;
+		*.tar)		tar -xvf "$1" ;;
+		*.tar.xz)	tar -xvJf "$1" ;;
+		*.txz)		tar -xvJf "$1" ;;
+		*.tar.pixz)	tar -Ipixz -xvf "$1" ;;
+		*.tpxz)		tar -Ipixz -xvf "$1" ;;
+		*.tar.bz2)	tar -xvjf "$1" ;;
+		*.tbz2)		tar -xvjf "$1" ;;
+		*.tar.gz)	tar -xvzf "$1" ;;
+		*.tgz)		tar -xvzf "$1" ;;
+		*.rar)		unrar -x "$1" ;;
+		*.zip)		unzip "$1" ;;
+		*.7z)		7z x "$1" ;;
 
-		*.xz)		xz -d $1 ;;
-		*.pixz)		pixz -d $1 ;;
-		*.gz)		gunzip $1 ;;
-		*.bz2)		bunzip2 $1 ;;
-		*.Z)		uncompress -xf $1 ;;
+		*.xz)		xz -d "$1" ;;
+		*.pixz)		pixz -d "$1" ;;
+		*.gz)		gunzip "$1" ;;
+		*.bz2)		bunzip2 "$1" ;;
+		*.Z)		uncompress -xf "$1" ;;
 
 		*)			echo "'$1' cannot be extracted via ex" ;;
 	esac
@@ -281,12 +295,10 @@ alias matrix4='echo -ne "\e[32m" ; while true ; do echo -ne "\e[$(($RANDOM % 2 +
 alias matrix5='tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=lcase,unblock | GREP_COLOR="1;32" grep --color "[^ ]"'
 alias colorrainbow='seq 0 255 | while read i; do printf "${i-1}: \x1b[48;5;${i}m\n"; sleep .01; done'
 alias screenfetch="echo; screenfetch -c 41,12"
-function minor()
-{
-	cat /dev/urandom | hexdump -v -e '/1 "%u\n"' | awk '{ split("0,2,3,5,7,8,10,12",a,","); for (i = 0; i < 1; i+= 0.00001) printf("%08X\n", 100*sin(1382*exp((a[$1 % 8]/12)*log(2))*i)) }' | xxd -r -p | aplay -c 2 -f S32_LE -r 16000
+minor() {
+	hexdump /dev/urandom -v -e '/1 "%u\n"' | awk '{ split("0,2,3,5,7,8,10,12",a,","); for (i = 0; i < 1; i+= 0.00001) printf("%08X\n", 100*sin(1382*exp((a[$1 % 8]/12)*log(2))*i)) }' | xxd -r -p | aplay -c 2 -f S32_LE -r 16000
 }
-function major()
-{
-	cat /dev/urandom | hexdump -v -e '/1 "%u\n"' | awk '{ split("0,2,4,5,7,9,11,12",a,","); for (i = 0; i < 1; i+= 0.00001) printf("%08X\n", 100*sin(1382*exp((a[$1 % 8]/12)*log(2))*i)) }' | xxd -r -p | aplay -c 2 -f S32_LE -r 16000
+major() {
+	hexdump /dev/urandom -v -e '/1 "%u\n"' | awk '{ split("0,2,4,5,7,9,11,12",a,","); for (i = 0; i < 1; i+= 0.00001) printf("%08X\n", 100*sin(1382*exp((a[$1 % 8]/12)*log(2))*i)) }' | xxd -r -p | aplay -c 2 -f S32_LE -r 16000
 }
 

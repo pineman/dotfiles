@@ -7,7 +7,6 @@ export TERMINAL="alacritty"
 export BROWSER="chromium"
 
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
 export JAVA_FONTS="/usr/share/fonts/ttf"
 export CALIBRE_USE_SYSTEM_THEME=1
 export WINIT_HIDPI_FACTOR=1
@@ -29,11 +28,10 @@ if xrandr --query | grep "DP2 connected" &>/dev/null; then dp; fi
 #mconnect &
 #kdeconnect-indicator &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
+Thunar --daemon &
 nm-applet &
 pasystray &
 redshift-gtk &
-Thunar --daemon &
-#urxvtd -q -o -f
 xfce4-clipman &
 menutray -gtk3 -i &
-sudo tlp bat

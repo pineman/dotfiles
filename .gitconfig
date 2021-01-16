@@ -20,12 +20,13 @@
 	#gpgsign = true
 [alias]
 	lg = log --color --graph --pretty=format:'%h (%Cgreen%cd%Creset) %s %C(6)%an <%ae>%Creset %C(blue)%d%Creset' --abbrev-commit --date=format:'%x %X'
+	rlog = reflog --pretty=short --date=iso
 	filehist = log -p --follow
 	pushf = push --force-with-lease
 	co = checkout
 	stash-show = stash show -p
-	fetcha = fetch --all --tags --force
-	fetch-tags = fetch --all --tags --force --prune --prune-tags
+	fetcha = fetch --all --tags --force --prune --prune-tags
+	cl = clone --recurse-submodules
 [pager]
 	branch = false
 [tag]
@@ -33,3 +34,7 @@
 [gui]
 	tabsize = 4
 	warndetachedcommit = true
+[cola]
+	spellcheck = false
+[rebase]
+	autoStash = true

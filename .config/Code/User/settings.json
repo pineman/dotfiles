@@ -1,5 +1,5 @@
 {
-   "editor.fontSize":15,
+   "editor.fontSize":14.5,
    "editor.fontFamily":"Iosevka, Menlo, Monaco, 'Courier New', monospace",
    "workbench.editor.enablePreviewFromQuickOpen":false,
    "workbench.editor.enablePreview":false,
@@ -9,8 +9,11 @@
    "editor.minimap.enabled":true,
    "editor.renderWhitespace":"all",
    "editor.wordWrap":"on",
+   "explorer.autoReveal": false,
    "git.enabled":true,
    "gitlens.currentLine.scrollable":false,
+   "extensions.autoCheckUpdates": false,
+   "extensions.autoUpdate": false,
    "editor.rulers":[
       80
    ],
@@ -89,6 +92,17 @@
    ],
    "go.useLanguageServer":true,
    "go.formatTool":"goimports",
+   "go.delveConfig": {
+	   "dlvLoadConfig": {
+		   "followPointers": true,
+		   "maxVariableRecurse": 1,
+		   "maxStringLen": 999,
+		   "maxArrayValues": 999,
+		   "maxStructFields": -1
+	   },
+	   "apiVersion": 2,
+	   "showGlobalVariables": false
+   },
    "workbench.colorCustomizations":{
       "editor.selectionBackground":"#135564",
       "editor.selectionHighlightBackground":"#135564"
@@ -265,5 +279,6 @@
    "gitlens.hovers.currentLine.over":"line",
    "gitlens.codeLens.enabled":false,
    "gitlens.statusBar.format":"${id}, ${author}, ${agoOrDate} • ${message}",
-   "gitlens.currentLine.format":"${id}, ${author}, ${agoOrDate} • ${message}"
+"gitlens.currentLine.format": "${id}, ${author}, ${agoOrDate} • ${message}",
+"git.ignoreLegacyWarning": true
 }
