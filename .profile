@@ -16,5 +16,6 @@ export PATH="$HOME/code/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="/usr/lib/ccache/bin:$PATH"
 export PATH="$HOME/.gem/ruby/*/bin:$PATH"
+export PATH=".:$PATH"
 
 eval $(dircolors $HOME/.dircolors)

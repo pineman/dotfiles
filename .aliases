@@ -111,7 +111,7 @@ function fd {
 # Docker
 alias dc="docker container ls -a"
 function dcc {
-	docker stop $(docker ps -aq)
+	docker stop -t 3 $(docker ps -aq)
 	docker rm $(docker ps -aq)
 }
 alias di="docker images"
