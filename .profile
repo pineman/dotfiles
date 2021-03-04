@@ -16,8 +16,8 @@ export _JAVA_OPTIONS="-Djdk.gtk.version=3 -Dswing.defaultlaf=com.sun.java.swing.
 export PATH="$HOME/code/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="/usr/lib/ccache/bin:$PATH"
-export PATH="$HOME/.gem/ruby/*/bin:$PATH"
 export PATH=".:$PATH"
 
 eval $(dircolors $HOME/.dircolors)
-tabs -4
+
+eval "$(rbenv init -)"

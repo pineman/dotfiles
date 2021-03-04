@@ -38,3 +38,5 @@
 	spellcheck = false
 [rebase]
 	autoStash = true
+[init]
+	defaultBranch = main

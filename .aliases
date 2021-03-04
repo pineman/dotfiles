@@ -102,6 +102,8 @@ alias yaegi="rlwrap yaegi"
 alias gop='cd $GOPATH'
 #alias gradle="gradle --parallel -t --watch-fs"
 alias gradle="gradle --parallel"
+alias be='bundle exec'
+alias gem_clean='gem uninstall -aIx'
 rg() {
 	rm -rf "$HOME"/.gitignore
 	/usr/bin/rg -SL --hidden "$@"
@@ -179,8 +181,8 @@ rm_worktree() {
 # Connections
 alias p="ssh pineman@pineman.eu"
 alias c="[[ -d /p ]] && sshfs pineman.eu: /p; cd /p/Documents/computer || cd ~/Documents/computer"
-alias h="sshfs -o reconnect -o ServerAliveInterval=10 pineman.eu: /p; cd /p"
-alias uh="sudo umount -f /p"
+alias h="sshfs -o reconnect -o ServerAliveInterval=10 pineman.eu: ~/p; cd ~/p"
+alias uh="sudo umount -f ~/p"
 alias cl="cd ~/code/learn"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
 alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"

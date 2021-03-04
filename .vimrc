@@ -85,6 +85,7 @@ set hlsearch
 set noincsearch
 set undofile
 set backup
+set backupcopy=yes
 set undodir=~/.vim/undo/
 set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/,/tmp
