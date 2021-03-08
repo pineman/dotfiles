@@ -98,4 +98,5 @@ alias 8='cd -8'
 alias 9='cd -9'
 source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 . ~/.aliases
+eval $(dircolors $HOME/.dircolors)
 #zprof
