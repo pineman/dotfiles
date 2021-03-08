@@ -64,7 +64,6 @@ set nofixendofline
 "set breakindent
 filetype indent off
 set backspace=eol,indent,start
-"set clipboard=autoselect
 set clipboard=unnamedplus
 set ttyfast
 set wildmenu
