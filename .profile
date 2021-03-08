@@ -21,4 +21,4 @@ export PATH="$HOME/.local/bin:$PATH"
 
 eval $(dircolors $HOME/.dircolors)
 
-eval "$(rbenv init -)"
+if [ $(command -v rbenv) ]; then eval "$(rbenv init -)"; fi

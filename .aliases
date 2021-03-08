@@ -127,7 +127,6 @@ rg() {
 alias rt="rg TODO"
 alias fd="fd -H"
 alias find="fd -I ."
-alias rg="rg -i --hidden"
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 dcc() {

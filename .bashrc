@@ -21,10 +21,9 @@ yellow='\[\e[38;5;3m\]'
 grey='\[\e[38;5;10m\]'
 red='\[\e[38;5;1m\]'
 reset='\[\e[0m\]'
-memepad=$red
 pinecone='\[\e[38;5;94m\]'
 
-PS1="[$grey\u$reset@$memepad\h$reset] "
+PS1="[$grey\u$reset@$pinecone\h$reset] "
 PS1+="[$yellow\A$reset] "
 PS1+="[$red\w$reset]\n"
 PS1+="$white\$?$reset $ "
