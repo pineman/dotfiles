@@ -37,7 +37,7 @@
 	<video-files/>
 </action>
 <action>
-	<icon>code-oss</icon>
+	<icon>visual-studio-code</icon>
 	<name>Open Folder in VSCode</name>
 	<unique-id>1544465882800178-2</unique-id>
 	<command>code %d</command>
@@ -49,15 +49,5 @@
 	<other-files/>
 	<text-files/>
 	<video-files/>
-</action>
-<action>
-	<icon>sublime-text</icon>
-	<name>Open Folder in Sublime Text</name>
-	<unique-id>1583526831749024-1</unique-id>
-	<command>subl3 .</command>
-	<description></description>
-	<patterns>*</patterns>
-	<startup-notify/>
-	<directories/>
 </action>
 </actions>

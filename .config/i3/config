@@ -210,7 +210,7 @@ bindsym XF86Display exec lvds
 bindsym XF86TouchpadToggle exec touchpad-toggle
 bindsym Mod4+L exec physlock -d -s -m
 bindsym XF86Calculator exec qalculate-gtk
-bindsym Print exec deepin-screenshot
+bindsym Print exec xfce4-screenshooter
 
 # Program keybindings
 bindsym $mod+f exec thunar
@@ -229,7 +229,7 @@ bindsym $mod+t exec telegram-desktop
 bindsym $mod+i exec keepassxc
 bindsym $mod+g exec remmina
 bindsym $mod+Shift+g exec wireshark
-bindsym Pause exec desktop-pause.sh -s
+#bindsym Pause exec desktop-pause.sh -s
 bindsym $mod+F5 exec restart_wifi
 
 # Borders

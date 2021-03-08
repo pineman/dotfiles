@@ -28,11 +28,9 @@ if [ -s ~/.Xmodmap ]; then
 fi
 
 function i3 {
-	exec dbus-launch --exit-with-session i3 > ~/.local/share/xorg/i3.log
-}
-
-function bspwm {
-	exec dbus-launch --exit-with-session bspwm
+	#exec dbus-launch --exit-with-session i3 > ~/.i3.log
+	# LightDM launches dbus for us. either that or systemd idk
+	exec i3 > ~/.i3.log
 }
 
 function xfce {

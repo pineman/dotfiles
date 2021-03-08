@@ -41,6 +41,7 @@ alias zstd="zstdmt"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias killall="killall -v -I"
 alias pgrep="pgrep -l"
+alias xsel="xsel -b"
 alias ..="cd -- .."
 alias ...="cd -- ../.."
 alias ....="cd -- ../../.."
@@ -57,6 +58,9 @@ tobg() {
 }
 alias open="tobg xdg-open"
 alias o="(thunar &>/dev/null &)"
+u() {
+	tobg alacritty --working-directory .
+}
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
@@ -84,10 +88,21 @@ alias borg="borg -p"
 alias zlist='sudo zfs list -t all -o name,type,mountpoint,creation,readonly,encryption,dedup'
 alias picom='picom -b --experimental-backends'
 alias kpicom='killall picom'
-alias ps_mem='sudo ps_mem -S'
 alias smem='sudo smem -t -a -k -s swap'
 alias timer='echo timer started, use ctrl-c to stop; time cat'
 alias dmesg='dmesg -T'
+show-iptables() {
+	echo 'SECURITY =============================================================='
+	sudo iptables -nvL -t security
+	echo '\nRAW ==================================================================='
+	sudo iptables -nvL -t raw
+	echo '\nMANGLE ================================================================'
+	sudo iptables -nvL -t mangle
+	echo '\nNAT ==================================================================='
+	sudo iptables -nvL -t nat
+	echo '\nFILTER ================================================================'
+	sudo iptables -nvL -t filter
+}
 
 # Dev
 alias make='make -j$(nproc)'
@@ -95,7 +110,7 @@ alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all
 alias py="python"
 alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
 #alias node="NODE_NO_READLINE=1 rlwrap node"
-#alias mvn="mvn --ntp"
+alias mvn="mvn --ntp"
 alias mit-scheme="rlwrap mit-scheme"
 alias sbcl="rlwrap sbcl"
 alias yaegi="rlwrap yaegi"
@@ -110,16 +125,13 @@ rg() {
 	echo '*' > "$HOME"/.gitignore
 }
 alias rt="rg TODO"
-fd() {
-	rm -rf "$HOME"/.gitignore
-	/usr/bin/fd -H "$@"
-	echo '*' > "$HOME"/.gitignore
-}
-alias find="fd -I"
+alias fd="fd -H"
+alias find="fd -I ."
+alias rg="rg -i --hidden"
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 dcc() {
-	docker stop -t 3 $(docker ps -aq) &>/dev/null
+	docker stop -t 0 $(docker ps -aq) &>/dev/null
 	docker rm $(docker ps -aq) &>/dev/null
 }
 alias di="docker images"
@@ -131,6 +143,10 @@ docker_show_layers() {
 }
 alias dspace="docker system df -v"
 alias docker-tui="lazydocker"
+alias dah='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sed "s# /# #g" | sudo tee -a /etc/hosts'
+alias drh='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sed "s# /# #g" | sudo xargs -I{} sed -i "/{}/d" /etc/hosts'
+# Or use `x11docker` command
+alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/home/lyonn/.Xauthority -it cenas:1'
 # Kubernetes
 alias k=kubectl
 kubectlgetall() {
@@ -151,6 +167,7 @@ kubectlgetallforns() {
 alias gs="git status"
 alias gb="git branch -vvaa"
 alias gd="PAGER=vimpager git diff"
+alias gdm="gd master..HEAD"
 alias gdc="PAGER=vimpager git diff --cached"
 alias gf="git fetch --all"
 alias gp="git pull"
@@ -161,6 +178,7 @@ alias ga="git add"
 alias gitk="gitk --all &"
 alias gg="git gui"
 alias gl="PAGER= git lg"
+alias glm="gl master..HEAD"
 alias gss="git submodule update --init --recursive"
 alias gsu="git submodule foreach 'git checkout master && git pull'"
 alias git-clean-tags="git tag -l | xargs git tag -d ; git fetch --tags"
@@ -180,9 +198,9 @@ rm_worktree() {
 
 # Connections
 alias p="ssh pineman@pineman.eu"
-alias c="[[ -d /p ]] && sshfs pineman.eu: /p; cd /p/Documents/computer || cd ~/Documents/computer"
 alias h="sshfs -o reconnect -o ServerAliveInterval=10 pineman.eu: ~/p; cd ~/p"
-alias uh="sudo umount -f ~/p"
+alias uh="fusermount -u ~/p"
+alias c="[[ -d ~/p ]] && h; cd ~/p/Documents/computer || cd ~/Documents/computer"
 alias cl="cd ~/code/learn"
 alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
 alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
@@ -230,17 +248,12 @@ alias pandoc="pandoc -s"
 oct() {
 	tobg octave --gui --persist --eval "edit $1"
 }
-alias mcli="matlab -nodisplay -nosplash -nojvm"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
+alias count_threads='count() { printf %s\\n "$#" }; count /proc/[0-9]*/task/[0-9]*'
 alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 # TTY-things
 #alias startx="killall redshift &>/dev/null; \startx ~/.xinitrc; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
 alias startx="killall redshift &>/dev/null; sudo systemctl start lightdm; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
-# Use VLC in a virtual console
-alias vlctty="cvlc -I ncurses -V fb"
-alias vlcascii="cvlc -I ncurses -V caca"
-# Display images in a TTY
-alias fbi="fbi --autodown"
 
 # ex - archive extractor
 # usage: ex <file>

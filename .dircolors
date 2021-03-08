@@ -885,6 +885,7 @@ EXEC					38;5;64
 .gitignore				38;5;5
 .gitattributes			38;5;5
 .gitmodules				38;5;5
+.gitconfig				38;5;5
 
 # Build files
 *Makefile				38;5;211
@@ -968,6 +969,7 @@ EXEC					38;5;64
 .enc					38;5;190
 .sig					38;5;190
 .signature				38;5;190
+.pfx					38;5;190
 
 # Unimportant
 .aux					38;5;240
@@ -1012,6 +1014,7 @@ EXEC					38;5;64
 .pgn					38;5;214
 .rss					38;5;214
 .yml					38;5;214
+.yaml					38;5;214
 .RData					38;5;214
 .rdata					38;5;214
 

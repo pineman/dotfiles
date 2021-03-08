@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Variables
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export TERMINAL="alacritty"
@@ -13,20 +12,12 @@ export WINIT_HIDPI_FACTOR=1
 
 # Ctrl + Alt + backspace to kill the X server
 setxkbmap -option terminate:ctrl_alt_bksp
-
 #feh --no-fehbg --bg-scale "$HOME/.background.jpg"
 xsetroot -solid "#171717"
-
 keyboard &
-trackpoint &
 xhost -
 xset +dpms
 xset dpms 0 0 180
-if xrandr --query | grep "DP2 connected" &>/dev/null; then dp; fi
-
-# Autostart
-#mconnect &
-#kdeconnect-indicator &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 Thunar --daemon &
@@ -35,3 +26,4 @@ pasystray &
 redshift-gtk &
 xfce4-clipman &
 menutray -gtk3 -i &
+picom -b

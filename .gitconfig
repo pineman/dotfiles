@@ -23,10 +23,12 @@
 	rlog = reflog --pretty=short --date=iso
 	filehist = log -p --follow
 	pushf = push --force-with-lease
+	pusha = push --force-with-lease --tags --prune
 	co = checkout
 	stash-show = stash show -p
 	fetcha = fetch --all --tags --force --prune --prune-tags
 	cl = clone --recurse-submodules
+	dcf = diff --name-status master
 [pager]
 	branch = false
 [tag]

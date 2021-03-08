@@ -17,6 +17,7 @@ export PATH="$HOME/code/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="/usr/lib/ccache/bin:$PATH"
 export PATH=".:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 eval $(dircolors $HOME/.dircolors)
 
