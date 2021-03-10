@@ -1,5 +1,8 @@
 #!/bin/bash
 # vim: ft=sh
+alias adobekill="\ps aux | grep -i adobe | grep -v grep | awk '{print \$2}' | xargs -l kill"
+alias brewup='brew update ; brew upgrade ; echo run brew upgrade --greedy sometimes'
+alias brewrm='brew rmtree'
 # General system aliases
 alias sudo="sudo " # this enables sudo to use these aliases
 alias chown="chown -h"
@@ -13,7 +16,7 @@ alias cp="cp -i -r"
 alias mv="mv -i"
 alias rm="rm -i --one-file-system"
 alias df='df -h'
-alias ps='ps --ppid 2 -N --forest -o user:15,ppid,pid,cmd'
+alias ps='ps -axo user,ppid,pid,command'
 alias psw='ps -ww'
 alias pstree='sudo \pstree -aStpnT'
 alias pstreet='sudo \pstree -aStpnt'
@@ -24,6 +27,7 @@ alias dfc='dfc -d -t -tmpfs,dev -m'
 alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -shc'
+alias ncdu='ncdu --exclude-firmlinks'
 alias rsync='rsync -vPhr'
 alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
@@ -43,7 +47,7 @@ alias vimdiff="nvim -d"
 alias xz="xz -T 0"
 alias zstd="zstdmt"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
-alias killall="killall -v -I"
+alias killall="killall -v"
 alias pgrep="pgrep -f"
 alias ..="cd -- .."
 alias ...="cd -- ../.."
@@ -59,7 +63,7 @@ cd() {
 tobg() {
 	("$@" &>/dev/null &)
 }
-alias open="tobg xdg-open"
+#alias open="tobg xdg-open"
 alias o="(thunar &>/dev/null &)"
 u() {
 	tobg alacritty --working-directory .

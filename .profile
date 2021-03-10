@@ -21,3 +21,23 @@ export PATH="/usr/lib/ccache/bin:$PATH"
 export ERL_AFLAGS="-kernel shell_history enabled"
 #export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 #export PATH="$PATH:$GEM_HOME/bin"
+
+export JAVA_HOME="$(/usr/libexec/java_home -v 15)"
+#export JAVAFX_HOME="$HOME/local/share/javafx"
+
+#export PATH="$JAVA_HOME/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/ccache/libexec:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
+export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
+export MANPATH="/usr/local/opt/erlang/lib/erlang/man:$MANPATH"
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
+
+export HOMEBREW_NO_ANALYTICS=1
