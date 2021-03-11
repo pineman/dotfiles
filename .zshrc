@@ -17,7 +17,7 @@ precmd() {
 	print -Pn "\e]0;%~\a"
 }
 HOST_COLOR=94
-PROMPT='%F{3}%D{%H:%M:%S}%f %F{244}%n%f@%F{$HOST_COLOR}$(hostname -f)%f:%F{5}%~%f (%F{1}$(if [[ $(git stash list 2>/dev/null) ]]; then echo +; fi)%f%F{2}$(git branch 2>/dev/null | \grep "^*" | colrm 1 2)%f $(basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null))
+PROMPT='%F{3}%D{%H:%M:%S}%f %F{244}%n%f@%F{$HOST_COLOR}%M%f:%F{5}%~%f (%F{1}$(if [[ $(git stash list 2>/dev/null) ]]; then echo +; fi)%f%F{2}$(git branch 2>/dev/null | \grep "^*" | colrm 1 2)%f $(basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null))
 %F{15}%?%f $ '
 zstyle ':completion:*' completer _expand _complete _match _correct _approximate _prefix
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
