@@ -816,7 +816,9 @@ env:
 scrolling:
   history: 100000
 font:
-  size: 13
+  size: 12.5
+  normal:
+    family: Iosevka Fixed
 # Oceanic Next colorscheme
 colors:
   primary:
@@ -847,3 +849,7 @@ key_bindings:
   - { key: T, mods: Control, action: SpawnNewInstance }
   - { key: Space, mods: Control, action: ToggleViMode }
   - { key: Escape, mode: Vi, action: ToggleViMode }
+shell:
+  program: wsl.exe
+  args:
+    - -u pineman genie -c zsh -l

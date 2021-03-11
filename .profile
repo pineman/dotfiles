@@ -1,3 +1,4 @@
+cd &>/dev/null
 export PATH="$HOME/.local/bin:$PATH"
 source $HOME/.ls_colors
 export EDITOR="nvim"
@@ -21,3 +22,7 @@ export PATH="/usr/lib/ccache/bin:$PATH"
 export ERL_AFLAGS="-kernel shell_history enabled"
 #export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 #export PATH="$PATH:$GEM_HOME/bin"
+
+export LIBGL_ALWAYS_INDIRECT=
+export WSL_HOST=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+export DISPLAY=$WSL_HOST:0

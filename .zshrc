@@ -101,3 +101,4 @@ alias 9='cd -9'
 source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 . ~/.aliases
 #zprof
+cd &>/dev/null
