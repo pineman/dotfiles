@@ -18,14 +18,14 @@ shopt -s hostcomplete
 
 white='\[\e[38;5;15m\]'
 yellow='\[\e[38;5;3m\]'
-grey='\[\e[38;5;10m\]'
+grey='\[\e[38;5;244m\]'
 red='\[\e[38;5;1m\]'
-reset='\[\e[0m\]'
+blue='\[\e[38;5;4m\]'
+mag='\[\e[38;5;5m\]'
 pinecone='\[\e[38;5;94m\]'
+r='\[\e[0m\]'
 
-PS1="[$grey\u$reset@$pinecone\h$reset] "
-PS1+="[$yellow\A$reset] "
-PS1+="[$red\w$reset]\n"
-PS1+="$white\$?$reset $ "
+PS1="$yellow\A$r $grey\u$r@$pinecone\h$r:$mag\w$r\n"
+PS1+="$white\$?$r $ "
 
 . ~/.aliases
