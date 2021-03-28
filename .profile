@@ -9,7 +9,6 @@ export MATLAB_LOG_DIR="/dev/null"
 export GCC_COLORS=1
 export ERL_AFLAGS="-kernel shell_history enabled"
 export _JAVA_OPTIONS="-Djdk.gtk.version=3 -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true"
-export MAVEN_OPTS="-ntp"
 #export IDF_PATH="/opt/esp-idf"
 #. /opt/esp-idf/export.sh &>/dev/null
 #. ${IDF_PATH}/add_path.sh &>/dev/null
@@ -23,3 +22,5 @@ export PATH="$HOME/.local/bin:$PATH"
 eval $(dircolors $HOME/.dircolors)
 
 if [ $(command -v rbenv) ]; then eval "$(rbenv init -)"; fi
+#export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+#export PATH="$PATH:$GEM_HOME/bin"

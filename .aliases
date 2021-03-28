@@ -37,7 +37,7 @@ alias last="last -w"
 alias pinky="pinky -w"
 alias tee="tee -a"
 alias nmap="nmap -v"
-alias vim="nvim -p"
+alias vim="nvim"
 alias clean_vim="git clean -fdx $HOME/.vim/{undo,swap,backup}; rm -rf  $HOME/.viminfo"
 alias xz="xz -T 0"
 alias zstd="zstdmt"
@@ -128,7 +128,7 @@ rg() {
 	echo '*' > "$HOME"/.gitignore
 }
 alias rt="rg TODO"
-alias fd="fd -H"
+alias fd="fd -H -E .git"
 alias find="fd -I ."
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
@@ -149,6 +149,7 @@ alias dspace="docker system df -v"
 alias docker-tui="lazydocker"
 alias dah='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sed "s# /# #g" | sudo tee -a /etc/hosts'
 alias drh='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sed "s# /# #g" | sudo xargs -I{} sed -i "/{}/d" /etc/hosts'
+alias dtest='docker run -p 5678:5678 hashicorp/http-echo -text="hello world"'
 # Or use `x11docker` command
 alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/home/lyonn/.Xauthority -it cenas:1'
 # Kubernetes
@@ -187,7 +188,7 @@ alias gss="git submodule update --init --recursive"
 alias gsu="git submodule foreach 'git checkout master && git pull'"
 alias git-clean-tags="git tag -l | xargs git tag -d ; git fetch --tags"
 rm_worktree() {
-	for b in "$@"; do rm -rf ../"$b"; done
+	for b in "$@"; do sudo rm -rf ../"$b"; done
 	git worktree prune
 	git branch -D "$@"
 }

@@ -2,13 +2,13 @@
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export TERMINAL="alacritty"
-export BROWSER="chromium"
-
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 export JAVA_FONTS="/usr/share/fonts/ttf"
 export CALIBRE_USE_SYSTEM_THEME=1
 export WINIT_HIDPI_FACTOR=1
+export TERMINAL="alacritty"
+export BROWSER="firefox"
+export MOZ_WEBRENDER=1 MOZ_X11_EGL=1
 
 # Ctrl + Alt + backspace to kill the X server
 setxkbmap -option terminate:ctrl_alt_bksp

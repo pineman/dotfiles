@@ -2,12 +2,12 @@
 
 <channel name="thunar" version="1.0">
   <property name="last-view" type="string" value="ThunarDetailsView"/>
-  <property name="last-icon-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_100_PERCENT"/>
-  <property name="last-window-width" type="int" value="632"/>
-  <property name="last-window-height" type="int" value="1046"/>
+  <property name="last-icon-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_400_PERCENT"/>
+  <property name="last-window-width" type="int" value="1920"/>
+  <property name="last-window-height" type="int" value="1038"/>
   <property name="last-window-maximized" type="bool" value="false"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_100_PERCENT"/>
-  <property name="last-details-view-column-widths" type="string" value="124,121,50,117,1388,50,107,65,110,175"/>
+  <property name="last-details-view-column-widths" type="string" value="124,121,50,117,1402,50,107,65,110,161"/>
   <property name="misc-single-click" type="bool" value="false"/>
   <property name="misc-directory-specific-settings" type="bool" value="true"/>
   <property name="last-separator-position" type="int" value="170"/>

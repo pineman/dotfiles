@@ -251,8 +251,8 @@ for_window [title="Microsoft Teams Notification"] floating enable
 assign [class="Firefox"] 1
 assign [class="Chromium"] 1
 assign [class="^.*qutebrowser"] 1
-assign [class="TelegramDesktop"] 9
-assign [class="Spotify"] 10
+assign [class="TelegramDesktop"] 10
+assign [class="Spotify"] 9
 
 focus_on_window_activation smart
 #focus_follows_mouse no
