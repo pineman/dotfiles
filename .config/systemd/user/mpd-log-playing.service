@@ -1,8 +1,0 @@
-[Unit]
-Description=Log MPD played songs
-
-[Service]
-ExecStart=/home/pineman/code/bin/mpd-log-playing.sh
-
-[Install]
-WantedBy=default.target

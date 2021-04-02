@@ -214,5 +214,6 @@
 				}
 			}
 		]
-	}
+	},
+	"explorer.confirmDelete": false
 }

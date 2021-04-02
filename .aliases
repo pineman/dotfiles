@@ -122,14 +122,10 @@ alias gop='cd $GOPATH'
 alias gradle="gradle --parallel"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
-rg() {
-	rm -rf "$HOME"/.gitignore
-	/usr/bin/rg -SL --hidden "$@"
-	echo '*' > "$HOME"/.gitignore
-}
 alias rt="rg TODO"
 alias fd="fd -H -E .git"
 alias find="fd -I ."
+alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 dcc() {
@@ -171,9 +167,9 @@ kubectlgetallforns() {
 # Git
 alias gs="git status"
 alias gb="git branch -vvaa"
-alias gd="PAGER=vimpager git diff"
+alias gd="git diff --no-color"
+alias gdc="git diff --no-color --cached"
 alias gdm="gd master..HEAD"
-alias gdc="PAGER=vimpager git diff --cached"
 alias gf="git fetch --all"
 alias gp="git pull"
 alias gr="git remote -vvv"
@@ -192,17 +188,9 @@ rm_worktree() {
 	git worktree prune
 	git branch -D "$@"
 }
-#git() {
-#  if [[ "$1" == "clone" && "$@" != *"--help"* ]]; then
-#    shift 1
-#    command git cl "$@"
-#  else
-#    command git "$@"
-#  fi
-#}
 
 # Connections
-alias p="ssh pineman@pineman.eu"
+alias p="ssh -Y pineman@pineman.eu"
 alias h="sshfs -o reconnect -o ServerAliveInterval=10 pineman.eu: ~/p; cd ~/p"
 alias uh="fusermount -u ~/p"
 alias c="[[ -d ~/p ]] && h; cd ~/p/Documents/computer || cd ~/Documents/computer"

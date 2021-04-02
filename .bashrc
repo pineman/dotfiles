@@ -22,10 +22,9 @@ grey='\[\e[38;5;244m\]'
 red='\[\e[38;5;1m\]'
 blue='\[\e[38;5;4m\]'
 mag='\[\e[38;5;5m\]'
-pinecone='\[\e[38;5;94m\]'
 r='\[\e[0m\]'
 
-PS1="$yellow\A$r $grey\u$r@$pinecone\h$r:$mag\w$r\n"
+PS1="$yellow\A$r $grey\u$r@$red\h$r:$mag\w$r\n"
 PS1+="$white\$?$r $ "
 
 . ~/.aliases

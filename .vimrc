@@ -8,12 +8,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 	Plugin 'VundleVim/Vundle.vim'
 	Plugin 'mbbill/undotree'
-	Plugin 'ap/vim-buftabline'
-
+	Plugin 'pineman/vim-buftabline'
+    " Syntax
 	Plugin 'PotatoesMaster/i3-vim-syntax'
 	Plugin 'elixir-editors/vim-elixir'
 	Plugin 'othree/yajs.vim'
 	Plugin 'leafgarland/typescript-vim'
+	Plugin 'chr4/nginx.vim'
+    " Colors
 	Plugin 'chriskempson/base16-vim'
 	"Plugin 'altercation/vim-colors-solarized'
 	"Plugin 'JulioJu/neovim-qt-colors-solarized-truecolor-only'
@@ -100,7 +102,9 @@ set hidden
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 nmap <C-j> :bp <BAR> bd #<CR>
-nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
+nmap <C-k> <Plug>NetrwRefresh
+map <C-u> <C-W>h
+map <C-i> <C-W>l
 nnoremap <C-p> :find *
 nnoremap <F2> :Lexplore<cr>
 nnoremap <F3> :UndotreeToggle<cr>
@@ -136,6 +140,7 @@ map <F9> :call SoftHardWrap()<cr>
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 15
+let g:netrw_keepdir = 0
 set title
 set showcmd
 set showmode
