@@ -238,6 +238,7 @@ EXEC					38;5;64
 .bin					38;5;3
 .nrg					38;5;3
 .qcow					38;5;3
+.qcow2					38;5;3
 .sparseimage			38;5;3
 .toast					38;5;3
 .vcd					38;5;3

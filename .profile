@@ -13,10 +13,8 @@ export _JAVA_OPTIONS="-Djdk.gtk.version=3 -Dswing.defaultlaf=com.sun.java.swing.
 #. /opt/esp-idf/export.sh &>/dev/null
 #. ${IDF_PATH}/add_path.sh &>/dev/null
 
-export PATH="$HOME/code/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="/usr/lib/ccache/bin:$PATH"
-export PATH=".:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 eval $(dircolors $HOME/.dircolors)

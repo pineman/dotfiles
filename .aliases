@@ -11,7 +11,7 @@ tailf() {
 	tail -F "$@"
 }
 alias cal='cal -y'
-alias cp="cp -i"
+alias cp="cp -i -r"
 alias mv="mv -i"
 alias rm="rm -i --one-file-system"
 alias df='df -h'
@@ -93,7 +93,7 @@ alias picom='picom -b --experimental-backends'
 alias kpicom='killall picom'
 alias smem='sudo smem -t -a -k -s swap'
 alias timer='echo timer started, use ctrl-c to stop; time cat'
-alias dmesg='dmesg -T'
+alias dmesg='sudo dmesg -T'
 show-iptables() {
 	echo 'SECURITY =============================================================='
 	sudo iptables -nvL -t security
@@ -132,6 +132,10 @@ dcc() {
 	docker stop -t 0 $(docker ps -aq) &>/dev/null
 	docker rm $(docker ps -aq) &>/dev/null
 }
+ds() {
+	docker stop -t 0 $1 &>/dev/null
+	docker rm $1 &>/dev/null
+}
 alias di="docker images"
 alias dv='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dvv='docker volume prune -f'
@@ -150,19 +154,17 @@ alias dtest='docker run -p 5678:5678 hashicorp/http-echo -text="hello world"'
 alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/home/lyonn/.Xauthority -it cenas:1'
 # Kubernetes
 alias k=kubectl
-kubectlgetall() {
+kube-getall() {
 	kubectl api-resources --verbs=list --namespaced -o name |
 	grep -v events | sort -u |
 	parallel kubectl get --all-namespaces --ignore-not-found --show-kind
 }
-kubectlgetallforns() {
-	for ns in $(kubectl get namespaces -o name | cut -d'/' -f2); do
-		printf "\n\nNamespace %s ---------------------------------------------------------" "$ns"
-		for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events" | sort -u); do
-			echo "Resource: $i"
-			kubectl -n "$ns" get --ignore-not-found "$i"
-		done
-	done
+kube-getall-ns() {
+  echo "Namespace $1 ---------------------------------------------------------"
+  for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events" | sort -u); do
+    echo "Resource: $i"
+    kubectl -n "$1" get --ignore-not-found "$i"
+  done
 }
 # Git
 alias gs="git status"

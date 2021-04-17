@@ -15,6 +15,7 @@ call vundle#begin()
 	Plugin 'othree/yajs.vim'
 	Plugin 'leafgarland/typescript-vim'
 	Plugin 'chr4/nginx.vim'
+	Plugin 'jvirtanen/vim-hcl'
     " Colors
 	Plugin 'chriskempson/base16-vim'
 	"Plugin 'altercation/vim-colors-solarized'
@@ -102,7 +103,7 @@ set hidden
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 nmap <C-j> :bp <BAR> bd #<CR>
-nmap <C-k> <Plug>NetrwRefresh
+nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
 map <C-u> <C-W>h
 map <C-i> <C-W>l
 nnoremap <C-p> :find *
