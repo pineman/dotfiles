@@ -128,18 +128,13 @@ alias find="fd -I ."
 alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
-dcc() {
-	docker stop -t 0 $(docker ps -aq) &>/dev/null
-	docker rm $(docker ps -aq) &>/dev/null
-}
-ds() {
+drm() {
 	docker stop -t 0 $1 &>/dev/null
 	docker rm $1 &>/dev/null
 }
 alias di="docker images"
 alias dv='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dvv='docker volume prune -f'
-alias dclean="dcc; docker system prune --all --volumes --force"
 alias dr="docker restart -t 0"
 alias dl="docker logs -f"
 docker_show_layers() {
@@ -192,18 +187,24 @@ rm_worktree() {
 }
 
 # Connections
-alias p="ssh -Y pineman@pineman.eu"
-alias h="sshfs -o reconnect -o ServerAliveInterval=10 pineman.eu: ~/p; cd ~/p"
+alias p="ssh pinecone"
+sshfs-home() {
+	sshfs -o reconnect -o ServerAliveInterval=10 $1: ~/p; cd ~/p
+}
+alias h="sshfs-home pinecone"
 alias uh="fusermount -u ~/p"
 alias c="[[ -d ~/p ]] && h; cd ~/p/Documents/computer || cd ~/Documents/computer"
 alias cl="cd ~/code/learn"
-alias sshtunnel="echo 'SOCKS5 proxy running on 127.0.0.1:1337 through encrypted ssh tunnel'; ssh -T -N pineman@pineman.eu -D 1337"
-alias transtunnel="echo 'Remote Transmission running on http://127.0.0.1:9091 through encrypted ssh tunnel'; ssh -L 9091:localhost:9091 -N -T pineman.eu"
-alias sync_mc="(cd ~/.minecraft/saves; rsync 'pineman.eu:/srv/craftbukkit/world*' .)"
+# Power-related
+alias lock="physlock"
+alias slock="systemctl suspend && physlock -d"
+alias soff="xset dpms force off"
+alias susp="systemctl suspend"
+alias hib="systemctl hibernate"
+alias hyb="systemctl hybrid-sleep"
+alias inhib_susp="setsid systemd-inhibit --what=sleep --who='\$USER' --why='Suspend deliberately inhibited by user.' sleep 99999d"
+alias enable_susp="pkill systemd-inhibit sleep"
 # Music
-alias mu="mpc volume 0"
-alias mun="mpc volume 70"
-alias n="ncmpcpp"
 addradio() {
 	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
 	mpc add "https://lainon.life/radio/cafe.ogg"
@@ -223,16 +224,6 @@ addradio() {
 	mpc add "http://stream.drumandbass.fm:9002"
 }
 
-# Power-related
-alias lock="physlock"
-alias slock="systemctl suspend && physlock -d"
-alias soff="xset dpms force off"
-alias susp="systemctl suspend"
-alias hib="systemctl hibernate"
-alias hyb="systemctl hybrid-sleep"
-alias inhib_susp="setsid systemd-inhibit --what=sleep --who='\$USER' --why='Suspend deliberately inhibited by user.' sleep 99999d"
-alias enable_susp="pkill systemd-inhibit sleep"
-
 # etc
 alias mupdf="mupdf -r 144"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
@@ -240,9 +231,6 @@ alias inxi="inxi -F"
 alias units="units --verbose"
 alias nload="nload -u M"
 alias pandoc="pandoc -s"
-oct() {
-	tobg octave --gui --persist --eval "edit $1"
-}
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias count_threads='count() { printf %s\\n "$#" }; count /proc/[0-9]*/task/[0-9]*'
 alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"

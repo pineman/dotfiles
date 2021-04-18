@@ -1,7 +1,3 @@
 {
-  "ip-forward": false,
-  "ip-masq": false,
-  "iptables": false,
-  "ip6tables": false,
-  "userland-proxy": true
+  "userland-proxy": false
 }
