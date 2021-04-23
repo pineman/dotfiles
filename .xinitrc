@@ -1,57 +1,35 @@
 #!/bin/sh
-#
-# ~/xinitrc
-#
-# Executed by startx (run your window manager from here)
-#
+export TERMINAL="alacritty"
+export BROWSER="firefox"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
+export JAVA_FONTS="/usr/share/fonts/ttf"
+export WINIT_HIDPI_FACTOR=1
+export MOZ_WEBRENDER=1 MOZ_X11_EGL=1
 
-# Commented as both tasks are automatically done by lightdm
-# Run system shell scripts
-#if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-#	for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-#		[ -x "$f" ] && . "$f"
-#	done
-# 	unset f
-#fi
-# Run user xsession shell script
-#script="$HOME/.xsession"
-#if [ -x "$script" -a ! -d "$script" ]; then
-#    . "$script"
-#fi
+# Ctrl + Alt + backspace to kill the X server
+setxkbmap -option terminate:ctrl_alt_bksp
+xhost -
+xset +dpms
+xset dpms 0 0 180
+#feh --no-fehbg --bg-scale "$HOME/.background.jpg"
+xsetroot -solid "#171717"
+setxkbmap us
+setxkbmap -option caps:swapescape
+setxkbmap -option compose:ralt
+#setxkbmap -option altwin:swap_alt_win
+xset r rate 140 55
 
-if [ -s ~/.Xresources ]; then
-    xrdb ~/.Xresources
-fi
-
-if [ -s ~/.Xmodmap ]; then
-    xmodmap ~/.Xmodmap
-fi
-
-function i3 {
-	#exec dbus-launch --exit-with-session i3 > ~/.i3.log
-	# LightDM launches dbus for us. either that or systemd idk
-	exec i3 > ~/.i3.log
-}
-
-function xfce {
-	exec dbus-launch --exit-with-session startxfce4
-}
-
-function twm {
-	twm &
-	xclock -geometry 50x50-1+1 &
-	xterm -geometry 80x50+494+51 &
-	xterm -geometry 80x20+494-0 &
-	exec xterm -geometry 80x66+0+0 -name login
-}
-
-default=i3
-session=${1:-$default}
-export XSESSION=$session
-case $session in
-	twm			) twm;;
-    i3			) i3;;
-    xfce|xfce4	) xfce;;
-    # No known session, try to run it as command
-    *) exec $1;;
-esac
+# Startup apps
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
+Thunar --daemon &
+nm-applet &
+pasystray &
+redshift-gtk &
+xfce4-clipman &
+menutray -gtk3 -i &
+#picom -b
+blueman-applet &
+dbus-launch --exit-with-session i3 > ~/.i3.log

@@ -107,10 +107,10 @@ nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
 map <C-u> <C-W>h
 map <C-i> <C-W>l
 nnoremap <C-p> :find *
-nnoremap <F2> :Lexplore<cr>
-nnoremap <F3> :UndotreeToggle<cr>
-nnoremap <F4> :make<cr>
-nnoremap <F5> :set invpaste paste?<CR>
+nnoremap <F3> :Lexplore<cr>
+nnoremap <F4> :UndotreeToggle<cr>
+nnoremap <F5> :make<cr>
+nnoremap <F6> :set invpaste paste?<CR>
 set pastetoggle=<F5>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 nnoremap <esc><esc> :w<cr> :silent! noh <cr>

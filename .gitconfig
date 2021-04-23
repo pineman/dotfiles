@@ -26,7 +26,7 @@
 	rlog = reflog --pretty=short --date=iso
 	filehist = log -p --follow
 	pushf = push --force-with-lease
-	push-tags = push --tags --prune
+	pusht = push --tags --prune
 	co = checkout
 	stash-show = stash show -p
 	fetcha = fetch --all --tags --force --prune --prune-tags
