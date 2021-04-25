@@ -1,0 +1,5 @@
+set ignorecase smartcase
+set hlsearch
+vnoremap // y/<C-R>"<CR>
+nnoremap <esc><esc> :w<cr> :noh <cr>
+set clipboard=ideaput
