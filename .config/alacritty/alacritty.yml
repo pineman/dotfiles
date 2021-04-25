@@ -840,4 +840,6 @@ key_bindings:
   - { key: PageUp, action: ScrollPageUp, mode: ~Alt }
   - { key: PageDown, action: ScrollPageDown, mode: ~Alt }
   - { key: N, mods: Command, action: SpawnNewInstance }
+  - { key: N, mods: Control, action: SpawnNewInstance }
   - { key: T, mods: Command, action: SpawnNewInstance }
+  - { key: T, mods: Control, action: SpawnNewInstance }
