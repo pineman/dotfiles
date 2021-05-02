@@ -1,219 +1,219 @@
 {
-	"editor.fontSize": 14.5,
-	"editor.fontFamily": "Iosevka, Menlo, Monaco, 'Courier New', monospace",
-	"workbench.editor.enablePreviewFromQuickOpen": false,
-	"workbench.editor.enablePreview": false,
-	"workbench.colorTheme": "Oceanic Plus",
-	"window.titleBarStyle": "custom",
-	"editor.fontLigatures": false,
-	"editor.renderWhitespace": "all",
-	"editor.wordWrap": "on",
-	"explorer.autoReveal": false,
-	"git.enabled": true,
-	"gitlens.currentLine.scrollable": false,
-	"editor.rulers": [
-		80
-	],
-	"editor.cursorBlinking": "solid",
-	"editor.cursorStyle": "line",
-	"editor.autoClosingBrackets": "never",
-	"editor.autoClosingQuotes": "never",
-	"html.autoClosingTags": false,
-	"editor.codeLens": true,
-	"telemetry.enableTelemetry": false,
-	"telemetry.enableCrashReporter": false,
-	"files.trimTrailingWhitespace": true,
-	"files.autoSave": "afterDelay",
-	"editor.multiCursorModifier": "alt",
-	"workbench.startupEditor": "none",
-	"breadcrumbs.enabled": true,
-	"keyboard.dispatch": "keyCode",
-	"editor.autoIndent": "full",
-	"editor.insertSpaces": false,
-	"explorer.confirmDragAndDrop": false,
-	"vim.useSystemClipboard": true,
-	"vim.useCtrlKeys": true,
-	"vim.hlsearch": true,
-	"vim.normalModeKeyBindingsNonRecursive": [
-		{
-			"before": [
-				"<Esc>"
-			],
-			"commands": [
-				":nohl"
-			]
-		}
-	],
-  "vim.handleKeys": {
-    "<C-w>": false,
-  },
-	"files.associations": {
-		"*.m": "matlab",
-		"*.gls": "c"
-	},
-	"[html]": {
-		"editor.tabSize": 2
-	},
-	"[css]": {
-		"editor.tabSize": 2
-	},
-	"[less]": {
-		"editor.tabSize": 2
-	},
-	"[php]": {
-		"editor.tabSize": 2
-	},
-	"[elixir]": {
-		"editor.tabSize": 2
-	},
-	"[python]": {
-		"editor.insertSpaces": true,
-		"editor.tabSize": 4
-	},
-	"[javascript]": {
-		"editor.insertSpaces": true,
-		"editor.tabSize": 2
-	},
-	"spellright.language": [
-		"en_US"
-	],
-	"spellright.documentTypes": [
-		"markdown",
-		"latex",
-		"plaintext"
-	],
-	"go.useLanguageServer": true,
-	"go.formatTool": "goimports",
-	"go.delveConfig": {
-		"dlvLoadConfig": {
-			"followPointers": true,
-			"maxVariableRecurse": 1,
-			"maxStringLen": 999,
-			"maxArrayValues": 999,
-			"maxStructFields": -1
-		},
-		"apiVersion": 2,
-		"showGlobalVariables": false
-	},
-	"workbench.colorCustomizations": {
-		"editor.selectionBackground": "#135564",
-		"editor.selectionHighlightBackground": "#135564"
-	},
-	"gitlens.hovers.currentLine.over": "line",
-	"gitlens.codeLens.enabled": false,
-	"gitlens.statusBar.format": "${id}, ${author}, ${agoOrDate} • ${message}",
-	"gitlens.currentLine.format": "${id}, ${author}, ${agoOrDate} • ${message}",
-	"git.ignoreLegacyWarning": true,
-	"editor.tokenColorCustomizations": {
-		"textMateRules": [
-			{
-				"scope": [
-					"comment",
-					"comment.block",
-					"comment.block.documentation",
-					"comment.line",
-					"constant",
-					"constant.character",
-					"constant.character.escape",
-					"constant.numeric",
-					"constant.numeric.integer",
-					"constant.numeric.float",
-					"constant.numeric.hex",
-					"constant.numeric.octal",
-					"constant.other",
-					"constant.regexp",
-					"constant.rgb-value",
-					"emphasis",
-					"entity",
-					"entity.name",
-					"entity.name.class",
-					"entity.name.function",
-					"entity.name.method",
-					"entity.name.section",
-					"entity.name.selector",
-					"entity.name.tag",
-					"entity.name.type",
-					"entity.other",
-					"entity.other.attribute-name",
-					"entity.other.inherited-class",
-					"invalid",
-					"invalid.deprecated",
-					"invalid.illegal",
-					"keyword",
-					"keyword.control",
-					"keyword.operator",
-					"keyword.operator.new",
-					"keyword.operator.assignment",
-					"keyword.operator.arithmetic",
-					"keyword.operator.logical",
-					"keyword.other",
-					"markup",
-					"markup.bold",
-					"markup.changed",
-					"markup.deleted",
-					"markup.heading",
-					"markup.inline.raw",
-					"markup.inserted",
-					"markup.italic",
-					"markup.list",
-					"markup.list.numbered",
-					"markup.list.unnumbered",
-					"markup.other",
-					"markup.quote",
-					"markup.raw",
-					"markup.underline",
-					"markup.underline.link",
-					"meta",
-					"meta.block",
-					"meta.cast",
-					"meta.class",
-					"meta.function",
-					"meta.function-call",
-					"meta.preprocessor",
-					"meta.return-type",
-					"meta.selector",
-					"meta.tag",
-					"meta.type.annotation",
-					"meta.type",
-					"punctuation.definition.string.begin",
-					"punctuation.definition.string.end",
-					"punctuation.separator",
-					"punctuation.separator.continuation",
-					"punctuation.terminator",
-					"storage",
-					"storage.modifier",
-					"storage.type",
-					"string",
-					"string.interpolated",
-					"string.other",
-					"string.quoted",
-					"string.quoted.double",
-					"string.quoted.other",
-					"string.quoted.single",
-					"string.quoted.triple",
-					"string.regexp",
-					"string.unquoted",
-					"strong",
-					"support",
-					"support.class",
-					"support.constant",
-					"support.function",
-					"support.other",
-					"support.type",
-					"support.type.property-name",
-					"support.variable",
-					"variable",
-					"variable.language",
-					"variable.name",
-					"variable.other",
-					"variable.other.readwrite",
-					"variable.parameter"
-				],
-				"settings": {
-					"fontStyle": ""
-				}
-			}
-		]
-	},
-	"explorer.confirmDelete": false
+    "editor.fontSize": 14.5,
+    "editor.fontFamily": "Iosevka, Menlo, Monaco, 'Courier New', monospace",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.colorTheme": "Oceanic Plus",
+    "window.titleBarStyle": "custom",
+    "editor.fontLigatures": false,
+    "editor.renderWhitespace": "all",
+    "editor.wordWrap": "on",
+    "explorer.autoReveal": false,
+    "git.enabled": true,
+    "gitlens.currentLine.scrollable": false,
+    "editor.rulers": [
+        80
+    ],
+    "editor.cursorBlinking": "solid",
+    "editor.cursorStyle": "line",
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "html.autoClosingTags": false,
+    "editor.codeLens": true,
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "afterDelay",
+    "editor.multiCursorModifier": "alt",
+    "workbench.startupEditor": "none",
+    "breadcrumbs.enabled": true,
+    "keyboard.dispatch": "keyCode",
+    "editor.autoIndent": "full",
+    "editor.insertSpaces": false,
+    "explorer.confirmDragAndDrop": false,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<Esc>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        }
+    ],
+    "vim.handleKeys": {
+        "<C-w>": false
+    },
+    "files.associations": {
+        "*.m": "matlab",
+        "*.gls": "c"
+    },
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    "[css]": {
+        "editor.tabSize": 2
+    },
+    "[less]": {
+        "editor.tabSize": 2
+    },
+    "[php]": {
+        "editor.tabSize": 2
+    },
+    "[elixir]": {
+        "editor.tabSize": 2
+    },
+    "[python]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[javascript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "spellright.language": [
+        "en_US"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+    "go.useLanguageServer": true,
+    "go.formatTool": "goimports",
+    "go.delveConfig": {
+        "dlvLoadConfig": {
+            "followPointers": true,
+            "maxVariableRecurse": 1,
+            "maxStringLen": 999,
+            "maxArrayValues": 999,
+            "maxStructFields": -1
+        },
+        "apiVersion": 2,
+        "showGlobalVariables": false
+    },
+    "workbench.colorCustomizations": {
+        "editor.selectionBackground": "#135564",
+        "editor.selectionHighlightBackground": "#135564"
+    },
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.codeLens.enabled": false,
+    "gitlens.statusBar.format": "${id}, ${author}, ${agoOrDate} \u2022 ${message}",
+    "gitlens.currentLine.format": "${id}, ${author}, ${agoOrDate} \u2022 ${message}",
+    "git.ignoreLegacyWarning": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "comment.block",
+                    "comment.block.documentation",
+                    "comment.line",
+                    "constant",
+                    "constant.character",
+                    "constant.character.escape",
+                    "constant.numeric",
+                    "constant.numeric.integer",
+                    "constant.numeric.float",
+                    "constant.numeric.hex",
+                    "constant.numeric.octal",
+                    "constant.other",
+                    "constant.regexp",
+                    "constant.rgb-value",
+                    "emphasis",
+                    "entity",
+                    "entity.name",
+                    "entity.name.class",
+                    "entity.name.function",
+                    "entity.name.method",
+                    "entity.name.section",
+                    "entity.name.selector",
+                    "entity.name.tag",
+                    "entity.name.type",
+                    "entity.other",
+                    "entity.other.attribute-name",
+                    "entity.other.inherited-class",
+                    "invalid",
+                    "invalid.deprecated",
+                    "invalid.illegal",
+                    "keyword",
+                    "keyword.control",
+                    "keyword.operator",
+                    "keyword.operator.new",
+                    "keyword.operator.assignment",
+                    "keyword.operator.arithmetic",
+                    "keyword.operator.logical",
+                    "keyword.other",
+                    "markup",
+                    "markup.bold",
+                    "markup.changed",
+                    "markup.deleted",
+                    "markup.heading",
+                    "markup.inline.raw",
+                    "markup.inserted",
+                    "markup.italic",
+                    "markup.list",
+                    "markup.list.numbered",
+                    "markup.list.unnumbered",
+                    "markup.other",
+                    "markup.quote",
+                    "markup.raw",
+                    "markup.underline",
+                    "markup.underline.link",
+                    "meta",
+                    "meta.block",
+                    "meta.cast",
+                    "meta.class",
+                    "meta.function",
+                    "meta.function-call",
+                    "meta.preprocessor",
+                    "meta.return-type",
+                    "meta.selector",
+                    "meta.tag",
+                    "meta.type.annotation",
+                    "meta.type",
+                    "punctuation.definition.string.begin",
+                    "punctuation.definition.string.end",
+                    "punctuation.separator",
+                    "punctuation.separator.continuation",
+                    "punctuation.terminator",
+                    "storage",
+                    "storage.modifier",
+                    "storage.type",
+                    "string",
+                    "string.interpolated",
+                    "string.other",
+                    "string.quoted",
+                    "string.quoted.double",
+                    "string.quoted.other",
+                    "string.quoted.single",
+                    "string.quoted.triple",
+                    "string.regexp",
+                    "string.unquoted",
+                    "strong",
+                    "support",
+                    "support.class",
+                    "support.constant",
+                    "support.function",
+                    "support.other",
+                    "support.type",
+                    "support.type.property-name",
+                    "support.variable",
+                    "variable",
+                    "variable.language",
+                    "variable.name",
+                    "variable.other",
+                    "variable.other.readwrite",
+                    "variable.parameter"
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ]
+    },
+    "explorer.confirmDelete": false
 }
