@@ -85,6 +85,7 @@ alias -g L='|& less -R'
 alias -s txt=cat
 alias -s {timer,service}="sudo vim"
 eval "$(fasd --init auto)"
+export DIRENV_LOG_FORMAT=
 eval "$(direnv hook zsh)"
 alias d='dirs -v | tail -n +2 | head -10'
 alias 1='cd -1'

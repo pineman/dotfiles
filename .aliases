@@ -39,7 +39,7 @@ alias tee="tee -a"
 alias nmap="nmap -v"
 alias vim="nvim"
 alias vimdiff="nvim -d"
-alias clean_vim="git clean -fdx $HOME/.vim/{undo,swap,backup}; rm -rf  $HOME/.viminfo"
+alias clean_vim="git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo"
 alias xz="xz -T 0"
 alias zstd="zstdmt"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
@@ -96,15 +96,15 @@ alias smem='sudo smem -t -a -k -s swap'
 alias timer='echo timer started, use ctrl-c to stop; time cat'
 alias dmesg='sudo dmesg -T'
 show-iptables() {
-	echo 'SECURITY =============================================================='
+	printf 'SECURITY ==============================================================\n'
 	sudo iptables -nvL -t security
-	echo '\nRAW ==================================================================='
+	printf '\nRAW ===================================================================\n'
 	sudo iptables -nvL -t raw
-	echo '\nMANGLE ================================================================'
+	printf '\nMANGLE ================================================================\n'
 	sudo iptables -nvL -t mangle
-	echo '\nNAT ==================================================================='
+	printf '\nNAT ===================================================================\n'
 	sudo iptables -nvL -t nat
-	echo '\nFILTER ================================================================'
+	printf '\nFILTER ================================================================\n'
 	sudo iptables -nvL -t filter
 }
 
@@ -129,13 +129,9 @@ alias find="fd -I ."
 alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
-dcc() {
-	docker stop -t 0 $(docker ps -aq) &>/dev/null
-	docker rm $(docker ps -aq) &>/dev/null
-}
+alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
 drm() {
-	docker stop -t 0 $1 &>/dev/null
-	docker rm $1 &>/dev/null
+	docker rm -f "$1" &>/dev/null
 }
 alias di="docker images"
 alias dv='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
@@ -186,7 +182,7 @@ alias gss="git submodule update --init --recursive"
 alias gsu="git submodule foreach 'git checkout master && git pull'"
 alias git-clean-tags="git tag -l | xargs git tag -d ; git fetch --tags"
 rm_worktree() {
-	for b in "$@"; do sudo rm -rf ../"$b"; done
+	for b in "$@"; do rm -rf ../"$b"; done
 	git worktree prune
 	git branch -D "$@"
 }
@@ -194,7 +190,7 @@ rm_worktree() {
 # Connections
 alias p="ssh pinecone"
 sshfs-home() {
-	sshfs -o reconnect -o ServerAliveInterval=10 $1: ~/p; cd ~/p
+	sshfs -o reconnect -o ServerAliveInterval=10 "$1": ~/p; cd ~/p || exit
 }
 alias h="sshfs-home pinecone"
 alias uh="fusermount -u ~/p"
@@ -207,7 +203,7 @@ alias soff="xset dpms force off"
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
-alias inhib_susp="setsid systemd-inhibit --what=sleep --who=$USER --why='Suspend deliberately inhibited by user.' sleep 99999d"
+alias inhib_susp="setsid systemd-inhibit --what=sleep --who=\$USER --why='Suspend deliberately inhibited by user.' sleep 99999d"
 alias allow_susp="pkill systemd-inhibit"
 # Music
 addradio() {
@@ -277,13 +273,12 @@ ex() {
 
 # Fun stuff
 alias randomfact='wget randomfunfacts.com -qO- 2>/dev/null | grep \<strong\> | sed "s;^.*<i>\(.*\)</i>.*$;\1;"'
-alias cmdusage="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl |  head -n15"
 alias cmatrix="cmatrix -u 7"
 alias matrix='echo -e "\e[32m"; while :; do for i in {1..16}; do r="$(($RANDOM % 2))"; if [[ $(($RANDOM % 5)) == 1 ]]; then if [[ $(($RANDOM % 4)) == 1 ]]; then v+="\e[1m $r	"; else v+="\e[2m $r   "; fi; else v+="		"; fi; done; echo -e "$v"; v=""; done'
 alias matrix2='echo -e "\e[31m"; while $t; do for i in `seq 1 30`;do r="$[($RANDOM % 2)]";h="$[($RANDOM % 4)]";if [ $h -eq 1 ]; then v="\e[1m $r";else v="\e[2m $r";fi;v2="$v2 $v";done;echo -e $v2;v2="";done;'
 alias matrix3='COL=$(( $(tput cols) / 2 )); clear; tput setaf 2; while :; do tput cup $((RANDOM%COL)) $((RANDOM%COL)); printf "%$((RANDOM%COL))s" $((RANDOM%2)); done'
 alias matrix4='echo -ne "\e[32m" ; while true ; do echo -ne "\e[$(($RANDOM % 2 + 1))m" ; tr -c "[:print:]" " " < /dev/urandom | dd count=1 bs=50 2> /dev/null ; done'
-alias matrix5='tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=lcase,unblock | GREP_COLOR="1;32" grep --color "[^ ]"'
+alias matrix5='tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=lcase,unblock &>/dev/null | GREP_COLOR="1;32" grep --color "[^ ]"'
 alias colorrainbow='seq 0 255 | while read i; do printf "${i-1}: \x1b[48;5;${i}m\n"; sleep .01; done'
 alias screenfetch="echo; screenfetch -c 41,12"
 minor() {

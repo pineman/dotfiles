@@ -1,2 +1,0 @@
-#!/bin/sh
-alacritty -o window.dimensions.columns=70 -o window.dimensions.lines=4 -t bash_run -e sh -c 'bash --rcfile $HOME/.bash_run'

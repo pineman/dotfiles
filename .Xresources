@@ -1,9 +1,0 @@
-!UXTerm*font: -*-misc-fixed-*-*-*-14-*-*-*-*-*-*-*
-UXTerm*font: -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
-UXTerm*allowBoldFonts: false
-UXTerm*background: black
-UXTerm*foreground: white
-Xcursor.size: 16
-
-Xft.dpi: 96
-!Xft.dpi: 192
