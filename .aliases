@@ -150,14 +150,14 @@ alias dtest='docker run -p 5678:5678 hashicorp/http-echo -text="hello world"'
 alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/home/lyonn/.Xauthority -it cenas:1'
 # Kubernetes
 alias k=kubectl
+source <(kubectl completion zsh | sed 's/kubectl/k/g')
 kube-getall() {
-	kubectl api-resources --verbs=list --namespaced -o name |
-	grep -v events | sort -u |
-	parallel kubectl get --all-namespaces --ignore-not-found --show-kind
+	kubectl api-resources --verbs=list -o name | grep -v events \
+		| parallel kubectl get -A --ignore-not-found --show-kind
 }
 kube-getall-ns() {
   echo "Namespace $1 ---------------------------------------------------------"
-  for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events" | sort -u); do
+  for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events"); do
     echo "Resource: $i"
     kubectl -n "$1" get --ignore-not-found "$i"
   done

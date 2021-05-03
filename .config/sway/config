@@ -8,7 +8,9 @@ gaps inner 4
 gaps outer 0
 smart_gaps on
 hide_edge_borders --i3 smart
-font pango:Sans, Icons 10
+font pango:Sans 10.5
+titlebar_padding 4 3
+titlebar_border_thickness 1
 client.background #000000
 # class                 border  backgr. text    indicator child_border
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
@@ -17,7 +19,9 @@ client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 bar {
-	status_command i3status
+	status_command i3status | status.py
+	#status_command i3status
+	font pango:Sans, Icons 10.5
 }
 # Binds
 set $mod Mod1
@@ -68,10 +72,11 @@ workspace_auto_back_and_forth yes
 for_window [app_id="qalculate-gtk"] floating enable
 # Applications
 bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec foot
 bindsym $mod+d exec bemenu-run -b --fn 'sans 12'
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym Mod4+L exec physlock -d -s -m
+bindsym Mod4+L exec swaylock
 bindsym XF86AudioMute exec amixer sset Master toggle
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -103,6 +108,7 @@ input type:touchpad {
 # Startup
 exec mako
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec gammastep-indicator -l 38.7:-9 -t 6200:3700
 #exec swayidle -w \
 #         timeout 300 'swaylock -f -c 000000' \
 #         timeout 600 'swaymsg "output * dpms off"' \

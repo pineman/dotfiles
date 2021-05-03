@@ -3,8 +3,8 @@
 fields=0 48 109 110 39 47 37 18 50 46 2 49 1
 sort_key=46
 sort_direction=-1
-tree_sort_key=46
-tree_sort_direction=-1
+tree_sort_key=2
+tree_sort_direction=1
 hide_kernel_threads=1
 hide_userland_threads=1
 shadow_other_users=0

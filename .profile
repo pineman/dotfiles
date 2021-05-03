@@ -1,7 +1,8 @@
 export PATH="$HOME/.local/bin:$PATH"
-eval $(dircolors $HOME/.dircolors)
+source $HOME/.ls_colors
 export EDITOR="nvim"
 export PAGER="nvimpager"
+export BROWSER="firefox"
 export XDG_CONFIG_HOME="$HOME/.config"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
