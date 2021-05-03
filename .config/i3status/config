@@ -23,7 +23,7 @@ order += "disk /"
 order += "memory"
 order += "cpu_usage"
 order += "load"
-order += "cpu_temperature 1"
+order += "cpu_temperature 0"
 order += "tztime date"
 order += "tztime time"
 
