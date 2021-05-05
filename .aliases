@@ -92,7 +92,8 @@ alias borg="borg -p"
 alias zlist='sudo zfs list -t all -o name,type,mountpoint,creation,readonly,encryption,dedup'
 alias picom='picom -b --experimental-backends'
 alias kpicom='killall picom'
-alias smem='sudo smem -t -a -k -s swap'
+alias ssmem='sudo smem -t -a -k -s swap'
+alias smem='sudo smem -t -a -k -s rss'
 alias timer='echo timer started, use ctrl-c to stop; time cat'
 alias dmesg='sudo dmesg -T'
 show-iptables() {
@@ -235,9 +236,11 @@ alias pandoc="pandoc -s"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias count_threads='count() { printf %s\\n "$#" }; count /proc/[0-9]*/task/[0-9]*'
 alias xev="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
-# TTY-things
-#alias startx="killall redshift &>/dev/null; \startx ~/.xinitrc; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
-alias startx="killall redshift &>/dev/null; sudo systemctl start lightdm; (killall redshift &>/dev/null; redshift -m drm &>/dev/null &)"
+magic_kb() {
+	local action='connect'
+	if [[ "$1" == 'off' ]]; then action='disconnect'; fi
+	echo -e "$action 64:0B:D7:1E:9B:DD\n" | bluetoothctl
+}
 
 # ex - archive extractor
 # usage: ex <file>
