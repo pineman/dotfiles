@@ -15,12 +15,12 @@ alias cp="cp -i -r"
 alias mv="mv -i"
 alias rm="rm -i --one-file-system"
 alias df='df -h'
-alias ps='ps auxfww'
+alias ps='ps --ppid 2 -N --forest -o user:15,ppid,pid,cmd'
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias less="less -R"
-alias free='free -m'
+alias free='free -mw'
 alias dfc='dfc -d -t -tmpfs,dev -m'
 alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
@@ -240,6 +240,11 @@ magic_kb() {
 	local action='connect'
 	if [[ "$1" == 'off' ]]; then action='disconnect'; fi
 	echo -e "$action 64:0B:D7:1E:9B:DD\n" | bluetoothctl
+}
+ds4() {
+	local action='connect'
+	if [[ "$1" == 'off' ]]; then action='disconnect'; fi
+	echo -e "$action D0:27:88:1A:51:B7\n" | bluetoothctl
 }
 
 # ex - archive extractor
