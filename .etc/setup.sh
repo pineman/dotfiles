@@ -4,7 +4,7 @@ if ! [ "$(id -u)" = 0 ]; then
   echo "run as root"
   exit 1
 fi
-fd -t f -E setup.sh -E srsbsns.conf -E srsbsns-lts.conf -E swayshell.desktop -E pkglist.txt -x sh -c '
+fd -I -H -t f -E setup.sh -E srsbsns.conf -E srsbsns-lts.conf -E swayshell.desktop -E pkglist.txt -x sh -c '
   echo linking {}
   mkdir -p /etc/{//}
   rm /etc/{}
