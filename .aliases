@@ -126,7 +126,7 @@ alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
 alias rt="rg TODO"
 alias fd="fd -H -E .git"
-alias find="fd -I ."
+alias find="fd -H -I ."
 alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
@@ -196,7 +196,6 @@ sshfs-home() {
 alias h="sshfs-home pinecone"
 alias uh="fusermount -u ~/p"
 alias c="[[ -d ~/p ]] && h; cd ~/p/Documents/computer || cd ~/Documents/computer"
-alias cl="cd ~/code/learn"
 # Power-related
 alias lock="physlock"
 alias slock="systemctl suspend && physlock -d"

@@ -1,6 +1,8 @@
 aalib
 accountsservice
 acl
+acpi
+acsccid
 adobe-source-code-pro-fonts
 adwaita-icon-theme
 alacritty
@@ -39,6 +41,7 @@ binutils
 bison
 bluez
 bluez-libs
+bluez-utils
 bolt
 boost-libs
 bridge-utils
@@ -56,11 +59,11 @@ cairo
 cairomm
 cantarell-fonts
 ccache
+ccid
 cdparanoia
 cdrtools
 cheese
 chromaprint
-chromium
 cifs-utils
 clutter
 clutter-gst
@@ -87,6 +90,7 @@ dbus-glib
 dbus-python
 dconf
 dconf-editor
+ddd
 desktop-file-utils
 device-mapper
 dfc
@@ -111,7 +115,9 @@ enchant
 eog
 evince
 exempi
+exfatprogs
 exiv2
+exo
 expat
 faac
 faad2
@@ -161,9 +167,11 @@ geocode-glib
 gettext
 ghostscript
 giflib
+girara
 git
 gjs
 glib-networking
+glib-perl
 glib2
 glibc
 glibmm
@@ -184,6 +192,7 @@ gnome-keyring
 gnome-logs
 gnome-menus
 gnome-online-accounts
+gnome-power-manager
 gnome-remote-desktop
 gnome-screenshot
 gnome-session
@@ -204,6 +213,7 @@ gobject-introspection-runtime
 gom
 google-chrome
 google-cloud-sdk
+gparted
 gpgme
 gpm
 gptfdisk
@@ -393,6 +403,7 @@ libcloudproviders
 libcroco
 libcue
 libcups
+libcurl-gnutls
 libdaemon
 libdatrie
 libdbusmenu-glib
@@ -547,6 +558,7 @@ libunistring
 libunwind
 liburing
 libusb
+libusb-compat
 libusbmuxd
 libutf8proc
 libuv
@@ -575,6 +587,8 @@ libxcursor
 libxdamage
 libxdmcp
 libxext
+libxfce4ui
+libxfce4util
 libxfixes
 libxfont2
 libxft
@@ -586,6 +600,7 @@ libxkbfile
 libxklavier
 libxml2
 libxmu
+libxp
 libxpm
 libxrandr
 libxrender
@@ -602,7 +617,10 @@ licenses
 lilv
 linux-api-headers
 linux-firmware
+linux-lts
+linux-lts-headers
 linux-zen
+linux-zen-headers
 llvm-libs
 lm_sensors
 lmdb
@@ -615,6 +633,7 @@ lua52-expat
 lua52-lpeg
 lua52-luajson
 lua52-socket
+lua53
 luajit
 lvm2
 lxappearance
@@ -664,10 +683,11 @@ networkmanager-openvpn
 nftables
 ninja
 nm-connection-editor
+nmap
 node-gyp
-nodejs
+nodejs-lts-fermium
 noto-fonts-emoji
-npm
+npm6
 npth
 nspr
 nss
@@ -676,12 +696,16 @@ numactl
 nvimpager-git
 nxproxy
 oniguruma
+open-iscsi
+open-isns
 openal
 openbsd-netcat
 opencore-amr
 openexr
 openjpeg2
+openmotif
 openmpi
+opensc
 openssh
 openssl
 openvpn
@@ -689,9 +713,11 @@ opus
 orc
 osinfo-db
 p11-kit
+p7zip
 pacman
 pacman-contrib
 pacman-mirrorlist
+pahole
 pam
 pambase
 pamixer
@@ -705,6 +731,8 @@ pavucontrol
 pciutils
 pcre
 pcre2
+pcsc-perl
+pcsc-tools
 pcsclite
 peg
 perl
@@ -749,6 +777,7 @@ pipewire-media-session
 pixman
 pkcs11-helper
 pkgconf
+playerctl
 polkit
 polkit-gnome
 poppler
@@ -756,6 +785,7 @@ poppler-glib
 popt
 portaudio
 procps-ng
+ps_mem
 psmisc
 pulseaudio
 pulseaudio-alsa
@@ -816,7 +846,6 @@ qt5ct
 quazip
 raptor
 rav1e
-re2
 readline
 remmina
 rest
@@ -858,15 +887,18 @@ sound-theme-freedesktop
 soundtouch
 source-highlight
 spandsp
+speedtest-cli
 speex
 speexdsp
 spice
 spice-gtk
 spirv-tools
+spotify
 sqlite
 sratom
 srt
 sshfs
+sshpass
 startup-notification
 steam
 strace
@@ -887,7 +919,9 @@ taglib
 talloc
 tar
 tcl
+tcpdump
 tdb
+teams
 telegram-desktop
 telepathy-glib
 tepl
@@ -895,8 +929,12 @@ terraform
 tevent
 texinfo
 thin-provisioning-tools
+thunar
+thunar-archive-plugin
+thunar-volman
 tk
 tlp
+tlpui
 totem-pl-parser
 tracker
 tracker-miners
@@ -912,6 +950,7 @@ ttf-font-icons
 ttf-iosevka-fixed
 ttf-liberation
 ttf-opensans
+tumbler
 twolame
 tzdata
 uchardet
@@ -949,6 +988,7 @@ wayland-protocols
 wdisplays
 webkit2gtk
 webrtc-audio-processing
+wget
 which
 wildmidi
 wireshark-cli
@@ -976,6 +1016,7 @@ xdg-user-dirs
 xdg-user-dirs-gtk
 xdg-utils
 xf86-input-libinput
+xfconf
 xfsprogs
 xkeyboard-config
 xorg-fonts-encodings
@@ -994,7 +1035,6 @@ xvidcore
 xxhash
 xz
 yajl
-yarn
 yay-bin
 yelp
 yelp-xsl
@@ -1002,6 +1042,7 @@ youtube-dl
 yubico-c
 yubico-c-client
 yubikey-personalization
+zathura
 zbar
 zenity
 zeromq

@@ -85,7 +85,7 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+n exec qalculate-gtk
 bindsym Print exec grimshot copy area
-bindsym $mod+f exec nautilus
+bindsym $mod+f exec thunar
 bindsym $mod+p exec firefox
 bindsym $mod+c exec google-chrome-stable
 bindsym $mod+o exec dbeaver
@@ -107,12 +107,16 @@ input type:touchpad {
 	tap enabled
 	natural_scroll enabled
 }
+input type:pointer {
+	accel_profile flat
+}
 # Startup
 exec mako
 exec nm-applet --indicator
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gammastep-indicator -l 38.7:-9 -t 6200:3700
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec thunar --daemon
 #exec swayidle -w \
 #         timeout 300 'swaylock -f -c 000000' \
 #         timeout 600 'swaymsg "output * dpms off"' \
