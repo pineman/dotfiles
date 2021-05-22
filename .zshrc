@@ -74,19 +74,20 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^H' forward-word
 bindkey '^L' autosuggest-accept
-bindkey '^E' fasd-complete-d
-bindkey '^R' fasd-complete-f
 alias -g G='|& grep -i'
 alias -g VI='|& vim -'
-alias -g X='$(xclip -o)'
 alias -g H='|& head'
 alias -g T='|& tail'
 alias -g L='|& less -R'
 alias -s txt=cat
 alias -s {timer,service}="sudo vim"
-eval "$(fasd --init auto)"
-export DIRENV_LOG_FORMAT=
-eval "$(direnv hook zsh)"
+type fasd &>/dev/null \
+	&& eval "$(fasd --init auto)" \
+	&& bindkey '^E' fasd-complete-d \
+	&& bindkey '^R' fasd-complete-f
+type direnv &>/dev/null \
+	&& export DIRENV_LOG_FORMAT= \
+	&& eval "$(direnv hook zsh)"
 alias d='dirs -v | tail -n +2 | head -10'
 alias 1='cd -1'
 alias 2='cd -2'

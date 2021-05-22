@@ -150,8 +150,9 @@ alias dtest='docker run -p 5678:5678 hashicorp/http-echo -text="hello world"'
 # Or use `x11docker` command
 alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/home/lyonn/.Xauthority -it cenas:1'
 # Kubernetes
-alias k=kubectl
-source <(kubectl completion zsh | sed 's/kubectl/k/g')
+type kubectl &>/dev/null \
+	&& alias k=kubectl \
+	&& source <(kubectl completion zsh | sed 's/kubectl/k/g')
 kube-getall() {
 	kubectl api-resources --verbs=list -o name | grep -v events \
 		| parallel kubectl get -A --ignore-not-found --show-kind
@@ -240,10 +241,10 @@ magic_kb() {
 	if [[ "$1" == 'off' ]]; then action='disconnect'; fi
 	echo -e "$action 64:0B:D7:1E:9B:DD\n" | bluetoothctl
 }
-ds4() {
+ds5() {
 	local action='connect'
 	if [[ "$1" == 'off' ]]; then action='disconnect'; fi
-	echo -e "$action D0:27:88:1A:51:B7\n" | bluetoothctl
+	echo -e "$action 4C:B9:9B:74:9D:6F\n" | bluetoothctl
 }
 
 # ex - archive extractor

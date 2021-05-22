@@ -6,11 +6,7 @@ call vundle#begin()
 	Plugin 'mbbill/undotree'
 	Plugin 'pineman/vim-buftabline'
 	" Syntax
-	Plugin 'PotatoesMaster/i3-vim-syntax'
 	Plugin 'terminalnode/sway-vim-syntax'
-	Plugin 'elixir-editors/vim-elixir'
-	Plugin 'othree/yajs.vim'
-	Plugin 'leafgarland/typescript-vim'
 	Plugin 'chr4/nginx.vim'
 	Plugin 'jvirtanen/vim-hcl'
 	" Colors

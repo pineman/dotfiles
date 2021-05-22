@@ -1,6 +1,4 @@
 # vim:filetype=swayconfig
-# i3 config file (v4)
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # Apperance
 default_border pixel 3
 default_floating_border pixel 2
@@ -111,17 +109,17 @@ input type:pointer {
 	accel_profile flat
 }
 # Startup
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec mako
 exec nm-applet --indicator
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gammastep-indicator -l 38.7:-9 -t 6200:3700
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec thunar --daemon
-#exec swayidle -w \
-#         timeout 300 'swaylock -f -c 000000' \
-#         timeout 600 'swaymsg "output * dpms off"' \
-#         resume 'swaymsg "output * dpms on"' \
-#         before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f' \
+         timeout 315 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f'
 # Workspaces
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
