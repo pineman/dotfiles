@@ -108,6 +108,8 @@ show-iptables() {
 	printf '\nFILTER ================================================================\n'
 	sudo iptables -nvL -t filter
 }
+alias zp='zpool status; zpool list'
+alias z='zfs list'
 
 # Dev
 alias make='make -j$(nproc)'
