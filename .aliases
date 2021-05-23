@@ -109,7 +109,7 @@ show-iptables() {
 	sudo iptables -nvL -t filter
 }
 alias zp='zpool status; zpool list'
-alias z='zfs list'
+alias z='zfs list -t all'
 
 # Dev
 alias make='make -j$(nproc)'
@@ -151,6 +151,7 @@ alias drh='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddr
 alias dtest='docker run -p 5678:5678 hashicorp/http-echo -text="hello world"'
 # Or use `x11docker` command
 alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/home/lyonn/.Xauthority -it cenas:1'
+alias clean-docker='zfs list -t all -o name G docker/ | xargs -L1 sudo zfs destroy -R -f'
 # Kubernetes
 type kubectl &>/dev/null \
 	&& alias k=kubectl \

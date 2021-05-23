@@ -20,7 +20,7 @@ set termguicolors
 colorscheme base16-oceanicnext
 set colorcolumn=80
 set cursorline
-set mouse=a
+set mouse=
 set clipboard=unnamedplus
 set ignorecase smartcase
 set hlsearch

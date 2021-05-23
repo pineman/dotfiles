@@ -1,0 +1,10 @@
+[Match]
+Name=br0
+
+[Network]
+DNS=192.168.1.254
+Domains=Home
+LLMNR=false
+MulticastDNS=true
+Address=192.168.1.2/24
+Gateway=192.168.1.254
