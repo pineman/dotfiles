@@ -115,11 +115,16 @@ exec mako
 exec nm-applet --indicator
 exec gammastep-indicator -l 38.7:-9 -t 6200:3700
 exec thunar --daemon
+#exec swayidle -w \
+#	timeout 300 'swaylock -f' \
+#	timeout 315 'swaymsg "output * dpms off"' \
+#	resume 'swaymsg "output * dpms on"' \
+#	before-sleep 'swaylock -f' \
+#	lock 'swaylock -f'
 exec swayidle -w \
-         timeout 300 'swaylock -f' \
-         timeout 315 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f'
+	timeout 300 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"' \
+	lock 'swaylock -f'
 # Workspaces
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
