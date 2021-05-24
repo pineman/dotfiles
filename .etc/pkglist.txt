@@ -6,6 +6,7 @@ alsa-lib
 alsa-topology-conf
 alsa-ucm-conf
 alsa-utils
+arch-install-scripts
 archlinux-keyring
 argon2
 at-spi2-atk
@@ -110,6 +111,7 @@ iputils
 iso-codes
 iw
 jack
+jnettop
 js78
 json-c
 json-glib
@@ -256,6 +258,7 @@ openssl
 opus
 p11-kit
 pacman
+pacman-contrib
 pacman-mirrorlist
 pam
 pambase
@@ -277,6 +280,7 @@ polkit
 popt
 procps-ng
 psmisc
+pv
 python
 python-appdirs
 python-arrow
