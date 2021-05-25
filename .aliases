@@ -109,7 +109,7 @@ show-iptables() {
 	sudo iptables -nvL -t filter
 }
 alias zp='zpool status; zpool list'
-alias z='zfs list -t all | grep -v docker/'
+alias z='zfs list -t all -o name,creation,used,available,referenced,mountpoint'
 
 # Dev
 alias make='make -j$(nproc)'
