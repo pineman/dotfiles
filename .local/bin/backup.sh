@@ -7,3 +7,4 @@ new=$(perl -l -e 'print ++$ARGV[0]' $last_recv)
 zfs snapshot -r ssd@$new
 zfs send -R -I $last_recv ssd@$new | zfs recv -Fdu hdd
 backblaze-b2 sync --noProgress --keepDays 30 --threads 8 /home/pineman/Documents/.zfs/snapshot/$new b2://pineman-Documents
+zpool export hdd
