@@ -14,3 +14,4 @@ set hlsearch
 set noincsearch
 hi Cursor blend=100
 set guicursor+=a:Cursor/lCursor
+set mouse=

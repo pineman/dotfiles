@@ -10,3 +10,21 @@
 	path = .zsh/fast-syntax-highlighting
 	url = https://github.com/zdharma/fast-syntax-highlighting
 	branch = master
+[submodule ".vim/bundle/undotree"]
+	path = .vim/bundle/undotree
+	url = https://github.com/mbbill/undotree
+[submodule ".vim/bundle/vim-buftabline"]
+	path = .vim/bundle/vim-buftabline
+	url = https://github.com/pineman/vim-buftabline
+[submodule ".vim/bundle/sway-vim-syntax"]
+	path = .vim/bundle/sway-vim-syntax
+	url = https://github.com/terminalnode/sway-vim-syntax
+[submodule ".vim/bundle/nginx.vim"]
+	path = .vim/bundle/nginx.vim
+	url = https://github.com/chr4/nginx.vim
+[submodule ".vim/bundle/vim-hcl"]
+	path = .vim/bundle/vim-hcl
+	url = https://github.com/jvirtanen/vim-hcl
+[submodule ".vim/bundle/base16-vim"]
+	path = .vim/bundle/base16-vim
+	url = https://github.com/chriskempson/base16-vim

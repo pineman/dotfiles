@@ -17,8 +17,7 @@ client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 bar {
-	status_command i3status | status.py
-	#status_command i3status
+	status_command i3status
 	font pango:Sans, Icons 10.5
 }
 # Binds
@@ -76,7 +75,7 @@ bindsym $mod+Control+Return exec foot
 bindsym $mod+d exec bemenu-run -b --fn 'sans 12'
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym Mod4+L exec swaylock
+bindsym Mod4+L exec physlock -sm
 bindsym XF86AudioMute exec amixer sset Master toggle
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -116,15 +115,15 @@ exec nm-applet --indicator
 exec gammastep-indicator -l 38.7:-9 -t 6200:3700
 exec thunar --daemon
 #exec swayidle -w \
-#	timeout 300 'swaylock -f' \
+#	timeout 300 'physlock -sm' \
 #	timeout 315 'swaymsg "output * dpms off"' \
 #	resume 'swaymsg "output * dpms on"' \
-#	before-sleep 'swaylock -f' \
-#	lock 'swaylock -f'
+#	before-sleep 'physlock -dsm' \
+#	lock 'physlock -sm'
 exec swayidle -w \
 	timeout 300 'swaymsg "output * dpms off"' \
 	resume 'swaymsg "output * dpms on"' \
-	lock 'swaylock -f'
+	lock 'physlock -sm'
 # Workspaces
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
