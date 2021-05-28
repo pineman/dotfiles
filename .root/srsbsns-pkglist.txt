@@ -31,6 +31,7 @@ bash
 bash-completion
 bc
 bcg729
+bdf2psf
 bemenu
 bemenu-wayland
 binutils
@@ -64,6 +65,7 @@ colord
 confuse
 containerd
 coreutils
+cpio
 cracklib
 cryptsetup
 cups
@@ -526,8 +528,6 @@ linux-api-headers
 linux-firmware
 linux-lts
 linux-lts-headers
-linux-zen
-linux-zen-headers
 llvm-libs
 lm_sensors
 lpsolve
@@ -608,12 +608,12 @@ openvpn
 opus
 orc
 osinfo-db
+otf2bdf
 p11-kit
 p7zip
 pacman
 pacman-contrib
 pacman-mirrorlist
-pahole
 pam
 pambase
 pamixer
@@ -818,6 +818,7 @@ tcpdump
 tdb
 teams
 telegram-desktop
+terminus-font
 terraform
 texinfo
 thin-provisioning-tools
@@ -930,7 +931,6 @@ zathura
 zenity
 zeromq
 zfs-linux-lts
-zfs-linux-zen
 zfs-utils
 zimg
 zita-alsa-pcmi

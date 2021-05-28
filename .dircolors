@@ -1030,6 +1030,7 @@ EXEC					38;5;64
 .pcf					38;5;66
 .bdf					38;5;66
 .otf					38;5;66
+.psf					38;5;66
 # Postscript fonts
 .PFA					38;5;66
 .pfa					38;5;66
