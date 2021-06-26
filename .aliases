@@ -16,6 +16,7 @@ alias mv="mv -i"
 alias rm="rm -i --one-file-system"
 alias df='df -h'
 alias ps='ps --ppid 2 -N --forest -o user:15,ppid,pid,cmd'
+alias psw='ps -ww'
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
@@ -110,6 +111,7 @@ show-iptables() {
 }
 alias zp='zpool status; zpool list'
 alias z='zfs list -t all -o name,creation,used,available,referenced,mountpoint'
+alias sway='sway &>> ~/.local/log/sway.log'
 
 # Dev
 alias make='make -j$(nproc)'

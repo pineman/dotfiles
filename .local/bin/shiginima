@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar $(dirname "${BASH_SOURCE[0]}")/launcher.jar
+java -jar /usr/local/bin/launcher.jar

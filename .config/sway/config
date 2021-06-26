@@ -76,10 +76,11 @@ bindsym $mod+d exec bemenu-run -b --fn 'sans 12'
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym Mod4+L exec physlock -sm
-bindsym XF86AudioMute exec amixer sset Master toggle
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86Display exec wlr-randr --output eDP-1 --on
 bindsym $mod+n exec qalculate-gtk
 bindsym Print exec grimshot copy area
 bindsym $mod+f exec thunar
@@ -114,6 +115,7 @@ exec mako
 exec nm-applet --indicator
 exec gammastep-indicator -l 38.7:-9 -t 6200:3700
 exec thunar --daemon
+# keyring started by pam
 #exec swayidle -w \
 #	timeout 300 'physlock -sm' \
 #	timeout 315 'swaymsg "output * dpms off"' \

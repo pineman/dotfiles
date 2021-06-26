@@ -1,16 +1,11 @@
 {
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
     "editor.fontSize": 14.5,
     "editor.fontFamily": "Iosevka, Menlo, Monaco, 'Courier New', monospace",
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.enablePreview": false,
-    "workbench.colorTheme": "Oceanic Plus",
-    "window.titleBarStyle": "custom",
     "editor.fontLigatures": false,
     "editor.renderWhitespace": "all",
     "editor.wordWrap": "on",
-    "explorer.autoReveal": false,
-    "git.enabled": true,
-    "gitlens.currentLine.scrollable": false,
     "editor.rulers": [
         80
     ],
@@ -18,22 +13,34 @@
     "editor.cursorStyle": "line",
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": "never",
-    "html.autoClosingTags": false,
-    "editor.codeLens": true,
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
-    "files.trimTrailingWhitespace": true,
-    "files.autoSave": "afterDelay",
-    "editor.multiCursorModifier": "alt",
-    "workbench.startupEditor": "none",
-    "breadcrumbs.enabled": true,
-    "keyboard.dispatch": "keyCode",
     "editor.autoIndent": "full",
     "editor.insertSpaces": false,
+    "editor.codeLens": true,
+    "editor.multiCursorModifier": "alt",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.startupEditor": "none",
+    "window.titleBarStyle": "custom",
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "afterDelay",
+    "breadcrumbs.enabled": true,
+    "keyboard.dispatch": "keyCode",
     "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "explorer.autoReveal": false,
+
+    "git.enabled": true,
+    "git.ignoreLegacyWarning": true,
+    "gitlens.currentLine.scrollable": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.codeLens.enabled": false,
+    "gitlens.statusBar.format": "${id}, ${author}, ${agoOrDate} \u2022 ${message}",
+    "gitlens.currentLine.format": "${id}, ${author}, ${agoOrDate} \u2022 ${message}",
+
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
+    "vim.incsearch": false,
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -44,9 +51,16 @@
             ]
         }
     ],
+    // "vim.visualModeKeyBindingsNonRecursive": [
+    //     {
+    //         "before": [ "/", "/"],
+    //         "after": [ "y", "/"]
+    //     }
+    // ],
     "vim.handleKeys": {
         "<C-w>": false
     },
+
     "files.associations": {
         "*.m": "matlab",
         "*.gls": "c"
@@ -54,6 +68,7 @@
     "[html]": {
         "editor.tabSize": 2
     },
+    "html.autoClosingTags": false,
     "[css]": {
         "editor.tabSize": 2
     },
@@ -74,14 +89,6 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 2
     },
-    "spellright.language": [
-        "en_US"
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext"
-    ],
     "go.useLanguageServer": true,
     "go.formatTool": "goimports",
     "go.delveConfig": {
@@ -95,15 +102,21 @@
         "apiVersion": 2,
         "showGlobalVariables": false
     },
+
+    "spellright.language": [
+        "en_US"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+
+    "workbench.colorTheme": "Oceanic Plus",
     "workbench.colorCustomizations": {
         "editor.selectionBackground": "#135564",
         "editor.selectionHighlightBackground": "#135564"
     },
-    "gitlens.hovers.currentLine.over": "line",
-    "gitlens.codeLens.enabled": false,
-    "gitlens.statusBar.format": "${id}, ${author}, ${agoOrDate} \u2022 ${message}",
-    "gitlens.currentLine.format": "${id}, ${author}, ${agoOrDate} \u2022 ${message}",
-    "git.ignoreLegacyWarning": true,
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
@@ -215,5 +228,4 @@
             }
         ]
     },
-    "explorer.confirmDelete": false
 }

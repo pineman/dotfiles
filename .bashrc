@@ -14,6 +14,7 @@ shopt -s extglob
 shopt -s globstar
 shopt -s histappend
 shopt -s hostcomplete
+set +H
 # Prompt
 white='\[\e[38;5;15m\]'
 yellow='\[\e[38;5;3m\]'

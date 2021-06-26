@@ -26,7 +26,7 @@ zstyle ':completion:*' rehash true
 zmodload zsh/complist
 zstyle ':completion:*' menu select
 zstyle ':completion:*:descriptions' format $'completing %B%d%b'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # really slow!
 zstyle ':completion:*' verbose true
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:manuals' separate-sections true
@@ -78,7 +78,7 @@ alias -g G='|& grep -i'
 alias -g VI='|& vim -'
 alias -g H='|& head'
 alias -g T='|& tail'
-alias -g L='|& less -R'
+alias -g L='|& $PAGER'
 alias -s txt=cat
 alias -s {timer,service}="sudo vim"
 type fasd &>/dev/null \
