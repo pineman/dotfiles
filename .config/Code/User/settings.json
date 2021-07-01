@@ -28,6 +28,7 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "explorer.autoReveal": false,
+    "workbench.tree.indent": 20,
 
     "git.enabled": true,
     "git.ignoreLegacyWarning": true,
@@ -228,4 +229,5 @@
             }
         ]
     },
+    "docker.showStartPage": false,
 }

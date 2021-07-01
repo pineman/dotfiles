@@ -7,9 +7,7 @@ alias which="which -a"
 alias ls='ls -hX --group-directories-first --time-style=+"%d/%m/%Y %H:%M:%S" --color=auto -F --quoting-style=literal'
 alias ll='ls -l'
 alias la='ls -Al'
-tailf() {
-	tail -F "$@"
-}
+alias tailf='tail -F'
 alias cal='cal -y'
 alias cp="cp -i -r"
 alias mv="mv -i"
@@ -17,9 +15,8 @@ alias rm="rm -i --one-file-system"
 alias df='df -h'
 alias ps='ps --ppid 2 -N --forest -o user:15,ppid,pid,cmd'
 alias psw='ps -ww'
+alias pgrep='pgrep -af'
 alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
 alias less="less -R"
 alias free='free -mw'
 alias dfc='dfc -d -t -tmpfs,dev -m'
@@ -27,11 +24,13 @@ alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -shc'
 alias rsync='rsync -vPhr'
-alias scp='rsync'
 alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 alias diff='diff -u'
 which colordiff &>/dev/null && alias diff='colordiff -u'
+alias fd="fd -H -E .git"
+alias find="fd -H -I ."
+alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
 alias vmstat="vmstat -S M"
 alias w="w -i"
 alias last="last -w"
@@ -40,13 +39,11 @@ alias tee="tee -a"
 alias nmap="nmap -v"
 alias vim="nvim"
 alias vimdiff="nvim -d"
-alias clean_vim="git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo"
 alias xz="xz -T 0"
 alias zstd="zstdmt"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias killall="killall -v -I"
 alias pgrep="pgrep -l"
-alias xsel="xsel -b"
 alias ..="cd -- .."
 alias ...="cd -- ../.."
 alias ....="cd -- ../../.."
@@ -66,14 +63,9 @@ alias o="(thunar &>/dev/null &)"
 u() {
 	tobg alacritty --working-directory .
 }
-alias pacro="yay -Yc"
-alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
-alias hddpoff="udisksctl power-off -b"
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
-alias ethspeed="while :; do sleep 0.2; cat /sys/class/net/enp0s25/speed; done"
-alias edit_dns="sudo chattr -i /etc/resolv.conf && sudo vim /etc/resolv.conf && sudo chattr +i /etc/resolv.conf"
 alias sstp="sudo ss -lnrp -f inet; sudo ss -lnrp -f inet6"
 l() {
 	# 1st argument: filename to search
@@ -84,15 +76,9 @@ l() {
 }
 alias tm="tmux -CC attach -d || tmux -CC new"
 alias ta="tmux attach -d || tmux new"
-alias r='ranger --choosedir=/tmp/.rangerdir; LASTDIR=`cat /tmp/.rangerdir`; cd "$LASTDIR"'
+alias r='ranger --choosedir=/tmp/.rangerdir; cd $(cat /tmp/.rangerdir)'
 alias m="vim notes.md"
 alias t="vim todo.md"
-alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
-alias borg="borg -p"
-alias zlist='sudo zfs list -t all -o name,type,mountpoint,creation,readonly,encryption,dedup'
-alias picom='picom -b --experimental-backends'
-alias kpicom='killall picom'
 alias ssmem='sudo smem -t -a -k -s swap'
 alias smem='sudo smem -t -a -k -s rss'
 alias timer='echo timer started, use ctrl-c to stop; time cat'
@@ -110,7 +96,7 @@ show-iptables() {
 	sudo iptables -nvL -t filter
 }
 alias zp='zpool status; zpool list'
-alias z='zfs list -t all -o name,creation,used,available,referenced,mountpoint'
+alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
 alias sway='sway &>> ~/.local/log/sway.log'
 
 # Dev
@@ -129,9 +115,6 @@ alias gradle="gradle --parallel"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
 alias rt="rg TODO"
-alias fd="fd -H -E .git"
-alias find="fd -H -I ."
-alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
@@ -150,10 +133,8 @@ alias dspace="docker system df -v"
 alias docker-tui="lazydocker"
 alias dah='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sed "s# /# #g" | sudo tee -a /etc/hosts'
 alias drh='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sed "s# /# #g" | sudo xargs -I{} sed -i "/{}/d" /etc/hosts'
-alias dtest='docker run -p 5678:5678 hashicorp/http-echo -text="hello world"'
 # Or use `x11docker` command
 alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/home/lyonn/.Xauthority -it cenas:1'
-alias clean-docker='zfs list -t all -o name G docker/ | xargs -L1 sudo zfs destroy -R -f'
 # Kubernetes
 type kubectl &>/dev/null \
 	&& alias k=kubectl \
@@ -175,14 +156,12 @@ alias gb="git branch -vvaa"
 alias gd="git diff --no-color"
 alias gdc="git diff --no-color --cached"
 alias gdm="gd master..HEAD"
-alias gf="git fetch --all"
-alias gp="git pull"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
 alias grm="git rebase -i master"
 alias ga="git add"
 alias gitk="gitk --all &"
-alias gg="git gui"
+alias gg="git gui &"
 alias gl="PAGER= git lg"
 alias glm="gl master..HEAD"
 alias gss="git submodule update --init --recursive"
@@ -205,12 +184,11 @@ alias c="[[ -d ~/p ]] && h; cd ~/p/Documents/computer || cd ~/Documents/computer
 # Power-related
 alias lock="physlock"
 alias slock="systemctl suspend && physlock -d"
-alias soff="xset dpms force off"
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
-alias inhib_susp="setsid systemd-inhibit --what=sleep --who=\$USER --why='Suspend deliberately inhibited by user.' sleep 99999d"
-alias allow_susp="pkill systemd-inhibit"
+alias inhib_susp="tobg sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
+alias allow_susp="sudo pkill systemd-inhibit"
 # Music
 addradio() {
 	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
@@ -240,6 +218,12 @@ alias nload="nload -u M"
 alias pandoc="pandoc -s"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias count_threads='count() { printf %s\\n "$#" }; count /proc/[0-9]*/task/[0-9]*'
+alias clean_vim="git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo"
+alias pacro="yay -Yc"
+alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
+alias hddpoff="udisksctl power-off -b"
+alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
+alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 magic_kb() {
 	local action='connect'
 	if [[ "$1" == 'off' ]]; then action='disconnect'; fi
@@ -292,7 +276,6 @@ alias matrix3='COL=$(( $(tput cols) / 2 )); clear; tput setaf 2; while :; do tpu
 alias matrix4='echo -ne "\e[32m" ; while true ; do echo -ne "\e[$(($RANDOM % 2 + 1))m" ; tr -c "[:print:]" " " < /dev/urandom | dd count=1 bs=50 2> /dev/null ; done'
 alias matrix5='tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=lcase,unblock &>/dev/null | GREP_COLOR="1;32" grep --color "[^ ]"'
 alias colorrainbow='seq 0 255 | while read i; do printf "${i-1}: \x1b[48;5;${i}m\n"; sleep .01; done'
-alias screenfetch="echo; screenfetch -c 41,12"
 minor() {
 	hexdump /dev/urandom -v -e '/1 "%u\n"' | awk '{ split("0,2,3,5,7,8,10,12",a,","); for (i = 0; i < 1; i+= 0.00001) printf("%08X\n", 100*sin(1382*exp((a[$1 % 8]/12)*log(2))*i)) }' | xxd -r -p | aplay -c 2 -f S32_LE -r 16000
 }
