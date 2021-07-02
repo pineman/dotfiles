@@ -18,6 +18,10 @@
 	prune = true
 [pager]
 	branch = false
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
 [commit]
 	#gpgsign = true
 [alias]
