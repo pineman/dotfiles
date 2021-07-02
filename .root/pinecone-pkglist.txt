@@ -58,6 +58,7 @@ gcc-libs
 gdbm
 gettext
 git
+git-delta-bin
 glib2
 glibc
 gmp
@@ -153,6 +154,7 @@ linux-firmware
 linux-lts
 linux-lts-headers
 lm_sensors
+lsof
 luajit
 lz4
 lzo
@@ -270,6 +272,7 @@ time
 tlp
 tmux
 transmission-cli
+tree-sitter
 tzdata
 unibilium
 unzip
