@@ -67,13 +67,6 @@ alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
 alias sstp="sudo ss -lnrp -f inet; sudo ss -lnrp -f inet6"
-l() {
-	# 1st argument: filename to search
-	# 2nd argument: match given basename
-	basename=""
-	[ "$#" -gt 1 ] && basename="$2"
-	locate -i -r "$basename.*$1.*"
-}
 alias tm="tmux -CC attach -d || tmux -CC new"
 alias ta="tmux attach -d || tmux new"
 alias r='ranger --choosedir=/tmp/.rangerdir; cd $(cat /tmp/.rangerdir)'
