@@ -14,4 +14,6 @@ yay -Qqs | tail -n +2 > $(cat /etc/hostname)-pkglist.txt
 chown -R pineman: .
 dircolors ~/.dircolors > ~/.ls_colors; chown pineman: ~/.ls_colors
 
-code --install-extension golang.Go
+sudo -u pineman code --install-extension marcoms.oceanic-plus
+sudo -u pineman code --install-extension vscodevim.vim
+sudo -u pineman code --install-extension golang.Go

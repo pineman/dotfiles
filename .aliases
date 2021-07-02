@@ -91,6 +91,8 @@ show-iptables() {
 alias zp='zpool status; zpool list'
 alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
 alias sway='sway &>> ~/.local/log/sway.log'
+alias screen-off="swaymsg -s /run/user/1000/sway-ipc.1000.*.sock 'output * dpms off'"
+alias screen-on="swaymsg -s /run/user/1000/sway-ipc.1000.*.sock 'output * dpms on'"
 
 # Dev
 alias make='make -j$(nproc)'
@@ -110,11 +112,15 @@ alias gem_clean='gem uninstall -aIx'
 alias rt="rg TODO"
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
+alias dss="docker stop -t 0 \$(docker ps -aq) &>/dev/null"
 alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
 drm() {
 	docker rm -f "$1" &>/dev/null
 }
 alias di="docker images"
+drmia() {
+	di -a | grep "$1" | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi "$1":{} &>/dev/null
+}
 alias dv='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dvv='docker volume prune -f'
 alias dr="docker restart -t 0"
