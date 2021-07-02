@@ -13,3 +13,5 @@ cp us-esc-caps.map.gz /usr/share/kbd/keymaps/i386/qwerty/
 yay -Qqs | tail -n +2 > $(cat /etc/hostname)-pkglist.txt
 chown -R pineman: .
 dircolors ~/.dircolors > ~/.ls_colors; chown pineman: ~/.ls_colors
+
+code --install-extension golang.Go
