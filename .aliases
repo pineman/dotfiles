@@ -160,8 +160,7 @@ alias gitk="gitk --all &"
 alias gg="git gui &"
 alias gl="PAGER= git lg"
 alias glm="gl master..HEAD"
-alias gss="git submodule update --init --recursive"
-alias gsu="git submodule foreach 'git checkout master && git pull'"
+alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d ; git fetch --tags"
 rm_worktree() {
 	for b in "$@"; do rm -rf ../"$b"; done

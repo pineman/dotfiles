@@ -30,6 +30,7 @@
 	rlog = reflog --pretty=short --date=iso
 	filehist = log -p --follow
 	pushf = push --force-with-lease
+	pushff = push --force
 	pusht = push --tags --prune
 	co = checkout
 	stash-show = stash show -p
