@@ -83,9 +83,10 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86Display exec wlr-randr --output eDP-1 --on
 bindsym $mod+n exec qalculate-gtk
 bindsym Print exec grimshot copy area
+bindsym $mod+backslash exec grimshot copy area
 bindsym $mod+f exec thunar
 bindsym $mod+p exec firefox
-bindsym $mod+c exec google-chrome-stable
+bindsym $mod+c exec chromium
 bindsym $mod+o exec dbeaver
 bindsym $mod+y exec code
 bindsym $mod+Shift+y exec idea
@@ -95,6 +96,7 @@ bindsym $mod+Shift+i exec keepassxc
 bindsym $mod+g exec remmina
 bindsym $mod+Shift+g exec wireshark
 # Input
+bindsym XF86Eject exec ydotool key delete
 input type:keyboard {
 	xkb_layout us
 	xkb_options caps:swapescape,compose:ralt
@@ -116,6 +118,7 @@ exec mako
 exec nm-applet --indicator
 exec gammastep-indicator -l 38.7:-9 -t 6200:3700
 exec thunar --daemon
+exec blueman-tray
 #exec swayidle -w \
 #	timeout 300 'physlock -sm' \
 #	timeout 315 'swaymsg "output * dpms off"' \

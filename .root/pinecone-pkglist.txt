@@ -58,7 +58,7 @@ gcc-libs
 gdbm
 gettext
 git
-git-delta-bin
+git-delta
 glib2
 glibc
 gmp
@@ -72,6 +72,7 @@ guile
 gzip
 hdparm
 htop-vim-git
+http-parser
 hwids
 iana-etc
 icu
@@ -103,6 +104,7 @@ libelf
 libevent
 libffi
 libgcrypt
+libgit2
 libgpg-error
 libidn2
 libjpeg-turbo
@@ -201,6 +203,7 @@ pkgconf
 polkit
 popt
 procps-ng
+prometheus-node-exporter
 psmisc
 pv
 python
@@ -239,6 +242,7 @@ python-websocket-client
 python-yaml
 python-zipp
 qemu-headless
+rclone
 readline
 ripgrep
 rsync
@@ -249,7 +253,6 @@ rubygems
 run-parts
 runc
 s-nail
-scdoc
 seabios
 sed
 shadow
@@ -271,7 +274,6 @@ texinfo
 time
 tlp
 tmux
-transmission-cli
 tree-sitter
 tzdata
 unibilium

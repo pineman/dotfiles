@@ -1,4 +1,4 @@
-" sed -i '/<option name="FONT_TYPE".*/d' ~/.config/JetBrains/IntelliJIdea2021.1/jba_config/colors/*
+" disable italics: sed -i '/<option name="FONT_TYPE".*/d' ~/.config/JetBrains/IntelliJIdea2021.1/jba_config/colors/*
 set ignorecase smartcase
 set hlsearch
 set noincsearch

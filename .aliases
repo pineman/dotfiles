@@ -15,6 +15,8 @@ alias rm="rm -i --one-file-system"
 alias df='df -h'
 alias ps='ps --ppid 2 -N --forest -o user:15,ppid,pid,cmd'
 alias psw='ps -ww'
+alias pstree='sudo \pstree -aStpnT'
+alias pstreet='sudo \pstree -aStpnt'
 alias grep="grep --color=auto"
 alias less="less -R"
 alias free='free -mw'
@@ -113,15 +115,11 @@ alias rt="rg TODO"
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 alias dss="docker stop -t 0 \$(docker ps -aq) &>/dev/null"
 alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
-drm() {
-	docker rm -f "$1" &>/dev/null
-}
 alias di="docker images"
 drmia() {
-	di -a | grep "$1" | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi "$1":{} &>/dev/null
+	docker images -a | grep "$1" | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi "$1":{}
 }
 alias dv='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
-alias dvv='docker volume prune -f'
 alias dr="docker restart -t 0"
 alias dl="docker logs -f"
 docker_show_layers() {
@@ -156,7 +154,7 @@ alias gdc="git diff --no-color --cached"
 alias gdm="gd master..HEAD"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
-alias grm="git rebase -i master"
+alias grm="git rebase -i master || git rebase -i main"
 alias ga="git add"
 alias gitk="gitk --all &"
 alias gg="git gui &"
@@ -185,8 +183,7 @@ alias slock="systemctl suspend && physlock -d"
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
-alias inhib_susp="tobg sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
-alias allow_susp="sudo pkill systemd-inhibit"
+alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
 # Music
 addradio() {
 	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
@@ -223,11 +220,13 @@ alias hddpoff="udisksctl power-off -b"
 alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 magic_kb() {
+	sudo rfkill unblock bluetooth
 	local action='connect'
 	if [[ "$1" == 'off' ]]; then action='disconnect'; fi
 	echo -e "$action 64:0B:D7:1E:9B:DD\n" | bluetoothctl
 }
 ds5() {
+	sudo rfkill unblock bluetooth
 	local action='connect'
 	if [[ "$1" == 'off' ]]; then action='disconnect'; fi
 	echo -e "$action 4C:B9:9B:74:9D:6F\n" | bluetoothctl
