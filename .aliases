@@ -1,7 +1,9 @@
 #!/bin/bash
 # vim: ft=sh
 # General system aliases
-alias sudo="sudo " # this enables sudo to use these aliases
+alias vim="nvim"
+alias vimdiff="nvim -d"
+alias sudo="sudo "
 alias chown="chown -h"
 alias which="which -a"
 alias ls='ls -hX --group-directories-first --time-style=+"%d/%m/%Y %H:%M:%S" --color=auto -F --quoting-style=literal'
@@ -32,14 +34,13 @@ which colordiff &>/dev/null && alias diff='colordiff -u'
 alias fd="fd -H -E .git"
 alias find="fd -H -I ."
 alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
+alias rrg="rg --no-ignore"
 alias vmstat="vmstat -S M"
-alias w="w -i"
+#alias w="w -i"
 alias last="last -w"
 alias pinky="pinky -w"
 alias tee="tee -a"
 alias nmap="nmap -v"
-alias vim="nvim"
-alias vimdiff="nvim -d"
 alias xz="xz -T 0"
 alias zstd="zstdmt"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
@@ -67,12 +68,12 @@ u() {
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
-alias sstp="sudo ss -lnrp -f inet; sudo ss -lnrp -f inet6"
+alias sstp="sudo ss -lnrp -f inet"
+alias sstp6="sudo ss -lnrp -f inet6"
 alias tm="tmux -CC attach -d || tmux -CC new"
 alias ta="tmux attach -d || tmux new"
 alias r='ranger --choosedir=/tmp/.rangerdir; cd $(cat /tmp/.rangerdir)'
 alias m="vim notes.md"
-alias t="vim todo.md"
 alias ssmem='sudo smem -t -a -k -s swap'
 alias smem='sudo smem -t -a -k -s rss'
 alias timer='echo timer started, use ctrl-c to stop; time cat'
@@ -94,6 +95,8 @@ alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,en
 alias sway='sway &>> ~/.local/log/sway.log'
 alias screen-off="swaymsg -s /run/user/1000/sway-ipc.1000.*.sock 'output * dpms off'"
 alias screen-on="swaymsg -s /run/user/1000/sway-ipc.1000.*.sock 'output * dpms on'"
+alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
+alias ex='unp'
 
 # Dev
 alias make='make -j$(nproc)'
@@ -111,7 +114,9 @@ alias gradle="gradle --parallel"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
 alias rt="rg TODO"
+alias wireshark_ssl="(wireshark -o ssl.keylog_file:ssl_keylog -o ssl.debug_file:debug.txt) &>/dev/null &; export SSLKEYLOGFILE=ssl_keylog"
 # Docker
+alias docker-compose="docker compose"
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 alias dss="docker stop -t 0 \$(docker ps -aq) &>/dev/null"
 alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
@@ -121,7 +126,7 @@ drmia() {
 }
 alias dv='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dr="docker restart -t 0"
-alias dl="docker logs -f"
+alias dl="docker logs -f --since 3h"
 docker_show_layers() {
 	docker history "$1" --format '{{.CreatedBy}}' --no-trunc
 }
@@ -162,6 +167,7 @@ alias gl="PAGER= git lg"
 alias glm="gl master..HEAD"
 alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d ; git fetch --tags"
+alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"$f\" ; done"
 rm_worktree() {
 	for b in "$@"; do rm -rf ../"$b"; done
 	git worktree prune
@@ -170,11 +176,8 @@ rm_worktree() {
 
 # Connections
 alias p="ssh pinecone"
-sshfs-home() {
-	sshfs -o reconnect -o ServerAliveInterval=10 "$1": ~/p; cd ~/p || exit
-}
-alias h="sshfs-home pinecone"
 alias uh="fusermount -u ~/p"
+alias h="uh; sshfs -o reconnect -o ServerAliveInterval=10 pinecone: ~/p; cd ~/p/Documents"
 alias c="[[ -d ~/p ]] && h; cd ~/p/Documents/computer || cd ~/Documents/computer"
 # Power-related
 alias lock="physlock"
@@ -183,25 +186,6 @@ alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
-# Music
-addradio() {
-	mpc add "http://centova.radios.pt:9496/stream?1554293061823"
-	mpc add "https://lainon.life/radio/cafe.ogg"
-	mpc add "https://lainon.life/radio/cyberia.ogg"
-	mpc add "https://lainon.life/radio/everything.ogg"
-	mpc add "https://lainon.life/radio/swing.ogg"
-	mpc add "http://cyberadio.pw:8000/stream"
-	mpc add "http://streaming.radionomy.com/DRIVE"
-	mpc add "http://radio.2f30.org:8000/live.mp3"
-	mpc add "http://ice2.somafm.com/defcon-64-aac"
-	mpc add "http://nectarine.ers35.net:8000/necta192.mp3"
-	mpc add "http://stream.cdm-smoothsax.com:8024/stream-mp3-Smooth"
-	mpc add "http://stream.cdm-chillout.com:8012/stream-mp3-Deep"
-	mpc add "http://stream.trap.fm:6002"
-	mpc add "http://trace.dnbradio.com:8000/dnbradio_main.mp3"
-	mpc add "http://trace.dnbradio.com:8000/dnbradio_darkstep.mp3"
-	mpc add "http://stream.drumandbass.fm:9002"
-}
 
 # etc
 alias mupdf="mupdf -r 144"
@@ -218,49 +202,26 @@ alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel 
 alias hddpoff="udisksctl power-off -b"
 alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-magic_kb() {
+_bluetooth_connect() {
 	sudo rfkill unblock bluetooth
 	local action='connect'
-	if [[ "$1" == 'off' ]]; then action='disconnect'; fi
-	echo -e "$action 64:0B:D7:1E:9B:DD\n" | bluetoothctl
+	if [[ "$2" == 'off' ]]; then action='disconnect'; fi
+	echo -e "$action $1\n" | bluetoothctl
+}
+airpods() {
+	_bluetooth_connect C4:0B:31:F0:86:87 $1
+}
+magic_kb() {
+	_bluetooth_connect 64:0B:D7:1E:9B:DD $1
 }
 ds5() {
-	sudo rfkill unblock bluetooth
-	local action='connect'
-	if [[ "$1" == 'off' ]]; then action='disconnect'; fi
-	echo -e "$action 4C:B9:9B:74:9D:6F\n" | bluetoothctl
+	_bluetooth_connect 4C:B9:9B:74:9D:6F $1
 }
-
-# ex - archive extractor
-# usage: ex <file>
-ex() {
-	if [[ ! -f "$1" ]]; then
-		echo "No such file or directoy: '$1'"
-		return 2
-	fi
-	#mkdir $1
-	case $1 in
-		*.tar)		tar -xvf "$1" ;;
-		*.tar.xz)	tar -xvJf "$1" ;;
-		*.txz)		tar -xvJf "$1" ;;
-		*.tar.pixz)	tar -Ipixz -xvf "$1" ;;
-		*.tpxz)		tar -Ipixz -xvf "$1" ;;
-		*.tar.bz2)	tar -xvjf "$1" ;;
-		*.tbz2)		tar -xvjf "$1" ;;
-		*.tar.gz)	tar -xvzf "$1" ;;
-		*.tgz)		tar -xvzf "$1" ;;
-		*.tar.zst)	tar -Izstdmt -xvf "$1" ;;
-		*.tzst)		tar -Izstdmt -xvf "$1" ;;
-		*.rar)		unrar -x "$1" ;;
-		*.zip)		unzip "$1" ;;
-		*.7z)		7z x "$1" ;;
-		*.xz)		xz -d "$1" ;;
-		*.pixz)		pixz -d "$1" ;;
-		*.gz)		gunzip "$1" ;;
-		*.bz2)		bunzip2 "$1" ;;
-		*.Z)		uncompress -xf "$1" ;;
-		*)			echo "'$1' cannot be extracted via ex" ;;
-	esac
+tozo() {
+	_bluetooth_connect 31:10:08:17:0F:1A $1
+}
+edifier() {
+	_bluetooth_connect 60:F4:3A:BC:39:9F $1
 }
 
 # Fun stuff

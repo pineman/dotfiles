@@ -92,9 +92,12 @@ bindsym $mod+y exec code
 bindsym $mod+Shift+y exec idea
 bindsym $mod+Shift+u exec virt-manager
 bindsym $mod+t exec telegram-desktop
+bindsym $mod+Shift+t exec rs
+bindsym $mod+Ctrl+t exec runelite
 bindsym $mod+Shift+i exec keepassxc
 bindsym $mod+g exec remmina
 bindsym $mod+Shift+g exec wireshark
+bindsym $mod+Shift+b exec blueman-manager
 # Input
 bindsym XF86Eject exec ydotool key delete
 input type:keyboard {
@@ -119,15 +122,16 @@ exec nm-applet --indicator
 exec gammastep-indicator -l 38.7:-9 -t 6200:3700
 exec thunar --daemon
 exec blueman-tray
+exec blueman-manager
+exec swayidle -w \
+	timeout 300 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"' \
+	lock 'physlock -sm'
 #exec swayidle -w \
 #	timeout 300 'physlock -sm' \
 #	timeout 315 'swaymsg "output * dpms off"' \
 #	resume 'swaymsg "output * dpms on"' \
 #	before-sleep 'physlock -dsm' \
-#	lock 'physlock -sm'
-#exec swayidle -w \
-#	timeout 300 'swaymsg "output * dpms off"' \
-#	resume 'swaymsg "output * dpms on"' \
 #	lock 'physlock -sm'
 # Workspaces
 bindsym $mod+1 workspace number 1

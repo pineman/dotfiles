@@ -26,6 +26,7 @@
 	#gpgsign = true
 [alias]
 	lg = log --color --graph --pretty=format:'%h (%Cgreen%cd%Creset) %s %C(6)%an <%ae>%Creset %C(blue)%d%Creset' --abbrev-commit --date=format:'%x %X'
+	lga = lg --all
 	lf = log -p --follow
 	rlog = reflog --pretty=short --date=iso
 	filehist = log -p --follow
@@ -35,6 +36,7 @@
 	co = checkout
 	stash-show = stash show -p
 	fetcha = fetch --all --tags --force --prune --prune-tags
+    pulla = pull --all --tags --force --prune --prune-tags
 	cl = clone --recurse-submodules
 	dcf = diff --name-status master
 [tag]
@@ -49,3 +51,7 @@
 	autoStash = true
 [init]
 	defaultBranch = main
+[http]
+	sslVerify = false
+[credential]
+	helper = cache --timeout=10800

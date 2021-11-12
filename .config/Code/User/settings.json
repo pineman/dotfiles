@@ -44,12 +44,20 @@
     "vim.incsearch": false,
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [
-                "<Esc>"
-            ],
-            "commands": [
-                ":nohl"
-            ]
+            "before": ["<Esc>"],
+            "commands": [":nohl"]
+        },
+        {
+            "before": ["P"],
+            "after": ["\"", "0", "p"]
+        },
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
         }
     ],
     // "vim.visualModeKeyBindingsNonRecursive": [
@@ -238,4 +246,5 @@
     },
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "gitlens.advanced.fileHistoryFollowsRenames": true,
 }

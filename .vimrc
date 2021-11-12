@@ -34,7 +34,6 @@ set shiftround
 set encoding=utf-8
 set fileformat=unix
 set autoindent
-set nofixendofline
 set backspace=eol,indent,start
 set ttyfast
 set wildmenu
@@ -88,6 +87,7 @@ nnoremap k gk
 nnoremap gl $
 nnoremap gh ^
 nnoremap e el
+nnoremap P "0p
 set hidden
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
@@ -117,4 +117,4 @@ au Filetype json setlocal expandtab
 au Filetype tex setlocal makeprg=latexmk sw=2 ts=2 sts=2
 " Remove trailing whitespace
 let blacklist = ['markdown']
-autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
+"autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
