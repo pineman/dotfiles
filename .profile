@@ -3,7 +3,7 @@ source $HOME/.ls_colors
 export EDITOR="nvim"
 export PAGER="nvimpager"
 export DELTA_PAGER="less -R"
-export BROWSER="firefox"
+export BROWSER="chromium"
 export XDG_CONFIG_HOME="$HOME/.config"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export WINIT_HIDPI_FACTOR=1

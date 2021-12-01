@@ -97,6 +97,7 @@ alias screen-off="swaymsg -s /run/user/1000/sway-ipc.1000.*.sock 'output * dpms 
 alias screen-on="swaymsg -s /run/user/1000/sway-ipc.1000.*.sock 'output * dpms on'"
 alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
 alias ex='unp'
+alias quickemu='quickemu --display spice'
 
 # Dev
 alias make='make -j$(nproc)'
@@ -139,6 +140,8 @@ alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLA
 # Kubernetes
 type kubectl &>/dev/null \
 	&& alias k=kubectl \
+    `#bash should have this var, zsh not really` \
+	&& [[ -z $HISTFILE ]] \
 	&& source <(kubectl completion zsh | sed 's/kubectl/k/g')
 kube-getall() {
 	kubectl api-resources --verbs=list -o name | grep -v events \
@@ -167,7 +170,7 @@ alias gl="PAGER= git lg"
 alias glm="gl master..HEAD"
 alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d ; git fetch --tags"
-alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"$f\" ; done"
+alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done"
 rm_worktree() {
 	for b in "$@"; do rm -rf ../"$b"; done
 	git worktree prune
@@ -177,7 +180,7 @@ rm_worktree() {
 # Connections
 alias p="ssh pinecone"
 alias uh="fusermount -u ~/p"
-alias h="uh; sshfs -o reconnect -o ServerAliveInterval=10 pinecone: ~/p; cd ~/p/Documents"
+alias h="uh; sshfs -o ServerAliveInterval=10 pinecone: ~/p; cd ~/p/Documents"
 alias c="[[ -d ~/p ]] && h; cd ~/p/Documents/computer || cd ~/Documents/computer"
 # Power-related
 alias lock="physlock"
