@@ -51,7 +51,5 @@
 	autoStash = true
 [init]
 	defaultBranch = main
-[http]
-	sslVerify = false
 [credential]
 	helper = cache --timeout=10800
