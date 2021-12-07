@@ -1,4 +1,2 @@
-font=sans 10
 default-timeout=10000
-[urgency=high]
 ignore-timeout=1
