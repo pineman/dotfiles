@@ -117,4 +117,4 @@ au Filetype json setlocal expandtab
 au Filetype tex setlocal makeprg=latexmk sw=2 ts=2 sts=2
 " Remove trailing whitespace
 let blacklist = ['markdown']
-"autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
