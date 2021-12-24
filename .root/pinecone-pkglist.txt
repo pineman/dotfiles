@@ -34,6 +34,7 @@ device-mapper
 dfc
 dhclient
 diffutils
+direnv
 dmidecode
 dnssec-anchors
 docker
@@ -46,6 +47,7 @@ elfutils
 expat
 fakeroot
 fd
+fdupes
 file
 filesystem
 findutils
@@ -86,12 +88,15 @@ hwids
 iana-etc
 icu
 imagemagick
+iniparser
 intel-ucode
 iproute2
 iptables
 iputils
 iw
+java-runtime-common
 jnettop
+jre-openjdk-headless
 js78
 json-c
 kbd
@@ -130,6 +135,7 @@ libmd
 libmicrohttpd
 libmnl
 libmpc
+libnet
 libnetfilter_conntrack
 libnfnetlink
 libnfs
@@ -177,7 +183,6 @@ licenses
 linux-api-headers
 linux-firmware
 linux-lts
-linux-lts-headers
 lm_sensors
 lsof
 luajit
@@ -188,6 +193,7 @@ make
 man-db
 mkinitcpio
 mkinitcpio-busybox
+mlocate
 mpfr
 msgpack-c
 ncdu
