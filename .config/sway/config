@@ -98,6 +98,7 @@ bindsym $mod+Shift+i exec keepassxc
 bindsym $mod+g exec remmina
 bindsym $mod+Shift+g exec wireshark
 bindsym $mod+Shift+b exec blueman-manager
+bindsym $mod+Shift+s exec systemctl suspend
 # Input
 bindsym XF86Eject exec ydotool key delete
 input type:keyboard {
@@ -117,6 +118,7 @@ input type:pointer {
 # Startup
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec gnome-keyring-daemon --start
 exec mako
 exec nm-applet --indicator
 exec gammastep-indicator -l 38.7:-9 -t 6200:3700

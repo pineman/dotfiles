@@ -80,15 +80,15 @@ alias timer='echo timer started, use ctrl-c to stop; time cat'
 alias dmesg='sudo dmesg -T'
 show-iptables() {
 	printf 'SECURITY ==============================================================\n'
-	sudo iptables -nvL -t security
+	sudo iptables-legacy -nvL -t security
 	printf '\nRAW ===================================================================\n'
-	sudo iptables -nvL -t raw
+	sudo iptables-legacy -nvL -t raw
 	printf '\nMANGLE ================================================================\n'
-	sudo iptables -nvL -t mangle
+	sudo iptables-legacy -nvL -t mangle
 	printf '\nNAT ===================================================================\n'
-	sudo iptables -nvL -t nat
+	sudo iptables-legacy -nvL -t nat
 	printf '\nFILTER ================================================================\n'
-	sudo iptables -nvL -t filter
+	sudo iptables-legacy -nvL -t filter
 }
 alias zp='zpool status; zpool list'
 alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
@@ -117,10 +117,10 @@ alias gem_clean='gem uninstall -aIx'
 alias rt="rg TODO"
 alias wireshark_ssl="(wireshark -o ssl.keylog_file:ssl_keylog -o ssl.debug_file:debug.txt) &>/dev/null &; export SSLKEYLOGFILE=ssl_keylog"
 # Docker
-alias docker-compose="docker compose"
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 alias dss="docker stop -t 0 \$(docker ps -aq) &>/dev/null"
 alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
+alias dcc="podman kill -a; podman rm -fa"
 alias di="docker images"
 drmia() {
 	docker images -a | grep "$1" | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi "$1":{}
@@ -203,8 +203,8 @@ alias clean_vim="git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.v
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
-alias youtube-dl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
-alias ytmp3="youtube-dl -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
+alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
+alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 _bluetooth_connect() {
 	sudo rfkill unblock bluetooth
 	local action='connect'
