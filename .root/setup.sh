@@ -11,7 +11,6 @@ fd -I -H -t f . etc -x sh -c '
 rm -rf /boot/loader/loader.conf /boot/loader/entries/*
 cp -rf boot/loader/loader.conf boot/loader/entries /boot/loader
 cp us-esc-caps.map.gz /usr/share/kbd/keymaps/i386/qwerty/
-yay -Qqs | tail -n +2 > $(cat /etc/hostname)-pkglist.txt
 chown -R pineman: .
 dircolors ~pineman/.dircolors > ~pineman/.ls_colors
 chown pineman: ~pineman/.ls_colors
