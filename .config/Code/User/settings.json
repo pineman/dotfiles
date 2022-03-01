@@ -247,4 +247,5 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "gitlens.advanced.fileHistoryFollowsRenames": true,
+    "window.zoomLevel": 2,
 }

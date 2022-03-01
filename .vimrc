@@ -115,6 +115,7 @@ unmap <Tab>
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab
 au Filetype tex setlocal makeprg=latexmk sw=2 ts=2 sts=2
+au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php setlocal sw=2 ts=2 sts=2
 " Remove trailing whitespace
 let blacklist = ['markdown']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
