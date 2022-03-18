@@ -62,7 +62,7 @@ bindkey '^B' history-beginning-search-menu-end-space
 bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 type fasd &>/dev/null \
-	&& eval "$(fasd --init auto)" \
+	&& eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)" \
 	&& bindkey '^E' fasd-complete-d \
 	&& bindkey '^R' fasd-complete-f
 type direnv &>/dev/null \

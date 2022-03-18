@@ -20,6 +20,7 @@ alias psw='ps -ww'
 alias pstree='sudo \pstree -aStpnT'
 alias pstreet='sudo \pstree -aStpnt'
 alias grep="grep --color=auto"
+alias sed='sd'
 alias less="less -R"
 alias free='free -mw'
 alias dfc='dfc -d -t -tmpfs,dev -m'
@@ -27,6 +28,7 @@ alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -shc'
 alias rsync='rsync -avP6AHAXxs --numeric-ids --xattrs --acls'
+alias ncdu='ncdu --color off'
 alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 alias diff='diff -u'
@@ -86,7 +88,7 @@ alias zp='zpool status; zpool list'
 alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
 alias sway='sway &>> ~/.local/log/sway.log'
 alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
-alias ex='unp'
+alias ex='dtrx'
 alias quickemu='quickemu --display spice'
 
 # Dev
@@ -199,3 +201,4 @@ ds5() {
 edifier() {
 	_bluetooth_connect 60:F4:3A:BC:39:9F $1
 }
+
