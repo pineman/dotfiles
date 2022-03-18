@@ -42,3 +42,5 @@ code --install-extension vscodevim.vim
 code --install-extension golang.Go
 code --install-extension eamodio.gitlens
 
+yay -S google-cloud-sdk terraform kubectl helm
+#kubectl krew install exec-as
