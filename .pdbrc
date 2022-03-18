@@ -1,2 +1,0 @@
-alias loc __import__('pprint').PrettyPrinter(indent=4).pprint(locals())
-alias glo __import__('pprint').PrettyPrinter(indent=4).pprint(globals())

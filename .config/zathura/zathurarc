@@ -1,7 +1,0 @@
-set guioptions ""
-map j navigate next
-map k navigate previous
-map u scroll down
-map i scroll up
-set window-title-basename true
-set statusbar-home-tilde true

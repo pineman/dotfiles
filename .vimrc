@@ -92,7 +92,6 @@ set hidden
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 nmap <C-j> :bp <BAR> bd #<CR>
-nmap <leader><leader><leader><leader><leader><leader>l <Plug>NetrwRefresh
 map <C-u> <C-W>h
 map <C-i> <C-W>l
 nnoremap <C-p> :find *
@@ -109,8 +108,6 @@ endfunction
 map <F9> :call SoftHardWrap()<cr>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 nnoremap <esc><esc> :w<cr> :silent! noh <cr>
-" for some reason ctrl-i was not working:
-unmap <Tab>
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab

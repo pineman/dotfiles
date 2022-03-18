@@ -26,7 +26,7 @@ alias dfc='dfc -d -t -tmpfs,dev -m'
 alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -shc'
-alias rsync='rsync -vPhr'
+alias rsync='rsync -avP6AHAXxs --numeric-ids --xattrs --acls'
 alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 alias diff='diff -u'
@@ -36,13 +36,8 @@ alias find="fd -H -I ."
 alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
 alias rrg="rg --no-ignore"
 alias vmstat="vmstat -S M"
-#alias w="w -i"
-alias last="last -w"
-alias pinky="pinky -w"
 alias tee="tee -a"
 alias nmap="nmap -v"
-alias xz="xz -T 0"
-alias zstd="zstdmt"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias killall="killall -v -I"
 alias pgrep="pgrep -f"
@@ -61,19 +56,16 @@ tobg() {
 	("$@" &>/dev/null &)
 }
 alias open="tobg xdg-open"
-alias o="(thunar &>/dev/null &)"
 u() {
 	tobg alacritty --working-directory .
 }
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
-alias sstp="sudo ss -lnrp -f inet"
-alias sstp6="sudo ss -lnrp -f inet"
+alias sstp="sudo ss -lnp"
 alias tm="tmux -CC attach -d || tmux -CC new"
 alias ta="tmux attach -d || tmux new"
 alias r='ranger --choosedir=/tmp/.rangerdir; cd $(cat /tmp/.rangerdir)'
-alias m="vim notes.md"
 alias ssmem='sudo smem -t -a -k -s swap'
 alias smem='sudo smem -t -a -k -s rss'
 alias timer='echo timer started, use ctrl-c to stop; time cat'
@@ -93,28 +85,23 @@ show-iptables() {
 alias zp='zpool status; zpool list'
 alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
 alias sway='sway &>> ~/.local/log/sway.log'
-alias screen-off="swaymsg -s /run/user/1000/sway-ipc.1000.*.sock 'output * dpms off'"
-alias screen-on="swaymsg -s /run/user/1000/sway-ipc.1000.*.sock 'output * dpms on'"
 alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
 alias ex='unp'
 alias quickemu='quickemu --display spice'
 
 # Dev
+alias p="ssh pinecone"
 alias make='make -j$(nproc)'
-alias memcheck="valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes"
 alias py="python"
 alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
-#alias node="NODE_NO_READLINE=1 rlwrap node"
 alias mvn="mvn -ntp -e"
 alias mit-scheme="rlwrap mit-scheme"
 alias sbcl="rlwrap sbcl"
 alias yaegi="rlwrap yaegi"
 alias gop='cd $GOPATH'
-#alias gradle="gradle --parallel -t --watch-fs"
 alias gradle="gradle --parallel"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
-alias rt="rg TODO"
 alias wireshark_ssl="(wireshark -o ssl.keylog_file:ssl_keylog -o ssl.debug_file:debug.txt) &>/dev/null &; export SSLKEYLOGFILE=ssl_keylog"
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
@@ -168,19 +155,13 @@ alias gg="git gui &"
 alias gl="PAGER= git lg"
 alias glm="gl master..HEAD"
 alias gss="git submodule update --init"
-alias git-clean-tags="git tag -l | xargs git tag -d ; git fetch --tags"
+alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done"
 rm_worktree() {
 	for b in "$@"; do rm -rf ../"$b"; done
 	git worktree prune
 	git branch -D "$@"
 }
-
-# Connections
-alias p="ssh pinecone"
-alias uh="fusermount -u ~/p"
-alias h="uh; sshfs -o ServerAliveInterval=10 pinecone: ~/p; cd ~/p/Documents"
-alias c="[[ -d ~/p ]] && h; cd ~/p/Documents/computer || cd ~/Documents/computer"
 # Power-related
 alias lock="physlock"
 alias slock="systemctl suspend && physlock -d"
@@ -190,14 +171,10 @@ alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
 
 # etc
-alias mupdf="mupdf -r 144"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias inxi="inxi -F"
-alias units="units --verbose"
-alias nload="nload -u M"
 alias pandoc="pandoc -s"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
-alias count_threads='count() { printf %s\\n "$#" }; count /proc/[0-9]*/task/[0-9]*'
 alias clean_vim="git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo"
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
@@ -219,26 +196,6 @@ magic_kb() {
 ds5() {
 	_bluetooth_connect 4C:B9:9B:74:9D:6F $1
 }
-tozo() {
-	_bluetooth_connect 31:10:08:17:0F:1A $1
-}
 edifier() {
 	_bluetooth_connect 60:F4:3A:BC:39:9F $1
 }
-
-# Fun stuff
-alias randomfact='wget randomfunfacts.com -qO- 2>/dev/null | grep \<strong\> | sed "s;^.*<i>\(.*\)</i>.*$;\1;"'
-alias cmatrix="cmatrix -u 7"
-alias matrix='echo -e "\e[32m"; while :; do for i in {1..16}; do r="$(($RANDOM % 2))"; if [[ $(($RANDOM % 5)) == 1 ]]; then if [[ $(($RANDOM % 4)) == 1 ]]; then v+="\e[1m $r	"; else v+="\e[2m $r   "; fi; else v+="		"; fi; done; echo -e "$v"; v=""; done'
-alias matrix2='echo -e "\e[31m"; while $t; do for i in `seq 1 30`;do r="$[($RANDOM % 2)]";h="$[($RANDOM % 4)]";if [ $h -eq 1 ]; then v="\e[1m $r";else v="\e[2m $r";fi;v2="$v2 $v";done;echo -e $v2;v2="";done;'
-alias matrix3='COL=$(( $(tput cols) / 2 )); clear; tput setaf 2; while :; do tput cup $((RANDOM%COL)) $((RANDOM%COL)); printf "%$((RANDOM%COL))s" $((RANDOM%2)); done'
-alias matrix4='echo -ne "\e[32m" ; while true ; do echo -ne "\e[$(($RANDOM % 2 + 1))m" ; tr -c "[:print:]" " " < /dev/urandom | dd count=1 bs=50 2> /dev/null ; done'
-alias matrix5='tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=lcase,unblock &>/dev/null | GREP_COLOR="1;32" grep --color "[^ ]"'
-alias colorrainbow='seq 0 255 | while read i; do printf "${i-1}: \x1b[48;5;${i}m\n"; sleep .01; done'
-minor() {
-	hexdump /dev/urandom -v -e '/1 "%u\n"' | awk '{ split("0,2,3,5,7,8,10,12",a,","); for (i = 0; i < 1; i+= 0.00001) printf("%08X\n", 100*sin(1382*exp((a[$1 % 8]/12)*log(2))*i)) }' | xxd -r -p | aplay -c 2 -f S32_LE -r 16000
-}
-major() {
-	hexdump /dev/urandom -v -e '/1 "%u\n"' | awk '{ split("0,2,4,5,7,9,11,12",a,","); for (i = 0; i < 1; i+= 0.00001) printf("%08X\n", 100*sin(1382*exp((a[$1 % 8]/12)*log(2))*i)) }' | xxd -r -p | aplay -c 2 -f S32_LE -r 16000
-}
-
