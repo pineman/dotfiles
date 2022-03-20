@@ -835,8 +835,6 @@ colors:
     cyan:    '#5fb3b3'
     white:   '#d8dee9'
 key_bindings:
-  - { key: V, mods: Control|Alt, action: Paste }
-  - { key: C, mods: Control|Alt, action: Copy }
   - { key: PageUp, action: ScrollPageUp, mode: ~Alt }
   - { key: PageDown, action: ScrollPageDown, mode: ~Alt }
   - { key: Up, mods: Shift, action: ScrollPageUp, mode: ~Alt }
