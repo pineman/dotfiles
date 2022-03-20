@@ -1,8 +1,0 @@
-# Static information about the filesystems.
-# See fstab(5) for details.
-
-# <file system> <dir> <type> <options> <dump> <pass>
-/dev/sda1 /boot vfat rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 0
-ssd/root / zfs rw,relatime,xattr,posixacl 0 0
-ssd/home /home zfs rw,relatime,xattr,posixacl 0 0
-/dev/zd0 /var/lib/docker ext4 rw,relatime,stripe=2 0 0
