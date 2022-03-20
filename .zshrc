@@ -74,7 +74,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^H' forward-word
 bindkey '^L' autosuggest-accept
 source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-HOST_COLOR=4
+HOST_COLOR=1
 PROMPT='%F{3}%D{%H:%M:%S}%f %F{244}%n%f@%F{$HOST_COLOR}%M%f:%F{5}%~%f (%F{2}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%f)
 %F{15}%?%f $ '
 #source /usr/share/gitstatus/gitstatus.plugin.zsh
