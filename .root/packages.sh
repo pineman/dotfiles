@@ -31,6 +31,7 @@ packages=(
   i3status
   ttf-font-icons
   ttf-droid
+  pipewire-pulse
   pipewire-jack
   pipewire-media-session
   polkit-gnome
@@ -56,7 +57,10 @@ packages=(
   telegram-desktop
   ydotool
   network-manager-applet
+  pavucontrol
   # Dev
+  jq
+  wireshark-qt
   visual-studio-code-bin
   docker
 )

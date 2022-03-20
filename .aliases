@@ -121,8 +121,8 @@ docker_show_layers() {
 }
 alias dspace="docker system df -v"
 alias docker-tui="lazydocker"
-alias dah='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sed "s# /# #g" | sudo tee -a /etc/hosts'
-alias drh='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sed "s# /# #g" | sudo xargs -I{} sed -i "/{}/d" /etc/hosts'
+alias dah='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sd " /" " " | sudo tee -a /etc/hosts'
+alias drh='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sd " /" " " | sudo xargs -I{} \sed -i "/{}/d" /etc/hosts'
 # Or use `x11docker` command
 alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/home/lyonn/.Xauthority -it cenas:1'
 # Kubernetes
@@ -130,7 +130,7 @@ type kubectl &>/dev/null \
 	&& alias k=kubectl \
     `#bash should have this var, zsh not really` \
 	&& [[ -z $HISTFILE ]] \
-	&& source <(kubectl completion zsh | sed 's/kubectl/k/g')
+	&& source <(kubectl completion zsh | sd 'kubectl' 'k')
 kube-getall() {
 	kubectl api-resources --verbs=list -o name | grep -v events \
 		| parallel kubectl get -A --ignore-not-found --show-kind
@@ -147,15 +147,15 @@ alias gs="git status"
 alias gb="git branch -vvaa"
 alias gd="git diff --no-color"
 alias gdc="git diff --no-color --cached"
-alias gdm="gd master..HEAD"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
-alias grm="git remote show origin | grep 'HEAD branch' | sed 's/.*: //'"
 alias ga="git add"
+alias gl="PAGER= git lg"
 alias gitk="gitk --all &"
 alias gg="git gui &"
-alias gl="PAGER= git lg"
-alias glm="gl master..HEAD"
+alias gdm="gd \$(git remote show origin | grep 'HEAD branch' | sd '.*: ' '')..HEAD"
+alias glm="gl \$(git remote show origin | grep 'HEAD branch' | sd '.*: ' '')..HEAD"
+alias grm="git rebase -i \$(git remote show origin | grep 'HEAD branch' | sd '.*: ' '')"
 alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done"

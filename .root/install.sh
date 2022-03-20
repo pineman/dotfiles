@@ -69,7 +69,7 @@ stage3() {
   sudo timedatectl set-timezone Europe/Lisbon
   sudo umount /etc/resolv.conf
   sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-  sudo systemctl enable iptables ip6tables systemd-resolved NetworkManager sshd
+  sudo systemctl enable iptables systemd-resolved NetworkManager sshd
   sudo systemctl disable nftables
   sudo mkdir /var/tmp/{ccache,aur}
   sudo chown -R pineman: /var/tmp/{ccache,aur}
@@ -81,6 +81,7 @@ stage3() {
   ./packages.sh
   echo 'pineman' | sudo chsh -s /bin/zsh pineman
   sudo systemctl enable docker tlp tlp-rdw linux-modules-cleanup fstrim.timer bluetooth
+  sudo gpasswd -a pineman docker
   mkdir ~/.local/log
   yay -S --noconfirm linux-lts-headers
   yay -S --noconfirm zfs-dkms
