@@ -62,6 +62,11 @@ packages=(
   network-manager-applet
   pavucontrol
   wev
+  libva-intel-driver
+  libva-utils
+  mpv
+  yt-dlp
+  play-with-mpv-git
   # Dev
   jq
   wireshark-qt
@@ -73,13 +78,15 @@ echo 'pineman' | sudo chsh -s /bin/zsh pineman
 sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth ydotool
 sudo gpasswd -a pineman docker
 mkdir ~/.local/log
-yay -S --noconfirm virt-manager qemu
-yay -S --noconfirm ebtables dnsmasq --asdeps
+yay -S --noconfirm --needed --asdeps gvfs tumbler thunar-volman thunar-archive-plugin file-roller ffmpegthumbnailer
+#yay -S --noconfirm --needed virt-manager qemu
+#yay -S --noconfirm --needed --asdeps ebtables dnsmasq
+pip install dtrx
 
 code --install-extension marcoms.oceanic-plus
 code --install-extension golang.Go
 code --install-extension eamodio.gitlens
 code --install-extension asvetliakov.vscode-neovim
 
-yay -S --noconfirm --needed google-cloud-sdk terraform kubectl helm
+yay -S --noconfirm --needed google-cloud-sdk terraform kubectl helm openconnect networkmanager-openconnect openvpn networkmanager-openvpn
 #kubectl krew install exec-as

@@ -1,8 +1,5 @@
 {
   "features": {
     "buildkit": true
-  },
-  "ip-forward": false,
-  "iptables": false,
-  "bridge": "none"
+  }
 }
