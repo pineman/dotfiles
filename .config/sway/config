@@ -80,7 +80,6 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86Display exec wlr-randr --output eDP-1 --on
 bindsym $mod+n exec qalculate-gtk
 bindsym Print exec grimshot copy area
 bindsym $mod+backslash exec grimshot copy area
@@ -124,7 +123,6 @@ exec nm-applet --indicator
 exec gammastep-indicator -l 38.7:-9 -t 6200:3700
 exec thunar --daemon
 exec blueman-tray
-exec blueman-manager
 exec swayidle -w \
 	timeout 300 'swaymsg "output * dpms off"' \
 	resume 'swaymsg "output * dpms on"' \

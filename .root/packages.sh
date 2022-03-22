@@ -18,6 +18,7 @@ packages=(
   git-delta
   terminus-font
   tlp
+  tlp-rdw
   mlocate
   backblaze-b2-bin
   rclone

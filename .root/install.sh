@@ -17,20 +17,18 @@ stage1() {
     -O normalization=formD \
     -O compression=lz4 \
     -O relatime=on \
-    -O mountpoint=legacy \
     -O canmount=off \
+    -O mountpoint=legacy \
     -O devices=off \
+    -R /mnt \
     nvm /dev/mapper/root
   zfs create -o mountpoint=/ nvm/root
   zpool set bootfs=nvm/root nvm
-  zfs create nvm/home
+  zfs create -o mountpoint=/home nvm/home
   zfs create -V 20G nvm/docker
   sleep 10
   zpool export nvm
-  zpool import -d /dev/mapper/root nvm
-  mount.zfs nvm/root /mnt
-  mkdir -p /mnt/home
-  mount.zfs nvm/home /mnt/home
+  zpool import -d /dev/mapper/root -R /mnt nvm
   mkfs.ext4 /dev/zvol/nvm/docker
   mkdir -p /mnt/var/lib/docker
   mount /dev/zvol/nvm/docker /mnt/var/lib/docker
@@ -59,7 +57,6 @@ stage3() {
   git remote add origin https://github.com/pineman/dotfiles.git
   git fetch --all
   git pull origin main
-  git checkout srsbsns
   git branch -D master
   git submodule update --init
   cd .root
@@ -73,6 +70,7 @@ stage3() {
   sudo systemctl disable nftables
   sudo mkdir /var/tmp/{ccache,aur}
   sudo chown -R pineman: /var/tmp/{ccache,aur}
+  echo srsbsns | sudo tee /etc/hostname
   cd /tmp
   git clone https://aur.archlinux.org/yay-bin --depth 1
   cd yay-bin
@@ -80,7 +78,7 @@ stage3() {
   cd ~/.root
   ./packages.sh
   echo 'pineman' | sudo chsh -s /bin/zsh pineman
-  sudo systemctl enable docker tlp tlp-rdw linux-modules-cleanup fstrim.timer bluetooth
+  sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth
   sudo gpasswd -a pineman docker
   mkdir ~/.local/log
   yay -S --noconfirm linux-lts-headers
