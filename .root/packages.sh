@@ -25,6 +25,8 @@ packages=(
   direnv
   fasd
   physlock
+  parallel
+  openbsd-netcat
   # Graphical
   sway
   xorg-xwayland
@@ -59,6 +61,7 @@ packages=(
   ydotool
   network-manager-applet
   pavucontrol
+  wev
   # Dev
   jq
   wireshark-qt
@@ -66,10 +69,17 @@ packages=(
   docker
 )
 yay -S --noconfirm --needed "${packages[@]}"
+echo 'pineman' | sudo chsh -s /bin/zsh pineman
+sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth ydotool
+sudo gpasswd -a pineman docker
+mkdir ~/.local/log
+yay -S --noconfirm virt-manager qemu
+yay -S --noconfirm ebtables dnsmasq --asdeps
+
 code --install-extension marcoms.oceanic-plus
-code --install-extension vscodevim.vim
 code --install-extension golang.Go
 code --install-extension eamodio.gitlens
+code --install-extension asvetliakov.vscode-neovim
 
 yay -S --noconfirm --needed google-cloud-sdk terraform kubectl helm
 #kubectl krew install exec-as

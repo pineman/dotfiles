@@ -77,10 +77,6 @@ stage3() {
   makepkg -si --noconfirm
   cd ~/.root
   ./packages.sh
-  echo 'pineman' | sudo chsh -s /bin/zsh pineman
-  sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth
-  sudo gpasswd -a pineman docker
-  mkdir ~/.local/log
   yay -S --noconfirm linux-lts-headers
   yay -S --noconfirm zfs-dkms
   sudo mkinitcpio -P
