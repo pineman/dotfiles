@@ -37,6 +37,8 @@ packages=(
   pipewire-pulse
   pipewire-jack
   pipewire-media-session
+  pamixer
+  pavucontrol
   polkit-gnome
   chromium
   firefox
@@ -60,7 +62,6 @@ packages=(
   telegram-desktop
   ydotool
   network-manager-applet
-  pavucontrol
   wev
   libva-intel-driver
   libva-utils
