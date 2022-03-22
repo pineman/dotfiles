@@ -98,10 +98,12 @@ bindsym $mod+g exec remmina
 bindsym $mod+Shift+g exec wireshark
 bindsym $mod+Shift+b exec blueman-manager
 bindsym $mod+Shift+s exec systemctl suspend
+bindsym $mod+F1 exec wlr-randr --output eDP-1 --on
+bindsym $mod+F2 exec wlr-randr --output eDP-1 --off
 # Input
-bindsym XF86Eject exec sudo ydotool key delete
-bindsym Ctrl+Mod4+Right exec sudo ydotool key 107:1 107:0
-bindsym Ctrl+Mod4+Left exec sudo ydotool key 102:1 102:0
+#bindsym XF86Eject exec sudo ydotool key delete
+#bindsym Ctrl+Mod4+Right exec sudo ydotool key 107:1 107:0
+#bindsym Ctrl+Mod4+Left exec sudo ydotool key 102:1 102:0
 input type:keyboard {
 	xkb_layout us
 	xkb_options caps:swapescape,compose:ralt

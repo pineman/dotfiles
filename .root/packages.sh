@@ -88,5 +88,3 @@ code --install-extension golang.Go
 code --install-extension eamodio.gitlens
 code --install-extension asvetliakov.vscode-neovim
 
-yay -S --noconfirm --needed google-cloud-sdk terraform kubectl helm openconnect networkmanager-openconnect openvpn networkmanager-openvpn
-#kubectl krew install exec-as
