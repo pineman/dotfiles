@@ -6,6 +6,7 @@ packages=(
   pacman-contrib
   kernel-modules-hook
   man-db
+  man-pages
   # Utilities
   zsh
   neovim
@@ -27,6 +28,7 @@ packages=(
   physlock
   parallel
   openbsd-netcat
+  strace
   # Graphical
   sway
   xorg-xwayland
@@ -73,6 +75,12 @@ packages=(
   wireshark-qt
   visual-studio-code-bin
   docker
+  docker-compose
+  #podman
+  #catatonit
+  #podman-compose
+  #podman-dnsname
+  #podman-docker
 )
 yay -S --noconfirm --needed "${packages[@]}"
 echo 'pineman' | sudo chsh -s /bin/zsh pineman

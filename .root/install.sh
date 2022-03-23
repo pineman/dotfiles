@@ -35,7 +35,7 @@ stage1() {
   mkdir -p /mnt/boot
   mount $BOOT /mnt/boot
   echo 'Server = https://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
-  pacstrap /mnt base base-devel vi sudo git fd ccache networkmanager openssh linux-lts intel-ucode linux-firmware --noconfirm
+  pacstrap /mnt base base-devel vim sudo git fd ccache networkmanager openssh linux-lts intel-ucode linux-firmware --noconfirm
   genfstab -U /mnt >> /mnt/etc/fstab
   cp $(basename "$0") /mnt/install.sh
   chmod +x /mnt/install.sh

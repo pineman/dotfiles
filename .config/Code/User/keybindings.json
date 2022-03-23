@@ -4,16 +4,8 @@
         "command": "workbench.action.nextEditor"
     },
     {
-        "key": "ctrl+pagedown",
-        "command": "-workbench.action.nextEditor"
-    },
-    {
         "key": "ctrl+h",
         "command": "workbench.action.previousEditor"
-    },
-    {
-        "key": "ctrl+pageup",
-        "command": "-workbench.action.previousEditor"
     },
     {
         "key": "f4",
@@ -26,57 +18,19 @@
         "when": "editorTextFocus && editorLangId == 'c'"
     },
     {
-        "key": "f2",
-        "command": "editor.action.marker.next",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+f8",
-        "command": "-editor.action.marker.next",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "f8",
-        "command": "-editor.action.marker.nextInFiles",
-        "when": "editorFocus && !editorReadonly"
-    },
-    {
-        "key": "shift+f8",
-        "command": "-editor.action.marker.prevInFiles",
-        "when": "editorFocus && !editorReadonly"
-    },
-    {
-        "key": "shift+f2",
-        "command": "editor.action.marker.prev",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "shift+alt+f8",
-        "command": "-editor.action.marker.prev",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
         "key": "ctrl+j",
-        "command": "editor.action.joinLines"
+        "command": "workbench.action.closeActiveEditor",
     },
     {
-        "key": "ctrl+j",
-        "command": "-workbench.action.togglePanel"
+        "key": "ctrl+t",
+        "command": "workbench.action.navigateBack"
     },
     {
         "key": "alt+left",
         "command": "workbench.action.navigateBack"
     },
     {
-        "key": "ctrl+alt+-",
-        "command": "-workbench.action.navigateBack"
-    },
-    {
         "key": "alt+right",
         "command": "workbench.action.navigateForward"
-    },
-    {
-        "key": "ctrl+shift+-",
-        "command": "-workbench.action.navigateForward"
     }
 ]

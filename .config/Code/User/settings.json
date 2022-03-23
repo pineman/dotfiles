@@ -37,39 +37,6 @@
     "gitlens.codeLens.enabled": false,
     "gitlens.statusBar.format": "${id}, ${author}, ${agoOrDate} \u2022 ${message}",
     "gitlens.currentLine.format": "${id}, ${author}, ${agoOrDate} \u2022 ${message}",
-
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.incsearch": false,
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["<Esc>"],
-            "commands": [":nohl"]
-        },
-        {
-            "before": ["P"],
-            "after": ["\"", "0", "p"]
-        },
-        {
-            "before": ["j"],
-            "after": ["g", "j"]
-        },
-        {
-            "before": ["k"],
-            "after": ["g", "k"]
-        }
-    ],
-    // "vim.visualModeKeyBindingsNonRecursive": [
-    //     {
-    //         "before": [ "/", "/"],
-    //         "after": [ "y", "/"]
-    //     }
-    // ],
-    "vim.handleKeys": {
-        "<C-w>": false
-    },
-
     "files.associations": {
         "*.m": "matlab",
         "*.gls": "c"
@@ -247,4 +214,5 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "gitlens.advanced.fileHistoryFollowsRenames": true,
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim"
 }
