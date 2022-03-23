@@ -36,7 +36,6 @@ stage1() {
   mount $BOOT /mnt/boot
   echo 'Server = https://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
   pacstrap /mnt base base-devel vim sudo git fd ccache networkmanager openssh linux-lts intel-ucode linux-firmware --noconfirm
-  genfstab -U /mnt >> /mnt/etc/fstab
   cp $(basename "$0") /mnt/install.sh
   chmod +x /mnt/install.sh
   arch-chroot /mnt /install.sh stage2
@@ -80,6 +79,12 @@ stage3() {
   yay -S --noconfirm linux-lts-headers
   yay -S --noconfirm zfs-dkms
   sudo mkinitcpio -P
+  sudo zfs create -V 20G nvm/home/podman
+  sudo mkfs.ext4 /dev/zvol/nvm/home/podman
+  mkdir -p ~/.local/share/containers/storage
+  sudo mount /dev/zvol/nvm/home/podman ~/.local/share/containers/storage
+  sudo chown -R pineman: ~/.local/share/containers/storage
+  genfstab -U / | sudo tee -a /etc/fstab
   sudo zfs snapshot -r nvm@install
 }
 

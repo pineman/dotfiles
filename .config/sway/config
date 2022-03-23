@@ -88,7 +88,7 @@ bindsym $mod+p exec firefox
 bindsym $mod+c exec chromium
 bindsym $mod+o exec dbeaver
 bindsym $mod+y exec code
-bindsym $mod+Shift+y exec intellij-idea-ultimate-edition
+bindsym $mod+Shift+y exec idea-ce
 bindsym $mod+Shift+u exec virt-manager
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+Shift+t exec rs

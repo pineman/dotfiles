@@ -76,9 +76,12 @@ packages=(
   visual-studio-code-bin
   docker
   docker-compose
+  pigz
+  docker-rootless-extras-bin
+  rootlesskit-bin
   #podman
   #catatonit
-  #podman-compose
+  #podman-compose-git
   #podman-dnsname
   #podman-docker
 )
