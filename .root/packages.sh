@@ -79,10 +79,10 @@ packages=(
   pigz
   docker-rootless-extras-bin
   rootlesskit-bin
-  #podman
-  #catatonit
-  #podman-compose-git
-  #podman-dnsname
+  podman
+  catatonit
+  podman-compose-git
+  podman-dnsname
   #podman-docker
 )
 yay -S --noconfirm --needed "${packages[@]}"
