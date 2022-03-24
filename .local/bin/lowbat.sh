@@ -1,8 +1,8 @@
 #!/bin/bash
+set -euxo pipefail
 
-THRESHOLD=18
-
-function test {
+THRESHOLD=10
+while :; do
   acpi -b | awk -F'[,:%]' '{print $2, $3}' | {
     read -r status capacity
     if [ "$status" = "Discharging" -a "$capacity" -lt "$THRESHOLD" ]; then
@@ -11,9 +11,5 @@ function test {
       systemctl hibernate
     fi
   }
-}
-
-while :; do
-  test
   sleep 30
 done

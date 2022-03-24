@@ -42,10 +42,10 @@ stage1() {
 }
 
 stage2() {
-  echo 'root:root' | chpasswd
+  passwd
   echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheel
   useradd -U -G wheel -m -u 1000 pineman
-  echo 'pineman:pineman' | chpasswd
+  passwd pineman
   sudo -u pineman -i /install.sh stage3
 }
 

@@ -29,6 +29,7 @@ packages=(
   parallel
   openbsd-netcat
   strace
+  acpi
   # Graphical
   sway
   xorg-xwayland
@@ -39,6 +40,7 @@ packages=(
   pipewire-pulse
   pipewire-jack
   pipewire-media-session
+  xdg-desktop-portal-wlr
   pamixer
   pavucontrol
   polkit-gnome
@@ -86,13 +88,13 @@ packages=(
   #podman-docker
 )
 yay -S --noconfirm --needed "${packages[@]}"
+yay -S --noconfirm --needed --asdeps gvfs tumbler thunar-volman thunar-archive-plugin file-roller ffmpegthumbnailer fuse2
+#yay -S --noconfirm --needed virt-manager qemu
+#yay -S --noconfirm --needed --asdeps ebtables dnsmasq
 echo 'pineman' | sudo chsh -s /bin/zsh pineman
 sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth ydotool
 sudo gpasswd -a pineman docker
 mkdir ~/.local/log
-yay -S --noconfirm --needed --asdeps gvfs tumbler thunar-volman thunar-archive-plugin file-roller ffmpegthumbnailer
-#yay -S --noconfirm --needed virt-manager qemu
-#yay -S --noconfirm --needed --asdeps ebtables dnsmasq
 pip install dtrx
 
 code --install-extension marcoms.oceanic-plus
