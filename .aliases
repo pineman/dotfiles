@@ -4,6 +4,7 @@
 alias vim="nvim"
 alias vimdiff="nvim -d"
 alias sudo="sudo "
+alias watch="watch "
 alias chown="chown -h"
 alias which="which -a"
 alias ls='ls -hX --group-directories-first --time-style=+"%d/%m/%Y %H:%M:%S" --color=auto -F --quoting-style=literal'
@@ -15,7 +16,7 @@ alias cp="cp -i -r"
 alias mv="mv -i"
 alias rm="rm -i --one-file-system"
 alias df='df -h'
-alias ps='ps --ppid 2 -N --forest -o user:15,ppid,pid,s,cmd'
+alias ps='ps --ppid 2 -N --forest -o user:15,ppid,pid,s,time,cmd'
 alias psw='ps -ww'
 alias pstree='sudo \pstree -aStpnT'
 alias pstreet='sudo \pstree -aStpnt'

@@ -664,6 +664,7 @@ EXEC					38;5;64
 
 # key-value, non-relational data
 .json					38;5;214
+.jsonc					38;5;214
 .lock					38;5;214
 .msg					38;5;214
 .pgn					38;5;214

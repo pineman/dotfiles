@@ -1,5 +1,24 @@
 # vim:filetype=swayconfig
+# Input
+#bindsym XF86Eject exec wtype -P delete
+#bindsym $mod+Left exec wtype -P home
+#bindsym $mod+Right exec wtype -P end
+input type:keyboard {
+	xkb_layout us
+	xkb_options caps:swapescape,compose:ralt
+	repeat_delay 140
+	repeat_rate 55
+}
+input type:touchpad {
+	tap enabled
+	natural_scroll enabled
+}
+input type:pointer {
+	accel_profile flat
+	pointer_accel 1
+}
 # Apperance
+#output eDP-1 scale 1.22
 default_border pixel 3
 default_floating_border pixel 2
 gaps inner 4
@@ -73,8 +92,8 @@ for_window [app_id="qalculate-gtk"] floating enable
 bindsym $mod+Return exec alacritty
 bindsym $mod+Control+Return exec foot
 bindsym $mod+d exec bemenu-run -b --fn 'sans 12'
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight set 5%-
 bindsym Mod4+L exec physlock -sm
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec amixer set Capture toggle
@@ -82,7 +101,7 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+n exec qalculate-gtk
 bindsym Print exec grimshot copy area
-bindsym $mod+backslash exec grimshot copy area
+bindsym $mod+backslash exec grimshot save output
 bindsym $mod+f exec thunar
 bindsym $mod+p exec firefox
 bindsym $mod+c exec chromium
@@ -100,43 +119,6 @@ bindsym $mod+Shift+b exec blueman-manager
 bindsym $mod+Shift+s exec systemctl suspend
 bindsym $mod+F1 exec wlr-randr --output eDP-1 --on
 bindsym $mod+F2 exec wlr-randr --output eDP-1 --off
-# Input
-#bindsym XF86Eject exec sudo ydotool key delete
-#bindsym Ctrl+Mod4+Right exec sudo ydotool key 107:1 107:0
-#bindsym Ctrl+Mod4+Left exec sudo ydotool key 102:1 102:0
-input type:keyboard {
-	xkb_layout us
-	xkb_options caps:swapescape,compose:ralt
-	repeat_delay 140
-	repeat_rate 55
-}
-input type:touchpad {
-	tap enabled
-	natural_scroll enabled
-}
-input type:pointer {
-	accel_profile flat
-	pointer_accel 1
-}
-# Startup
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec gnome-keyring-daemon --start
-exec mako
-exec nm-applet --indicator
-exec gammastep-indicator -l 38.7:-9 -t 6200:3700
-exec thunar --daemon
-exec blueman-tray
-exec swayidle -w \
-	timeout 300 'swaymsg "output * dpms off"' \
-	resume 'swaymsg "output * dpms on"' \
-	lock 'physlock -sm'
-#exec swayidle -w \
-#	timeout 300 'physlock -sm' \
-#	timeout 315 'swaymsg "output * dpms off"' \
-#	resume 'swaymsg "output * dpms on"' \
-#	before-sleep 'physlock -dsm' \
-#	lock 'physlock -sm'
 # Workspaces
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -178,3 +160,20 @@ bindsym Mod4+Shift+7 move container to workspace number 17
 bindsym Mod4+Shift+8 move container to workspace number 18
 bindsym Mod4+Shift+9 move container to workspace number 19
 bindsym Mod4+Shift+0 move container to workspace number 20
+# Startup
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec gnome-keyring-daemon --start
+exec mako
+exec nm-applet --indicator
+exec gammastep-indicator -l 41.1:-8.6 -t 6200:3700
+exec thunar --daemon
+exec blueman-tray
+exec playerctld
+exec swayidle -w \
+	timeout 300 'physlock -sm' \
+	timeout 315 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"' \
+	before-sleep 'physlock -dsm' \
+	before-sleep 'playerctl pause' \
+	lock 'physlock -sm'
