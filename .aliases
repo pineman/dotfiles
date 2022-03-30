@@ -107,6 +107,8 @@ alias gradle="gradle --parallel"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
 alias wireshark_ssl="(wireshark -o ssl.keylog_file:ssl_keylog -o ssl.debug_file:debug.txt) &>/dev/null &; export SSLKEYLOGFILE=ssl_keylog"
+alias c="cd ~/b2/pineman-Documents/computer"
+alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 alias dsc="docker stop -t 0 \$(docker ps -aq) &>/dev/null"
@@ -175,7 +177,7 @@ alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
 
 # etc
-alias b2="tobg rclone mount --vfs-cache-mode=writes b2: b2"
+alias b2="(mkdir ~/b2; rclone mount --vfs-cache-mode=writes b2: b2 &>>~/.local/log/b2.log &)"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias inxi="inxi -F"
 alias pandoc="pandoc -s"

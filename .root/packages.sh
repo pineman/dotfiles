@@ -34,19 +34,23 @@ packages=(
   parallel
   openbsd-netcat
   strace
+  bcc
+  bcc-tools
+  python-bcc
   acpi
   nmap
   traceroute
   ddcci-driver-linux-dkms
-  ddcutil
   bluez
   bluez-utils
+  jc
+  trash-cli
+  imagemagick
   # Graphical
-  sway-hidpi-git
-  xorg-xwayland-hidpi-git
+  sway
+  xorg-xwayland
   mako
   i3status
-  ttf-font-icons
   ttf-droid
   pipewire-pulse
   pipewire-jack
@@ -60,10 +64,19 @@ packages=(
   alacritty
   foot
   thunar
+  gvfs
+  tumbler
+  ffmpegthumbnailer
+  thunar-volman
+  thunar-archive-plugin
+  file-roller 
   gnome-keyring
   blueman
   gammastep
+  python-xdg
   swayidle
+  sway-mpris-idle-inhibit
+  sway-video-idle-inhibit
   ttc-iosevka
   wl-clipboard
   keepassxc
@@ -81,16 +94,21 @@ packages=(
   libva-intel-driver
   libva-utils
   mpv
+  mpv-mpris
   yt-dlp
-  play-with-mpv-git
   eog
   playerctl
   wf-recorder
   wtype
+  zathura
+  zathura-pdf-poppler
+  waybar
+  otf-font-awesome
+  wdisplays
   # Dev
   jq
   wireshark-qt
-  visual-studio-code-bin
+  code
   docker
   docker-compose
   pigz
@@ -104,12 +122,13 @@ packages=(
   shellcheck-bin
 )
 yay -S --noconfirm --needed "${packages[@]}"
-yay -S --noconfirm --needed --asdeps gvfs tumbler thunar-volman thunar-archive-plugin file-roller ffmpegthumbnailer fuse2
+yay -S --noconfirm --needed --asdeps 
 echo 'pineman' | sudo chsh -s /bin/zsh pineman
-sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth
+sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer
 systemctl --user enable playerctld
 sudo gpasswd -a pineman docker
 sudo gpasswd -a pineman wireshark
+gsettings set 'org.gnome.desktop.interface' font-name 'sans 10'
 mkdir ~/.local/log
 pip install dtrx
 #yay -S --noconfirm --needed virt-manager qemu

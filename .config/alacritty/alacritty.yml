@@ -816,7 +816,7 @@ env:
 scrolling:
   history: 100000
 font:
-  size: 13
+  size: 12
 # Oceanic Next colorscheme
 colors:
   primary:

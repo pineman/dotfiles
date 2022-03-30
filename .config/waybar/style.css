@@ -1,0 +1,44 @@
+window#waybar {
+  /*background-color: rgba(43, 48, 59, 1);*/
+  background-color: black;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+}
+
+#workspaces button {
+  padding: 0 2px;
+  color: #8f8f8f;
+  background-color: #222222;
+  border: 1px solid #2e2e2e;
+  border-radius: 0;
+  transition: none;
+}
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+  background: #222222;
+  border: 1px solid #2e2e2e;
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+#workspaces button.focused {
+  color: #ffffff;
+  background: #285577;
+  border: 1px solid #3c83ba;
+}
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
+#mode {
+  background-color: #900000;
+  padding: 0 5px;
+}
+
+#tray, #network, #pulseaudio, #battery, #disk, #memory, #cpu, #temperature {
+  border-right: 1px solid #575757;
+  padding-right: 5px;
+}
+#clock {
+  padding-right: 5px;
+}

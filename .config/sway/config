@@ -1,4 +1,19 @@
 # vim:filetype=swayconfig
+# Startup
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec gnome-keyring-daemon --start
+exec mako
+exec nm-applet --indicator
+exec gammastep-indicator -l 41.1:-8.6 -t 6200:3700
+exec thunar --daemon
+exec blueman-tray
+exec playerctld
+exec swayidle -w \
+	before-sleep 'playerctl pause; physlock -dsm' \
+	timeout 300 'systemctl suspend' \
+	lock 'playerctl pause; physlock -dsm'
+exec sway-video-idle-inhibit
+exec sway-mpris-idle-inhibit
 # Input
 #bindsym XF86Eject exec wtype -P delete
 #bindsym $mod+Left exec wtype -P home
@@ -18,16 +33,14 @@ input type:pointer {
 	pointer_accel 1
 }
 # Apperance
-#output eDP-1 scale 1.22
+output eDP-1 scale 1.19
 default_border pixel 3
 default_floating_border pixel 2
 gaps inner 4
 gaps outer 0
 smart_gaps on
 hide_edge_borders --i3 smart
-font pango:Sans 10.5
-titlebar_padding 4 3
-titlebar_border_thickness 1
+font pango:Sans 10
 client.background #000000
 # class                 border  backgr. text    indicator child_border
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
@@ -37,7 +50,8 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 bar {
 	status_command i3status
-	font pango:Sans, Icons 10.5
+	font pango:Sans, Icons 10
+    swaybar_command waybar
 }
 # Binds
 set $mod Mod1
@@ -49,7 +63,6 @@ mode "resize" {
 	bindsym h resize shrink width 30 px
 	bindsym j resize grow height 30 px
 	bindsym k resize shrink height 30 px
-	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
@@ -57,16 +70,10 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-bindsym $mod+Ctrl+l focus output right
-bindsym $mod+Ctrl+h focus output left
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-bindsym $mod+Shift+Ctrl+h move workspace to output left
-bindsym $mod+Shift+Ctrl+j move workspace to output down
-bindsym $mod+Shift+Ctrl+k move workspace to output up
-bindsym $mod+Shift+Ctrl+l move workspace to output right
 bindsym $mod+w layout tabbed
 bindsym $mod+Shift+w layout stacking
 bindsym $mod+e layout toggle split
@@ -87,14 +94,16 @@ bindsym $mod+u workspace prev_on_output
 workspace_auto_back_and_forth yes
 # Window Rules
 for_window [app_id="qalculate-gtk"] floating enable
-#for_window [app_id="telegramdesktop"] move container to workspace 10
+for_window [app_id="telegramdesktop"] move container to workspace 10
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
 # Applications
 bindsym $mod+Return exec alacritty
 bindsym $mod+Control+Return exec foot
-bindsym $mod+d exec bemenu-run -b --fn 'sans 12'
+bindsym $mod+d exec bemenu-run -b --fn 'sans 10'
 bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight set 5%-
-bindsym Mod4+L exec physlock -sm
+bindsym Mod4+L exec physlock -dsm
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -105,15 +114,11 @@ bindsym $mod+backslash exec grimshot save output
 bindsym $mod+f exec thunar
 bindsym $mod+p exec firefox
 bindsym $mod+c exec chromium
-bindsym $mod+o exec dbeaver
 bindsym $mod+y exec code
 bindsym $mod+Shift+y exec idea-ce
 bindsym $mod+Shift+u exec virt-manager
 bindsym $mod+t exec telegram-desktop
-bindsym $mod+Shift+t exec rs
-bindsym $mod+Ctrl+t exec runelite
 bindsym $mod+Shift+i exec keepassxc
-bindsym $mod+g exec remmina
 bindsym $mod+Shift+g exec wireshark
 bindsym $mod+Shift+b exec blueman-manager
 bindsym $mod+Shift+s exec systemctl suspend
@@ -160,20 +165,3 @@ bindsym Mod4+Shift+7 move container to workspace number 17
 bindsym Mod4+Shift+8 move container to workspace number 18
 bindsym Mod4+Shift+9 move container to workspace number 19
 bindsym Mod4+Shift+0 move container to workspace number 20
-# Startup
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec gnome-keyring-daemon --start
-exec mako
-exec nm-applet --indicator
-exec gammastep-indicator -l 41.1:-8.6 -t 6200:3700
-exec thunar --daemon
-exec blueman-tray
-exec playerctld
-exec swayidle -w \
-	timeout 300 'physlock -sm' \
-	timeout 315 'swaymsg "output * dpms off"' \
-	resume 'swaymsg "output * dpms on"' \
-	before-sleep 'physlock -dsm' \
-	before-sleep 'playerctl pause' \
-	lock 'physlock -sm'
