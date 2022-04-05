@@ -50,8 +50,7 @@ packages=(
   sway
   xorg-xwayland
   mako
-  i3status
-  ttf-droid
+  ttf-apple-emoji
   pipewire-pulse
   pipewire-jack
   pipewire-media-session
@@ -125,6 +124,7 @@ yay -S --noconfirm --needed "${packages[@]}"
 yay -S --noconfirm --needed --asdeps 
 echo 'pineman' | sudo chsh -s /bin/zsh pineman
 sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer
+sudo systemctl mask systemd-rfkill.{socket,service}
 systemctl --user enable playerctld
 sudo gpasswd -a pineman docker
 sudo gpasswd -a pineman wireshark

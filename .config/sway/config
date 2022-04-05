@@ -6,15 +6,20 @@ exec mako
 exec nm-applet --indicator
 exec gammastep-indicator -l 41.1:-8.6 -t 6200:3700
 exec thunar --daemon
-exec blueman-tray
+#exec blueman-applet
 exec playerctld
 exec swayidle -w \
 	before-sleep 'playerctl pause; physlock -dsm' \
-	timeout 300 'systemctl suspend' \
+	timeout 300 'acpi | grep Discharging &>/dev/null && systemctl suspend' \
 	lock 'playerctl pause; physlock -dsm'
+# For some reason still needed even though /etc/sway/config.d/50-systemd-user.conf
+# exists, as per https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec sway-video-idle-inhibit
 exec sway-mpris-idle-inhibit
+#exec /home/pineman/.local/bin/fix-code
 # Input
+# Apple magic keyboard binds (not working)
 #bindsym XF86Eject exec wtype -P delete
 #bindsym $mod+Left exec wtype -P home
 #bindsym $mod+Right exec wtype -P end
@@ -22,7 +27,7 @@ input type:keyboard {
 	xkb_layout us
 	xkb_options caps:swapescape,compose:ralt
 	repeat_delay 140
-	repeat_rate 55
+	repeat_rate 60
 }
 input type:touchpad {
 	tap enabled
@@ -33,24 +38,24 @@ input type:pointer {
 	pointer_accel 1
 }
 # Apperance
-output eDP-1 scale 1.19
+output eDP-1 scale 1.18
+output HDMI-A-1 scale 1.18
 default_border pixel 3
 default_floating_border pixel 2
+titlebar_padding 3
 gaps inner 4
 gaps outer 0
 smart_gaps on
 hide_edge_borders --i3 smart
 font pango:Sans 10
-client.background #000000
+# Default Colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #222222
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+#client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+#client.focused_inactive #333333 #5f676a #ffffff #484e50   #222222
+#client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+#client.urgent           #2f343a #900000 #ffffff #900000   #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 bar {
-	status_command i3status
-	font pango:Sans, Icons 10
     swaybar_command waybar
 }
 # Binds
@@ -94,13 +99,13 @@ bindsym $mod+u workspace prev_on_output
 workspace_auto_back_and_forth yes
 # Window Rules
 for_window [app_id="qalculate-gtk"] floating enable
-for_window [app_id="telegramdesktop"] move container to workspace 10
+#for_window [app_id="telegramdesktop"] move container to workspace 10
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 # Applications
 bindsym $mod+Return exec alacritty
 bindsym $mod+Control+Return exec foot
-bindsym $mod+d exec bemenu-run -b --fn 'sans 10'
+bindsym $mod+d exec bemenu-run -n -b --fn 'monospace'
 bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight set 5%-
 bindsym Mod4+L exec physlock -dsm

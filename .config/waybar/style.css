@@ -1,9 +1,10 @@
+/* 3bar default look clone */
 window#waybar {
-  /*background-color: rgba(43, 48, 59, 1);*/
   background-color: black;
   color: #ffffff;
   padding: 0;
   margin: 0;
+  font-family: sans-serif;
 }
 
 #workspaces button {
@@ -27,7 +28,7 @@ window#waybar {
   border: 1px solid #3c83ba;
 }
 #workspaces button.urgent {
-  background-color: #eb4d4b;
+  background-color: #900000;
 }
 
 #mode {
@@ -35,10 +36,19 @@ window#waybar {
   padding: 0 5px;
 }
 
-#tray, #network, #pulseaudio, #battery, #disk, #memory, #cpu, #temperature {
+#tray, #idle_inhibitor, #network, #bluetooth, #pulseaudio, #battery, #disk, #memory, #cpu, #temperature, #clock.date {
   border-right: 1px solid #575757;
   padding-right: 5px;
 }
-#clock {
+#network.ethernet, #network.wifi {
+  color: #31AB00;
+}
+#network.linked {
+  color: #C4A000;
+}
+#network.disconnected, #network.disabled {
+  color: #FF2026;
+}
+#clock.time {
   padding-right: 5px;
 }

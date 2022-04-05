@@ -1,84 +1,110 @@
 {
-    "position": "bottom", // Waybar position (top|bottom|left|right)
-    "spacing": 8, // Gaps between modules (4px)
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["tray", "network", "pulseaudio", "battery", "disk", "memory", "cpu", "temperature", "clock"],
-    // Modules configuration
-     "sway/workspaces": {
-         "format": "{icon}{name}",
-         "format-icons": {
-             //"10": " ",
-             //"urgent": "",
-             "default": ""
-         }
+  "position": "bottom", // Waybar position (top|bottom|left|right)
+  "spacing": 8, // Gaps between modules (4px)
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-right": ["tray", "idle_inhibitor", "bluetooth", "network#wifi", "network#ethernet", "pulseaudio", "battery", "disk", "memory", "cpu", "temperature", "clock#date", "clock#time"],
+  // Modules configuration
+   "sway/workspaces": {
+     "format": "{icon}{name}",
+     "disable-scroll": false,
+     "enable-bar-scroll": true,
+     "disable-scroll-wraparound": true,
+     "format-icons": {
+       //"10": " ",
+       //"urgent": "",
+       "default": ""
+     }
+  },
+  "sway/mode": {
+    "format": "{}"
+  },
+  "tray": {
+    "spacing": 5
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "bluetooth": {
+    "format-icons": {
+      "enabled": "<span color='green'></span>",
+      "disabled": "<span color='red'></span>"
     },
-    "sway/mode": {
-        "format": "{}"
+    "on-click": "blueman-manager",
+    "on-click-right": "rfkill toggle bluetooth"
+  },
+  "network#wifi": {
+    "interface": "wlp1s0",
+    "format": " {essid} {signalStrength}%",
+    "tooltip-format": "{ifname} via {gwaddr} at {frequency}GHz",
+    "format-disconnected": "",
+    "format-disabled": "",
+    "format-alt": "<span color='white'>{ifname}: {ipaddr}/{cidr} d:{bandwidthDownOctets} u:{bandwidthUpOctets}</span>",
+    "on-click-right": "rfkill toggle wifi"
+  },
+  "network#ethernet": {
+    "interface": "enp0s31f6",
+    "format": " {ipaddr}/{cidr}",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "format-linked": "No IP",
+    "format-disconnected": "",
+    "format-disabled": "",
+    "format-alt": "<span color='white'>{ifname}: {ipaddr}/{cidr} d:{bandwidthDownOctets} u:{bandwidthUpOctets}</span>"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}% {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": "<span color='red'> 0%{icon}</span> {format_source}",
+    "format-muted": "<span color='red'> 0%</span> {format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": "<span color='red'> 0%</span>",
+    "format-icons": {
+      "headphone": "",
+      "headset": "",
+      "default": ["", "", ""]
     },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {essid}",
-        "format-ethernet": " {ipaddr}/{cidr}",
-        "tooltip-format": " {ifname} via {gwaddr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "on-click": "pavucontrol"
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
     },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": " 0%",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "disk": {
-      "format": " {free}"
-    },
-    "memory": {
-        "format": " {avail:0.1f}GiB"
-    },
-    "cpu": {
-        "format": " {usage}%",
-        "tooltip": false
-    },
-    "temperature": {
-        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input",
-        "critical-threshold": 80,
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": " {:%a %d/%m/%y   %H:%M}"
-    },
-    "tray": {
-        "spacing": 5
-    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "disk": {
+    "format": " {free}"
+  },
+  "memory": {
+    "format": " {avail:0.1f}GiB"
+  },
+  "cpu": {
+    "format": " {usage}%  {load}",
+    "tooltip": false
+  },
+  "temperature": {
+    "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+    "input-filename": "temp1_input",
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", ""]
+  },
+  "clock#date": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": " {:%a %d/%m/%y}"
+  },
+  "clock#time": {
+    "format": " {:%H:%M}"
+  },
 }
 
