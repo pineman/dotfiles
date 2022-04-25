@@ -50,7 +50,6 @@ stage2() {
 }
 
 stage3() {
-  sudo bootctl install
   rm -f .bash*
   git init
   git remote add origin https://github.com/pineman/dotfiles.git
@@ -59,7 +58,9 @@ stage3() {
   git branch -D master
   git submodule update --init
   cd .root
+  sudo bootctl install
   ./system-files.sh
+  set +e
   sudo locale-gen
   sudo timedatectl set-ntp true
   sudo timedatectl set-timezone Europe/Lisbon

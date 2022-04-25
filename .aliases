@@ -16,7 +16,7 @@ alias cp="cp -i -r"
 alias mv="mv -i"
 alias rm="rm -i --one-file-system"
 alias df='df -h'
-alias ps='ps --ppid 2 -N --forest -o user:15,ppid,pid,s,time,cmd'
+alias ps='ps --ppid 2 -N --forest -o user:15,pid,s,time,cmd'
 alias psw='ps -ww'
 alias pstree='sudo \pstree -aStpnT'
 alias pstreet='sudo \pstree -aStpnt'
@@ -54,14 +54,14 @@ alias .......="cd -- ../../../../../.."
 alias ........="cd -- ../../../../../../.."
 alias .........="cd -- ../../../../../../../.."
 cd() {
-	builtin cd "$@" && ll
+  builtin cd "$@" && ll
 }
 tobg() {
-	("$@" &) &>/dev/null
+  ("$@" &) &>/dev/null
 }
 alias open="tobg xdg-open"
 u() {
-	tobg alacritty --working-directory .
+  tobg alacritty --working-directory .
 }
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
@@ -75,16 +75,16 @@ alias smem='sudo smem -t -a -k -s rss'
 alias timer='echo timer started, use ctrl-c to stop; time cat'
 alias dmesg='sudo dmesg -T'
 show-iptables() {
-	printf 'SECURITY ==============================================================\n'
-	sudo iptables-legacy -nvL -t security
-	printf '\nRAW ===================================================================\n'
-	sudo iptables-legacy -nvL -t raw
-	printf '\nMANGLE ================================================================\n'
-	sudo iptables-legacy -nvL -t mangle
-	printf '\nNAT ===================================================================\n'
-	sudo iptables-legacy -nvL -t nat
-	printf '\nFILTER ================================================================\n'
-	sudo iptables-legacy -nvL -t filter
+  printf 'SECURITY ==============================================================\n'
+  sudo iptables-legacy -nvL -t security
+  printf '\nRAW ===================================================================\n'
+  sudo iptables-legacy -nvL -t raw
+  printf '\nMANGLE ================================================================\n'
+  sudo iptables-legacy -nvL -t mangle
+  printf '\nNAT ===================================================================\n'
+  sudo iptables-legacy -nvL -t nat
+  printf '\nFILTER ================================================================\n'
+  sudo iptables-legacy -nvL -t filter
 }
 alias zp='zpool status; zpool list'
 alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
@@ -114,13 +114,13 @@ alias dsc="docker stop -t 0 \$(docker ps -aq) &>/dev/null"
 alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
 alias di="docker images"
 drmia() {
-	docker images -a | grep "$1" | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi "$1":{}
+  docker images -a | grep "$1" | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi "$1":{}
 }
 alias dv='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dr="docker restart -t 0"
 alias dl="docker logs -f --since 3h"
 docker_show_layers() {
-	docker history "$1" --format '{{.CreatedBy}}' --no-trunc
+  docker history "$1" --format '{{.CreatedBy}}' --no-trunc
 }
 alias dspace="docker system df -v"
 alias docker-tui="lazydocker"
@@ -130,13 +130,13 @@ alias drh='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddr
 alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/home/lyonn/.Xauthority -it cenas:1'
 # Kubernetes
 type kubectl &>/dev/null \
-	&& alias k=kubectl \
+  && alias k=kubectl \
     `#bash should have this var, zsh not really` \
-	&& [[ -z $HISTFILE ]] \
-	&& source <(kubectl completion zsh | sd 'kubectl' 'k')
+  && [[ -z $HISTFILE ]] \
+  && source <(kubectl completion zsh | sd 'kubectl' 'k')
 kube-getall() {
-	kubectl api-resources --verbs=list -o name | grep -v events \
-		| parallel kubectl get -A --ignore-not-found --show-kind
+  kubectl api-resources --verbs=list -o name | grep -v events \
+    | parallel kubectl get -A --ignore-not-found --show-kind
 }
 kube-getall-ns() {
   echo "Namespace $1 ---------------------------------------------------------"
@@ -145,6 +145,7 @@ kube-getall-ns() {
     kubectl -n "$1" get --ignore-not-found "$i"
   done
 }
+alias k-pod-nodes="k get  -A --field-selector metadata.namespace!=kube-system pod -o='custom-columns=NODE:.spec.nodeName,NAME:.metadata.name,STATUS:.status.phase,REQ:.spec.containers[*].resources.requests'"
 # Git
 alias gs="git status"
 alias gb="git branch -vvaa"
@@ -163,9 +164,9 @@ alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done"
 rm_worktree() {
-	for b in "$@"; do rm -rf ../"$b"; done
-	git worktree prune
-	git branch -D "$@"
+  for b in "$@"; do rm -rf ../"$b"; done
+  git worktree prune
+  git branch -D "$@"
 }
 # Power-related
 alias susp="systemctl suspend"
@@ -177,7 +178,6 @@ alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-sus
 alias b2="(b2-down; mkdir -p ~/b2; rclone mount --vfs-cache-mode=writes b2: b2 &>>~/.local/log/b2.log &)"
 alias b2-down="(killall rclone; fusermount -u ~/b2; rmdir ~/b2) &>/dev/null"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
-alias inxi="inxi -F"
 alias pandoc="pandoc -s"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias clean_vim="git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo"
@@ -186,22 +186,4 @@ alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel 
 alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-_bluetooth_connect() {
-	sudo rfkill unblock bluetooth
-	local action='connect'
-	if [[ "$2" == 'off' ]]; then action='disconnect'; fi
-	echo -e "$action $1\n" | bluetoothctl
-}
-airpods() {
-	_bluetooth_connect C4:0B:31:F0:86:87 $1
-}
-magic_kb() {
-	_bluetooth_connect 64:0B:D7:1E:9B:DD $1
-}
-ds5() {
-	_bluetooth_connect 4C:B9:9B:74:9D:6F $1
-}
-edifier() {
-	_bluetooth_connect 60:F4:3A:BC:39:9F $1
-}
 

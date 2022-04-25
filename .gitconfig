@@ -9,6 +9,7 @@
 	rebase = true
 [merge]
 	tool = vimdiff
+	conflictStyle = zdiff3
 [diff]
 	color = false
 [status]

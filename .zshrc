@@ -88,7 +88,7 @@ precmd() {
 #%F{15}%?%f $ '
 . ~/.aliases
 alias -g G='|& grep -i'
-alias -g VI='|& vim -'
+alias -g V='|& vim -'
 alias -g H='|& head'
 alias -g T='|& tail'
 alias -g L='|& $PAGER'

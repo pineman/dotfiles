@@ -6,7 +6,7 @@ exec mako
 exec nm-applet --indicator
 exec gammastep-indicator -l 41.1:-8.6 -t 6200:3700
 exec thunar --daemon
-#exec blueman-applet
+exec blueman-applet
 exec playerctld
 exec swayidle -w \
 	before-sleep 'playerctl pause; physlock -dsm' \
@@ -115,7 +115,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+n exec qalculate-gtk
 bindsym Print exec grimshot copy area
-bindsym $mod+backslash exec grimshot save output
+bindsym $mod+backslash exec grimshot copy area
+bindsym $mod+Shift+backslash exec grimshot save output
 bindsym $mod+f exec thunar
 bindsym $mod+p exec firefox
 bindsym $mod+c exec chromium
@@ -170,3 +171,4 @@ bindsym Mod4+Shift+7 move container to workspace number 17
 bindsym Mod4+Shift+8 move container to workspace number 18
 bindsym Mod4+Shift+9 move container to workspace number 19
 bindsym Mod4+Shift+0 move container to workspace number 20
+

@@ -46,6 +46,9 @@ packages=(
   jc
   trash-cli
   imagemagick
+  intel-gpu-tools
+  plocate
+  moreutils
   # Graphical
   sway
   xorg-xwayland
@@ -104,6 +107,8 @@ packages=(
   waybar
   otf-font-awesome
   wdisplays
+  gnome-font-viewer
+  gucharmap
   # Dev
   jq
   wireshark-qt
