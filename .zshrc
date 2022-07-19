@@ -18,9 +18,9 @@ zstyle ':completion:*' rehash true
 zmodload zsh/complist
 zstyle ':completion:*' menu yes select
 bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
 #bindkey -M menuselect '^I' accept-search # Tab to accept
 bindkey -M menuselect '^[' undo
 zstyle ':completion:*:descriptions' format $'completing %B%d%b'
@@ -46,9 +46,6 @@ for m in visual viopp; do
         bindkey -M $m $c select-bracketed
     done
 done
-bindkey -a cs change-surround
-bindkey -a ds delete-surround
-bindkey -a ys add-surround
 KEYTIMEOUT=1
 bindkey '^?' backward-delete-char
 autoload -Uz edit-command-line

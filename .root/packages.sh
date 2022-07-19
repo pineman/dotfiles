@@ -78,7 +78,7 @@ packages=(
   ffmpegthumbnailer
   thunar-volman
   thunar-archive-plugin
-  file-roller 
+  file-roller
   gnome-keyring
   blueman
   gammastep
@@ -107,7 +107,7 @@ packages=(
   mpv-mpris
   vlc
   yt-dlp
-  eog
+  ristretto
   playerctl
   wf-recorder
   wtype
@@ -123,11 +123,14 @@ packages=(
   mousepad
   pinta
   gimp
+  rmlint
+  rmlint-shredder
+  transmission-gtk
   # Dev
   jq
   gron
   wireshark-qt
-  code
+  visual-studio-code-bin
   docker
   docker-compose
   pigz
@@ -136,7 +139,7 @@ packages=(
   rlwrap
 )
 yay -S --noconfirm --needed "${packages[@]}"
-yay -S --noconfirm --needed --asdeps 
+yay -S --noconfirm --needed --asdeps
 echo 'pineman' | sudo chsh -s /bin/zsh pineman
 sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer udevmon
 sudo systemctl mask systemd-rfkill.{socket,service}

@@ -4,7 +4,7 @@
 alias vim="nvim"
 alias vimdiff="nvim -d"
 alias sudo="sudo "
-alias watch="watch "
+alias watch="watch -x "
 alias chown="chown -h"
 alias which="which -a"
 alias ls='ls -hX --group-directories-first --time-style=+"%d/%m/%Y %H:%M:%S" --color=auto -F --quoting-style=literal'
@@ -18,8 +18,6 @@ alias rm="rm -i --one-file-system"
 alias df='df -h'
 alias ps='ps --ppid 2 -N --forest -o user:15,pid,s,time,cmd'
 alias psw='ps -ww'
-alias pstree='sudo \pstree -aStpnT'
-alias pstreet='sudo \pstree -aStpnt'
 alias grep="grep --color=auto"
 alias less="less -R"
 alias free='free -mw'
@@ -39,6 +37,7 @@ alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
 alias rrg="rg --no-ignore"
 alias vmstat="vmstat -S M"
 alias tee="tee -a"
+alias ts="ts %.T"
 alias nmap="nmap -v"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias killall="killall -v -I"
@@ -57,6 +56,10 @@ cd() {
 }
 tobg() {
   ("$@" &) &>/dev/null
+}
+loop() {
+  #TODO: doesn't accept aliases
+  while :; do "$@"; sleep 2; done
 }
 alias open="tobg xdg-open"
 u() {
@@ -89,7 +92,7 @@ alias zp='zpool status; zpool list'
 alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
 alias sway='sway &>> ~/.local/log/sway.log'
 alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
-alias ex='dtrx --one=inside -r'
+alias ex='dtrx --one=inside'
 alias quickemu='quickemu --display spice'
 
 # Dev
@@ -105,7 +108,7 @@ alias gradle="gradle --parallel"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
 alias wireshark_ssl="(wireshark -o ssl.keylog_file:ssl_keylog -o ssl.debug_file:debug.txt) &>/dev/null &; export SSLKEYLOGFILE=ssl_keylog"
-alias c="cd ~/b2/pineman-Documents/computer"
+alias c="cd ~/b2/computer"
 function sr() {
   sd -s "$1" "$2" $(rg -FUl "$1")
 }
@@ -122,7 +125,7 @@ drmia() {
 }
 alias dv='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dr="docker restart -t 0"
-alias dl="docker logs -f --since 3h"
+alias dl="loop docker logs -f --since 3h"
 docker_show_layers() {
   docker history "$1" --format '{{.CreatedBy}}' --no-trunc
 }
@@ -179,9 +182,11 @@ alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
-
+bright() {
+  until sudo ddcutil setvcp 10 $1 &>/dev/null; do done
+}
 # etc
-alias b2="(b2-down; mkdir -p ~/b2; rclone mount --vfs-cache-mode=writes b2:pineman-Documents b2 &>>~/.local/log/b2.log &)"
+alias b2="(b2-down; mkdir -p ~/b2; rclone mount --vfs-cache-mode=writes b2:pineman-Documents ~/b2 &>>~/.local/log/b2.log &)"
 alias b2-down="(killall rclone; fusermount -u ~/b2; rmdir ~/b2) &>/dev/null"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias pandoc="pandoc -s"

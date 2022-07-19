@@ -23,6 +23,7 @@
     "window.titleBarStyle": "custom",
     "files.trimTrailingWhitespace": true,
     "files.autoSave": "afterDelay",
+    "files.insertFinalNewline": true,
     "breadcrumbs.enabled": true,
     "keyboard.dispatch": "keyCode",
     "explorer.confirmDragAndDrop": false,
