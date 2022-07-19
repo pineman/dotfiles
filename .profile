@@ -18,7 +18,7 @@ export GCC_COLORS=1
 export PATH="/usr/lib/ccache/bin:$PATH"
 export ERL_AFLAGS="-kernel shell_history enabled"
 #export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-#export PATH="$PATH:$GEM_HOME/bin"
+export PATH="$PATH:$GEM_HOME/bin"
 export KUBE_CONFIG_PATH="$HOME/.kube/config"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org/"
 

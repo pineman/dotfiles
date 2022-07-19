@@ -107,7 +107,7 @@ function! SoftHardWrap()
 endfunction
 map <F9> :call SoftHardWrap()<cr>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-nnoremap <esc><esc> :w<cr> :silent! noh <cr>
+nnoremap <esc><esc> :noh<cr>:w<cr>
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab

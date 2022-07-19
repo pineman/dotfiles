@@ -10,7 +10,7 @@ exec blueman-applet
 exec playerctld
 exec swayidle -w \
 	before-sleep 'playerctl pause; physlock -dsm' \
-	timeout 300 'acpi | grep Discharging &>/dev/null && systemctl suspend' \
+	timeout 300 'cat /sys/class/power_supply/BAT0/status | grep Discharging &>/dev/null && systemctl suspend' \
 	lock 'playerctl pause; physlock -dsm'
 # For some reason still needed even though /etc/sway/config.d/50-systemd-user.conf
 # exists, as per https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
@@ -38,8 +38,8 @@ input type:pointer {
 	pointer_accel 1
 }
 # Apperance
-output eDP-1 scale 1.18
-output HDMI-A-1 scale 1.18
+output eDP-1 scale 1.184
+output HDMI-A-1 scale 1.20
 default_border pixel 3
 default_floating_border pixel 2
 titlebar_padding 3

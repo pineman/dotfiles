@@ -1,15 +1,18 @@
 #!/bin/bash
 set -euxo pipefail
+
 packages=(
   # System
   arch-install-scripts
   pacman-contrib
   pkgfile
+  fakepkg
   kernel-modules-hook
   man-db
   man-pages
   nano
   systemd-resolvconf
+  wireless-regdb
   # Utilities
   zsh
   zsh-completions
@@ -25,7 +28,6 @@ packages=(
   terminus-font
   tlp
   tlp-rdw
-  mlocate
   backblaze-b2-bin
   rclone
   direnv
@@ -34,29 +36,34 @@ packages=(
   parallel
   openbsd-netcat
   strace
-  bcc
-  bcc-tools
-  python-bcc
+  #bcc
+  #bcc-tools
+  #python-bcc
   acpi
   nmap
   traceroute
   ddcci-driver-linux-dkms
   bluez
   bluez-utils
-  jc
   trash-cli
   imagemagick
   intel-gpu-tools
   plocate
   moreutils
+  tree
+  ifuse
   # Graphical
   sway
   xorg-xwayland
   mako
+  noto-fonts
+  noto-fonts-cjk
+  noto-fonts-extra
   ttf-apple-emoji
   pipewire-pulse
   pipewire-jack
-  pipewire-media-session
+  pipewire-alsa
+  wireplumber
   xdg-desktop-portal-wlr
   pamixer
   pavucontrol
@@ -75,7 +82,7 @@ packages=(
   gnome-keyring
   blueman
   gammastep
-  python-xdg
+  #python-xdg
   swayidle
   sway-mpris-idle-inhibit
   sway-video-idle-inhibit
@@ -93,10 +100,12 @@ packages=(
   telegram-desktop
   network-manager-applet
   wev
+  interception-dual-function-keys
   libva-intel-driver
   libva-utils
   mpv
   mpv-mpris
+  vlc
   yt-dlp
   eog
   playerctl
@@ -109,26 +118,27 @@ packages=(
   wdisplays
   gnome-font-viewer
   gucharmap
+  gnome-disk-utility
+  dconf-editor
+  mousepad
+  pinta
+  gimp
   # Dev
   jq
+  gron
   wireshark-qt
   code
   docker
   docker-compose
   pigz
-  docker-rootless-extras-bin
-  rootlesskit-bin
-  podman
-  catatonit
-  podman-compose-git
-  podman-dnsname
-  #podman-docker
   shellcheck-bin
+  flyctl-bin
+  rlwrap
 )
 yay -S --noconfirm --needed "${packages[@]}"
 yay -S --noconfirm --needed --asdeps 
 echo 'pineman' | sudo chsh -s /bin/zsh pineman
-sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer
+sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer udevmon
 sudo systemctl mask systemd-rfkill.{socket,service}
 systemctl --user enable playerctld
 sudo gpasswd -a pineman docker
@@ -138,10 +148,9 @@ mkdir ~/.local/log
 pip install dtrx
 #yay -S --noconfirm --needed virt-manager qemu
 #yay -S --noconfirm --needed --asdeps ebtables dnsmasq
-
 code --install-extension marcoms.oceanic-plus
 code --install-extension golang.Go
 code --install-extension eamodio.gitlens
 code --install-extension asvetliakov.vscode-neovim
-
 ./work.sh
+

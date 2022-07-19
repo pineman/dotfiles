@@ -21,14 +21,13 @@ alias psw='ps -ww'
 alias pstree='sudo \pstree -aStpnT'
 alias pstreet='sudo \pstree -aStpnt'
 alias grep="grep --color=auto"
-alias sed='sd'
 alias less="less -R"
 alias free='free -mw'
 alias dfc='dfc -d -t -tmpfs,dev -m'
 alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -shc'
-alias rsync='rsync -avP6AHAXxs --numeric-ids --xattrs --acls'
+alias rsync='rsync -avPAHAXxs --numeric-ids --xattrs --acls'
 alias ncdu='ncdu --color off'
 alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
@@ -98,7 +97,6 @@ alias p="ssh pinecone"
 alias make='make -j$(nproc)'
 alias py="python"
 alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
-alias mvn="mvn -ntp -e"
 alias mit-scheme="rlwrap mit-scheme"
 alias sbcl="rlwrap sbcl"
 alias yaegi="rlwrap yaegi"
@@ -108,6 +106,12 @@ alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
 alias wireshark_ssl="(wireshark -o ssl.keylog_file:ssl_keylog -o ssl.debug_file:debug.txt) &>/dev/null &; export SSLKEYLOGFILE=ssl_keylog"
 alias c="cd ~/b2/pineman-Documents/computer"
+function sr() {
+  sd -s "$1" "$2" $(rg -FUl "$1")
+}
+function srr() {
+  sd -s "$1" "$2" $(rrg -FUl "$1")
+}
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 alias dsc="docker stop -t 0 \$(docker ps -aq) &>/dev/null"
@@ -145,14 +149,16 @@ kube-getall-ns() {
     kubectl -n "$1" get --ignore-not-found "$i"
   done
 }
-alias k-pod-nodes="k get  -A --field-selector metadata.namespace!=kube-system pod -o='custom-columns=NODE:.spec.nodeName,NAME:.metadata.name,STATUS:.status.phase,REQ:.spec.containers[*].resources.requests'"
+alias kube-pod-nodes="k get -A --field-selector metadata.namespace!=kube-system pod -o='custom-columns=NODE:.spec.nodeName,NAME:.metadata.name,NAMESPACE:.metadata.namespace,STATUS:.status.phase,REQ:.spec.containers[*].resources.requests'"
+alias kube-pod-nodes-system="k get -A pod -o='custom-columns=NODE:.spec.nodeName,NAME:.metadata.name,NAMESPACE:.metadata.namespace,STATUS:.status.phase,REQ:.spec.containers[*].resources.requests'"
 # Git
 alias gs="git status"
 alias gb="git branch -vvaa"
 alias gd="git diff --no-color"
-alias gdc="git diff --no-color --cached"
+alias gds="git diff --no-color --staged"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
+alias gcpc="git cherry-pick --continue"
 alias ga="git add"
 alias gl="PAGER= git lg"
 alias gitk="gitk --all &"
@@ -175,7 +181,7 @@ alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
 
 # etc
-alias b2="(b2-down; mkdir -p ~/b2; rclone mount --vfs-cache-mode=writes b2: b2 &>>~/.local/log/b2.log &)"
+alias b2="(b2-down; mkdir -p ~/b2; rclone mount --vfs-cache-mode=writes b2:pineman-Documents b2 &>>~/.local/log/b2.log &)"
 alias b2-down="(killall rclone; fusermount -u ~/b2; rmdir ~/b2) &>/dev/null"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias pandoc="pandoc -s"

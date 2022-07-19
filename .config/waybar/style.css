@@ -49,6 +49,15 @@ window#waybar {
 #network.disconnected, #network.disabled {
   color: #FF2026;
 }
+#bluetooth.connected {
+  color: #31AB00;
+}
+#bluetooth.on {
+  color: #C4A000;
+}
+#bluetooth.disabled, #bluetooth.off {
+  color: #FF2026;
+}
 #clock.time {
   padding-right: 5px;
 }

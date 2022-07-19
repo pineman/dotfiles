@@ -1,0 +1,12 @@
+MOZ_DISABLE_RDD_SANDBOX=1 
+and
+media.ffmpeg.vaapi.enabled=true
+media.ffvpx.enabled=false
+
+https://mozilla.github.io/webrtc-landing/gum_test.html
+
+gfx.font_rendering.fontconfig.max_generic_substitutions=127
+font.name-list.emoji=emoji
+gfx.font_rendering.opentype_svg.enabled=false
+toolkit.tabbox.switchByScrolling=true
+browser.toolbars.bookmarks.visibility=newtab

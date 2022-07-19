@@ -4,12 +4,13 @@
 	signingKey = CE2609DCF2E675F825AF4956CA439ECD5D4F3704
 [push]
 	default = tracking
+	autoSetupRemote = true
 [pull]
 	default = tracking
 	rebase = true
 [merge]
 	tool = vimdiff
-	conflictStyle = zdiff3
+	#conflictStyle = zdiff3
 [diff]
 	color = false
 [status]

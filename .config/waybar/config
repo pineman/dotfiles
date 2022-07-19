@@ -29,10 +29,7 @@
     }
   },
   "bluetooth": {
-    "format-icons": {
-      "enabled": "<span color='green'></span>",
-      "disabled": "<span color='red'></span>"
-    },
+    "format": "",
     "on-click": "blueman-manager",
     "on-click-right": "rfkill toggle bluetooth"
   },
@@ -56,8 +53,8 @@
   },
   "pulseaudio": {
     "format": "{icon} {volume}% {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": "<span color='red'> 0%{icon}</span> {format_source}",
+    "format-bluetooth": "{volume}% {icon}  {format_source}",
+    "format-bluetooth-muted": "<span color='red'> 0%{icon} </span> {format_source}",
     "format-muted": "<span color='red'> 0%</span> {format_source}",
     "format-source": " {volume}%",
     "format-source-muted": "<span color='red'> 0%</span>",

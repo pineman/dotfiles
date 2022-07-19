@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euxo pipefail
+
 fd -I -H -t f . etc -x sh -c '
   echo overwriting /{}
   sudo mkdir -p /{//}
