@@ -841,7 +841,4 @@ key_bindings:
   - { key: Down, mods: Shift, action: ScrollPageDown, mode: ~Alt }
   - { key: N, mods: Command, action: SpawnNewInstance }
   - { key: N, mods: Control, action: SpawnNewInstance }
-  - { key: T, mods: Command, action: SpawnNewInstance }
-  - { key: T, mods: Control, action: SpawnNewInstance }
   - { key: Space, mods: Control, action: ToggleViMode }
-  - { key: Escape, mode: Vi, action: ToggleViMode }

@@ -40,7 +40,6 @@ set wildmenu
 set lazyredraw
 set copyindent
 set linebreak
-set path=**
 set foldmethod=indent
 set foldlevel=99
 set splitbelow
@@ -94,7 +93,9 @@ nnoremap <C-h> :bprev<CR>
 nmap <C-j> :bp <BAR> bd #<CR>
 map <C-u> <C-W>h
 map <C-i> <C-W>l
-nnoremap <C-p> :find *
+nnoremap <C-p> :find 
+set path=**
+set wildignore+=**/node_modules/**
 nnoremap <F3> :Lexplore<cr>
 nnoremap <F4> :UndotreeToggle<cr>
 nnoremap <F5> :make<cr>
@@ -106,8 +107,12 @@ function! SoftHardWrap()
 	execute "vertical resize 84"
 endfunction
 map <F9> :call SoftHardWrap()<cr>
+map <F9> :call SoftHardWrap()<cr>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-nnoremap <esc><esc> :noh<cr>:w<cr>
+nnoremap <esc> :noh<cr>:w<cr>
+if exists('g:vscode')
+  nnoremap <esc> :noh<cr>:call VSCodeCall("workbench.action.files.save")<cr>
+endif
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab

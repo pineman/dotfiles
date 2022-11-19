@@ -87,9 +87,11 @@ precmd() {
 . ~/.aliases
 alias -g G='|& grep -i'
 alias -g V='|& vim -'
+alias -g D='|& dragon-drop -I -s 300 -i -x'
+alias -g L='|& $PAGER'
 alias -g H='|& head'
 alias -g T='|& tail'
-alias -g L='|& $PAGER'
+alias -g A='|& tee -a'
 alias -s txt=cat
 alias -s {timer,service}="sudo vim"
 alias d='dirs -v | tail -n +2 | head -10'

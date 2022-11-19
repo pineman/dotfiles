@@ -26,8 +26,8 @@ packages=(
   ncdu
   git-delta
   terminus-font
-  tlp
-  tlp-rdw
+  #tlp
+  #tlp-rdw
   backblaze-b2-bin
   rclone
   direnv
@@ -60,6 +60,7 @@ packages=(
   noto-fonts-cjk
   noto-fonts-extra
   ttf-apple-emoji
+  ttf-dejavu
   pipewire-pulse
   pipewire-jack
   pipewire-alsa
@@ -74,6 +75,9 @@ packages=(
   foot
   thunar
   gvfs
+  ntfs-3g
+  exfatprogs
+  gparted
   tumbler
   ffmpegthumbnailer
   thunar-volman
@@ -84,8 +88,8 @@ packages=(
   gammastep
   #python-xdg
   swayidle
-  sway-mpris-idle-inhibit
-  sway-video-idle-inhibit
+  #sway-mpris-idle-inhibit
+  #sway-video-idle-inhibit
   ttc-iosevka
   wl-clipboard
   keepassxc
@@ -118,14 +122,15 @@ packages=(
   wdisplays
   gnome-font-viewer
   gucharmap
-  gnome-disk-utility
   dconf-editor
   mousepad
   pinta
   gimp
+  inkscape
   rmlint
   rmlint-shredder
   transmission-gtk
+  dragon-drop
   # Dev
   jq
   gron
@@ -141,7 +146,7 @@ packages=(
 yay -S --noconfirm --needed "${packages[@]}"
 yay -S --noconfirm --needed --asdeps
 echo 'pineman' | sudo chsh -s /bin/zsh pineman
-sudo systemctl enable docker tlp linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer udevmon
+sudo systemctl enable docker linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer udevmon
 sudo systemctl mask systemd-rfkill.{socket,service}
 systemctl --user enable playerctld
 sudo gpasswd -a pineman docker
@@ -149,8 +154,6 @@ sudo gpasswd -a pineman wireshark
 gsettings set 'org.gnome.desktop.interface' font-name 'sans 10'
 mkdir ~/.local/log
 pip install dtrx
-#yay -S --noconfirm --needed virt-manager qemu
-#yay -S --noconfirm --needed --asdeps ebtables dnsmasq
 code --install-extension marcoms.oceanic-plus
 code --install-extension golang.Go
 code --install-extension eamodio.gitlens

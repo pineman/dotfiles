@@ -1,10 +1,13 @@
 /* 3bar default look clone */
 window#waybar {
-  background-color: black;
-  color: #ffffff;
-  padding: 0;
-  margin: 0;
-  font-family: sans-serif;
+  background: black;
+}
+button:hover {
+  background: inherit;
+  border: 1px solid black;
+  box-shadow: inherit;
+  text-shadow: inherit;
+  transition: none;
 }
 
 #workspaces button {
@@ -15,30 +18,31 @@ window#waybar {
   border-radius: 0;
   transition: none;
 }
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-  background: #222222;
-  border: 1px solid #2e2e2e;
-  box-shadow: inherit;
-  text-shadow: inherit;
-}
+
 #workspaces button.focused {
-  color: #ffffff;
+  color: white;
   background: #285577;
   border: 1px solid #3c83ba;
 }
 #workspaces button.urgent {
-  background-color: #900000;
+  color: white;
+  background: #900000;
+  border: 1px solid #902828;
 }
 
 #mode {
-  background-color: #900000;
+  background: #900000;
   padding: 0 5px;
+  color: white;
+  border-radius: 0;
 }
 
-#tray, #idle_inhibitor, #network, #bluetooth, #pulseaudio, #battery, #disk, #memory, #cpu, #temperature, #clock.date {
+#tray, #idle_inhibitor, #network, #bluetooth, #pulseaudio, #battery, #disk, #memory, #cpu, #temperature, #clock {
   border-right: 1px solid #575757;
+  border-radius: 0;
+  padding: 0;
   padding-right: 5px;
+  color: white;
 }
 #network.ethernet, #network.wifi {
   color: #31AB00;
@@ -59,5 +63,5 @@ window#waybar {
   color: #FF2026;
 }
 #clock.time {
-  padding-right: 5px;
+  border: none;
 }

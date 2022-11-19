@@ -13,14 +13,12 @@ exec thunar --daemon
 exec blueman-applet
 exec playerctld
 exec swayidle -w \
-	before-sleep 'echo XHC | sudo tee /proc/acpi/wakeup; playerctl pause; physlock -dsm' \
-	after-resume 'echo XHC | sudo tee /proc/acpi/wakeup' \
+	before-sleep 'echo XHC | sudo \tee /proc/acpi/wakeup; playerctl pause; physlock -dsm' \
+	after-resume 'echo XHC | sudo \tee /proc/acpi/wakeup' \
 	lock 'playerctl pause; physlock -dsm' \
 	timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 	timeout 1800 'systemctl suspend'
 	#timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"; wlr-randr --output HDMI-A-1 --off; wlr-randr --output HDMI-A-1 --on; swaymsg "output HDMI-A-1 scale 1.20"' \
-#exec sway-video-idle-inhibit
-#exec sway-mpris-idle-inhibit
 # Input
 # Apple magic keyboard binds (not working)
 #bindsym XF86Eject exec wtype -P delete
@@ -126,13 +124,10 @@ bindsym $mod+c exec chromium
 bindsym $mod+y exec code
 bindsym $mod+Shift+y exec idea-ce
 bindsym $mod+o exec dbeaver
-bindsym $mod+Shift+u exec virt-manager
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+Shift+i exec keepassxc
-bindsym $mod+Shift+g exec wireshark
-bindsym $mod+Shift+b exec blueman-manager
-bindsym $mod+Shift+s exec systemctl suspend
-bindsym $mod+F1 exec sh -c 'wlr-randr --output HDMI-A-1 --off; wlr-randr --output eDP-1 --on;'
+bindsym $mod+Shift+s exec systemctl hibernate
+bindsym $mod+F1 exec sh -c 'wlr-randr --output HDMI-A-1 --off; wlr-randr --output eDP-1 --on; swaymsg "output eDP-1 scale 1.13"'
 bindsym $mod+F2 exec sh -c 'wlr-randr --output eDP-1 --off; wlr-randr --output HDMI-A-1 --off; wlr-randr --output HDMI-A-1 --on; swaymsg "output HDMI-A-1 scale 1.20"'
 # Workspaces
 bindsym $mod+1 workspace number 1

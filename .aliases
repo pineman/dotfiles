@@ -25,7 +25,7 @@ alias dfc='dfc -d -t -tmpfs,dev -m'
 alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -shc'
-alias rsync='rsync -avPAHAXxs --numeric-ids --xattrs --acls'
+alias rsync='rsync -vPaAXUCHxs --numeric-ids'
 alias ncdu='ncdu --color off'
 alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
@@ -90,13 +90,12 @@ show-iptables() {
 }
 alias zp='zpool status; zpool list'
 alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
-alias sway='sway &>> ~/.local/log/sway.log'
+alias sway='sway &> ~/.local/log/sway.log'
 alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
 alias ex='dtrx --one=inside'
-alias quickemu='quickemu --display spice'
+alias drag='dragon-drop -s 300 -i -x'
 
 # Dev
-alias p="ssh pinecone"
 alias make='make -j$(nproc)'
 alias py="python"
 alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
@@ -108,7 +107,6 @@ alias gradle="gradle --parallel"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
 alias wireshark_ssl="(wireshark -o ssl.keylog_file:ssl_keylog -o ssl.debug_file:debug.txt) &>/dev/null &; export SSLKEYLOGFILE=ssl_keylog"
-alias c="cd ~/b2/computer"
 function sr() {
   sd -s "$1" "$2" $(rg -FUl "$1")
 }
@@ -183,17 +181,15 @@ alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
 bright() {
-  until sudo ddcutil setvcp 10 $1 &>/dev/null; do done
+  until sudo ddcutil setvcp 10 $1 &>/dev/null; do :; done
 }
 # etc
-alias b2="(b2-down; mkdir -p ~/b2; rclone mount --vfs-cache-mode=writes b2:pineman-Documents ~/b2 &>>~/.local/log/b2.log &)"
-alias b2-down="(killall rclone; fusermount -u ~/b2; rmdir ~/b2) &>/dev/null"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias pandoc="pandoc -s"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias clean_vim="git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo"
 alias pacro="yay -Yc"
-alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)"
+alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
