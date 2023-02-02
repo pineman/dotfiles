@@ -88,7 +88,7 @@ precmd() {
 alias -g G='|& grep -i'
 alias -g V='|& vim -'
 alias -g D='|& dragon-drop -I -s 300 -i -x'
-alias -g L='|& $PAGER'
+alias -g L='|& nvimpager -p'
 alias -g H='|& head'
 alias -g T='|& tail'
 alias -g A='|& tee -a'

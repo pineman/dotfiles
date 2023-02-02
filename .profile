@@ -1,7 +1,7 @@
 source $HOME/.ls_colors
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
-export PAGER="nvimpager"
+export PAGER="nvimpager -p"
 export DELTA_PAGER="less -R"
 export MOZ_DISABLE_RDD_SANDBOX=1 MOZ_ENABLE_WAYLAND=1
 export BROWSER="firefox"
@@ -17,8 +17,8 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export GCC_COLORS=1
 export PATH="/usr/lib/ccache/bin:$PATH"
 export ERL_AFLAGS="-kernel shell_history enabled"
-#export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PATH:$GEM_HOME/bin"
+eval "$(rbenv init -)"
+export PATH="/home/pineman/.rbenv/versions/3.1.3/lib/ruby/gems/3.1.0:$PATH"
 export KUBE_CONFIG_PATH="$HOME/.kube/config"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org/"
 

@@ -52,6 +52,8 @@ packages=(
   moreutils
   tree
   ifuse
+  usbutils
+  sysstat
   # Graphical
   sway
   xorg-xwayland
@@ -75,6 +77,8 @@ packages=(
   foot
   thunar
   gvfs
+  gvfs-mtp
+  gvfs-gphoto2
   ntfs-3g
   exfatprogs
   gparted
@@ -151,6 +155,7 @@ sudo systemctl mask systemd-rfkill.{socket,service}
 systemctl --user enable playerctld
 sudo gpasswd -a pineman docker
 sudo gpasswd -a pineman wireshark
+sudo gpasswd -a pineman seat
 gsettings set 'org.gnome.desktop.interface' font-name 'sans 10'
 mkdir ~/.local/log
 pip install dtrx
