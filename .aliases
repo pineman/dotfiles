@@ -158,7 +158,7 @@ alias kube-pod-nodes="k get -A --field-selector metadata.namespace!=kube-system 
 alias kube-pod-nodes-system="k get -A pod -o='custom-columns=NODE:.spec.nodeName,NAME:.metadata.name,NAMESPACE:.metadata.namespace,STATUS:.status.phase,REQ:.spec.containers[*].resources.requests'"
 # Git
 alias gs="git status"
-alias gb="git branch -vvaa"
+alias gb="git branch -vvaa --color=always | tac"
 alias gd="git diff --no-color"
 alias gds="git diff --no-color --staged"
 alias gr="git remote -vvv"
