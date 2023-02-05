@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 # Arch Linux install script for srsbsns
-# Run from live ISO like `curl -O ... | bash install.sh stage1` or git clone
+# git clone https://github.com/pineman/dotfiles and run like `./install stage1`
 
 stage1() {
   # Assume $DISK is a partition of type Linux
@@ -14,10 +14,6 @@ stage1() {
   mount /dev/mapper/root /mnt
   mkdir -p /mnt/boot
   mount $BOOT /mnt/boot
-  dd if=/dev/zero of=/mnt/swapfile bs=1M count=16384 status=progress
-  chmod 0600 /mnt/swapfile
-  mkswap -U clear /mnt/swapfile
-  swapon /mnt/swapfile
   echo 'Server = https://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
   pacstrap /mnt base base-devel vim sudo git fd ccache networkmanager openssh linux-lts intel-ucode linux-firmware --noconfirm
   cp $(basename "$0") /mnt/install.sh
@@ -41,11 +37,9 @@ stage3() {
   git pull origin main
   git branch -D master
   git submodule update --init
-  # TODO: get hibernation swapfile offset
   cd .root
   sudo bootctl install
   ./system-files.sh
-  set +e
   sudo sed -i 's/#pt_PT.UTF-8 UTF-8/pt_PT.UTF-8 UTF-8/g' /etc/locale.gen
   sudo sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
   sudo sed -i 's%#Server = http://ftp.rnl.tecnico%Server = http://ftp.rnl.tecnico%g' /etc/pacman.d/mirrorlist
@@ -66,7 +60,16 @@ stage3() {
   cd ~/.root
   ./packages.sh
   sudo mkinitcpio -P
+  dd if=/dev/zero of=/swapfile bs=1M count=16384 status=progress
+  chmod 0600 /swapfile
+  mkswap -U clear /swapfile
+  swapon /swapfile
   genfstab -U / | sudo tee -a /etc/fstab
+  echo 'get hibernation swapfile offset and place into boot loader entries command line args. run ./system-files.sh to update'; read
+  git remote remove origin
+  #vim .ssh/id_25519
+  #chmod 0400 .ssh/id_25519
+  #git remote add origin git@github.com:pineman/dotfiles.git
 }
 
 "$@"

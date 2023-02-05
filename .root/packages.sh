@@ -146,9 +146,10 @@ packages=(
   shellcheck-bin
   flyctl-bin
   rlwrap
+  rbenv
+  ruby-build
 )
 yay -S --noconfirm --needed "${packages[@]}"
-yay -S --noconfirm --needed --asdeps
 echo 'pineman' | sudo chsh -s /bin/zsh pineman
 sudo systemctl enable docker linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer udevmon
 sudo systemctl mask systemd-rfkill.{socket,service}
@@ -163,5 +164,4 @@ code --install-extension marcoms.oceanic-plus
 code --install-extension golang.Go
 code --install-extension eamodio.gitlens
 code --install-extension asvetliakov.vscode-neovim
-./work.sh
 
