@@ -17,8 +17,8 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export GCC_COLORS=1
 export PATH="/usr/lib/ccache/bin:$PATH"
 export ERL_AFLAGS="-kernel shell_history enabled"
-eval "$(rbenv init -)"
-export PATH="/home/pineman/.rbenv/versions/3.1.3/lib/ruby/gems/3.1.0:$PATH"
+#eval "$(rbenv init -)"
+#export PATH="/home/pineman/.rbenv/versions/3.1.3/lib/ruby/gems/3.1.0:$PATH"
 export KUBE_CONFIG_PATH="$HOME/.kube/config"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org/"
 

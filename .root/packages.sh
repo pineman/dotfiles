@@ -146,8 +146,9 @@ packages=(
   shellcheck-bin
   flyctl-bin
   rlwrap
-  rbenv
-  ruby-build
+  python-pip
+  #rbenv
+  #ruby-build
 )
 yay -S --noconfirm --needed "${packages[@]}"
 echo 'pineman' | sudo chsh -s /bin/zsh pineman
@@ -161,7 +162,5 @@ gsettings set 'org.gnome.desktop.interface' font-name 'sans 10'
 mkdir ~/.local/log
 pip install dtrx
 code --install-extension marcoms.oceanic-plus
-code --install-extension golang.Go
-code --install-extension eamodio.gitlens
 code --install-extension asvetliakov.vscode-neovim
 
