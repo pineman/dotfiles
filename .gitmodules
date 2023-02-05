@@ -18,19 +18,10 @@
 	path = .vim/bundle/vim-buftabline
 	url = https://github.com/pineman/vim-buftabline
 	branch = master
-[submodule ".vim/bundle/sway-vim-syntax"]
-	path = .vim/bundle/sway-vim-syntax
-	url = https://github.com/terminalnode/sway-vim-syntax
-	branch = master
-[submodule ".vim/bundle/nginx.vim"]
-	path = .vim/bundle/nginx.vim
-	url = https://github.com/chr4/nginx.vim
-	branch = master
-[submodule ".vim/bundle/vim-hcl"]
-	path = .vim/bundle/vim-hcl
-	url = https://github.com/jvirtanen/vim-hcl
-	branch = master
 [submodule ".vim/bundle/base16-vim"]
 	path = .vim/bundle/base16-vim
 	url = https://github.com/chriskempson/base16-vim
 	branch = master
+[submodule ".vim/bundle/swayconfig.vim"]
+	path = .vim/bundle/swayconfig.vim
+	url = https://github.com/jamespeapen/swayconfig.vim

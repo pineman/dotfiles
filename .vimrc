@@ -6,9 +6,7 @@ call vundle#begin()
 	Plugin 'mbbill/undotree'
 	Plugin 'pineman/vim-buftabline'
 	" Syntax
-	Plugin 'terminalnode/sway-vim-syntax'
-	Plugin 'chr4/nginx.vim'
-	Plugin 'jvirtanen/vim-hcl'
+	Plugin 'jamespeapen/swayconfig.vim'
 	" Colors
 	Plugin 'chriskempson/base16-vim'
 call vundle#end()
@@ -93,7 +91,7 @@ nnoremap <C-h> :bprev<CR>
 nmap <C-j> :bp <BAR> bd #<CR>
 map <C-u> <C-W>h
 map <C-i> <C-W>l
-nnoremap <C-p> :find 
+nnoremap <C-p> :find
 set path=**
 set wildignore+=**/node_modules/**
 nnoremap <F3> :Lexplore<cr>
