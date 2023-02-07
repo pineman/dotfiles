@@ -25,9 +25,6 @@ packages=(
   dfc
   ncdu
   git-delta
-  terminus-font
-  #tlp
-  #tlp-rdw
   backblaze-b2-bin
   rclone
   direnv
@@ -47,7 +44,6 @@ packages=(
   bluez-utils
   trash-cli
   imagemagick
-  intel-gpu-tools
   plocate
   moreutils
   tree
@@ -108,9 +104,6 @@ packages=(
   telegram-desktop
   network-manager-applet
   wev
-  interception-dual-function-keys
-  libva-intel-driver
-  libva-utils
   mpv
   mpv-mpris
   vlc
@@ -140,8 +133,8 @@ packages=(
   gron
   wireshark-qt
   visual-studio-code-bin
-  docker
-  docker-compose
+  #docker
+  #docker-compose
   pigz
   shellcheck-bin
   flyctl-bin
@@ -152,10 +145,9 @@ packages=(
 )
 yay -S --noconfirm --needed "${packages[@]}"
 echo 'pineman' | sudo chsh -s /bin/zsh pineman
-sudo systemctl enable docker linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer udevmon
-sudo systemctl mask systemd-rfkill.{socket,service}
+sudo systemctl enable linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer
 systemctl --user enable playerctld
-sudo gpasswd -a pineman docker
+#sudo gpasswd -a pineman docker
 sudo gpasswd -a pineman wireshark
 sudo gpasswd -a pineman seat
 gsettings set 'org.gnome.desktop.interface' font-name 'sans 10'
