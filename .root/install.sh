@@ -226,8 +226,8 @@ packages() {
     flyctl-bin
     rlwrap
     python-pip
-    #rbenv
-    #ruby-build
+    rbenv
+    ruby-build
   )
   yay -S --noconfirm --needed "${packages[@]}"
   echo 'pineman' | sudo chsh -s /bin/zsh pineman
@@ -236,7 +236,7 @@ packages() {
   sudo gpasswd -a pineman wireshark
   sudo gpasswd -a pineman seat
   gsettings set 'org.gnome.desktop.interface' font-name 'sans 10'
-  mkdir ~/.local/log
+  mkdir -p ~/.local/log
   pip install dtrx
   code --install-extension marcoms.oceanic-plus
   code --install-extension asvetliakov.vscode-neovim
