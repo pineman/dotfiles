@@ -23,6 +23,11 @@ stage1() {
 }
 
 stage2() {
+  dd if=/dev/zero of=/swapfile bs=1G count=16 status=progress
+  chmod 0600 /swapfile
+  mkswap -U clear /swapfile
+  swapon /swapfile
+  echo '/swapfile none swap defaults 0 0' >> /etc/fstab
   bootctl install
   systemctl enable iptables systemd-resolved NetworkManager sshd
   sed -i 's/#pt_PT.UTF-8 UTF-8/pt_PT.UTF-8 UTF-8/g' /etc/locale.gen
@@ -60,7 +65,6 @@ stage4() {
   sudo timedatectl set-ntp true
   sudo timedatectl set-timezone Europe/Lisbon
   ./packages.sh
-  echo 'setup hibernation'
   echo 'copy keepass'
   echo 'setup ssh key'
   git remote remove origin
