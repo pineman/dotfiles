@@ -34,7 +34,7 @@
     "on-click-right": "rfkill toggle bluetooth"
   },
   "network#wifi": {
-    "interface": "wlp1s0",
+    "interface": "wlo1",
     "format": " {essid} {signalStrength}%",
     "tooltip-format": "{ifname} via {gwaddr} at {frequency}GHz",
     "format-disconnected": "",
@@ -43,7 +43,7 @@
     "on-click-right": "rfkill toggle wifi"
   },
   "network#ethernet": {
-    "interface": "enp0s31f6",
+    "interface": "enp42s0",
     "format": " {ipaddr}/{cidr}",
     "tooltip-format": "{ifname} via {gwaddr}",
     "format-linked": "No IP",

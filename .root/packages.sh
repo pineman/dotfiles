@@ -50,6 +50,7 @@ packages=(
   ifuse
   usbutils
   sysstat
+  radeontop
   # Graphical
   sway
   xorg-xwayland
@@ -128,6 +129,8 @@ packages=(
   rmlint-shredder
   transmission-gtk
   dragon-drop
+  libva-mesa-driver
+  libva-utils
   # Dev
   jq
   gron
@@ -146,7 +149,6 @@ packages=(
 yay -S --noconfirm --needed "${packages[@]}"
 echo 'pineman' | sudo chsh -s /bin/zsh pineman
 sudo systemctl enable linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer
-systemctl --user enable playerctld
 #sudo gpasswd -a pineman docker
 sudo gpasswd -a pineman wireshark
 sudo gpasswd -a pineman seat

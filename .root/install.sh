@@ -6,15 +6,15 @@ set -euxo pipefail
 
 stage1() {
   # Assume $DISK is a partition of type Linux
-  DISK=/dev/nvmen0p5
-  BOOT=/dev/nvmen0p1
+  DISK=/dev/nvme0n1p5
+  BOOT=/dev/nvme0n1p1
   umount -R /mnt || true
   mkfs.ext4 $DISK
   mount $DISK /mnt
   mkdir -p /mnt/boot
   mount $BOOT /mnt/boot
   echo 'Server = https://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
-  pacstrap /mnt base base-devel vim sudo git fd ccache networkmanager openssh terminus-font amd-ucode linux-lts linux-firmware --noconfirm
+  pacstrap /mnt base base-devel vim sudo git fd ccache networkmanager openssh terminus-font amd-ucode linux-lts linux-zen linux-firmware --noconfirm
   genfstab -U /mnt | sudo tee -a /mnt/etc/fstab
   cp $(basename "$0") /mnt/install.sh
   chmod +x /mnt/install.sh
@@ -52,7 +52,6 @@ stage3() {
   makepkg -si --noconfirm
   cd ~/.root
   ./system-files.sh
-  ./packages.sh
 }
 
 stage4() {
@@ -60,12 +59,12 @@ stage4() {
   sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
   sudo timedatectl set-ntp true
   sudo timedatectl set-timezone Europe/Lisbon
-  systemctl --user enable playerctld
+  ./packages.sh
   echo 'setup hibernation'
-  #git remote remove origin
-  #vim ~/.ssh/id_25519
-  #chmod 0400 ~/.ssh/id_25519
-  #git remote add origin git@github.com:pineman/dotfiles.git
+  echo 'copy keepass'
+  echo 'setup ssh key'
+  git remote remove origin
+  git remote add origin git@github.com:pineman/dotfiles.git
 }
 
 "$@"

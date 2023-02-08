@@ -1,9 +1,5 @@
 # vim:filetype=swayconfig
 # Startup
-# For some reason still needed even though /etc/sway/config.d/50-systemd-user.conf
-# exists, as per https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon --start
 exec mako
@@ -13,11 +9,12 @@ exec thunar --daemon
 exec blueman-applet
 exec playerctld
 exec swayidle -w \
-	before-sleep 'echo XHC | sudo \tee /proc/acpi/wakeup; playerctl pause; physlock -dsm' \
+	before-sleep 'echo XHC | sudo \tee /proc/acpi/wakeup; playerctl pause' \
 	after-resume 'echo XHC | sudo \tee /proc/acpi/wakeup' \
-	lock 'playerctl pause; physlock -dsm' \
 	timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 	timeout 1800 'systemctl suspend'
+	#before-sleep 'echo XHC | sudo \tee /proc/acpi/wakeup; playerctl pause; physlock -dsm' \
+	#lock 'playerctl pause; physlock -dsm' \
 	#timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"; wlr-randr --output HDMI-A-1 --off; wlr-randr --output HDMI-A-1 --on; swaymsg "output HDMI-A-1 scale 1.20"' \
 # Input
 # Apple magic keyboard binds (not working)
@@ -39,8 +36,7 @@ input type:pointer {
 	pointer_accel 1
 }
 # Apperance
-output eDP-1 scale 1.13
-output HDMI-A-1 scale 1.20
+output DP-1 scale 1.20
 default_border pixel 3
 default_floating_border pixel 2
 titlebar_padding 3
@@ -100,7 +96,7 @@ bindsym $mod+u workspace prev_on_output
 workspace_auto_back_and_forth yes
 # Window Rules
 for_window [app_id="qalculate-gtk"] floating enable
-#for_window [app_id="telegramdesktop"] move container to workspace 10
+for_window [app_id="org.telegram.desktop"] move container to workspace 10
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 # Applications
