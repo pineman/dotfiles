@@ -19,9 +19,6 @@ set +H
 # Prompt
 white='\[\e[38;5;15m\]'
 yellow='\[\e[38;5;3m\]'
-grey='\[\e[38;5;244m\]'
-red='\[\e[38;5;1m\]'
-blue='\[\e[38;5;4m\]'
 mag='\[\e[38;5;5m\]'
 r='\[\e[0m\]'
 PS1="$yellow\t$r bash $mag\$(pwd)$r\n"

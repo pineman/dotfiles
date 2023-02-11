@@ -58,13 +58,6 @@ zle -N history-beginning-search-menu-end-space history-beginning-search-menu
 bindkey '^B' history-beginning-search-menu-end-space
 bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
-type fasd &>/dev/null \
-	&& eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)" \
-	&& bindkey '^E' fasd-complete-d \
-	&& bindkey '^R' fasd-complete-f
-type direnv &>/dev/null \
-	&& export DIRENV_LOG_FORMAT= \
-	&& eval "$(direnv hook zsh)"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -72,19 +65,11 @@ bindkey '^H' forward-word
 bindkey '^L' autosuggest-accept
 source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 HOST_COLOR=4
-#PROMPT='%F{3}%D{%H:%M:%S}%f %F{244}%n%f@%F{$HOST_COLOR}%M%f:%F{5}%~%f (%F{2}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%f)
 PROMPT='%F{3}%D{%H:%M:%S}%f zsh %F{5}%d%f (%F{2}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%f)
 %F{15}%?%f $ '
-#source /usr/share/gitstatus/gitstatus.plugin.zsh
-#gitstatus_stop $USER && gitstatus_start $USER
 precmd() {
-	#gitstatus_query $USER
-	# Change the terminal's title to current dir.
 	print -Pn "\e]0;%~\a"
 }
-#PROMPT='%F{3}%D{%H:%M:%S}%f %F{244}%n%f@%F{$HOST_COLOR}%M%f:%F{5}%~%f (%F{2}$VCS_STATUS_LOCAL_BRANCH%f)
-#%F{15}%?%f $ '
-. ~/.aliases
 alias -g G='|& grep -i'
 alias -g V='|& vim -'
 alias -g D='|& dragon-drop -I -s 300 -i -x'
@@ -104,4 +89,11 @@ alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
+. ~/.aliases
+type fasd &>/dev/null \
+	&& eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)" \
+	&& bindkey '^E' fasd-complete-d \
+	&& bindkey '^R' fasd-complete-f
+type direnv &>/dev/null \
+	&& eval "$(direnv hook zsh)"
 #zprof

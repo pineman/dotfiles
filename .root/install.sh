@@ -215,6 +215,7 @@ packages() {
     libva-mesa-driver
     libva-utils
     # Dev
+    entr
     jq
     gron
     wireshark-qt
@@ -226,8 +227,6 @@ packages() {
     flyctl-bin
     rlwrap
     python-pip
-    rbenv
-    ruby-build
   )
   yay -S --noconfirm --needed "${packages[@]}"
   echo 'pineman' | sudo chsh -s /bin/zsh pineman
