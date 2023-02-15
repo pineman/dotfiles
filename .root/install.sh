@@ -116,9 +116,6 @@ packages() {
     parallel
     openbsd-netcat
     strace
-    #bcc
-    #bcc-tools
-    #python-bcc
     acpi
     nmap
     traceroute
@@ -171,10 +168,7 @@ packages() {
     gnome-keyring
     blueman
     gammastep
-    #python-xdg
     swayidle
-    #sway-mpris-idle-inhibit
-    #sway-video-idle-inhibit
     ttc-iosevka
     wl-clipboard
     keepassxc
@@ -214,14 +208,15 @@ packages() {
     dragon-drop
     libva-mesa-driver
     libva-utils
+    extramaus
     # Dev
     entr
     jq
     gron
     wireshark-qt
     visual-studio-code-bin
-    #docker
-    #docker-compose
+    docker
+    docker-compose
     pigz
     shellcheck-bin
     flyctl-bin
@@ -231,14 +226,13 @@ packages() {
   yay -S --noconfirm --needed "${packages[@]}"
   echo 'pineman' | sudo chsh -s /bin/zsh pineman
   sudo systemctl enable linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer
-  #sudo gpasswd -a pineman docker
+  sudo gpasswd -a pineman docker
   sudo gpasswd -a pineman wireshark
   sudo gpasswd -a pineman seat
   gsettings set 'org.gnome.desktop.interface' font-name 'sans 10'
   mkdir -p ~/.local/log
   pip install dtrx
-  code --install-extension marcoms.oceanic-plus
-  code --install-extension asvetliakov.vscode-neovim
+  # VSCode and JetBrains settings synced using their respective sync plugins
 }
 
 "$@"
