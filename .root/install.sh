@@ -31,8 +31,8 @@ stage2() {
   systemctl enable iptables systemd-resolved NetworkManager sshd
   sed -i 's/#pt_PT.UTF-8 UTF-8/pt_PT.UTF-8 UTF-8/g' /etc/locale.gen
   sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
-  sed -i 's%#Server = http://ftp.rnl.tecnico%Server = http://ftp.rnl.tecnico%g' /etc/pacman.d/mirrorlist
   locale-gen
+  sed -i 's%#Server = http://ftp.rnl.tecnico%Server = http://ftp.rnl.tecnico%g' /etc/pacman.d/mirrorlist
   echo cronos > /etc/hostname
   passwd
   echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheel
@@ -112,27 +112,20 @@ packages() {
     rclone
     direnv
     fasd
-    physlock
     parallel
     openbsd-netcat
     strace
-    acpi
     nmap
     traceroute
-    ddcci-driver-linux-dkms
-    ddcutil
-    bluez
-    bluez-utils
     trash-cli
     imagemagick
     plocate
     moreutils
     tree
-    ifuse
-    usbutils
     sysstat
-    radeontop
     # Graphical
+    tk
+    radeontop
     sway
     xorg-xwayland
     mako
@@ -179,7 +172,6 @@ packages() {
     wlr-randr
     bemenu-wayland
     grimshot
-    tk
     telegram-desktop
     network-manager-applet
     wev
@@ -209,6 +201,13 @@ packages() {
     libva-mesa-driver
     libva-utils
     extramaus
+    physlock
+    ddcci-driver-linux-dkms
+    ddcutil
+    bluez
+    bluez-utils
+    ifuse
+    usbutils
     # Dev
     entr
     jq

@@ -104,7 +104,7 @@ for_window [app_id=".*"] inhibit_idle fullscreen
 # Applications
 bindsym $mod+Return exec alacritty
 bindsym $mod+Control+Return exec foot
-bindsym $mod+d exec bemenu-run -n -b --fn 'monospace 16'
+bindsym $mod+d exec bemenu-run -n -b --fn 'monospace 14'
 bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl -d intel_backlight set 5%-
 bindsym XF86AudioPlay exec playerctl play-pause
