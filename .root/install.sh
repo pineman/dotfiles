@@ -123,6 +123,7 @@ packages() {
     moreutils
     tree
     sysstat
+    speedtest-cli
     # Graphical
     tk
     radeontop
@@ -234,4 +235,4 @@ packages() {
   # VSCode and JetBrains settings synced using their respective sync plugins
 }
 
-"$@"
+"${@:-system-files}"

@@ -39,7 +39,7 @@
     "tooltip-format": "{ifname} via {gwaddr} at {frequency}GHz",
     "format-disconnected": "",
     "format-disabled": "",
-    "format-alt": "<span color='white'>{ifname}: {ipaddr}/{cidr} d:{bandwidthDownOctets} u:{bandwidthUpOctets}</span>",
+    "format-alt": "<span color='white'>{ifname}: {ipaddr}/{cidr} d:{bandwidthDownBytes} u:{bandwidthUpBytes}</span>",
     "on-click-right": "rfkill toggle wifi"
   },
   "network#ethernet": {
@@ -49,7 +49,7 @@
     "format-linked": "No IP",
     "format-disconnected": "",
     "format-disabled": "",
-    "format-alt": "<span color='white'>{ifname}: {ipaddr}/{cidr} d:{bandwidthDownOctets} u:{bandwidthUpOctets}</span>"
+    "format-alt": "<span color='white'>{ifname}: {ipaddr}/{cidr} d:{bandwidthDownBytes} u:{bandwidthUpBytes}</span>",
   },
   "pulseaudio": {
     "format": "{icon} {volume}% {format_source}",
