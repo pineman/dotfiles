@@ -1,0 +1,3 @@
+# cmd + shift - return : osascript /Users/pineman/.root/iterm_new_window.scpt
+cmd + shift - return : /Users/pineman/.local/bin/alacritty
+# secure keyboard entry: https://github.com/koekeishiya/skhd/issues/48#issuecomment-474872404
