@@ -1,4 +1,3 @@
-#zmodload zsh/zprof
 HISTFILE=~/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -64,7 +63,6 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^H' forward-word
 bindkey '^L' autosuggest-accept
 source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-HOST_COLOR=4
 PROMPT='%F{3}%D{%H:%M:%S}%f zsh %F{5}%d%f (%F{2}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%f)
 %F{15}%?%f $ '
 precmd() {
@@ -89,11 +87,10 @@ alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
-. ~/.aliases
 type fasd &>/dev/null \
 	&& eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)" \
 	&& bindkey '^E' fasd-complete-d \
 	&& bindkey '^R' fasd-complete-f
 type direnv &>/dev/null \
 	&& eval "$(direnv hook zsh)"
-#zprof
+. ~/.aliases

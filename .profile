@@ -3,6 +3,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
 export PAGER="nvimpager -p"
 export DELTA_PAGER="less -R"
+export DIRENV_LOG_FORMAT=
 export MOZ_DISABLE_RDD_SANDBOX=1 MOZ_ENABLE_WAYLAND=1
 export BROWSER="firefox"
 export TERMINAL="alacritty"
