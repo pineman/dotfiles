@@ -19,7 +19,7 @@ alias cp="cp -i -r"
 alias mv="mv -i"
 alias rm="rm -i --one-file-system"
 alias df='df -h'
-alias ps='ps --ppid 2 -N --forest -o user:15,pid,s,time,cmd'
+alias ps='ps aux'
 alias psw='ps -ww'
 alias grep="grep --color=auto"
 alias less="less -R"
@@ -38,7 +38,7 @@ alias vmstat="vmstat -S M"
 alias tee="tee -a"
 alias nmap="nmap -v"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
-alias killall="killall -v -I"
+alias killall="killall -v"
 alias pgrep="pgrep -f"
 killg() {
   kill $(pgrep "$@")
@@ -59,7 +59,7 @@ alias zi="__zoxide_zi && ll"
 tobg() {
   ("$@" &) &>/dev/null
 }
-alias open="tobg xdg-open"
+#alias open="tobg xdg-open"
 alias u='alacritty --working-directory $(pwd)'
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
@@ -67,6 +67,7 @@ alias i6="curl ipv6.icanhazip.com"
 alias sstp="sudo ss -lnp"
 alias tm="tmux -CC attach -d || tmux -CC new"
 alias ta="tmux attach -d || tmux new"
+alias clear="clear; tmux clear-history &>/dev/null || true"
 alias r='ranger --choosedir=/tmp/.rangerdir; cd $(cat /tmp/.rangerdir)'
 alias ssmem='sudo smem -t -a -k -s swap'
 alias smem='sudo smem -t -a -k -s rss'
@@ -194,11 +195,12 @@ bright() {
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias clean_vim="cd; git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo; cd -"
-alias pacup="yay -Sy --needed archlinux-keyring && yay"
-alias pacro="yay -Yc"
+alias pacro="brew cleanup --prune=all -s"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 alias save="cd ~/code/proj/homepage && vim posts/what-i-read.txt && ./make"
+alias brewup='brew update; brew upgrade; brew upgrade --cask'
 
+. ~/work/personal/work

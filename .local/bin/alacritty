@@ -1,3 +1,6 @@
 #!/bin/sh
-(/usr/bin/alacritty msg create-window "$@" || /usr/bin/alacritty "$@" &) &>/dev/null
+/Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window "$@"
+# Focus Alacritty app, to guarantee new windows are focused & on top
+# Also opens alacritty if it wasn't previously running already
+open /Applications/Alacritty.app --args "$@"
 exit 0

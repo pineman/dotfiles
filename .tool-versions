@@ -4,3 +4,4 @@ nodejs 18.17.1
 golang 1.21.1
 erlang 26.0.2
 elixir path:~/code/git/elixir
+gcloud 424.0.0

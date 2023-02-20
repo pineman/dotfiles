@@ -1,0 +1,79 @@
+{
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.8.0",
+  "schemes" : [
+    {
+      "pointer" : {
+        "acceleration" : 0,
+        "speed" : 0.6452,
+        "disableAcceleration" : false
+      },
+      "if" : {
+        "device" : {
+          "productName" : "USB Receiver",
+          "productID" : "0xc547",
+          "category" : "mouse",
+          "vendorID" : "0x46d"
+        }
+      },
+      "scrolling" : {
+        "speed" : {
+          "vertical" : 0
+        },
+        "acceleration" : {
+          "vertical" : 1
+        },
+        "reverse" : {
+          "vertical" : true
+        },
+        "distance" : {
+          "vertical" : 3
+        }
+      }
+    },
+    {
+      "if" : {
+        "app" : "com.microsoft.VSCode",
+        "device" : {
+          "productName" : "USB Receiver",
+          "productID" : "0xc547",
+          "category" : "mouse",
+          "vendorID" : "0x46d"
+        }
+      },
+      "scrolling" : {
+        "distance" : {
+          "vertical" : 1
+        }
+      }
+    },
+    {
+      "pointer" : {
+        "acceleration" : 0,
+        "speed" : 0.6489
+      },
+      "if" : {
+        "device" : {
+          "productName" : "PRO X Wireless",
+          "serialNumber" : "09F4EFF9",
+          "productID" : "0xc094",
+          "category" : "mouse",
+          "vendorID" : "0x46d"
+        }
+      },
+      "scrolling" : {
+        "speed" : {
+          "vertical" : 0
+        },
+        "acceleration" : {
+          "vertical" : 1
+        },
+        "reverse" : {
+          "vertical" : true
+        },
+        "distance" : {
+          "vertical" : 3
+        }
+      }
+    }
+  ]
+}
