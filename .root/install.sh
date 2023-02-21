@@ -13,7 +13,7 @@ stage1() {
   mkdir -p /mnt/boot
   mount $BOOT /mnt/boot
   echo 'Server = https://ftp.rnl.tecnico.ulisboa.pt/pub/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
-  pacstrap /mnt base base-devel vim sudo git fd ccache networkmanager openssh terminus-font amd-ucode linux-lts linux-zen linux-firmware --noconfirm
+  pacstrap /mnt base base-devel vim sudo git fd networkmanager openssh terminus-font amd-ucode linux-lts linux-zen linux-firmware --noconfirm
   genfstab -U /mnt | sudo tee -a /mnt/etc/fstab
   cp $(basename "$0") /mnt/install.sh
   chmod +x /mnt/install.sh
@@ -38,8 +38,8 @@ stage2() {
   echo '%wheel ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/wheel
   useradd -U -G wheel -m -u 1000 pineman
   passwd pineman
-  mkdir /var/tmp/{ccache,aur}
-  chown -R pineman: /var/tmp/{ccache,aur}
+  mkdir /var/tmp/aur
+  chown -R pineman: /var/tmp/aur
   sudo -u pineman -i /install.sh stage3
 }
 
