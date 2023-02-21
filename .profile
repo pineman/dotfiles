@@ -1,7 +1,7 @@
 source $HOME/.ls_colors
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
-export PAGER="nvimpager -p"
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export DELTA_PAGER="less -R"
 export DIRENV_LOG_FORMAT=
 export MOZ_DISABLE_RDD_SANDBOX=1 MOZ_ENABLE_WAYLAND=1

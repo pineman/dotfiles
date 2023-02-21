@@ -101,7 +101,6 @@ packages() {
     zsh-completions
     bash-completion
     neovim
-    nvimpager-git
     ripgrep
     sd
     htop-vim
