@@ -839,6 +839,5 @@ key_bindings:
   - { key: PageDown, action: ScrollPageDown, mode: ~Alt }
   - { key: Up, mods: Shift, action: ScrollPageUp, mode: ~Alt }
   - { key: Down, mods: Shift, action: ScrollPageDown, mode: ~Alt }
-  - { key: N, mods: Command, action: SpawnNewInstance }
-  - { key: N, mods: Control, action: SpawnNewInstance }
+  - { key: N, mods: Command, action: CreateNewWindow }
   - { key: Space, mods: Control, action: ToggleViMode }
