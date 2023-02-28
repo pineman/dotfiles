@@ -102,7 +102,7 @@ for_window [app_id="qalculate-gtk"] floating enable
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 # Applications
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $HOME/.local/bin/alacritty
 bindsym $mod+Control+Return exec foot
 bindsym $mod+d exec bemenu-run -n -b --fn 'monospace 14'
 bindsym XF86MonBrightnessUp exec brightnessctl -d intel_backlight set +5%
