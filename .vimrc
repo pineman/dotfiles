@@ -81,8 +81,6 @@ set stl+=%1*%m%0*
 
 nnoremap j gj
 nnoremap k gk
-nnoremap gl $
-nnoremap gh ^
 nnoremap e el
 nnoremap P "0p
 set hidden
@@ -91,7 +89,7 @@ nnoremap <C-h> :bprev<CR>
 nmap <C-j> :bp <BAR> bd #<CR>
 map <C-u> <C-W>h
 map <C-i> <C-W>l
-nnoremap <C-p> :find
+nnoremap <C-p> :find *
 set path=**
 set wildignore+=**/node_modules/**
 nnoremap <F3> :Lexplore<cr>
@@ -104,7 +102,6 @@ function! SoftHardWrap()
 	execute "windo wincmd h"
 	execute "vertical resize 84"
 endfunction
-map <F9> :call SoftHardWrap()<cr>
 map <F9> :call SoftHardWrap()<cr>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 nnoremap <esc> :noh<cr>:w<cr>
