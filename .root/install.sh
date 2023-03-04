@@ -128,6 +128,7 @@ packages() {
     radeontop
     sway
     xorg-xwayland
+    xorg-xhost
     mako
     noto-fonts
     noto-fonts-cjk

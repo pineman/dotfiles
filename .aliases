@@ -64,9 +64,7 @@ loop() {
   while :; do "$@"; sleep 2; done
 }
 alias open="tobg xdg-open"
-u() {
-  tobg alacritty --working-directory .
-}
+alias u='alacritty --working-directory $(pwd)'
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
