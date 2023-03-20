@@ -1,5 +1,5 @@
 [user]
-	name = João Pinheiro
+	name = João Pinheiro
 	email = joao.castropinheiro@gmail.com
 	signingKey = 91ADD829DF348AF5E044F4B9FC58442053D6479A
 [push]
@@ -25,7 +25,7 @@
     reflog = delta
     show = delta
 [commit]
-	gpgsign = true
+	gpgsign = false
 [alias]
 	lg = log --color --graph --pretty=format:'%h (%Cgreen%cd%Creset) %s %C(6)%an <%ae>%Creset %C(blue)%d%Creset' --abbrev-commit --date=format:'%d/%m/%Y %H:%M:%S'
 	lga = lg --all

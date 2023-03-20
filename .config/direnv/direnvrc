@@ -7,3 +7,4 @@ use_ruby() {
   load_prefix $ruby_dir
   layout ruby
 }
+export DIRENV_LOG_FORMAT=

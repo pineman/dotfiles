@@ -2,7 +2,6 @@ source $HOME/.ls_colors
 export EDITOR="nvim"
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export DELTA_PAGER="less -R"
-export DIRENV_LOG_FORMAT=
 export MOZ_DISABLE_RDD_SANDBOX=1 MOZ_ENABLE_WAYLAND=1
 export BROWSER="firefox"
 export TERMINAL="alacritty"

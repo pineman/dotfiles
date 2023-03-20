@@ -116,6 +116,8 @@ function srr() {
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 alias dsc="docker stop -t 0 \$(docker ps -aq) &>/dev/null"
 alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
+alias dp="docker pause \$(docker ps -aq) &>/dev/null"
+alias dup="docker unpause \$(docker ps -aq) &>/dev/null"
 alias di="docker images"
 drmia() {
   docker images -a | grep "$1" | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi "$1":{}
@@ -127,11 +129,8 @@ docker_show_layers() {
   docker history "$1" --format '{{.CreatedBy}}' --no-trunc
 }
 alias dspace="docker system df -v"
+alias dclean='docker system prune -af --volumes'
 alias docker-tui="lazydocker"
-alias dah='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sd " /" " " | sudo tee -a /etc/hosts'
-alias drh='docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{.Name}}" $(docker ps -q) | sd " /" " " | sudo xargs -I{} \sed -i "/{}/d" /etc/hosts'
-# Or use `x11docker` command
-alias x11-docker='docker run -u lyonn -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -v $HOME/.Xauthority:/home/lyonn/.Xauthority -it cenas:1'
 # Kubernetes
 type kubectl &>/dev/null \
   && alias k=kubectl \
