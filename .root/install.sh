@@ -109,7 +109,6 @@ packages() {
     git-delta
     backblaze-b2-bin
     rclone
-    direnv
     fasd
     parallel
     openbsd-netcat
@@ -123,6 +122,7 @@ packages() {
     tree
     sysstat
     speedtest-cli
+    scc
     # Graphical
     tk
     radeontop

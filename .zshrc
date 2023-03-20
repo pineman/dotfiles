@@ -91,6 +91,4 @@ type fasd &>/dev/null \
 	&& eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)" \
 	&& bindkey '^E' fasd-complete-d \
 	&& bindkey '^R' fasd-complete-f
-type direnv &>/dev/null \
-	&& eval "$(direnv hook zsh)"
 . ~/.aliases
