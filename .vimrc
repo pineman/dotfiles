@@ -49,6 +49,8 @@ set undodir=~/.vim/undo/
 set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/,/tmp
 set autowrite
+"set list
+"set listchars=lead:.,trail:~,tab:>-
 if executable('rg')
 	set grepprg=rg\ --no-heading\ --vimgrep
 	set grepformat=%f:%l:%c:%m

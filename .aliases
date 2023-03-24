@@ -39,7 +39,6 @@ alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
 alias rrg="rg --no-ignore"
 alias vmstat="vmstat -S M"
 alias tee="tee -a"
-alias ts="ts %.T"
 alias nmap="nmap -v"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias killall="killall -v -I"
@@ -168,8 +167,13 @@ alias grm="git rebase -i \$(git remote show origin | grep 'HEAD branch' | sd '.*
 alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done"
+add_worktree() {
+  for b in "$@"; do
+	git worktree add ../"${b//\//-}" $b
+  done
+}
 rm_worktree() {
-  for b in "$@"; do rm -rf ../"$b"; done
+  for b in "$@"; do rm -rf ../"${b//\//-}"; done
   git worktree prune
   git branch -D "$@"
 }
@@ -183,7 +187,6 @@ bright() {
 }
 # etc
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
-alias pandoc="pandoc -s"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias clean_vim="git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo"
 alias pacro="yay -Yc"
