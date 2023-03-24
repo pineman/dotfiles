@@ -209,6 +209,7 @@ packages() {
     bluez-utils
     ifuse
     usbutils
+    baobab
     # Dev
     entr
     jq

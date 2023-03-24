@@ -38,7 +38,7 @@ input type:pointer {
 	pointer_accel 1
 }
 # Apperance
-output DP-1 scale 1.41
+output DP-1 scale 1.42
 default_border pixel 3
 default_floating_border pixel 2
 titlebar_padding 3
