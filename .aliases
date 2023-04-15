@@ -32,10 +32,10 @@ alias ncdu='ncdu --color off'
 alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 alias diff='diff -u'
-which colordiff &>/dev/null && alias diff='colordiff -u'
+which delta &>/dev/null && alias diff='delta'
 alias fd="fd -H -E .git"
-alias find="fd -H -I ."
-alias rg="rg -SL --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
+alias find="fd -H -I"
+alias rg="rg -SL -. -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
 alias rrg="rg --no-ignore"
 alias vmstat="vmstat -S M"
 alias tee="tee -a"
@@ -121,7 +121,9 @@ alias di="docker images"
 drmia() {
   docker images -a | grep "$1" | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi "$1":{}
 }
-alias dv='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
+alias dv='docker volume ls'
+alias dvv='dcc; docker volume rm $(docker volume ls -q)'
+alias dm='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dr="docker restart -t 0"
 alias dl="loop docker logs -f --since 3h"
 docker_show_layers() {
@@ -164,6 +166,8 @@ alias gg="git gui &"
 alias gdm="gd \$(git remote show origin | grep 'HEAD branch' | sd '.*: ' '')..HEAD"
 alias glm="gl \$(git remote show origin | grep 'HEAD branch' | sd '.*: ' '')..HEAD"
 alias grm="git rebase -i \$(git remote show origin | grep 'HEAD branch' | sd '.*: ' '')"
+alias grm-pull="git stash; git co master; git pull; git co -; git stash apply; grm"
+alias gprm="git stash; git co master; git pull; git co -; git stash apply"
 alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done"
@@ -194,4 +198,5 @@ alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sor
 alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
+alias save="cd ~/code/proj/homepage && vim templates/posts/what-i-read.txt && ./make && git add **/*what-i-read* && git commit -m 'save' && git push; cd -"
 
