@@ -130,7 +130,7 @@ docker_show_layers() {
   docker history "$1" --format '{{.CreatedBy}}' --no-trunc
 }
 alias dspace="docker system df -v"
-alias dclean='docker system prune -af --volumes'
+alias docker_clean='docker system prune -af --volumes'
 alias docker-tui="lazydocker"
 # Kubernetes
 type kubectl &>/dev/null \
@@ -163,11 +163,11 @@ alias ga="git add"
 alias gl="PAGER= git lg"
 alias gitk="gitk --all &"
 alias gg="git gui &"
-alias gdm="gd \$(git remote show origin | grep 'HEAD branch' | sd '.*: ' '')..HEAD"
-alias glm="gl \$(git remote show origin | grep 'HEAD branch' | sd '.*: ' '')..HEAD"
-alias grm="git rebase -i \$(git remote show origin | grep 'HEAD branch' | sd '.*: ' '')"
-alias grm-pull="git stash; git co master; git pull; git co -; git stash apply; grm"
-alias gprm="git stash; git co master; git pull; git co -; git stash apply"
+alias _gdb="git rev-parse --verify main &>/dev/null && echo 'main' || echo 'master'"
+alias gdm="gd \$(_gdb)..HEAD"
+alias glm="gl \$(_gdb)..HEAD"
+alias grm="git rebase -i \$(_gdb)"
+alias grm-pull="git fetch origin \$(_gdb):\$(_gdb); grm"
 alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done"
@@ -192,7 +192,7 @@ bright() {
 # etc
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
-alias clean_vim="git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo"
+alias clean_vim="cd; git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo; cd -"
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
@@ -200,3 +200,4 @@ alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffm
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 alias save="cd ~/code/proj/homepage && vim templates/posts/what-i-read.txt && ./make && git add **/*what-i-read* && git commit -m 'save' && git push; cd -"
 
+. ~/.work
