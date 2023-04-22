@@ -118,7 +118,7 @@ bindsym $mod+backslash exec grimshot copy area
 bindsym $mod+Shift+backslash exec grimshot save output
 bindsym $mod+f exec thunar
 bindsym $mod+p exec firefox
-bindsym $mod+c exec chromium
+bindsym $mod+c exec brave
 bindsym $mod+y exec code
 bindsym $mod+t exec telegram-desktop
 bindsym $mod+Shift+i exec keepassxc

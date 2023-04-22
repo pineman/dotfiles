@@ -123,6 +123,7 @@ packages() {
     sysstat
     speedtest-cli
     scc
+    tmux
     # Graphical
     tk
     radeontop
@@ -223,6 +224,7 @@ packages() {
     flyctl-bin
     rlwrap
     python-pip
+    pandoc-bin
   )
   yay -S --noconfirm --needed "${packages[@]}"
   echo 'pineman' | sudo chsh -s /bin/zsh pineman
