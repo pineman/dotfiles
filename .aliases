@@ -201,4 +201,3 @@ alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffm
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 alias save="cd ~/code/proj/homepage && vim templates/posts/what-i-read.txt && ./make && git add **/*what-i-read* && git commit -m 'save' && git push; cd -"
 
-. ~/.work
