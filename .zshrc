@@ -75,8 +75,6 @@ alias -g L='|& less'
 alias -g H='|& head'
 alias -g T='|& tail'
 alias -g A='|& tee -a'
-alias -s txt=cat
-alias -s {timer,service}="sudo vim"
 alias d='dirs -v | tail -n +2 | head -10'
 alias 1='cd -1'
 alias 2='cd -2'
@@ -87,8 +85,14 @@ alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
-type fasd &>/dev/null \
-	&& eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)" \
-	&& bindkey '^E' fasd-complete-d \
-	&& bindkey '^R' fasd-complete-f
+
+export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --no-ignore-parent'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+[[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+bindkey -M emacs '^E' fzf-file-widget
+bindkey -M vicmd '^E' fzf-file-widget
+bindkey -M viins '^E' fzf-file-widget
+
 . ~/.aliases
+

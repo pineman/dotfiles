@@ -1,10 +1,16 @@
 " disable italics: sed -i '/<option name="FONT_TYPE".*/d' ~/.config/JetBrains/IntelliJIdea2021.1/jba_config/colors/*
-set ignorecase smartcase
 set hlsearch
-set noincsearch
 vnoremap // y/<C-R>"<CR>
 nnoremap <esc><esc> :w<cr> :noh <cr>
 nnoremap P "0p
+nnoremap U J
+nnoremap J <C-f>
+nnoremap K <C-b>
+nnoremap <S-r> <C-r>
+" close tab: on idea settings
+nnoremap <C-l> gt
+nnoremap <C-h> gT
+" * highlight matches, but don't actually move
 map * *N
 set clipboard=unnamedplus
 set clipboard+=ideaput

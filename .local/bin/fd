@@ -1,0 +1,10 @@
+#!/bin/bash
+
+HOME_REPO=$(if [[ $(git rev-parse --show-toplevel) == $HOME ]]; then echo true; else echo false; fi)
+if [[ $HOME_REPO == true ]]; then
+  rm -f $HOME/.gitignore &>/dev/null
+fi
+/opt/homebrew/bin/fd -H -E .git -E node_modules $(if [[ $PWD == $HOME ]]; then echo '-E .asdf -E Library -E .vim/ -E .npm'; fi) "$@"
+if [[ $HOME_REPO == true ]]; then
+  echo '*' > $HOME/.gitignore
+fi

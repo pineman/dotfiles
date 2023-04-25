@@ -2,6 +2,7 @@
 # vim: ft=sh
 # General system aliases
 alias vim="nvim"
+alias Vim="vim"
 alias vimdiff="nvim -d"
 alias sudo="sudo "
 alias watch="watch -x "
@@ -33,10 +34,7 @@ alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 alias diff='diff -u'
 which delta &>/dev/null && alias diff='delta'
-alias fd="fd -H -E .git"
-alias find="fd -H -I"
-alias rg="rg -SL -. -g '!\.git' -g '!package-lock.json' -g '!yarn.lock'"
-alias rrg="rg --no-ignore"
+alias find="fd ."
 alias vmstat="vmstat -S M"
 alias tee="tee -a"
 alias nmap="nmap -v"

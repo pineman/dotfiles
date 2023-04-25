@@ -10,6 +10,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export QT_QPA_PLATFORM="wayland" QT_QPA_PLATFORMTHEME="qt5ct"
 export GOPATH="$HOME/code/go"
 export PATH="$PATH:$GOPATH/bin"
-export PATH="$HOME/.local/bin:$PATH"
 export KERL_BUILD_DOCS=yes
 . /opt/asdf-vm/asdf.sh
+# Leave at the end
+export PATH="$HOME/.local/bin:$PATH"
+
