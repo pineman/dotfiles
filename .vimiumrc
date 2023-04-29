@@ -2,7 +2,9 @@
 map h previousTab
 map l nextTab
 map <C-j> removeTab
+map d removeTab
 map u restoreTab
-map U scrollFullPageDown
-map I scrollFullPageUp
+map J scrollFullPageDown
+map K scrollFullPageUp
 map t newTab position=end
+# duplicate tab: yt

@@ -34,13 +34,16 @@ alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 alias diff='diff -u'
 which delta &>/dev/null && alias diff='delta'
-alias find="fd ."
+alias find="fd -u ."
 alias vmstat="vmstat -S M"
 alias tee="tee -a"
 alias nmap="nmap -v"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias killall="killall -v -I"
 alias pgrep="pgrep -f"
+killg() {
+  kill $(pgrep "$@")
+}
 alias strace="strace -f"
 alias ..="cd -- .."
 alias ...="cd -- ../.."
@@ -55,10 +58,6 @@ cd() {
 }
 tobg() {
   ("$@" &) &>/dev/null
-}
-loop() {
-  #TODO: doesn't accept aliases
-  while :; do "$@"; sleep 2; done
 }
 alias open="tobg xdg-open"
 alias u='alacritty --working-directory $(pwd)'
@@ -123,7 +122,7 @@ alias dv='docker volume ls'
 alias dvv='dcc; docker volume rm $(docker volume ls -q)'
 alias dm='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dr="docker restart -t 0"
-alias dl="loop docker logs -f --since 3h"
+alias dl="docker logs -f"
 docker_show_layers() {
   docker history "$1" --format '{{.CreatedBy}}' --no-trunc
 }

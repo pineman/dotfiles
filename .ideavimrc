@@ -7,9 +7,10 @@ nnoremap U J
 nnoremap J <C-f>
 nnoremap K <C-b>
 nnoremap <S-r> <C-r>
-" close tab: on idea settings
-nnoremap <C-l> gt
-nnoremap <C-h> gT
+" gd go to definition, gh go back
+nnoremap gh <C-o>
+" prev tab, next tab, close tab: on idea settings
+" TODO: map 'go to next/prev bookmark'
 " * highlight matches, but don't actually move
 map * *N
 set clipboard=unnamedplus

@@ -10,22 +10,27 @@
 	rebase = true
 [merge]
 	tool = vimdiff
-	#conflictStyle = zdiff3
-[diff]
-	color = false
 [status]
 	showUntrackedFiles = all
 	showStash = true
 [fetch]
 	prune = true
+[commit]
+	gpgsign = false
 [pager]
-	branch = false
+    branch = false
     diff = delta
     log = delta
     reflog = delta
     show = delta
-[commit]
-	gpgsign = false
+[core]
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true    # use n and N to move between diff sections
+[diff]
+    colorMoved = default
 [alias]
 	lg = log --color --graph --pretty=format:'%h (%Cgreen%cd%Creset) %s %C(6)%an <%ae>%Creset %C(blue)%d%Creset' --abbrev-commit --date=format:'%d/%m/%Y %H:%M:%S'
 	lga = lg --all
@@ -47,8 +52,6 @@
 	tabsize = 4
 	warndetachedcommit = true
 	displayuntracked = false
-[cola]
-	spellcheck = false
 [rebase]
 	autoStash = true
 [init]

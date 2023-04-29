@@ -6,6 +6,7 @@ call vundle#begin()
 	Plugin 'mbbill/undotree'
 	Plugin 'pineman/vim-buftabline'
 	Plugin 'junegunn/fzf.vim'
+	"Plugin 'rmagatti/auto-session'
 	" Syntax
 	Plugin 'jamespeapen/swayconfig.vim'
 	Plugin 'elixir-editors/vim-elixir'
@@ -71,6 +72,13 @@ nnoremap k gk
 nnoremap U J
 nnoremap J <C-f>
 nnoremap K <C-b>
+" Use Hk or Lj to scroll. zz to center on current line. M for middle line.
+map <C-f> <Nop>
+map <C-b> <Nop>
+map <C-e> <Nop>
+map <C-y> <Nop>
+map <C-d> <Nop>
+map <C-u> <Nop>
 " Redo on S-r instead of C-r
 nnoremap <S-r> <C-r>
 " * highlight matches, but don't actually move
@@ -80,33 +88,40 @@ nnoremap <esc> :noh<cr>:w<cr>
 if exists('g:vscode')
   nnoremap <esc> :noh<cr>:call VSCodeCall("workbench.action.files.save")<cr>
 endif
+nnoremap ZZ :wqa<cr>
 " Select on visual mode, press // to search for selection!
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-" C-l, C-h, C-j: Easy buffer (my tabs with buftabline) management
+" C-l, C-h, C-j: Easy buffer nav (tabs with buftabline) 
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
-nmap <C-j> :bp <BAR> bd #<CR>
+nnoremap <C-j> :bp <BAR> bd #<CR>
 " C-u C-i: Easier pane management
 map <C-u> <C-W>h
 map <C-i> <C-W>l
 " fzf: fd on C-p and rg on C-f
 nnoremap <C-p> :Files<CR>
 nnoremap <C-f> :Rg 
-" don't yank to default register on dd
+" keep last explicit yy on P
 nnoremap P "0p
-nnoremap <F2> :Lexplore<cr>
-nnoremap <F3> :UndotreeToggle<cr>
-set pastetoggle=<F6>
+" gd go to definition, gh go back
+nnoremap gh <C-o>
+" TODO: find a way to cycle through uppercase marks
+
+nnoremap <F1> :Lexplore<cr>
+nnoremap <F2> :UndotreeToggle<cr>
+nnoremap <F3> :make<cr>
+set pastetoggle=<F4>
 " Create a vsplit at 80 columns to simulate hard wrap
 function! SoftHardWrap()
 	execute "vs /dev/null/"
 	execute "windo wincmd h"
 	execute "vertical resize 84"
 endfunction
-map <F9> :call SoftHardWrap()<cr>
+map <F5> :call SoftHardWrap()<cr>
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab
+au Filetype bash setlocal sw=2 ts=2 sts=2
 au Filetype tex setlocal makeprg=latexmk sw=2 ts=2 sts=2
 au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php setlocal sw=2 ts=2 sts=2
 " Remove trailing whitespace
