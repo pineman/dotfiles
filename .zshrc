@@ -88,8 +88,8 @@ alias 9='cd -9'
 
 export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --no-ignore-parent'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-[[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
-source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+[[ $- == *i* ]] && source "/usr/share/fzf/completion.zsh" 2> /dev/null
+source "/usr/share/fzf/key-bindings.zsh"
 bindkey -M emacs '^E' fzf-file-widget
 bindkey -M vicmd '^E' fzf-file-widget
 bindkey -M viins '^E' fzf-file-widget
