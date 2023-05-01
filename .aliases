@@ -34,6 +34,7 @@ alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 alias diff='diff -u'
 which delta &>/dev/null && alias diff='delta'
+alias fd="fd -E \.git"
 alias find="fd -u ."
 alias vmstat="vmstat -S M"
 alias tee="tee -a"
@@ -196,5 +197,5 @@ alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sor
 alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-alias save="cd ~/code/proj/homepage && vim templates/posts/what-i-read.txt && ./make && git add **/*what-i-read* && git commit -m 'save' && git push; cd -"
+alias save="cd ~/code/proj/homepage && vim src/posts/what-i-read.txt && ./make && git add **/*what-i-read* && git commit -m 'save' && git push; cd -"
 

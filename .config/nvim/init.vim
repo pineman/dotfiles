@@ -36,6 +36,7 @@ set undodir=~/.vim/undo/
 set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/,/tmp
 set autowrite
+set scrolloff=3
 "set list
 "set listchars=lead:.,trail:~,tab:>-
 if executable('rg')
@@ -91,6 +92,9 @@ endif
 nnoremap ZZ :wqa<cr>
 " Select on visual mode, press // to search for selection!
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" gd go to definition, gh go back, gl go foward
+nnoremap gh <C-o>
+nnoremap gl <C-i>
 " C-l, C-h, C-j: Easy buffer nav (tabs with buftabline) 
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
@@ -100,24 +104,18 @@ map <C-u> <C-W>h
 map <C-i> <C-W>l
 " fzf: fd on C-p and rg on C-f
 nnoremap <C-p> :Files<CR>
-nnoremap <C-f> :Rg 
+nnoremap <C-S-f> :Rg<CR>
+nnoremap <C-f> :Rg <C-R><C-W><CR>
+vnoremap <C-f> "zy :exec 'Rg ' . @z<CR>
+" C-S-r: Search and replace word under cursor
+nnoremap <C-S-r> :%s/<C-R><C-W>//g<Left><Left>
 " keep last explicit yy on P
 nnoremap P "0p
-" gd go to definition, gh go back
-nnoremap gh <C-o>
+" = to set indentation (e.g. in visual or =ap)
 " TODO: find a way to cycle through uppercase marks
 
 nnoremap <F1> :Lexplore<cr>
 nnoremap <F2> :UndotreeToggle<cr>
-nnoremap <F3> :make<cr>
-set pastetoggle=<F4>
-" Create a vsplit at 80 columns to simulate hard wrap
-function! SoftHardWrap()
-	execute "vs /dev/null/"
-	execute "windo wincmd h"
-	execute "vertical resize 84"
-endfunction
-map <F5> :call SoftHardWrap()<cr>
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab
