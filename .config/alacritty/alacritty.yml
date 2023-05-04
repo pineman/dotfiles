@@ -841,3 +841,14 @@ key_bindings:
   - { key: Down, mods: Shift, action: ScrollPageDown, mode: ~Alt }
   - { key: N, mods: Command, action: CreateNewWindow }
   - { key: Space, mods: Control, action: ToggleViMode }
+  # Control-Shift-u hints URLs like vimium - Can hold shift to click as well
+  # https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
+  - { key: W, mods: Command, chars: "\x1bw" }
+  - { key: T, mods: Command, chars: "\x1bt" }
+  - { key: J, mods: Command, chars: "\x1bj" }
+  - { key: H, mods: Command, chars: "\x1bh" }
+  - { key: L, mods: Command, chars: "\x1bl" }
+  - { key: H, mods: Shift|Command, chars: "\x1bH" }
+  - { key: J, mods: Shift|Command, chars: "\x1bJ" }
+  - { key: K, mods: Shift|Command, chars: "\x1bK" }
+  - { key: L, mods: Shift|Command, chars: "\x1bL" }

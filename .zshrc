@@ -90,9 +90,6 @@ export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --no-ignore-parent'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [[ $- == *i* ]] && source "/usr/share/fzf/completion.zsh" 2> /dev/null
 source "/usr/share/fzf/key-bindings.zsh"
-bindkey -M emacs '^E' fzf-file-widget
-bindkey -M vicmd '^E' fzf-file-widget
-bindkey -M viins '^E' fzf-file-widget
 
 . ~/.aliases
 

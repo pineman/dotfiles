@@ -34,7 +34,6 @@ alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 alias diff='diff -u'
 which delta &>/dev/null && alias diff='delta'
-alias fd="fd -E \.git"
 alias find="fd -u ."
 alias vmstat="vmstat -S M"
 alias tee="tee -a"

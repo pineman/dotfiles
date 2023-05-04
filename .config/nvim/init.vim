@@ -20,7 +20,6 @@ set colorcolumn=80
 set cursorline
 set clipboard=unnamedplus
 set ignorecase smartcase
-set noincsearch
 set number
 set sw=4 ts=4 sts=4
 set shiftround
@@ -37,12 +36,9 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/,/tmp
 set autowrite
 set scrolloff=3
+set noincsearch
 "set list
 "set listchars=lead:.,trail:~,tab:>-
-if executable('rg')
-	set grepprg=rg\ --no-heading\ --vimgrep
-	set grepformat=%f:%l:%c:%m
-endif
 au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * checktime
 " Remember cursor position
@@ -66,6 +62,8 @@ set stl+=\ %l-%c\ %p%%
 set stl+=\ [%LL]
 set stl+=%1*%m%0*
 
+nnoremap ZZ :wqa<cr>
+cnoreabbrev W w
 " j k multiline
 nnoremap j gj
 nnoremap k gk
@@ -80,21 +78,6 @@ map <C-e> <Nop>
 map <C-y> <Nop>
 map <C-d> <Nop>
 map <C-u> <Nop>
-" Redo on S-r instead of C-r
-nnoremap <S-r> <C-r>
-" * highlight matches, but don't actually move
-map * :let @/= expand('<cword>').'\>'\|set hlsearch<C-M>
-" tap esc (double tap if on insert) to compulsively	clear highlight and save
-nnoremap <esc> :noh<cr>:w<cr>
-if exists('g:vscode')
-  nnoremap <esc> :noh<cr>:call VSCodeCall("workbench.action.files.save")<cr>
-endif
-nnoremap ZZ :wqa<cr>
-" Select on visual mode, press // to search for selection!
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-" gd go to definition, gh go back, gl go foward
-nnoremap gh <C-o>
-nnoremap gl <C-i>
 " C-l, C-h, C-j: Easy buffer nav (tabs with buftabline) 
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
@@ -102,17 +85,35 @@ nnoremap <C-j> :bp <BAR> bd #<CR>
 " C-u C-i: Easier pane management
 map <C-u> <C-W>h
 map <C-i> <C-W>l
-" fzf: fd on C-p and rg on C-f
+" TODO: find a way to cycle through uppercase marks
+
+" Redo on S-r instead of C-r
+nnoremap <S-r> <C-r>
+" * highlight matches, but don't actually move
+map * :let @/= expand('<cword>').'\>'\|set hlsearch<C-M>
+" there's also cmd-f by alacritty
+nnoremap g* :let @/=""\|set hlsearch<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+" tap esc (double tap if on insert) to compulsively	clear highlight and save
+nnoremap <esc> :noh<cr>:w<cr>
+if exists('g:vscode')
+  nnoremap <esc> :noh<cr>:call VSCodeCall("workbench.action.files.save")<cr>
+endif
+" Select on visual mode, press // to search for selection
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" gr: Search and replace word under cursor
+nnoremap gr :%s/<C-R><C-W>//g<Left><Left>
+" gd go to definition, gh go back, gl go foward
+nnoremap gh <C-o>
+nnoremap gl <C-i>
+" fzf: fd on C-p and rg on C-f (plus gf)
 nnoremap <C-p> :Files<CR>
-nnoremap <C-S-f> :Rg<CR>
-nnoremap <C-f> :Rg <C-R><C-W><CR>
-vnoremap <C-f> "zy :exec 'Rg ' . @z<CR>
-" C-S-r: Search and replace word under cursor
-nnoremap <C-S-r> :%s/<C-R><C-W>//g<Left><Left>
+nnoremap <C-F> :Rg<CR>
+" poor man's goto definition
+nnoremap gf :Rg <C-R><C-W><CR>
+vnoremap gf "zy :exec 'Rg ' . @z<CR>
 " keep last explicit yy on P
 nnoremap P "0p
 " = to set indentation (e.g. in visual or =ap)
-" TODO: find a way to cycle through uppercase marks
 
 nnoremap <F1> :Lexplore<cr>
 nnoremap <F2> :UndotreeToggle<cr>
