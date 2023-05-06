@@ -82,9 +82,9 @@ map <C-u> <Nop>
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 nnoremap <C-j> :bp <BAR> bd #<CR>
-" C-u C-i: Easier pane management
-map <C-u> <C-W>h
-map <C-i> <C-W>l
+" C-i C-o: Easier pane management
+map <C-i> <C-W>h
+map <C-o> <C-W>l
 " TODO: find a way to cycle through uppercase marks
 
 " Redo on S-r instead of C-r
