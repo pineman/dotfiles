@@ -228,7 +228,7 @@ packages() {
   )
   yay -S --noconfirm --needed "${packages[@]}"
   echo 'pineman' | sudo chsh -s /bin/zsh pineman
-  sudo systemctl enable linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer
+  sudo systemctl enable linux-modules-cleanup fstrim.timer bluetooth plocate-updatedb.timer keyd
   sudo gpasswd -a pineman docker
   sudo gpasswd -a pineman wireshark
   sudo gpasswd -a pineman seat

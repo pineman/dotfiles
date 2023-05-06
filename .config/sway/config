@@ -25,7 +25,7 @@ exec swayidle -w \
 #bindsym $mod+Right exec wtype -P end
 input type:keyboard {
 	xkb_layout us
-	xkb_options caps:swapescape,compose:ralt
+	xkb_options compose:ralt
 	repeat_delay 140
 	repeat_rate 60
 }
