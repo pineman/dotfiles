@@ -124,6 +124,7 @@ packages() {
     speedtest-cli
     scc
     tmux
+    inotify-tools
     # Graphical
     tk
     radeontop
@@ -225,6 +226,7 @@ packages() {
     rlwrap
     python-pip
     pandoc-bin
+    asdf-vm
   )
   yay -S --noconfirm --needed "${packages[@]}"
   echo 'pineman' | sudo chsh -s /bin/zsh pineman
