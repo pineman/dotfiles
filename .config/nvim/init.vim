@@ -102,6 +102,7 @@ endif
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " gr: Search and replace word under cursor
 nnoremap gr :%s/<C-R><C-W>//g<Left><Left>
+vnoremap gr y:let @z=substitute(@", '/', '\\/', 'g')<CR>:%s/\V<c-r>z//g<left><left>
 " gd go to definition, gh go back, gl go foward
 nnoremap gh <C-o>
 nnoremap gl <C-i>
@@ -122,7 +123,7 @@ au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab
 au Filetype bash setlocal sw=2 ts=2 sts=2
 au Filetype tex setlocal makeprg=latexmk sw=2 ts=2 sts=2
-au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php setlocal sw=2 ts=2 sts=2
+au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php setlocal sw=2 ts=2 sts=2 expandtab
 " Remove trailing whitespace
 let blacklist = ['markdown', 'vim']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
