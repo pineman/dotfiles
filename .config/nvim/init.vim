@@ -61,6 +61,7 @@ set stl+=%=
 set stl+=\ %l-%c\ %p%%
 set stl+=\ [%LL]
 set stl+=%1*%m%0*
+let g:fzf_preview_window = []
 
 nnoremap ZZ :wqa<cr>
 cnoreabbrev W w
@@ -82,25 +83,21 @@ map <C-u> <Nop>
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 nnoremap <C-j> :bp <BAR> bd #<CR>
-" C-i C-o: Easier pane management
-map <C-i> <C-W>h
-map <C-o> <C-W>l
+" tap esc (double tap if on insert) to compulsively	clear highlight and save
+nnoremap <esc> :noh<cr>:w<cr>
+if exists('g:vscode')
+  nnoremap <esc> :noh<cr>:call VSCodeCall("workbench.action.files.save")<cr>
+endif
 " TODO: find a way to cycle through uppercase marks
 
 " Redo on S-r instead of C-r
 nnoremap <S-r> <C-r>
 " * highlight matches, but don't actually move
 map * :let @/= expand('<cword>').'\>'\|set hlsearch<C-M>
-" there's also cmd-f by alacritty
-nnoremap g* :let @/=""\|set hlsearch<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-" tap esc (double tap if on insert) to compulsively	clear highlight and save
-nnoremap <esc> :noh<cr>:w<cr>
-if exists('g:vscode')
-  nnoremap <esc> :noh<cr>:call VSCodeCall("workbench.action.files.save")<cr>
-endif
-" Select on visual mode, press // to search for selection
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-" gr: Search and replace word under cursor
+" poor man's goto definition
+nnoremap gf :Rg <C-R><C-W><CR>
+vnoremap gf "zy :exec 'Rg ' . @z<CR>
+" gr: Search and replace word under cursor/selection
 nnoremap gr :%s/<C-R><C-W>//g<Left><Left>
 vnoremap gr y:let @z=substitute(@", '/', '\\/', 'g')<CR>:%s/\V<c-r>z//g<left><left>
 " gd go to definition, gh go back, gl go foward
@@ -109,9 +106,6 @@ nnoremap gl <C-i>
 " fzf: fd on C-p and rg on C-f (plus gf)
 nnoremap <C-p> :Files<CR>
 nnoremap <C-F> :Rg<CR>
-" poor man's goto definition
-nnoremap gf :Rg <C-R><C-W><CR>
-vnoremap gf "zy :exec 'Rg ' . @z<CR>
 " keep last explicit yy on P
 nnoremap P "0p
 " = to set indentation (e.g. in visual or =ap)

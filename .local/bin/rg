@@ -4,7 +4,11 @@ HOME_REPO=$(if [[ $(git rev-parse --show-toplevel) == $HOME ]]; then echo true; 
 if [[ $HOME_REPO == true ]]; then
   rm -f $HOME/.gitignore &>/dev/null
 fi
+cleanup() {
+  if [[ $HOME_REPO == true ]]; then
+    echo '*' > $HOME/.gitignore
+  fi
+}
+trap cleanup EXIT
+
 /usr/bin/rg --smart-case --follow --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock' "$@"
-if [[ $HOME_REPO == true ]]; then
-  echo '*' > $HOME/.gitignore
-fi

@@ -1,4 +1,3 @@
-#[[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 export HISTSIZE=200000
 export HISTFILE=~/.bash_history
 export HISTFILESIZE=${HISTSIZE}
@@ -24,4 +23,3 @@ r='\[\e[0m\]'
 PS1="$yellow\t$r bash $mag\$(pwd)$r\n"
 PS1+="$white\$?$r $ "
 . ~/.aliases
-#[[ ${BLE_VERSION-} ]] && ble-attach

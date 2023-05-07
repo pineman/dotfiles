@@ -4,7 +4,11 @@ HOME_REPO=$(if [[ $(git rev-parse --show-toplevel) == $HOME ]]; then echo true; 
 if [[ $HOME_REPO == true ]]; then
   rm -f $HOME/.gitignore &>/dev/null
 fi
-/usr/bin/fd -H -E \.git $(if [[ $PWD == $HOME ]]; then echo '-E .asdf -E .vim/ -E .npm'; fi) "$@"
-if [[ $HOME_REPO == true ]]; then
-  echo '*' > $HOME/.gitignore
-fi
+cleanup() {
+  if [[ $HOME_REPO == true ]]; then
+    echo '*' > $HOME/.gitignore
+  fi
+}
+trap cleanup EXIT
+
+/usr/bin/fd -H -E \.git $(if [[ $PWD == $HOME ]]; then echo '-E .asdf -E Library -E .vim/ -E .npm'; fi) "$@"
