@@ -88,7 +88,7 @@ bindkey '^B' history-beginning-search-menu-end-space
 bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 # Prefer fzf CTRL-R when possible
-export FZF_CTRL_T_COMMAND='fd --strip-cwd-prefix --no-ignore-parent'
+export FZF_CTRL_T_COMMAND='fd --strip-cwd-prefix --no-ignore-parent --keep-right'
 [[ $- == *i* ]] && source "/usr/share/fzf/completion.zsh" 2> /dev/null
 source "/usr/share/fzf/key-bindings.zsh"
 

@@ -100,13 +100,11 @@ alias sbcl="rlwrap sbcl"
 alias yaegi="rlwrap yaegi"
 alias gop='cd $GOPATH'
 alias gradle="gradle --parallel"
+alias iex="rlwrap iex"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
 function sr() {
-  sd -s "$1" "$2" $(rg -FUl "$1")
-}
-function srr() {
-  sd -s "$1" "$2" $(rrg -FUl "$1")
+  rg -FUl "$1" | xargs -L1 sd -s "$1" "$2"
 }
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
@@ -196,5 +194,5 @@ alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sor
 alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-alias save="cd ~/code/proj/homepage/src && vim ../posts/what-i-read.txt && ./make && git add ../**/what-i-read* && git commit -m 'save' && git push; cd -"
+alias save="cd ~/code/proj/homepage && vim posts/what-i-read.txt && ./make && git add **/what-i-read* && git commit -m 'save' && git push; cd -"
 

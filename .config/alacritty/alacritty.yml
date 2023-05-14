@@ -835,11 +835,10 @@ colors:
     cyan:    '#5fb3b3'
     white:   '#d8dee9'
 key_bindings:
-  - { key: PageUp, action: ScrollPageUp, mode: ~Alt }
-  - { key: PageDown, action: ScrollPageDown, mode: ~Alt }
-  - { key: Up, mods: Shift, action: ScrollPageUp, mode: ~Alt }
-  - { key: Down, mods: Shift, action: ScrollPageDown, mode: ~Alt }
-  - { key: N, mods: Command, action: CreateNewWindow }
+  #- { key: Up, mods: Shift, action: ScrollPageUp, mode: ~Alt }
+  #- { key: Down, mods: Shift, action: ScrollPageDown, mode: ~Alt }
+  #- { key: PageUp, action: ScrollPageUp, mode: ~Alt }
+  #- { key: PageDown, action: ScrollPageDown, mode: ~Alt }
   - { key: Space, mods: Control, action: ToggleViMode }
   # Control-Shift-u hints URLs like vimium - Can hold shift to click as well
   # https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
@@ -848,6 +847,8 @@ key_bindings:
   - { key: J, mods: Command, chars: "\x1bj" }
   - { key: H, mods: Command, chars: "\x1bh" }
   - { key: L, mods: Command, chars: "\x1bl" }
+  - { key: I, mods: Command, chars: "\x1bi" }
+  - { key: O, mods: Command, chars: "\x1bo" }
   - { key: H, mods: Shift|Command, chars: "\x1bH" }
   - { key: J, mods: Shift|Command, chars: "\x1bJ" }
   - { key: K, mods: Shift|Command, chars: "\x1bK" }
