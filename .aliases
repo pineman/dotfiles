@@ -84,8 +84,8 @@ show-iptables() {
   printf '\nFILTER ================================================================\n'
   sudo iptables-legacy -nvL -t filter
 }
-alias zp='zpool status; zpool list'
-alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
+#alias zp='zpool status; zpool list'
+#alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
 alias sway='sway &> ~/.local/log/sway.log'
 alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
 alias ex='dtrx --one=inside'
