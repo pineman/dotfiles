@@ -3,7 +3,6 @@ set hlsearch
 set ignorecase smartcase
 vnoremap // y/<C-R>"<CR>
 nnoremap <esc><esc> :w<cr> :noh <cr>
-nnoremap P "0p
 nnoremap U J
 nnoremap J <C-f>
 nnoremap K <C-b>
@@ -20,3 +19,5 @@ set ideajoin
 set visualbell
 set noerrorbells
 set scrolloff=3
+" cmd-shift-f12 close all tool windows
+" multiple cursors: opt-click 

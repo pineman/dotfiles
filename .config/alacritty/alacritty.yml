@@ -842,6 +842,7 @@ key_bindings:
   - { key: Space, mods: Control, action: ToggleViMode }
   # Control-Shift-u hints URLs like vimium - Can hold shift to click as well
   # https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
+  - { key: U, mods: Command, chars: "\x1bu" }
   - { key: W, mods: Command, chars: "\x1bw" }
   - { key: T, mods: Command, chars: "\x1bt" }
   - { key: J, mods: Command, chars: "\x1bj" }

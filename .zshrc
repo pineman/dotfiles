@@ -93,7 +93,7 @@ export FZF_CTRL_T_COMMAND='fd --strip-cwd-prefix --no-ignore-parent --keep-right
 source "/usr/share/fzf/key-bindings.zsh"
 
 eval "$(zoxide init zsh)"
-bindkey -s "^E" 'zi^M'
+bindkey -s "^E" 'zi^M' # TODO: how to map ^E to run zi with what's already in the prompt as an argument?
 
 . ~/.aliases
 

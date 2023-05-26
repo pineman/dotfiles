@@ -56,6 +56,7 @@ alias .........="cd -- ../../../../../../../.."
 cd() {
   builtin cd "$@" && ll
 }
+alias zi="__zoxide_zi && ll"
 tobg() {
   ("$@" &) &>/dev/null
 }
@@ -93,7 +94,7 @@ alias drag='dragon-drop -s 300 -i -x'
 
 # Dev
 alias make='make -j$(nproc)'
-alias py="python"
+alias py="python3"
 alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
 alias mit-scheme="rlwrap mit-scheme"
 alias sbcl="rlwrap sbcl"

@@ -71,12 +71,6 @@ nnoremap k gk
 nnoremap U J
 nnoremap J <C-f>
 nnoremap K <C-b>
-map <C-f> <Nop>
-map <C-b> <Nop>
-map <C-e> <Nop>
-map <C-y> <Nop>
-map <C-d> <Nop>
-map <C-u> <Nop>
 " Use Hk or Lj to scroll. M for middle line.
 " mm to center on current line. 
 nnoremap mm zz
@@ -84,11 +78,10 @@ nnoremap mm zz
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 nnoremap <C-j> :bp <BAR> bd #<CR>
+" splits: c-w s: horizontal, c-w v: vertical. c-w o: (only) kill all except current.
+" c-w hjkl: move focus
 " tap esc (double tap if on insert) to compulsively	clear highlight and save
 nnoremap <esc> :noh<cr>:w<cr>
-if exists('g:vscode')
-  nnoremap <esc> :noh<cr><Cmd>call VSCodeNotify("workbench.action.files.save")<CR>
-endif
 " TODO: find a way to cycle through uppercase marks
 nnoremap zz :wqa<cr>
 nnoremap ZZ :wqa<cr>
@@ -110,15 +103,16 @@ vnoremap gr y:let @z=substitute(@", '/', '\\/', 'g')<CR>:%s/\V<c-r>z//g<left><le
 " C-i C-o back/fwd jumplist
 " gd go to definition, gh go back
 nnoremap gh <C-t>
-if exists('g:vscode')
-  nnoremap gh <Cmd>call VSCodeNotify("workbench.action.navigateBack")<CR>
-endif
 " fzf: fd on C-p and rg on C-f (plus gf)
 nnoremap <C-p> :Files<CR>
 nnoremap <C-F> :Rg<CR>
 " keep last explicit yy on gp
 nnoremap gp "0p
 " = to set indentation (e.g. in visual or =ap)
+" c in visual block mode to change (delete & insert)
+" zj to toggle fold at cursor. zo to open all folds
+nnoremap zj za
+nnoremap zo zR
 
 nnoremap <F1> :Lexplore<cr>
 nnoremap <F2> :UndotreeToggle<cr>
@@ -132,3 +126,10 @@ au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.sh
 let blacklist = ['markdown', 'vim']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
 
+" vscode hacks
+" J K dont work too well https://github.com/vscode-neovim/vscode-neovim/issues/800
+if exists('g:vscode')
+  nnoremap mm <Cmd>call <SNR>4_reveal('center', 0)<CR>
+  nnoremap <esc> :noh<cr><Cmd>call VSCodeNotify("workbench.action.files.save")<CR>
+  nnoremap gh <Cmd>call VSCodeNotify("workbench.action.navigateBack")<CR>
+end
