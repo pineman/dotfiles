@@ -6,7 +6,7 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon --start
 exec mako
 exec nm-applet --indicator
-exec gammastep-indicator -l 41.1:-8.6 -t 6200:3700
+exec /usr/bin/python /usr/bin/gammastep-indicator -l 41.1:-8.6 -t 6200:3700
 exec thunar --daemon
 exec blueman-applet
 exec playerctld

@@ -93,7 +93,7 @@ alias ex='dtrx --one=inside'
 alias drag='dragon-drop -s 300 -i -x'
 
 # Dev
-alias make='make -j$(nproc)'
+#alias make='make -j$(nproc)' # compiling elixir fails, for some reason
 alias py="python3"
 alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
 alias mit-scheme="rlwrap mit-scheme"
