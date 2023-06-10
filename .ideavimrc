@@ -1,23 +1,31 @@
-" disable italics: sed -i '/<option name="FONT_TYPE".*/d' ~/.config/JetBrains/IntelliJIdea2021.1/jba_config/colors/*
 set hlsearch
 set ignorecase smartcase
-vnoremap // y/<C-R>"<CR>
-nnoremap <esc><esc> :w<cr> :noh <cr>
-nnoremap U J
-nnoremap J <C-f>
-nnoremap K <C-b>
-nnoremap <S-r> <C-r>
-" gd go to definition, gh go back
-nnoremap gh <C-t>
-" prev tab, next tab, close tab: on idea settings
-" TODO: map 'go to next/prev bookmark'
-" * highlight matches, but don't actually move
-map * *N
 set clipboard=unnamedplus
 set clipboard+=ideaput
 set ideajoin
 set visualbell
 set noerrorbells
 set scrolloff=3
+
+vnoremap // y/<C-R>"<CR>
+nnoremap <esc><esc> :w<cr> :noh <cr>
+nnoremap U J
+nnoremap J <C-f>
+nnoremap K <C-b>
+nnoremap mm zz
+nnoremap <S-r> <C-r>
+" * highlight matches, but don't actually move
+map * *N
+" gd go to definition, gh go back
+nnoremap gh <C-t>
+" keep last explicit yy on gp
+nnoremap gp "0p
+" zj to toggle fold at cursor. zo to open all folds. zh fold to current level
+nnoremap zj za
+nnoremap zo zR
+nnoremap zh :let&l:fdl=indent('.')/&sw<cr>
+
+" prev tab, next tab, close tab: on idea settings
 " cmd-shift-f12 close all tool windows
 " multiple cursors: opt-click 
+" TODO: map 'go to next/prev bookmark'

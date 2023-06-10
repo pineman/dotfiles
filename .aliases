@@ -168,12 +168,12 @@ alias grm-pullw="cd ../\$(_gdb); git pull; cd -; grm"
 alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done"
-add_worktree() {
+git_worktree_add() {
   for b in "$@"; do
 	git worktree add ../"${b//\//-}" $b
   done
 }
-rm_worktree() {
+git_worktree_remove() {
   for b in "$@"; do rm -rf ../"${b//\//-}"; done
   git worktree prune
   git branch -D "$@"

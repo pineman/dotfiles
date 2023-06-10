@@ -52,7 +52,7 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd V edit-command-line
 
-PROMPT='%F{3}%D{%H:%M:%S}%f zsh %F{5}%d%f (%F{2}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%f)
+PROMPT='%F{3}%D{%H:%M:%S}%f %F{5}%d%f (%F{2}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%f)
 %F{15}%?%f $ '
 precmd() {
 	print -Pn "\e]0;%~\a"
@@ -88,7 +88,7 @@ bindkey '^B' history-beginning-search-menu-end-space
 bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 # Prefer fzf CTRL-R when possible
-export FZF_CTRL_T_COMMAND='fd --strip-cwd-prefix --no-ignore-parent --keep-right'
+export FZF_CTRL_T_COMMAND='fd --strip-cwd-prefix --no-ignore-parent'
 [[ $- == *i* ]] && source "/usr/share/fzf/completion.zsh" 2> /dev/null
 source "/usr/share/fzf/key-bindings.zsh"
 

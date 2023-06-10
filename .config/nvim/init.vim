@@ -89,18 +89,19 @@ cnoreabbrev W w
 
 " Redo on S-r instead of C-r
 nnoremap <S-r> <C-r>
-" g/ and //: highlight without moving
-nnoremap g/ :let @/=""\|set hlsearch<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-" * highlight current word
+" * highlight current word without moving
 map * :let @/= expand('<cword>').'\>'\|set hlsearch<C-M>
+" g/: highlight custom without moving
+nnoremap g/ :let @/=""\|set hlsearch<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+" //: search for visual selection TODO: do without moving
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " gf: search word under cursor/selection - poor man's goto definition (like gd but not just file-wide)
 nnoremap gf :Rg <C-R><C-W><CR>
 vnoremap gf "zy :exec 'Rg ' . @z<CR>
 " gr: Search and replace word under cursor/selection
 nnoremap gr :%s/<C-R><C-W>//g<Left><Left>
-vnoremap gr y:let @z=substitute(@", '/', '\\/', 'g')<CR>:%s/\V<c-r>z//g<left><left>
-" C-i C-o back/fwd jumplist
+vnoremap gr y:let @z=substitute(@", '/', '\\/', 'g')<CR>:%s/<c-r>z//g<left><left>
+" C-o C-i: back/fwd jumplist
 " gd go to definition, gh go back
 nnoremap gh <C-t>
 " fzf: fd on C-p and rg on C-f (plus gf)
@@ -110,17 +111,19 @@ nnoremap <C-F> :Rg<CR>
 nnoremap gp "0p
 " = to set indentation (e.g. in visual or =ap)
 " c in visual block mode to change (delete & insert)
-" zj to toggle fold at cursor. zo to open all folds
+" zj to toggle fold at cursor. zo to open all folds. zh fold to current level
 nnoremap zj za
 nnoremap zo zR
+nnoremap zh :let&l:fdl=indent('.')/&sw<cr>
 
 nnoremap <F1> :Lexplore<cr>
 nnoremap <F2> :UndotreeToggle<cr>
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab
-au Filetype bash setlocal sw=2 ts=2 sts=2
+au Filetype sh setlocal sw=2 ts=2 sts=2
 au Filetype tex setlocal makeprg=latexmk sw=2 ts=2 sts=2
+au Filetype javascript,javascriptreact setlocal sw=2 ts=2 sts=2
 au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php setlocal sw=2 ts=2 sts=2 expandtab
 " Remove trailing whitespace
 let blacklist = ['markdown', 'vim']
