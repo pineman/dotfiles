@@ -33,7 +33,6 @@ alias ncdu='ncdu --color off'
 alias sortdu='du -h | sort -h'
 alias nmcli='nmcli -a'
 alias diff='diff -u'
-which delta &>/dev/null && alias diff='delta'
 alias find="fd -u ."
 alias vmstat="vmstat -S M"
 alias tee="tee -a"
@@ -167,13 +166,13 @@ alias grm-pull="git fetch origin \$(_gdb):\$(_gdb); grm"
 alias grm-pullw="cd ../\$(_gdb); git pull; cd -; grm"
 alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
-alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done"
+alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done" # https://github.com/MestreLion/git-tools
 git_worktree_add() {
   for b in "$@"; do
 	git worktree add ../"${b//\//-}" $b
   done
 }
-git_worktree_remove() {
+git_worktree_rm() {
   for b in "$@"; do rm -rf ../"${b//\//-}"; done
   git worktree prune
   git branch -D "$@"

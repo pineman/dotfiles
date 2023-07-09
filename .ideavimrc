@@ -16,8 +16,9 @@ nnoremap mm zz
 nnoremap <S-r> <C-r>
 " * highlight matches, but don't actually move
 map * *N
-" gd go to definition, gh go back
+" gd go to definition, gh go back, gl go fwd
 nnoremap gh <C-t>
+nnoremap gl <C-i>
 " keep last explicit yy on gp
 nnoremap gp "0p
 " zj to toggle fold at cursor. zo to open all folds. zh fold to current level

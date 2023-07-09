@@ -65,34 +65,34 @@ set stl+=%1*%m%0*
 let g:fzf_preview_window = []
 
 " j k multiline
-nnoremap j gj
-nnoremap k gk
+noremap j gj
+noremap k gk
 " J K: easier page up and down (J join goes to U)
-nnoremap U J
-nnoremap J <C-f>
-nnoremap K <C-b>
+noremap U J
+noremap J <C-f>
+noremap K <C-b>
 " Use Hk or Lj to scroll. M for middle line.
 " mm to center on current line. 
-nnoremap mm zz
+noremap mm zz
 " C-l, C-h, C-j: Easy buffer nav (tabs with buftabline) 
-nnoremap <C-l> :bnext<CR>
-nnoremap <C-h> :bprev<CR>
-nnoremap <C-j> :bp <BAR> bd #<CR>
+noremap <C-l> :bnext<CR>
+noremap <C-h> :bprev<CR>
+noremap <C-j> :bp <BAR> bd #<CR>
 " splits: c-w s: horizontal, c-w v: vertical. c-w o: (only) kill all except current.
 " c-w hjkl: move focus
 " tap esc (double tap if on insert) to compulsively	clear highlight and save
 nnoremap <esc> :noh<cr>:w<cr>
 " TODO: find a way to cycle through uppercase marks
-nnoremap zz :wqa<cr>
-nnoremap ZZ :wqa<cr>
+noremap zz :wqa<cr>
+noremap ZZ :wqa<cr>
 cnoreabbrev W w
 
 " Redo on S-r instead of C-r
-nnoremap <S-r> <C-r>
+noremap <S-r> <C-r>
 " * highlight current word without moving
 map * :let @/= expand('<cword>').'\>'\|set hlsearch<C-M>
 " g/: highlight custom without moving
-nnoremap g/ :let @/=""\|set hlsearch<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+noremap g/ :let @/=""\|set hlsearch<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 " //: search for visual selection TODO: do without moving
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " gf: search word under cursor/selection - poor man's goto definition (like gd but not just file-wide)
@@ -102,22 +102,23 @@ vnoremap gf "zy :exec 'Rg ' . @z<CR>
 nnoremap gr :%s/<C-R><C-W>//g<Left><Left>
 vnoremap gr y:let @z=substitute(@", '/', '\\/', 'g')<CR>:%s/<c-r>z//g<left><left>
 " C-o C-i: back/fwd jumplist
-" gd go to definition, gh go back
-nnoremap gh <C-t>
+" gd go to definition, gh go back, gl go fwd
+noremap gh <C-t>
+noremap gl <C-i>
 " fzf: fd on C-p and rg on C-f (plus gf)
-nnoremap <C-p> :Files<CR>
-nnoremap <C-F> :Rg<CR>
+noremap <C-p> :Files<CR>
+noremap <C-F> :Rg<CR>
 " keep last explicit yy on gp
 nnoremap gp "0p
 " = to set indentation (e.g. in visual or =ap)
 " c in visual block mode to change (delete & insert)
 " zj to toggle fold at cursor. zo to open all folds. zh fold to current level
-nnoremap zj za
-nnoremap zo zR
-nnoremap zh :let&l:fdl=indent('.')/&sw<cr>
+noremap zj za
+noremap zo zR
+noremap zh :let&l:fdl=indent('.')/&sw<cr>
 
-nnoremap <F1> :Lexplore<cr>
-nnoremap <F2> :UndotreeToggle<cr>
+noremap <F1> :Lexplore<cr>
+noremap <F2> :UndotreeToggle<cr>
 
 au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 au Filetype json setlocal expandtab
@@ -132,7 +133,7 @@ autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
 " vscode hacks
 " J K dont work too well https://github.com/vscode-neovim/vscode-neovim/issues/800
 if exists('g:vscode')
-  nnoremap mm <Cmd>call <SNR>4_reveal('center', 0)<CR>
+  noremap mm <Cmd>call <SNR>4_reveal('center', 0)<CR>
   nnoremap <esc> :noh<cr><Cmd>call VSCodeNotify("workbench.action.files.save")<CR>
-  nnoremap gh <Cmd>call VSCodeNotify("workbench.action.navigateBack")<CR>
+  noremap gh <Cmd>call VSCodeNotify("workbench.action.navigateBack")<CR>
 end
