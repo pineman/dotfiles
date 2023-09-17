@@ -103,7 +103,6 @@ packages() {
     neovim
     ripgrep
     sd
-    htop-vim
     dfc
     ncdu
     git-delta
@@ -227,6 +226,9 @@ packages() {
     python-pip
     pandoc-bin
     asdf-vm
+    # for erlang
+    webkit2gtk
+    wxwidgets-gtk3
   )
   yay -S --noconfirm --needed "${packages[@]}"
   echo 'pineman' | sudo chsh -s /bin/zsh pineman
@@ -237,6 +239,7 @@ packages() {
   gsettings set 'org.gnome.desktop.interface' font-name 'sans 10'
   mkdir -p ~/.local/log
   pip install dtrx
+  yay -U htop-vim-3.2.1-1-x86_64.pkg.tar.zst
   # VSCode and JetBrains settings synced using their respective sync plugins
 }
 

@@ -192,6 +192,7 @@ bright() {
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias clean_vim="cd; git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo; cd -"
+alias pacup="yay -Sy --needed archlinux-keyring && yay"
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
