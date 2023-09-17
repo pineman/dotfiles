@@ -103,6 +103,7 @@ alias gradle="gradle --parallel"
 alias iex="rlwrap iex"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
+alias rb='rubymine'
 function sr() {
   rg -FUl "$1" | xargs -L1 sd -s "$1" "$2"
 }
@@ -151,6 +152,7 @@ alias gs="git status"
 alias gb="git branch -vvaa --color=always | tac"
 alias gd="git diff --no-color"
 alias gds="git diff --no-color --staged"
+alias gdw="git diff --ignore-all-space"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
 alias gcpc="git cherry-pick --continue"
@@ -167,12 +169,13 @@ alias grm-pullw="cd ../\$(_gdb); git pull; cd -; grm"
 alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done" # https://github.com/MestreLion/git-tools
-git_worktree_add() {
+git_add_worktree() {
   for b in "$@"; do
-	git worktree add ../"${b//\//-}" $b
+  	git co -b $b
+	  git worktree add ../"${b//\//-}" $b
   done
 }
-git_worktree_rm() {
+git_rm_worktree() {
   for b in "$@"; do rm -rf ../"${b//\//-}"; done
   git worktree prune
   git branch -D "$@"
@@ -194,5 +197,5 @@ alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sor
 alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-alias save="cd ~/code/proj/homepage && vim posts/what-i-read.txt && ./make && git add **/what-i-read* && git commit -m 'save' && git push; cd -"
+alias save="cd ~/code/proj/homepage && vim posts/what-i-read.txt && ./make"
 
