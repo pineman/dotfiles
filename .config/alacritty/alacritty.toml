@@ -1,0 +1,101 @@
+[colors.cursor]
+cursor = "#ffffff"
+text = "#1b2b34"
+
+[colors.normal]
+black = "#343d46"
+blue = "#6699cc"
+cyan = "#5fb3b3"
+green = "#99C794"
+magenta = "#c594c5"
+red = "#EC5f67"
+white = "#d8dee9"
+yellow = "#FAC863"
+
+[colors.primary]
+background = "#1b2b34"
+foreground = "#d8dee9"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mode = "~Alt"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mode = "~Alt"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Space"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001Bu"
+key = "U"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bw"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bt"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bj"
+key = "J"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bh"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bl"
+key = "L"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bi"
+key = "I"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bo"
+key = "O"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BH"
+key = "H"
+mods = "Shift|Command"
+
+[[keyboard.bindings]]
+chars = "\u001BJ"
+key = "J"
+mods = "Shift|Command"
+
+[[keyboard.bindings]]
+chars = "\u001BK"
+key = "K"
+mods = "Shift|Command"
+
+[[keyboard.bindings]]
+chars = "\u001BL"
+key = "L"
+mods = "Shift|Command"
+
+[scrolling]
+history = 100000
