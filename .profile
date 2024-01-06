@@ -7,9 +7,11 @@ export BROWSER="firefox"
 export TERMINAL="alacritty"
 export XDG_CONFIG_HOME="$HOME/.config"
 export QT_QPA_PLATFORM="wayland" QT_QPA_PLATFORMTHEME="qt5ct"
+export KERL_BUILD_DOCS=yes
 export GOPATH="$HOME/code/go"
 export PATH="$PATH:$GOPATH/bin"
-export KERL_BUILD_DOCS=yes
+export PATH="$HOME/code/git/mit-scheme-12.1/install/bin:$PATH"
++. "$HOME/.cargo/env"
 . /opt/asdf-vm/asdf.sh
 # Leave at the end
 export PATH="$HOME/.local/bin:$PATH"

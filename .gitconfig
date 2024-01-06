@@ -18,19 +18,22 @@
 [commit]
 	gpgsign = false
 [pager]
-    branch = false
-    diff = delta
-    log = delta
-    reflog = delta
-    show = delta
+	branch = false
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
 [core]
-    pager = delta
+	pager = delta
 [interactive]
-    diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [delta]
-    navigate = true    # use n and N to move between diff sections
+	navigate = true
+	navigate-regex = "Δ|removed:|renamed:"
+	line-numbers = true
+	#syntax-theme = "base16"
 [diff]
-    colorMoved = default
+	colorMoved = default
 [alias]
 	lg = log --color --graph --pretty=format:'%h (%Cgreen%cd%Creset) %s %C(6)%an <%ae>%Creset %C(blue)%d%Creset' --abbrev-commit --date=format:'%d/%m/%Y %H:%M:%S'
 	lga = lg --all
@@ -43,9 +46,8 @@
 	co = checkout
 	stash-show = stash show -p
 	fetcha = fetch --all --tags --force --prune --prune-tags
-    pulla = pull --all --tags --force --prune
+	pulla = pull --all --tags --force --prune
 	cl = clone --recurse-submodules
-	dcf = diff --name-status master
 [tag]
 	forceSignAnnotated = true
 [gui]
@@ -54,6 +56,7 @@
 	displayuntracked = false
 [rebase]
 	autoStash = true
+	updateRefs = true # https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/
 [init]
 	defaultBranch = main
 [credential]
@@ -63,3 +66,5 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[advice]
+	skippedCherryPicks = false

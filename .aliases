@@ -103,7 +103,8 @@ alias gradle="gradle --parallel"
 alias iex="rlwrap iex"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
-alias rb='rubymine'
+alias rb="tobg rubymine ."
+alias rr="tobg rustrover ."
 function sr() {
   rg -FUl "$1" | xargs -L1 sd -s "$1" "$2"
 }
@@ -114,8 +115,9 @@ alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
 alias dp="docker pause \$(docker ps -aq) &>/dev/null"
 alias dup="docker unpause \$(docker ps -aq) &>/dev/null"
 alias di="docker images"
-drmia() {
-  docker images -a | grep "$1" | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi "$1":{}
+drmi_alltags() {
+  local image=$1
+  docker images -a | grep "$image" | awk '{ print $2 }' | xargs -I {} docker rmi "$image":{}
 }
 alias dv='docker volume ls'
 alias dvv='dcc; docker volume rm $(docker volume ls -q)'
@@ -171,8 +173,8 @@ alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done" # https://github.com/MestreLion/git-tools
 git_add_worktree() {
   for b in "$@"; do
-  	git co -b $b
-	  git worktree add ../"${b//\//-}" $b
+    git co -b $b && git co -
+    git worktree add ../"${b//\//-}" $b
   done
 }
 git_rm_worktree() {

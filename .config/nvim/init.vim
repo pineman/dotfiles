@@ -130,7 +130,7 @@ let blacklist = ['markdown', 'vim']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
 
 " vscode hacks
-" J K dont work too well https://github.com/vscode-neovim/vscode-neovim/issues/800
+" J K configured directly in extension keyboard shortcuts
 if exists('g:vscode')
   noremap mm <Cmd>call <SNR>4_reveal('center', 0)<CR>
   nnoremap <esc> :noh<cr><Cmd>call VSCodeNotify("workbench.action.files.save")<CR>
