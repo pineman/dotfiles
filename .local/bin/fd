@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 HOME_REPO=$(if [[ $(git rev-parse --show-toplevel) == $HOME ]]; then echo true; else echo false; fi)
 if [[ $HOME_REPO == true ]]; then

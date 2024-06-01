@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -uxo pipefail
 
 # https://docs.mitmproxy.org/stable/howto-transparent/
 # https://docs.mitmproxy.org/stable/howto-wireshark-tls/
 
 # run ./mitmproxy.sh start on one terminal
-# on another, run ./mitmproxy.sh addca 
+# on another, run ./mitmproxy.sh addca
 # to stop quit mitmproxy and run ./mitmproxy.sh clean
 
 start() {

@@ -45,8 +45,6 @@
 	pushf = push --force-with-lease
 	pushff = push --force
 	pusht = push --tags --prune
-	co = checkout
-	rs = reset HEAD
 	stash-show = stash show -p
 	fetcha = fetch --all --tags --force --prune --prune-tags
 	pulla = pull --all --tags --force --prune

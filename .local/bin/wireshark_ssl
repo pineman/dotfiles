@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 (wireshark -o tls.keylog_file:tls_keylog -o tls.debug_file:debug.txt &>/dev/null &)
 echo "Press any key after wireshark starts capturing"
 read
