@@ -52,7 +52,7 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd V edit-command-line
 
-PROMPT='%F{3}%D{%H:%M:%S}%f %F{5}%d%f (%F{2}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%f)
+PROMPT='%F{3}%D{%T}%f %F{5}%d%f (%F{2}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%f)
 %F{15}%?%f $ '
 precmd() {
 	print -Pn "\e]0;%~\a"

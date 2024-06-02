@@ -1,16 +1,16 @@
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-	Plugin 'VundleVim/Vundle.vim'
-	Plugin 'mbbill/undotree'
-	Plugin 'pineman/vim-buftabline'
-	Plugin 'junegunn/fzf.vim'
-	"Plugin 'rmagatti/auto-session'
-	" Syntax
-	Plugin 'jamespeapen/swayconfig.vim'
-	Plugin 'elixir-editors/vim-elixir'
-	" Colors
-	Plugin 'chriskempson/base16-vim'
+  Plugin 'VundleVim/Vundle.vim'
+  Plugin 'mbbill/undotree'
+  Plugin 'pineman/vim-buftabline'
+  Plugin 'junegunn/fzf.vim'
+  "Plugin 'rmagatti/auto-session'
+  " Syntax
+  Plugin 'jamespeapen/swayconfig.vim'
+  Plugin 'elixir-editors/vim-elixir'
+  " Colors
+  Plugin 'chriskempson/base16-vim'
 call vundle#end()
 filetype on
 set termguicolors
@@ -33,7 +33,7 @@ set backupcopy=yes
 set undodir=~/.vim/undo/
 set backupdir=~/.vim/backup/
 set directory=~/.vim/swap/,/tmp
-set autowrite
+set autowriteall
 set scrolloff=3
 set noincsearch
 "set list
@@ -42,9 +42,9 @@ au CursorHold,CursorHoldI * checktime
 au FocusGained,BufEnter * checktime
 " Remember cursor position
 autocmd BufReadPost *
-	\ if line("'\"") > 1 && line("'\"") <= line("$") |
-	\   exe "normal! g`\"" |
-	\ endif
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 15
@@ -79,7 +79,7 @@ noremap <C-h> :bprev<CR>
 noremap <C-j> :bp <BAR> bd #<CR>
 " splits: c-w s: horizontal, c-w v: vertical. c-w o: (only) kill all except current.
 " c-w hjkl: move focus
-" tap esc (double tap if on insert) to compulsively	clear highlight and save
+" tap esc (double tap if on insert) to compulsively clear highlight and save
 nnoremap <esc> :noh<cr>:w<cr>
 " TODO: find a way to cycle through uppercase marks
 noremap zz :wqa<cr>
@@ -115,6 +115,8 @@ nnoremap gp "0p
 noremap zj za
 noremap zo zR
 noremap zh :let&l:fdl=indent('.')/&sw<cr>
+" C-x C-f autocompletes paths! C-n C-p to navigate the submenu
+" instead of ciw (which yanks) to delete and then paste, do viwp (vi'p) which won't yank first
 
 noremap <F1> :Lexplore<cr>
 noremap <F2> :UndotreeToggle<cr>
@@ -136,3 +138,17 @@ if exists('g:vscode')
   nnoremap <esc> :noh<cr><Cmd>call VSCodeNotify("workbench.action.files.save")<CR>
   noremap gh <Cmd>call VSCodeNotify("workbench.action.navigateBack")<CR>
 end
+
+" TODO: this moves the cursor to the beginning for no reason
+function! SaveAllBuffers()
+  for buf in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    let l:file_path = bufname(buf)
+    if getbufvar(buf, '&mod') && (empty(l:file_path) || l:file_path == '[No Name]')
+      let l:file_path = $HOME . '/.vim/temp-backup/' . 'unnamed_' . strftime('%Y%m%d_%H%M%S_') . buf . '.txt'
+    else
+      continue
+    endif
+    execute 'silent! w ' . fnameescape(l:file_path)
+  endfor
+endfunction
+autocmd VimEnter * call timer_start(5000, { tid -> SaveAllBuffers() }, {'repeat': -1})

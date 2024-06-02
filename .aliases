@@ -25,7 +25,7 @@ alias grep="grep --color=auto"
 alias less="less -R"
 alias free='free -mw'
 alias dfc='dfc -d -t -tmpfs,dev -m'
-alias telnet="telnet --escape='^E'"
+#alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias du='du -shc'
 alias rsync='rsync -vPaAXUCHxs --numeric-ids'
@@ -40,9 +40,6 @@ alias nmap="nmap -v"
 alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
 alias killall="killall -v -I"
 alias pgrep="pgrep -f"
-killg() {
-  kill $(pgrep "$@")
-}
 alias strace="strace -f"
 alias ..="cd -- .."
 alias ...="cd -- ../.."
@@ -103,6 +100,11 @@ alias gradle="gradle --parallel"
 alias iex="rlwrap iex"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
+alias gem_dir="cd \$(gem env gemdir)"
+gem_cd() {
+	cd $(dirname $(gem which $1))
+}
+alias gem_open="EDITOR=rubymine gem open"
 alias rb="tobg rubymine ."
 alias rr="tobg rustrover ."
 function sr() {
@@ -110,10 +112,9 @@ function sr() {
 }
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
-alias dsc="docker stop -t 0 \$(docker ps -aq) &>/dev/null"
 alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
 alias dp="docker pause \$(docker ps -aq) &>/dev/null"
-alias dup="docker unpause \$(docker ps -aq) &>/dev/null"
+alias dpp="docker unpause \$(docker ps -aq) &>/dev/null"
 alias di="docker images"
 drmi_alltags() {
   local image=$1
@@ -191,14 +192,14 @@ bright() {
   until sudo ddcutil setvcp 10 $1 &>/dev/null; do :; done
 }
 # etc
+alias save="cd ~/code/proj/homepage && vim posts/what-i-read.txt && ./make"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
-alias clean_vim="cd; git clean -fdx \$HOME/.vim/{undo,swap,backup}; rm -rf \$HOME/.viminfo; cd -"
+alias clean_vim="cd; git clean -fdx \$HOME/.vim/{undo,swap,backup,temp-backup}; rm -rf \$HOME/.viminfo; cd -"
 alias pacup="yay -Sy --needed archlinux-keyring && yay"
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-alias save="cd ~/code/proj/homepage && vim posts/what-i-read.txt && ./make"
 

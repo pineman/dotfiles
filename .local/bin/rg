@@ -11,4 +11,4 @@ cleanup() {
 }
 trap cleanup EXIT
 
-/usr/bin/rg --smart-case --follow --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock' "$@"
+/usr/bin/rg --sort=path --smart-case --follow --hidden -g '!\.git' -g '!package-lock.json' -g '!yarn.lock' "$@"

@@ -17,16 +17,18 @@ nnoremap <S-r> <C-r>
 " * highlight matches, but don't actually move
 map * *N
 " gd go to definition, gh go back, gl go fwd
-nnoremap gh <C-t>
-nnoremap gl <C-i>
+nnoremap gh :action Back<CR>
+nnoremap gl :action Forward<CR>
 " keep last explicit yy on gp
 nnoremap gp "0p
-" zj to toggle fold at cursor. zo to open all folds. zh fold to current level
+" zj to toggle fold at cursor. zo to open all folds
 nnoremap zj za
 nnoremap zo zR
-nnoremap zh :let&l:fdl=indent('.')/&sw<cr>
 
 " prev tab, next tab, close tab: on idea settings
 " cmd-shift-f12 close all tool windows
-" multiple cursors: opt-click 
+" f12: focus last tool window. esc: focus editor
+" multiple cursors: opt-click
+" go to symbol cmd-t (custom)
 " TODO: map 'go to next/prev bookmark'
+"map % :action EditorMatchBrace<CR> " TODO: breaks visual selection :( Use normal ^M
