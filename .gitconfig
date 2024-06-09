@@ -50,6 +50,8 @@
 	pulla = pull --all --tags --force --prune
 	cl = clone --recurse-submodules
 	g = gc --prune=now --aggressive
+	rs = reset HEAD
+	co = checkout
 [tag]
 	forceSignAnnotated = true
 [gui]

@@ -14,33 +14,15 @@ alias llt='ll -tr'
 alias lls='ll -Sr'
 alias la='ls -Al'
 alias tailf='tail -F'
+alias tee="tee -a"
 alias cal='cal -y'
 alias cp="cp -i -r"
 alias mv="mv -i"
 alias rm="rm -i --one-file-system"
-alias df='df -h'
-alias ps='ps --ppid 2 -N --forest -o user:15,pid,s,time,cmd'
-alias psw='ps -ww'
 alias grep="grep --color=auto"
 alias less="less -R"
-alias free='free -mw'
-alias dfc='dfc -d -t -tmpfs,dev -m'
-#alias telnet="telnet --escape='^E'"
-alias telnet-ssl="telnet-ssl -z ssl"
-alias du='du -shc'
-alias rsync='rsync -vPaAXUCHxs --numeric-ids'
-alias ncdu='ncdu --color off'
-alias sortdu='du -h | sort -h'
-alias nmcli='nmcli -a'
-alias diff='diff -u'
-alias find="fd -u ."
-alias vmstat="vmstat -S M"
-alias tee="tee -a"
-alias nmap="nmap -v"
-alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
-alias killall="killall -v -I"
-alias pgrep="pgrep -f"
-alias strace="strace -f"
+alias dmesg='sudo dmesg -T'
+# Disk
 alias ..="cd -- .."
 alias ...="cd -- ../.."
 alias ....="cd -- ../../.."
@@ -49,26 +31,36 @@ alias ......="cd -- ../../../../.."
 alias .......="cd -- ../../../../../.."
 alias ........="cd -- ../../../../../../.."
 alias .........="cd -- ../../../../../../../.."
-cd() {
-  builtin cd "$@" && ll
-}
+cd() { builtin cd "$@" && ll }
 alias zi="__zoxide_zi && ll"
-tobg() {
-  ("$@" &) &>/dev/null
-}
-alias open="tobg xdg-open"
-alias u='alacritty --working-directory $(pwd)'
+alias r='ranger --choosedir=/tmp/.rangerdir; cd $(cat /tmp/.rangerdir)'
+alias du='du -shc'
+alias df='df -h'
+alias dfc='dfc -d -t -tmpfs,dev -m'
+alias ncdu='ncdu --color off'
+alias sortdu='du -h | sort -h'
+alias lsblk="lsblk -o name,label,size,fstype,fssize,fsavail,mountpoint,uuid"
+#alias zp='zpool status; zpool list'
+#alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
+# Mem
+alias free='free -mw'
+alias vmstat="vmstat -S M"
+alias ssmem='sudo smem -t -a -k -s swap'
+alias smem='sudo smem -t -a -k -s rss'
+# Processes
+alias ps='ps --ppid 2 -N --forest -o user:15,pid,s,time,cmd'
+alias psw='ps -ww'
+alias killall="killall -v -I"
+alias pgrep="pgrep -f"
+# Networking
 alias g="ping 1.1"
 alias i="curl ipv4.icanhazip.com"
 alias i6="curl ipv6.icanhazip.com"
 alias sstp="sudo ss -lnp"
-alias tm="tmux -CC attach -d || tmux -CC new"
-alias ta="tmux attach -d || tmux new"
-alias r='ranger --choosedir=/tmp/.rangerdir; cd $(cat /tmp/.rangerdir)'
-alias ssmem='sudo smem -t -a -k -s swap'
-alias smem='sudo smem -t -a -k -s rss'
-alias timer='echo timer started, use ctrl-c to stop; time cat'
-alias dmesg='sudo dmesg -T'
+#alias telnet="telnet --escape='^E'"
+alias telnet-ssl="telnet-ssl -z ssl"
+alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
+alias nmcli='nmcli -a'
 show-iptables() {
   printf 'SECURITY ==============================================================\n'
   sudo iptables-legacy -nvL -t security
@@ -81,13 +73,17 @@ show-iptables() {
   printf '\nFILTER ================================================================\n'
   sudo iptables-legacy -nvL -t filter
 }
-#alias zp='zpool status; zpool list'
-#alias z='zfs list -t all -o name,creation,used,referenced,encryption,readonly,encryption,dedup,mountpoint'
-alias sway='sway &> ~/.local/log/sway.log'
-alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
+# Tools
+tobg() { ("$@" &) &>/dev/null }
+alias find="fd -u ."
+alias diff='diff -u'
+alias rsync='rsync -vPaAXUCHxs --numeric-ids'
+alias tm="tmux -CC attach -d || tmux -CC new"
+alias ta="tmux attach -d || tmux new"
+alias nmap="nmap -v"
+alias strace="strace -f"
+alias timer='echo timer started, use ctrl-c to stop; time cat'
 alias ex='dtrx --one=inside'
-alias drag='dragon-drop -s 300 -i -x'
-
 # Dev
 #alias make='make -j$(nproc)' # compiling elixir fails, for some reason
 alias py="python3"
@@ -101,15 +97,11 @@ alias iex="rlwrap iex"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
 alias gem_dir="cd \$(gem env gemdir)"
-gem_cd() {
-	cd $(dirname $(gem which $1))
-}
+gem_cd() { cd $(dirname $(gem which $1)) }
 alias gem_open="EDITOR=rubymine gem open"
 alias rb="tobg rubymine ."
 alias rr="tobg rustrover ."
-function sr() {
-  rg -FUl "$1" | xargs -L1 sd -s "$1" "$2"
-}
+function sr() { rg -FUl "$1" | xargs -L1 sd -s "$1" "$2" }
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
@@ -125,9 +117,7 @@ alias dvv='dcc; docker volume rm $(docker volume ls -q)'
 alias dm='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dr="docker restart -t 0"
 alias dl="docker logs -f"
-docker_show_layers() {
-  docker history "$1" --format '{{.CreatedBy}}' --no-trunc
-}
+docker_show_layers() { docker history "$1" --format '{{.CreatedBy}}' --no-trunc }
 alias dspace="docker system df -v"
 alias docker_clean='docker system prune -af --volumes'
 alias docker-tui="lazydocker"
@@ -190,13 +180,15 @@ alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
-bright() {
-  until sudo ddcutil setvcp 10 $1 &>/dev/null; do :; done
-}
+bright() { until sudo ddcutil setvcp 10 $1 &>/dev/null; do :; done }
 # etc
+alias open="tobg xdg-open"
+alias sway='sway &> ~/.local/log/sway.log'
+alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
+alias drag='dragon-drop -s 300 -i -x'
+alias u='alacritty --working-directory $(pwd)'
 alias save="cd ~/code/proj/homepage && vim posts/what-i-read.txt && ./make"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
-alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
 alias clean_vim="cd; git clean -fdx \$HOME/.vim/{undo,swap,backup,temp-backup}; rm -rf \$HOME/.viminfo; cd -"
 alias pacup="yay -Sy --needed archlinux-keyring && yay"
 alias pacro="yay -Yc"
