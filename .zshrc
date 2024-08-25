@@ -39,12 +39,12 @@ zle -N delete-surround surround
 zle -N add-surround surround
 zle -N change-surround surround
 for m in visual viopp; do
-    for c in {a,i}{\',\",\`}; do
-        bindkey -M $m $c select-quoted
-    done
-    for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
-        bindkey -M $m $c select-bracketed
-    done
+  for c in {a,i}{\',\",\`}; do
+    bindkey -M $m $c select-quoted
+  done
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $m $c select-bracketed
+  done
 done
 KEYTIMEOUT=1
 bindkey '^?' backward-delete-char
@@ -55,7 +55,7 @@ bindkey -M vicmd V edit-command-line
 PROMPT='%F{3}%D{%T}%f %F{5}%d%f (%F{2}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%f)
 %F{15}%?%f $ '
 precmd() {
-	print -Pn "\e]0;%~\a"
+  print -Pn "\e]0;%~\a"
 }
 alias -g G='|& grep -i'
 alias -g V='|& vim -'
@@ -75,7 +75,8 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
-source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+# breaks with gcm alias for some reason? always types gcmm double m
+#source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_USE_ASYNC=1

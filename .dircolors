@@ -141,6 +141,7 @@ EXEC					38;5;64
 .yaml					38;5;214
 .tpl					38;5;214
 .xml					38;5;214
+.service				38;5;214
 .log					04;38;5;187
 .gitignore				38;5;5
 .gitattributes			38;5;5

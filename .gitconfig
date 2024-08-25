@@ -72,3 +72,5 @@
 	clean = git-lfs clean -- %f
 [advice]
 	skippedCherryPicks = false
+[blame]
+	#ignoreRevsFile = .git-blame-ignore-revs

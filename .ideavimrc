@@ -6,6 +6,7 @@ set ideajoin
 set visualbell
 set noerrorbells
 set scrolloff=3
+set commentary
 
 vnoremap // y/<C-R>"<CR>
 nnoremap <esc><esc> :w<cr> :noh <cr>
@@ -25,10 +26,18 @@ nnoremap gp "0p
 nnoremap zj za
 nnoremap zo zR
 
-" prev tab, next tab, close tab: on idea settings
-" cmd-shift-f12 close all tool windows
-" f12: focus last tool window. esc: focus editor
-" multiple cursors: opt-click
-" go to symbol cmd-t (custom)
-" TODO: map 'go to next/prev bookmark'
 "map % :action EditorMatchBrace<CR> " TODO: breaks visual selection :( Use normal ^M
+
+" Other keybinds:
+" prev tab, next tab, close tab: on idea settings C-h, C-l, C-j
+" shift-f12 close all tool windows (restore default layout)
+" f12: focus last tool window. esc: focus editor
+" opt-click: multiple cursors
+" Cmt-t: go to symbol (custom keybind)
+" cmd-opt-[ or ]: move caret to block start or end
+" opt-up: Extend Selection
+" opt-c: Copy path to current file: opt-c
+" C-w l, C-w h to move between splits works, also mapped C-S-l and C-S-h
+" F7, S-F7: go to next/prev git change
+" F4, S-F4: go to next/prev bookmark'
+" C-S-up/down prev/next method

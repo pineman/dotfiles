@@ -1,0 +1,39 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-1": "project_panel::ToggleFocus",
+      "cmd-4": "terminal_panel::ToggleFocus",
+      "cmd-7": "outline_panel::ToggleFocus",
+      "shift-f12": "workspace::CloseAllDocks"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // TODO: doesn't work in diagnostics pane
+      "ctrl-h": "pane::ActivatePrevItem",
+      "ctrl-l": "pane::ActivateNextItem",
+      "ctrl-j": "pane::CloseActiveItem",
+      "shift-f12": "workspace::CloseAllDocks",
+      "cmd-shift-t": "diagnostics::Deploy"
+      // alt-enter in a multi-buffer (references, search) goes to result in single buffer
+      // cmd-e is interesting, like *
+      // alt-cmd-z git revert https://github.com/zed-industries/zed/issues/6743#issuecomment-1986820726
+      // vim marks not done yet: https://github.com/zed-industries/zed/issues/5122
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "U": "vim::JoinLines",
+      "R": "editor::Redo",
+      "J": ["workspace::SendKeystrokes", "ctrl-f"],
+      "K": ["workspace::SendKeystrokes", "ctrl-b"],
+      // "escape escape": ["workspace::SendKeystrokes", "escape alt-cmd-s"],
+      "g h": "pane::GoBack",
+      "g l": "pane::GoForward" // for some reason go back doesn't work properly after gd
+      // "g p": ["workspace::SendKeystrokes", "\"0p"] // zed's vim mode doesn't have registers yet
+    }
+  }
+]

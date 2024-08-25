@@ -11,6 +11,7 @@ call vundle#begin()
   Plugin 'elixir-editors/vim-elixir'
   " Colors
   Plugin 'chriskempson/base16-vim'
+  Plugin 'bogado/file-line'
 call vundle#end()
 filetype on
 set termguicolors
@@ -117,16 +118,17 @@ noremap zo zR
 noremap zh :let&l:fdl=indent('.')/&sw<cr>
 " C-x C-f autocompletes paths! C-n C-p to navigate the submenu
 " instead of ciw (which yanks) to delete and then paste, do viwp (vi'p) which won't yank first
+" gcc (gc in visual) comments code
 
 noremap <F1> :Lexplore<cr>
 noremap <F2> :UndotreeToggle<cr>
 
-au Filetype python setlocal ts=4 sts=4 sw=4 expandtab
-au Filetype json setlocal expandtab
-au Filetype sh setlocal sw=2 ts=2 sts=2
+au Filetype python setlocal sw=4 ts=4 sts=4 et
+au Filetype json setlocal et
+au Filetype sh setlocal sw=2 ts=2 sts=2 et
 au Filetype tex setlocal makeprg=latexmk sw=2 ts=2 sts=2
 au Filetype javascript,javascriptreact setlocal sw=2 ts=2 sts=2
-au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php setlocal sw=2 ts=2 sts=2 expandtab
+au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php setlocal sw=2 ts=2 sts=2 et
 " Remove trailing whitespace
 let blacklist = ['markdown', 'vim']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e

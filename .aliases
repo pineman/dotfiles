@@ -31,7 +31,9 @@ alias ......="cd -- ../../../../.."
 alias .......="cd -- ../../../../../.."
 alias ........="cd -- ../../../../../../.."
 alias .........="cd -- ../../../../../../../.."
-cd() { builtin cd "$@" && ll }
+cd() {
+  builtin cd "$@" && ll
+}
 alias zi="__zoxide_zi && ll"
 alias r='ranger --choosedir=/tmp/.rangerdir; cd $(cat /tmp/.rangerdir)'
 alias du='du -shc'
@@ -74,7 +76,9 @@ show-iptables() {
   sudo iptables-legacy -nvL -t filter
 }
 # Tools
-tobg() { ("$@" &) &>/dev/null }
+tobg() {
+  ("$@" &) &>/dev/null
+}
 alias find="fd -u ."
 alias diff='diff -u'
 alias rsync='rsync -vPaAXUCHxs --numeric-ids'
@@ -96,12 +100,16 @@ alias gradle="gradle --parallel"
 alias iex="rlwrap iex"
 alias be='bundle exec'
 alias gem_clean='gem uninstall -aIx'
-alias gem_dir="cd \$(gem env gemdir)"
-gem_cd() { cd $(dirname $(gem which $1)) }
+alias gem_dir="cd \$(gem env gemdir)/gems"
+gem_cd() {
+  cd $(dirname $(gem which $1))
+}
 alias gem_open="EDITOR=rubymine gem open"
 alias rb="tobg rubymine ."
-alias rr="tobg rustrover ."
-function sr() { rg -FUl "$1" | xargs -L1 sd -s "$1" "$2" }
+alias rr="tobg rustrover1 ."
+sr() {
+  rg -FUl "$1" | xargs -L1 sd -s "$1" "$2"
+}
 # Docker
 alias dc="docker ps -a --format='table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Ports}}'"
 alias dcc="docker rm -f \$(docker ps -aq) &>/dev/null"
@@ -117,11 +125,14 @@ alias dvv='dcc; docker volume rm $(docker volume ls -q)'
 alias dm='docker ps -a --format "table {{.Names}}\t{{.Mounts}}" --no-trunc'
 alias dr="docker restart -t 0"
 alias dl="docker logs -f"
-docker_show_layers() { docker history "$1" --format '{{.CreatedBy}}' --no-trunc }
+docker_show_layers() {
+  docker history "$1" --format '{{.CreatedBy}}' --no-trunc
+}
 alias dspace="docker system df -v"
 alias docker_clean='docker system prune -af --volumes'
 alias docker-tui="lazydocker"
 # Kubernetes
+# switch context with k config use-context <context>
 type kubectl &>/dev/null \
   && alias k=kubectl \
     `#bash should have this var, zsh not really` \
@@ -142,8 +153,10 @@ alias kube-pod-nodes="k get -A --field-selector metadata.namespace!=kube-system 
 alias kube-pod-nodes-system="k get -A pod -o='custom-columns=NODE:.spec.nodeName,NAME:.metadata.name,NAMESPACE:.metadata.namespace,STATUS:.status.phase,REQ:.spec.containers[*].resources.requests'"
 # Git
 alias gs="git status"
-alias gb="git branch -vvaa --color=always | tac"
+alias gb="git branch -vv --color=always --sort=-refname"
+alias gbb="gb -a"
 alias gd="git diff --no-color"
+alias gd-raw="GIT_PAGER=cat git diff"
 alias gds="git diff --no-color --staged"
 alias gdw="git diff --ignore-all-space"
 alias gr="git remote -vvv"
@@ -156,12 +169,12 @@ alias gl="PAGER= git lg"
 alias gitk="gitk --all &"
 alias gg="git gui &"
 alias _gdb="git rev-parse --verify main &>/dev/null && echo 'main' || echo 'master'"
+alias gcm="git checkout \$(_gdb)"
 alias gdm="gd \$(_gdb)..HEAD"
 alias glm="gl \$(_gdb)..HEAD"
 alias grm="git rebase -i \$(_gdb)"
 alias grm-pull="git fetch origin \$(_gdb):\$(_gdb); grm"
 alias grm-pullw="cd ../\$(_gdb); git pull; cd -; grm"
-alias gss="git submodule update --init"
 alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done" # https://github.com/MestreLion/git-tools
 git_add_worktree() {
@@ -175,12 +188,17 @@ git_rm_worktree() {
   git worktree prune
   git branch -D "$@"
 }
+git_rm_gone() {
+  git_rm_worktree $(git branch -v | grep gone | sed 's/[*+]//g' | awk '{ print $1 }')
+}
 # Power-related
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
 alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
-bright() { until sudo ddcutil setvcp 10 $1 &>/dev/null; do :; done }
+bright() {
+  until sudo ddcutil setvcp 10 $1 &>/dev/null; do :; done
+}
 # etc
 alias open="tobg xdg-open"
 alias sway='sway &> ~/.local/log/sway.log'
@@ -188,6 +206,7 @@ alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0
 alias drag='dragon-drop -s 300 -i -x'
 alias u='alacritty --working-directory $(pwd)'
 alias save="cd ~/code/proj/homepage && vim posts/what-i-read.txt && ./make"
+alias httpd="ruby -run -e httpd"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias clean_vim="cd; git clean -fdx \$HOME/.vim/{undo,swap,backup,temp-backup}; rm -rf \$HOME/.viminfo; cd -"
 alias pacup="yay -Sy --needed archlinux-keyring && yay"
