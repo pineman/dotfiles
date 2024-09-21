@@ -50,9 +50,9 @@ alias vmstat="vmstat -S M"
 alias ssmem='sudo smem -t -a -k -s swap'
 alias smem='sudo smem -t -a -k -s rss'
 # Processes
-alias ps='ps --ppid 2 -N --forest -o user:15,pid,s,time,cmd'
+alias ps='ps aux'
 alias psw='ps -ww'
-alias killall="killall -v -I"
+alias killall="killall -v"
 alias pgrep="pgrep -f"
 # Networking
 alias g="ping 1.1"
@@ -85,6 +85,7 @@ alias diff='diff -u'
 alias rsync='rsync -vPaAXUCHxs --numeric-ids'
 alias tm="tmux -CC attach -d || tmux -CC new"
 alias ta="tmux attach -d || tmux new"
+alias clear="clear; tmux clear-history &>/dev/null || true"
 alias nmap="nmap -v"
 alias strace="strace -f"
 alias timer='echo timer started, use ctrl-c to stop; time cat'
@@ -202,12 +203,12 @@ git_rev() {
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
 alias hyb="systemctl hybrid-sleep"
-alias inhib_susp="sudo systemd-inhibit --what=sleep:handle-lid-switch:handle-suspend-key --who=\$USER --why='Suspend deliberately inhibited' sleep 99999d"
+alias inhib_susp="caffeinate -u -d -i -s"
 bright() {
   until sudo ddcutil setvcp 10 $1 &>/dev/null; do :; done
 }
 # etc
-alias open="tobg xdg-open"
+#alias open="tobg xdg-open"
 alias sway='sway &> ~/.local/log/sway.log'
 alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
 alias drag='dragon-drop -s 300 -i -x'
@@ -232,3 +233,10 @@ alias ngate="py ~/code/proj/ngate2/ngate2.py"
 alias gemini="gemini -y"
 alias cursor-agent="cursor-agent -f"
 alias claude="claude --dangerously-skip-permissions --ide --chrome"
+# macos
+alias yt-dlp="docker run -v \$(pwd):/downloads jauderho/yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
+alias ytmp3="docker run -v \$(pwd):/downloads jauderho/yt-dlp -x --audio-format mp3 --audio-quality 320"
+alias brewup='brew update; brew upgrade; brew upgrade --cask'
+alias brewro="brew cleanup --prune=all -s"
+alias clean_junk_files="fd -I .DS_Store -x rm -f"
+alias clear_dns_cache="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"

@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
-(/usr/bin/alacritty msg create-window "$@" || /usr/bin/alacritty "$@" &) &>/dev/null
+# Need to force running the shells as login shells because skhd does not
+# have the .profile login environment set (as opposed to linux...)
+/Applications/Alacritty.app/Contents/MacOS/alacritty msg create-window -e /bin/zsh -l -c tmux
+# Focus Alacritty app, to guarantee new windows are focused & on top
+# Also opens alacritty if it wasn't previously running already
+open /Applications/Alacritty.app --args -e /bin/zsh -l -c tmux
 exit 0
