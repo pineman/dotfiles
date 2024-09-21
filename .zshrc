@@ -89,11 +89,12 @@ bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 # Prefer fzf CTRL-R when possible
 export FZF_CTRL_T_COMMAND='fd --strip-cwd-prefix --no-ignore-parent'
-[[ $- == *i* ]] && source "/usr/share/fzf/completion.zsh" 2> /dev/null
-source "/usr/share/fzf/key-bindings.zsh"
+[[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
 
 eval "$(zoxide init zsh)"
 bindkey -s "^E" 'zi^M' # TODO: how to map ^E to run zi with what's already in the prompt as an argument?
 
 . ~/.aliases
+. ~/work/personal/work
 
