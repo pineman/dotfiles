@@ -11,4 +11,4 @@ cleanup() {
 }
 trap cleanup EXIT
 
-/usr/bin/fd -H -E \.git $(if [[ $PWD == $HOME ]]; then echo '-E .asdf -E Library -E .vim/ -E .npm'; fi) "$@"
+/opt/homebrew/bin/fd -H -E \.git $(if [[ $PWD == $HOME ]]; then echo '-E .asdf -E Library -E .vim/ -E .npm'; fi) "$@"
