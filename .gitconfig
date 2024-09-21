@@ -59,6 +59,8 @@
 	tabsize = 4
 	warndetachedcommit = true
 	displayuntracked = false
+	fontui = -family .AppleSystemUIFont -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Menlo -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 [rebase]
 	autoStash = true
 	updateRefs = true # https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/
