@@ -238,7 +238,7 @@ packages() {
   sudo gpasswd -a pineman seat
   gsettings set 'org.gnome.desktop.interface' font-name 'sans 10'
   mkdir -p ~/.local/log
-  pip install dtrx
+  pip install dtrx percol
   yay -U htop-vim-3.2.1-1-x86_64.pkg.tar.zst
   # VSCode and JetBrains settings synced using their respective sync plugins
 }

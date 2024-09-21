@@ -1,6 +1,6 @@
-python 3.11.5
-ruby 3.3.3
+python 3.11.9
+ruby 3.3.5
 nodejs 18.19.1
 golang 1.22.2
 erlang 27.0
-elixir path:~/code/git/elixir
+#elixir path:~/code/git/elixir

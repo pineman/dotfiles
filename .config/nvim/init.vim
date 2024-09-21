@@ -6,6 +6,9 @@ call vundle#begin()
   Plugin 'pineman/vim-buftabline'
   Plugin 'junegunn/fzf.vim'
   "Plugin 'rmagatti/auto-session'
+  Plugin 'kana/vim-textobj-user'
+  Plugin 'beloglazov/vim-textobj-quotes' " provides q object
+  Plugin 'michaeljsmith/vim-indent-object' " provides i object
   " Syntax
   Plugin 'jamespeapen/swayconfig.vim'
   Plugin 'elixir-editors/vim-elixir'
@@ -117,8 +120,37 @@ noremap zj za
 noremap zo zR
 noremap zh :let&l:fdl=indent('.')/&sw<cr>
 " C-x C-f autocompletes paths! C-n C-p to navigate the submenu
-" instead of ciw (which yanks) to delete and then paste, do viwp (vi'p) which won't yank first
 " gcc (gc in visual) comments code
+"
+" actions:
+" v = select
+" y = copy (yank)
+" c = change
+" d = delete
+" scopes:
+" a = around
+" i = inside
+"
+" objects:
+" w = word
+" p = paragraph
+" s = sentence
+" q = quotes
+" b = brackets
+" i = indention level
+" W = white space
+"
+" examples:
+" vaw = select around current word
+" yiW = copy between last and next white space
+" ciq = change inside quotes
+" dii = delete everything at current indention
+" gcii = comment everything at current indentation
+"
+" f<char> = find next character, stop on it
+" t<char> = find next character, stop before it (til)
+" ct' = change from cursor til next ' (leaving ')
+" df| = delete from cursor to next | (including |)
 
 noremap <F1> :Lexplore<cr>
 noremap <F2> :UndotreeToggle<cr>

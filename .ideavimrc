@@ -26,10 +26,14 @@ nnoremap gp "0p
 nnoremap zj za
 nnoremap zo zR
 
+set textobj-indent " provides the i indentation object (vii, dii)
+
 "map % :action EditorMatchBrace<CR> " TODO: breaks visual selection :( Use normal ^M
 
 " Other keybinds:
 " prev tab, next tab, close tab: on idea settings C-h, C-l, C-j
+" cmd-1..8: go to tab 1..8
+" cmd-shift-1..9: tool windows
 " shift-f12 close all tool windows (restore default layout)
 " f12: focus last tool window. esc: focus editor
 " opt-click: multiple cursors
@@ -39,5 +43,7 @@ nnoremap zo zR
 " opt-c: Copy path to current file: opt-c
 " C-w l, C-w h to move between splits works, also mapped C-S-l and C-S-h
 " F7, S-F7: go to next/prev git change
-" F4, S-F4: go to next/prev bookmark'
+" F3: bookmark
+" F4, S-F4: go to next/prev bookmark
 " C-S-up/down prev/next method
+" Cmd-S-T: go to test

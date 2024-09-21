@@ -157,8 +157,9 @@ alias gb="git branch -vv --color=always --sort=-refname"
 alias gbb="gb -a"
 alias gd="git diff --no-color"
 alias gd-raw="GIT_PAGER=cat git diff"
+alias gdw="git diff --no-color --ignore-all-space"
 alias gds="git diff --no-color --staged"
-alias gdw="git diff --ignore-all-space"
+alias gdsw="git diff --no-color --staged --ignore-all-space"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
 alias gcpc="git cherry-pick --continue"
@@ -191,6 +192,7 @@ git_rm_worktree() {
 git_rm_gone() {
   git_rm_worktree $(git branch -v | grep gone | sed 's/[*+]//g' | awk '{ print $1 }')
 }
+alias code-review='mods -m sonnet-3.5 --role reviewer --format'
 # Power-related
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
