@@ -16,6 +16,7 @@ call vundle#begin()
   Plugin 'chriskempson/base16-vim'
   Plugin 'bogado/file-line'
 call vundle#end()
+set rtp+=/opt/homebrew/opt/fzf
 filetype on
 set termguicolors
 colorscheme base16-oceanicnext
