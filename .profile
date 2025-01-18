@@ -11,8 +11,11 @@ export KERL_BUILD_DOCS=yes
 export GOPATH="$HOME/code/go"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$HOME/code/git/mit-scheme-12.1/install/bin:$PATH"
-. "$HOME/.cargo/env"
 eval "$(mise activate zsh --shims)"
+
+. "$HOME/.cargo/env"
+# Added by Toolbox App
+export PATH="$PATH:/home/pineman/.local/share/JetBrains/Toolbox/scripts"
 
 # Leave at the end
 export PATH="$HOME/.local/bin:$PATH"

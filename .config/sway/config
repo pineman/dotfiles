@@ -35,10 +35,10 @@ input type:touchpad {
 }
 input type:pointer {
 	accel_profile flat
-	pointer_accel 1
+	pointer_accel 0.6
 }
 # Apperance
-output DP-1 scale 1.42
+output DP-3 scale 1.42
 default_border pixel 3
 default_floating_border pixel 2
 titlebar_padding 3

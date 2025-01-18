@@ -5,7 +5,7 @@ set -euxo pipefail
 # git clone https://github.com/pineman/dotfiles and run like `./install stage1`
 
 BOOT=/dev/nvme0n1p1
-ROOT=/dev/nvme0n1p5
+ROOT=/dev/nvme0n1p4
 stage1() {
   umount -R /mnt || true
   mkfs.ext4 $ROOT
@@ -121,7 +121,7 @@ packages() {
     tree
     sysstat
     speedtest-cli
-    scc
+    scc-bin
     tmux
     inotify-tools
     # Graphical
@@ -146,6 +146,7 @@ packages() {
     polkit-gnome
     chromium
     firefox
+    brave-bin
     alacritty
     foot
     thunar
@@ -204,6 +205,8 @@ packages() {
     libva-utils
     extramaus
     physlock
+    linux-lts-headers
+    linux-zen-headers
     ddcci-driver-linux-dkms
     ddcutil
     bluez
@@ -226,6 +229,7 @@ packages() {
     python-pip
     pandoc-bin
     asdf-vm
+    rustup
     # for erlang
     webkit2gtk
     wxwidgets-gtk3
@@ -240,6 +244,11 @@ packages() {
   mkdir -p ~/.local/log
   pip install dtrx percol
   yay -U htop-vim-3.2.1-1-x86_64.pkg.tar.zst
+  asdf plugin add ruby
+  asdf plugin add erlang
+  asdf plugin add elixir
+  asdf plugin add nodejs
+  asdf plugin add golang
   # VSCode and JetBrains settings synced using their respective sync plugins
 }
 
