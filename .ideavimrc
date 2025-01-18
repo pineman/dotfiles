@@ -26,6 +26,8 @@ nnoremap gp "0p
 nnoremap zj za
 nnoremap zo zR
 
+nnoremap Y y$
+
 set textobj-indent " provides the i indentation object (vii, dii)
 
 "map % :action EditorMatchBrace<CR> " TODO: breaks visual selection :( Use normal ^M
@@ -47,3 +49,4 @@ set textobj-indent " provides the i indentation object (vii, dii)
 " F4, S-F4: go to next/prev bookmark
 " C-S-up/down prev/next method
 " Cmd-S-T: go to test
+" Cmd-I: inline copilot, Cmd-Shift-I: copilot chat

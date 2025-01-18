@@ -34,6 +34,7 @@
 	navigate-regex = "Δ|removed:|renamed:|added:"
 	line-numbers = true
 	#syntax-theme = "base16"
+	tabs = 4
 [diff]
 	colorMoved = default
 [alias]

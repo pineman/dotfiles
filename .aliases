@@ -62,6 +62,7 @@ alias sstp="sudo ss -lnp"
 #alias telnet="telnet --escape='^E'"
 alias telnet-ssl="telnet-ssl -z ssl"
 alias openssl-smtp-starttls="openssl s_client -quiet -starttls smtp -connect" # https://serverfault.com/a/336657
+alias openssl-smtp-tls="openssl s_client -crlf -connect"
 alias nmcli='nmcli -a'
 show-iptables() {
   printf 'SECURITY ==============================================================\n'
@@ -167,7 +168,7 @@ alias ga="git add"
 alias gr="git reset HEAD"
 alias gc="git checkout"
 alias gl="PAGER= git lg"
-alias gitk="gitk --all &"
+alias gitk="gitk --all &>/dev/null &"
 alias gg="git gui &"
 alias _gdb="git rev-parse --verify main &>/dev/null && echo 'main' || echo 'master'"
 alias gcm="git checkout \$(_gdb)"
@@ -192,7 +193,26 @@ git_rm_worktree() {
 git_rm_gone() {
   git_rm_worktree $(git branch -v | grep gone | sed 's/[*+]//g' | awk '{ print $1 }')
 }
-alias code-review='mods -m sonnet-3.5 --role reviewer --format'
+alias code-review="cat <(cat << 'EOL'
+- You're god's chosen staff software engineer.
+- You give thorough code reviews.
+- You'll be given a git diff.
+- Remember, lines removed start with a '-'. Lines added start with a '+'.
+- The diff format is the standard format of the diff command.
+- Perform a code review on the diff.
+- It's a morning in May, most productive day of the year.
+- You'll receive $1M as a bonus if you can find problems in the diff.
+- Your top most priority is typos or code that won't run.
+- Really understand the structure and intent of the code and try to find ways to simplify it, or question assumptions.
+- List out any logical flaws or bugs you find, ranked in order of severity with the most severe issues presented first.
+- When you spot a bug or issue, please always suggest a remediation.
+- Include code snippets only when necessary to understand the issue.
+<gitdiff>
+EOL
+) - <(cat << 'EOL'
+</gitdiff>
+EOL
+) | pbcopy"
 # Power-related
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
@@ -211,6 +231,7 @@ alias save="cd ~/code/proj/homepage && vim posts/what-i-read.txt && ./make"
 alias httpd="ruby -run -e httpd"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias clean_vim="cd; git clean -fdx \$HOME/.vim/{undo,swap,backup,temp-backup}; rm -rf \$HOME/.viminfo; cd -"
+alias vb="cd ~/.vim/temp-backup"
 alias pacup="yay -Sy --needed archlinux-keyring && yay"
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sort)"

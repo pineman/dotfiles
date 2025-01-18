@@ -26,7 +26,7 @@ set ignorecase smartcase
 set number
 set sw=4 ts=4 sts=4
 set shiftround
-set copyindent
+"set copyindent
 set foldmethod=indent
 set foldlevel=99
 set splitbelow
@@ -89,6 +89,7 @@ nnoremap <esc> :noh<cr>:w<cr>
 noremap zz :wqa<cr>
 noremap ZZ :wqa<cr>
 cnoreabbrev W w
+nnoremap gy :%y<CR>
 
 " Redo on S-r instead of C-r
 noremap <S-r> <C-r>
@@ -162,8 +163,9 @@ au Filetype tex setlocal makeprg=latexmk sw=2 ts=2 sts=2
 au Filetype javascript,javascriptreact setlocal sw=2 ts=2 sts=2
 au BufRead,BufNewFile *.svg,*.sass,*.less,*.scss,*.css,*.htm,*.html,*.xhtml,*.shtml,*.php setlocal sw=2 ts=2 sts=2 et
 " Remove trailing whitespace
-let blacklist = ['markdown', 'vim']
-autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
+" TODO: disabled because it doesn't play nicely with autosave
+"let blacklist = ['markdown', 'vim']
+"autocmd BufWritePre * if index(blacklist, &ft) < 0 | :%s/\s\+$//e
 
 " vscode hacks
 " J K configured directly in extension keyboard shortcuts
@@ -173,16 +175,5 @@ if exists('g:vscode')
   noremap gh <Cmd>call VSCodeNotify("workbench.action.navigateBack")<CR>
 end
 
-" TODO: this moves the cursor to the beginning for no reason
-function! SaveAllBuffers()
-  for buf in filter(range(1, bufnr('$')), 'buflisted(v:val)')
-    let l:file_path = bufname(buf)
-    if getbufvar(buf, '&mod') && (empty(l:file_path) || l:file_path == '[No Name]')
-      let l:file_path = $HOME . '/.vim/temp-backup/' . 'unnamed_' . strftime('%Y%m%d_%H%M%S_') . buf . '.txt'
-    else
-      continue
-    endif
-    execute 'silent! w ' . fnameescape(l:file_path)
-  endfor
-endfunction
-autocmd VimEnter * call timer_start(5000, { tid -> SaveAllBuffers() }, {'repeat': -1})
+" TODO: only if is neovim
+lua require('autosave')

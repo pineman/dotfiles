@@ -12,7 +12,8 @@ export GOPATH="$HOME/code/go"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$HOME/code/git/mit-scheme-12.1/install/bin:$PATH"
 . "$HOME/.cargo/env"
-. /opt/asdf-vm/asdf.sh
+eval "$(mise activate zsh --shims)"
+
 # Leave at the end
 export PATH="$HOME/.local/bin:$PATH"
 
