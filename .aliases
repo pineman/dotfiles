@@ -90,7 +90,7 @@ alias strace="strace -f"
 alias timer='echo timer started, use ctrl-c to stop; time cat'
 alias ex='dtrx --one=inside'
 # Dev
-#alias make='make -j$(nproc)' # compiling elixir fails, for some reason
+alias make='make -j$(nproc)' # compiling elixir fails, for some reason
 alias py="python3"
 alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
 alias mit-scheme="rlwrap mit-scheme"
@@ -163,6 +163,7 @@ alias gds="git diff --no-color --staged"
 alias gdsw="git diff --no-color --staged --ignore-all-space"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
+alias gmc="git merge --continue"
 alias gcpc="git cherry-pick --continue"
 alias ga="git add"
 alias gr="git reset HEAD"
@@ -193,26 +194,9 @@ git_rm_worktree() {
 git_rm_gone() {
   git_rm_worktree $(git branch -v | grep gone | sed 's/[*+]//g' | awk '{ print $1 }')
 }
-alias code-review="cat <(cat << 'EOL'
-- You're god's chosen staff software engineer.
-- You give thorough code reviews.
-- You'll be given a git diff.
-- Remember, lines removed start with a '-'. Lines added start with a '+'.
-- The diff format is the standard format of the diff command.
-- Perform a code review on the diff.
-- It's a morning in May, most productive day of the year.
-- You'll receive $1M as a bonus if you can find problems in the diff.
-- Your top most priority is typos or code that won't run.
-- Really understand the structure and intent of the code and try to find ways to simplify it, or question assumptions.
-- List out any logical flaws or bugs you find, ranked in order of severity with the most severe issues presented first.
-- When you spot a bug or issue, please always suggest a remediation.
-- Include code snippets only when necessary to understand the issue.
-<gitdiff>
-EOL
-) - <(cat << 'EOL'
-</gitdiff>
-EOL
-) | pbcopy"
+git_rev() {
+  git revert HEAD~$@..HEAD
+}
 # Power-related
 alias susp="systemctl suspend"
 alias hib="systemctl hibernate"
@@ -238,4 +222,8 @@ alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sor
 alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
-
+until_fail() { while "$@"; do :; done; }
+# llm
+alias gemini="gemini -y"
+alias cursor-agent="cursor-agent -f"
+alias claude="claude --dangerously-skip-permissions"

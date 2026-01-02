@@ -116,9 +116,11 @@ noremap <C-F> :Rg<CR>
 nnoremap gp "0p
 " = to set indentation (e.g. in visual or =ap)
 " c in visual block mode to change (delete & insert)
-" zj to toggle fold at cursor. zo to open all folds. zh fold to current level
-noremap zj za
-noremap zo zR
+" zc zo za: close, open, toggle one level at cursor.
+" zC zO zA: close, open, toggle recursively at cursor.
+" zm zr: close, open buffer-wide one level.
+" zM zR: close, open buffer-wide all.
+" zh fold to current level
 noremap zh :let&l:fdl=indent('.')/&sw<cr>
 " C-x C-f autocompletes paths! C-n C-p to navigate the submenu
 " gcc (gc in visual) comments code
