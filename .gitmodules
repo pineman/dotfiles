@@ -6,31 +6,3 @@
 	path = .zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 	branch = master
-[submodule ".zsh/fast-syntax-highlighting"]
-	path = .zsh/fast-syntax-highlighting
-	url = https://github.com/zdharma-continuum/fast-syntax-highlighting
-	branch = master
-[submodule ".vim/bundle/undotree"]
-	path = .vim/bundle/undotree
-	url = https://github.com/mbbill/undotree
-	branch = master
-[submodule ".vim/bundle/vim-buftabline"]
-	path = .vim/bundle/vim-buftabline
-	url = https://github.com/pineman/vim-buftabline
-	branch = master
-[submodule ".vim/bundle/base16-vim"]
-	path = .vim/bundle/base16-vim
-	url = https://github.com/chriskempson/base16-vim
-	branch = master
-[submodule ".vim/bundle/swayconfig.vim"]
-	path = .vim/bundle/swayconfig.vim
-	url = https://github.com/jamespeapen/swayconfig.vim
-	branch = master
-[submodule ".vim/bundle/fzf.vim"]
-	path = .vim/bundle/fzf.vim
-	url = https://github.com/junegunn/fzf.vim
-	branch = master
-[submodule ".vim/bundle/vim-elixir"]
-	path = .vim/bundle/vim-elixir
-	url = https://github.com/elixir-editors/vim-elixir
-	branch = master

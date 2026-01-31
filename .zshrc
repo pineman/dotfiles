@@ -76,7 +76,6 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 # breaks with gcm alias for some reason? always types gcmm double m
-#source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 ZSH_AUTOSUGGEST_USE_ASYNC=1
