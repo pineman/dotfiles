@@ -120,7 +120,7 @@ bindsym $mod+f exec thunar
 bindsym $mod+p exec firefox
 bindsym $mod+c exec brave
 bindsym $mod+y exec code
-bindsym $mod+t exec telegram-desktop
+bindsym $mod+t exec Telegram
 bindsym $mod+Shift+i exec keepassxc
 bindsym $mod+Shift+s exec systemctl suspend
 bindsym $mod+Shift+Ctrl+s exec systemctl hibernate

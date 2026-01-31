@@ -13,7 +13,6 @@ export PATH="$PATH:$GOPATH/bin"
 export PATH="$HOME/code/git/mit-scheme-12.1/install/bin:$PATH"
 eval "$(mise activate zsh --shims)"
 
-. "$HOME/.cargo/env"
 # Added by Toolbox App
 export PATH="$PATH:/home/pineman/.local/share/JetBrains/Toolbox/scripts"
 

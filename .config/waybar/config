@@ -44,6 +44,7 @@
   },
   "network#ethernet": {
     "interface": "enp42s0",
+	"family": "ipv4",
     "format": " {ipaddr}/{cidr}",
     "tooltip-format": "{ifname} via {gwaddr}",
     "format-linked": "No IP",

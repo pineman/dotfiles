@@ -5,7 +5,7 @@ set -euxo pipefail
 # git clone https://github.com/pineman/dotfiles and run like `./install stage1`
 
 BOOT=/dev/nvme0n1p1
-ROOT=/dev/nvme0n1p4
+ROOT=/dev/nvme0n1p5
 stage1() {
   umount -R /mnt || true
   mkfs.ext4 $ROOT
@@ -76,9 +76,7 @@ system-files() {
     sudo cp -f {} /{}'
   sudo rm -rf /boot/loader/loader.conf /boot/loader/entries/*
   sudo cp -rf boot/loader/loader.conf boot/loader/entries /boot/loader
-  offset=$(sudo filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}')
   sudo sed -i "s%#ROOT#%$ROOT%g" /boot/loader/entries/*
-  sudo sed -i "s%#OFFSET#%$offset%g" /boot/loader/entries/*
   sudo cp us-esc-caps.map.gz /usr/share/kbd/keymaps/i386/qwerty/
   dircolors ~/.dircolors > ~/.ls_colors
 }
@@ -96,6 +94,7 @@ packages() {
     nano
     systemd-resolvconf
     wireless-regdb
+    efibootmgr
     # Utilities
     zsh
     zsh-completions
@@ -215,6 +214,8 @@ packages() {
     usbutils
     baobab
     # Dev
+    mise-bin
+    usage
     entr
     jq
     gron
@@ -228,7 +229,6 @@ packages() {
     rlwrap
     python-pip
     pandoc-bin
-    asdf-vm
     rustup
     # for erlang
     webkit2gtk
@@ -244,11 +244,6 @@ packages() {
   mkdir -p ~/.local/log
   pip install dtrx percol
   yay -U htop-vim-3.2.1-1-x86_64.pkg.tar.zst
-  asdf plugin add ruby
-  asdf plugin add erlang
-  asdf plugin add elixir
-  asdf plugin add nodejs
-  asdf plugin add golang
   # VSCode and JetBrains settings synced using their respective sync plugins
 }
 
