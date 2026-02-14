@@ -1,6 +1,7 @@
 source $HOME/.ls_colors
 export EDITOR="nvim"
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export DELTA_FEATURES=+side-by-side
 export MOZ_DISABLE_RDD_SANDBOX=1 MOZ_ENABLE_WAYLAND=1
 export _JAVA_AWT_WM_NONREPARENTING=1 # at least for runelite
 export BROWSER="firefox"

@@ -181,18 +181,19 @@ alias grm-pullw="cd ../\$(_gdb); git pull; cd -; grm"
 alias git-clean-tags="git tag -l | xargs git tag -d; git fetch --tags"
 alias git-mtime="for f in \$(git ls-files); do touch -d \$(git log -1 --format='%aI' \"\$f\") \"\$f\" ; done" # https://github.com/MestreLion/git-tools
 git_add_worktree() {
-  for b in "$@"; do
-    git co -b $b && git co -
-    git worktree add ../"${b//\//-}" $b
-  done
+  git branch "$1" $(_gdb)
+  git worktree add ../"${1//\//-}" "$1"
+  cd ../"${1//\//-}"
 }
 git_rm_worktree() {
-  for b in "$@"; do rm -rf ../"${b//\//-}"; done
+  rm -rf ../"${1//\//-}"
   git worktree prune
-  git branch -D "$@"
+  git branch -D "$1"
 }
 git_rm_gone() {
-  git_rm_worktree $(git branch -v | grep gone | sed 's/[*+]//g' | awk '{ print $1 }')
+  git branch -v | grep gone | sed 's/[*+]//g' | awk '{ print $1 }' | while read -r branch; do
+    git_rm_worktree "$branch"
+  done
 }
 git_rev() {
   git revert HEAD~$@..HEAD
@@ -211,10 +212,13 @@ alias sway='sway &> ~/.local/log/sway.log'
 alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0,0}]" txt:-'
 alias drag='dragon-drop -s 300 -i -x'
 alias u='alacritty --working-directory $(pwd)'
-alias save="cd ~/code/proj/homepage && vim posts/what-i-read.txt && ./make"
+alias save="cd ~/code/proj/homepage && vim notes/links.md && ./make"
+alias notesp='cd ~/code/proj/homepage/notes'
+alias notes='notesp && vim ~/code/proj/homepage/notes/notes.md && ../make'
+alias feeds='cd ~/code/proj/rss_email && vim config.yaml && ./make deploy'
 alias httpd="ruby -run -e httpd"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
-alias clean_vim="cd; git clean -fdx \$HOME/.vim/{undo,swap,backup,temp-backup}; rm -rf \$HOME/.viminfo; cd -"
+alias clean_vim="rm -f ~/.viminfo; git checkout -- ~/.vim/swap; command find ~/.vim/temp-backup -maxdepth 1 -type f -size +2M -exec mv {} /Users/pineman/.vim/archive-temp-backup/ \\;"
 alias vb="cd ~/.vim/temp-backup"
 alias pacup="yay -Sy --needed archlinux-keyring && yay"
 alias pacro="yay -Yc"
@@ -223,7 +227,8 @@ alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 until_fail() { while "$@"; do :; done; }
+alias ngate="py ~/code/proj/ngate2/ngate2.py"
 # llm
 alias gemini="gemini -y"
 alias cursor-agent="cursor-agent -f"
-alias claude="claude --dangerously-skip-permissions"
+alias claude="claude --dangerously-skip-permissions --ide --chrome"

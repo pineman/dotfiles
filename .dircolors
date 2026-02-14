@@ -156,5 +156,6 @@ EXEC					38;5;64
 .gitconfig				38;5;5
 .diff					38;5;197
 .patch					38;5;197
+.db						04;38;5;197
 .zcompdump				38;5;241
 .DS_Store				38;5;239
