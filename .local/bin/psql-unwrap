@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+"""Clean up psql \pset format wrapped output.
+
+Removes trailing whitespace/+ line continuations and rejoins dot-wrapped lines.
+Usage: pbpaste | psql-unwrap
+"""
+import sys
+import re
+
+lines = []
+for raw in sys.stdin:
+    line = raw.rstrip('\n\r')
+    # Remove trailing spaces + '+' (psql line continuation marker)
+    line = re.sub(r'\s+\+$', '', line)
+    lines.append(line)
+
+# Rejoin wrapped lines: line ending with '.' followed by line starting with '.'
+result = []
+i = 0
+while i < len(lines):
+    current = lines[i]
+    while i + 1 < len(lines) and current.endswith('.') and lines[i + 1].startswith('.'):
+        current = current[:-1] + lines[i + 1][1:]
+        i += 1
+    result.append(current)
+    i += 1
+
+print('\n'.join(result))

@@ -6,3 +6,6 @@
 	path = .zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 	branch = master
+[submodule ".local/psql/postgres_dba"]
+	path = .local/psql/postgres_dba
+	url = https://github.com/NikolayS/postgres_dba.git

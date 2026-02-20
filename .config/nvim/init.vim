@@ -1,5 +1,6 @@
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+" :so % reloads current file
 call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'
   Plugin 'mbbill/undotree'
@@ -9,12 +10,13 @@ call vundle#begin()
   Plugin 'kana/vim-textobj-user'
   Plugin 'beloglazov/vim-textobj-quotes' " provides q object
   Plugin 'michaeljsmith/vim-indent-object' " provides i object
+  Plugin 'bogado/file-line'
+  Plugin 'coder/claudecode.nvim'
   " Syntax
   Plugin 'jamespeapen/swayconfig.vim'
   Plugin 'elixir-editors/vim-elixir'
   " Colors
   Plugin 'chriskempson/base16-vim'
-  Plugin 'bogado/file-line'
 call vundle#end()
 filetype on
 set termguicolors
@@ -177,5 +179,9 @@ if exists('g:vscode')
   noremap gh <Cmd>call VSCodeNotify("workbench.action.navigateBack")<CR>
 end
 
+" exit terminal mode: <C-\><C-n>
+
 " TODO: only if is neovim
 lua require('autosave')
+lua require('claudecode').setup({ terminal_cmd = "claude --dangerously-skip-permissions --ide --chrome", terminal = { provider = require('claude_fullbuf') } })
+map ` :ClaudeCodeSend<CR>:ClaudeCodeFocus<CR>
