@@ -7,7 +7,7 @@ select
   (:'DBNAME' ilike '%_test' or :'DBNAME' ilike '%_testing') as is_test \gset
 
 \pset null '[NULL]'
-\x auto
+\x
 \timing
 \pset pager 0
 --\pset linestyle unicode

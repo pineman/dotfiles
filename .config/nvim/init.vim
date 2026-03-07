@@ -25,6 +25,8 @@ set colorcolumn=80
 set cursorline
 set clipboard=unnamedplus
 set ignorecase smartcase
+" Make / search literal by default (very nomagic)
+nnoremap / /\V
 set number
 set sw=4 ts=4 sts=4
 set shiftround
@@ -79,17 +81,20 @@ noremap K <C-b>
 " Use Hk or Lj to scroll. M for middle line.
 " mm to center on current line. 
 noremap mm zz
+" marks: ]' next and [' previous
 " C-l, C-h, C-j: Easy buffer nav (tabs with buftabline) 
 noremap <C-l> :bnext<CR>
 noremap <C-h> :bprev<CR>
-noremap <C-j> :bp <BAR> bd #<CR>
+noremap <C-j> :bp <BAR> bd! #<CR>
+tnoremap <C-j> <C-\><C-n>:bp <BAR> bd! #<CR>
+tnoremap <C-l> <C-\><C-n>:bnext<CR>
+tnoremap <C-h> <C-\><C-n>:bprev<CR>
 " splits: c-w s: horizontal, c-w v: vertical. c-w o: (only) kill all except current.
 " c-w hjkl: move focus
 " tap esc (double tap if on insert) to compulsively clear highlight and save
 nnoremap <esc> :noh<cr>:w<cr>
-" TODO: find a way to cycle through uppercase marks
-noremap zz :wqa<cr>
-noremap ZZ :wqa<cr>
+noremap zz :wqa!<cr>
+noremap ZZ :wqa!<cr>
 cnoreabbrev W w
 nnoremap gy :%y<CR>
 
@@ -99,12 +104,15 @@ noremap <S-r> <C-r>
 map * :let @/= expand('<cword>').'\>'\|set hlsearch<C-M>
 " g/: highlight custom without moving
 noremap g/ :let @/=""\|set hlsearch<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-" //: search for visual selection TODO: do without moving
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" //: search for visual selection without moving
+vnoremap // y:let @/='\V'.escape(@",'/\')\|set hlsearch<CR>
 " gf: search word under cursor/selection - poor man's goto definition (like gd but not just file-wide)
 nnoremap gf :Rg <C-R><C-W><CR>
 vnoremap gf "zy :exec 'Rg ' . @z<CR>
 " gr: Search and replace word under cursor/selection
+silent! unmap grn
+silent! unmap gra
+silent! unmap grr
 nnoremap gr :%s/<C-R><C-W>//g<Left><Left>
 vnoremap gr y:let @z=substitute(@", '/', '\\/', 'g')<CR>:%s/<c-r>z//g<left><left>
 " C-o C-i: back/fwd jumplist
@@ -179,9 +187,8 @@ if exists('g:vscode')
   noremap gh <Cmd>call VSCodeNotify("workbench.action.navigateBack")<CR>
 end
 
-" exit terminal mode: <C-\><C-n>
-
-" TODO: only if is neovim
-lua require('autosave')
-lua require('claudecode').setup({ terminal_cmd = "claude --dangerously-skip-permissions --ide --chrome", terminal = { provider = require('claude_fullbuf') } })
-map ` :ClaudeCodeSend<CR>:ClaudeCodeFocus<CR>
+if has('nvim')
+  lua require('autosave')
+  lua require('claudecode').setup({ terminal_cmd = "claude --dangerously-skip-permissions --ide --chrome", terminal = { provider = require('claude_fullbuf') }, focus_after_send = true })
+  vmap ` <Cmd>ClaudeCodeSend<CR>
+endif

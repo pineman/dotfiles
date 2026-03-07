@@ -6,5 +6,5 @@ map d removeTab
 map u restoreTab
 map J scrollFullPageDown
 map K scrollFullPageUp
-map t newTab position=end
+map t createTab position=end
 # duplicate tab: yt
