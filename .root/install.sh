@@ -210,7 +210,6 @@ packages() {
     ddcutil
     bluez
     bluez-utils
-    ifuse
     usbutils
     baobab
     # Dev
