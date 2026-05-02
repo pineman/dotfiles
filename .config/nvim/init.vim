@@ -11,7 +11,7 @@ call vundle#begin()
   Plugin 'beloglazov/vim-textobj-quotes' " provides q object
   Plugin 'michaeljsmith/vim-indent-object' " provides i object
   Plugin 'bogado/file-line'
-  Plugin 'coder/claudecode.nvim'
+  "Plugin 'coder/claudecode.nvim'
   " Syntax
   Plugin 'jamespeapen/swayconfig.vim'
   Plugin 'elixir-editors/vim-elixir'
@@ -189,6 +189,6 @@ end
 
 if has('nvim')
   lua require('autosave')
-  lua require('claudecode').setup({ terminal_cmd = "claude --dangerously-skip-permissions --ide --chrome", terminal = { provider = require('claude_fullbuf') }, focus_after_send = true })
+  "lua require('claudecode').setup({ terminal_cmd = "claude --dangerously-skip-permissions --ide --chrome", terminal = { provider = require('claude_fullbuf') }, focus_after_send = true })
   vmap ` <Cmd>ClaudeCodeSend<CR>
 endif

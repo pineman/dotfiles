@@ -228,6 +228,7 @@ alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffm
 alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
 until_fail() { while "$@"; do :; done; }
 alias ngate="py ~/code/proj/ngate2/ngate2.py"
+alias hdd="mkdir hdd hdd2; sudo cryptsetup --type tcrypt open /dev/sda1 hdd; sudo cryptsetup --type tcrypt open /dev/sdb1 hdd2; sudo mount /dev/mapper/hdd hdd; sudo mount /dev/mapper/hdd2 hdd2; rsync -n hdd/ hdd2/; echo 'rsync hdd/ hdd2/'"
 # llm
 alias gemini="gemini -y"
 alias cursor-agent="cursor-agent -f"
