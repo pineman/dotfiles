@@ -53,6 +53,7 @@ alias smem='sudo smem -t -a -k -s rss'
 alias ps='ps --ppid 2 -N --forest -o user:15,pid,s,time,cmd'
 alias psw='ps -ww'
 alias killall="killall -v -I"
+alias killbg="kill -9 %"
 alias pgrep="pgrep -f"
 # Networking
 alias g="ping 1.1"
@@ -107,6 +108,8 @@ gem_cd() {
 }
 alias gem_open="EDITOR=rubymine gem open"
 alias rb="tobg rubymine ."
+alias rb-gs="git diff --name-only | xargs rubymine"
+alias code-gs="code . \$(git diff --name-only)"
 alias rr="tobg rustrover1 ."
 sr() {
   rg -FUl "$1" | xargs -L1 sd -s "$1" "$2"
@@ -156,11 +159,17 @@ alias kube-pod-nodes-system="k get -A pod -o='custom-columns=NODE:.spec.nodeName
 alias gs="git status"
 alias gb="git branch -vv --color=always --sort=-refname"
 alias gbb="gb -a"
-alias gd="git diff --no-color"
 alias gd-raw="GIT_PAGER=cat git diff"
-alias gdw="git diff --no-color --ignore-all-space"
-alias gds="git diff --no-color --staged"
-alias gdsw="git diff --no-color --staged --ignore-all-space"
+# side by side
+alias sgd="DELTA_FEATURES=+side-by-side git diff --no-color"
+alias sgdw="DELTA_FEATURES=+side-by-side git diff --no-color --ignore-all-space"
+alias sgds="DELTA_FEATURES=+side-by-side git diff --no-color --staged"
+alias sgdsw="DELTA_FEATURES=+side-by-side git diff --no-color --staged --ignore-all-space"
+# inline
+alias gd="DELTA_FEATURES=-side-by-side git diff --no-color"
+alias gdw="DELTA_FEATURES=-side-by-side git diff --no-color --ignore-all-space"
+alias gds="DELTA_FEATURES=-side-by-side git diff --no-color --staged"
+alias gdsw="DELTA_FEATURES=-side-by-side git diff --no-color --staged --ignore-all-space"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
 alias gmc="git merge --continue"
@@ -184,6 +193,9 @@ git_add_worktree() {
   git branch "$1" $(_gdb)
   git worktree add ../"${1//\//-}" "$1"
   cd ../"${1//\//-}"
+  if [[ "$PWD" == "$HOME/work/ampledash/"* ]]; then
+    setup_ampledash_tree
+  fi
 }
 git_rm_worktree() {
   rm -rf ../"${1//\//-}"
@@ -215,6 +227,7 @@ alias u='alacritty --working-directory $(pwd)'
 alias save="cd ~/code/proj/homepage && vim notes/links.md && ./make"
 alias notesp='cd ~/code/proj/homepage/notes'
 alias notes='notesp && vim ~/code/proj/homepage/notes/notes.md && ../make'
+alias idioms='vim ~/code/proj/homepage/notes/english_idioms.md'
 alias feeds='cd ~/code/proj/rss_email && vim config.yaml && ./make deploy'
 alias httpd="ruby -run -e httpd"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
@@ -224,13 +237,18 @@ alias pacup="yay -Sy --needed archlinux-keyring && yay"
 alias pacro="yay -Yc"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
-alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --prefer-ffmpeg"
-alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --prefer-ffmpeg"
+alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --embed-thumbnail"
+alias ytmp3="yt-dlp -x --audio-format mp3 --audio-quality 320 --embed-thumbnail"
+clean_junk_files() {
+  local root="${1:-.}"
+  fd -HI -t f '^(?:\.DS_Store|Thumbs\.db|thumbs\.db|ehthumbs\.db|Desktop\.ini|desktop\.ini|ehthumbs_vista\.db|\._.*|Icon\r)$' "$root" -x rm -f
+  fd -HI -t d '^(?:__MACOSX|\.Spotlight-V100)$' "$root" -x rm -rf
+}
 until_fail() { while "$@"; do :; done; }
 alias ngate="py ~/code/proj/ngate2/ngate2.py"
 alias hdd="mkdir hdd hdd2; sudo cryptsetup --type tcrypt open /dev/sda1 hdd; sudo cryptsetup --type tcrypt open /dev/sdb1 hdd2; sudo mount /dev/mapper/hdd hdd; sudo mount /dev/mapper/hdd2 hdd2; rsync -n hdd/ hdd2/; echo 'rsync hdd/ hdd2/'"
 # llm
 alias gemini="gemini -y"
-alias cursor-agent="cursor-agent -f"
-alias claude="claude --dangerously-skip-permissions --ide --chrome"
+alias claude="claude --dangerously-skip-permissions --ide --chrome --model claude-opus-4-6 --effort max"
 alias codex="codex --dangerously-bypass-approvals-and-sandbox"
+alias cursor-cli="agent --yolo"

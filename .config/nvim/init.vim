@@ -185,6 +185,7 @@ if exists('g:vscode')
   noremap mm <Cmd>call <SNR>4_reveal('center', 0)<CR>
   nnoremap <esc> :noh<cr><Cmd>call VSCodeNotify("workbench.action.files.save")<CR>
   noremap gh <Cmd>call VSCodeNotify("workbench.action.navigateBack")<CR>
+  noremap gl <Cmd>call VSCodeNotify("workbench.action.navigateForward")<CR>
 end
 
 if has('nvim')

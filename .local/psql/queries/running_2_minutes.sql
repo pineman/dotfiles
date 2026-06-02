@@ -10,6 +10,6 @@ select
     application_name,
     client_addr
 from pg_stat_activity
-where (now() - pg_stat_activity.xact_start) > interval '5 minutes'
+where (now() - pg_stat_activity.xact_start) > interval '2 minutes'
 order by 2 desc
 ;

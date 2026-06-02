@@ -7,16 +7,19 @@ select
   (:'DBNAME' ilike '%_test' or :'DBNAME' ilike '%_testing') as is_test \gset
 
 \pset null '[NULL]'
-\x
 \timing
 \pset pager 0
+
 --\pset linestyle unicode
 --\pset border 2
 
 -- good for explain format json
--- \pset format unaligned 
+\pset format unaligned 
 -- good for everything else
-\pset format wrapped
+--\x
+--\pset format wrapped
+
+-- Use :u and :w, not \u and \w.
 \set u '\\pset format unaligned'
 \set w '\\pset format wrapped'
 
@@ -47,7 +50,9 @@ select
 \set connection_counts_by_state `cat ~/.local/psql/queries/connection_counts_by_state.sql`
 \set connection_memory_breakdown `cat ~/.local/psql/queries/connection_memory_breakdown.sql`
 \set connection_memory_breakdown_by_state `cat ~/.local/psql/queries/connection_memory_breakdown_by_state.sql`
+\set connection_memory_by_application `cat ~/.local/psql/queries/connection_memory_by_application.sql`
 \set connection_total_memory_overhead `cat ~/.local/psql/queries/connection_total_memory_overhead.sql`
+\set database_ages `cat ~/.local/psql/queries/database_ages.sql`
 \set databases `cat ~/.local/psql/queries/databases.sql`
 \set hot_update_ratio `cat ~/.local/psql/queries/hot_update_ratio.sql`
 \set index_monitoring `cat ~/.local/psql/queries/index_monitoring.sql`
@@ -76,6 +81,9 @@ select
 \set indexes_timescaledb `cat ~/.local/psql/queries/indexes_timescaledb.sql`
 \set tables_missing_pk `cat ~/.local/psql/queries/tables_missing_pk.sql`
 \set vacuum_activity `cat ~/.local/psql/queries/vacuum_activity.sql`
+
+\set mine 'select * from pg_stat_activity where usename=''joao.pinheiro@amplemarket.com'';'
+\set mine_terminate 'select pg_terminate_backend(pid) from pg_stat_activity where usename=''joao.pinheiro@amplemarket.com'';'
 
 \unset QUIET
 \set dba '\\i /Users/pineman/.local/psql/postgres_dba/start.psql'
