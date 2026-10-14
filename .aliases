@@ -234,7 +234,7 @@ alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [
 alias clean_vim="rm -rf ~/.viminfo ~/.vim/swap ~/.local/state/nvim; command find ~/.vim/temp-backup -maxdepth 1 -type f -size +2M -exec mv {} ~/.vim/archive-temp-backup/ \\;"
 alias vb="cd ~/.vim/temp-backup"
 alias pacup="yay -Sy --needed archlinux-keyring && yay"
-alias pacro="yay -Yc"
+alias pacro="pacman -Qdttq | sudo pacman -Rns -"
 alias pacexplicit="comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base-devel | sort)"
 alias hddpoff="udisksctl power-off -b"
 alias yt-dlp="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' --embed-thumbnail"

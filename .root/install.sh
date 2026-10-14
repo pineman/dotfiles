@@ -124,6 +124,8 @@ packages() {
     tmux
     inotify-tools
     veracrypt
+    zip
+    7zip
     # Graphical
     tk
     radeontop
@@ -205,10 +207,6 @@ packages() {
     libva-utils
     extramaus
     physlock
-    linux-lts-headers
-    linux-zen-headers
-    ddcci-driver-linux-dkms
-    ddcutil
     bluez
     bluez-utils
     usbutils
