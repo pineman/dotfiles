@@ -123,6 +123,7 @@ packages() {
     scc-bin
     tmux
     inotify-tools
+    veracrypt
     # Graphical
     tk
     radeontop
