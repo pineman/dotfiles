@@ -92,7 +92,7 @@ alias timer='echo timer started, use ctrl-c to stop; time cat'
 alias ex='dtrx --one=inside'
 # Dev
 alias make='make -j$(nproc)' # compiling elixir fails, for some reason
-alias py="python3"
+alias py="python"
 alias rlwrap="rlwrap -aplaceholder" # https://github.com/technomancy/grenchman/issues/36
 alias mit-scheme="rlwrap mit-scheme"
 alias sbcl="rlwrap sbcl"
@@ -157,8 +157,9 @@ alias kube-pod-nodes="k get -A --field-selector metadata.namespace!=kube-system 
 alias kube-pod-nodes-system="k get -A pod -o='custom-columns=NODE:.spec.nodeName,NAME:.metadata.name,NAMESPACE:.metadata.namespace,STATUS:.status.phase,REQ:.spec.containers[*].resources.requests'"
 # Git
 alias gs="git status"
-alias gb="git branch -vv --color=always --sort=-refname"
-alias gbb="gb -a"
+alias gb="git branch"
+alias gbb="git branch -vv --color=always --sort=-refname"
+alias gba="gb -a"
 alias gd-raw="GIT_PAGER=cat git diff"
 # side by side
 alias sgd="DELTA_FEATURES=+side-by-side git diff --no-color"
@@ -168,7 +169,16 @@ alias sgdsw="DELTA_FEATURES=+side-by-side git diff --no-color --staged --ignore-
 # inline
 alias gd="DELTA_FEATURES=-side-by-side git diff --no-color"
 alias gdw="DELTA_FEATURES=-side-by-side git diff --no-color --ignore-all-space"
-alias gds="DELTA_FEATURES=-side-by-side git diff --no-color --staged"
+function gds {
+  if [[ "${SPEC:-1}" == 0 ]]; then
+    DELTA_FEATURES=-side-by-side git diff --no-color --staged "$@" -- \
+      ':(exclude)*_spec.rb' \
+      ':(exclude,glob)**/*.test.[jt]s' \
+      ':(exclude,glob)**/*.test.[jt]sx'
+  else
+    DELTA_FEATURES=-side-by-side git diff --no-color --staged "$@"
+  fi
+}
 alias gdsw="DELTA_FEATURES=-side-by-side git diff --no-color --staged --ignore-all-space"
 alias gr="git remote -vvv"
 alias grc="git rebase --continue"
@@ -225,10 +235,9 @@ alias colorpick='grim -g "$(slurp -p)" -t ppm - | convert - -format "%[pixel:p{0
 alias drag='dragon-drop -s 300 -i -x'
 alias u='alacritty --working-directory $(pwd)'
 alias save="cd ~/code/proj/homepage && vim notes/links.md && ./make"
-alias notesp='cd ~/code/proj/homepage/notes'
-alias notes='notesp && vim ~/code/proj/homepage/notes/notes.md && ../make'
+alias notes='cd ~/code/proj/homepage/notes && vim ~/code/proj/homepage/notes/notes.md && ../make'
 alias idioms='vim ~/code/proj/homepage/notes/english_idioms.md'
-alias feeds='cd ~/code/proj/rss_email && vim config.yaml && ./make deploy'
+alias feeds='cd ~/code/proj/rss_email && vim feeds.yaml && ./make deploy'
 alias httpd="ruby -run -e httpd"
 alias feh="feh --keep-zoom-vp --auto-zoom --scale-down --info 'echo %f && echo [%u/%l] %wx%h %z'"
 alias clean_vim="rm -rf ~/.viminfo ~/.vim/swap ~/.local/state/nvim; command find ~/.vim/temp-backup -maxdepth 1 -type f -size +2M -exec mv {} ~/.vim/archive-temp-backup/ \\;"
@@ -248,7 +257,6 @@ until_fail() { while "$@"; do :; done; }
 alias ngate="py ~/code/proj/ngate2/ngate2.py"
 alias hdd="mkdir hdd hdd2; sudo cryptsetup --type tcrypt open /dev/sda1 hdd; sudo cryptsetup --type tcrypt open /dev/sdb1 hdd2; sudo mount /dev/mapper/hdd hdd; sudo mount /dev/mapper/hdd2 hdd2; rsync -n hdd/ hdd2/; echo 'rsync hdd/ hdd2/'"
 # llm
-alias gemini="gemini -y"
 alias claude="claude --dangerously-skip-permissions"
-alias codex="codex --dangerously-bypass-approvals-and-sandbox"
-alias cursor-cli="agent --yolo"
+alias codex="MISE_NODE_VERSION=24.14.1 codex --dangerously-bypass-approvals-and-sandbox"
+alias opencode="opencode --auto --mini"

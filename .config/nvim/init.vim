@@ -1,3 +1,8 @@
+" let s:cwd = resolve(getcwd()) . '/'
+" let s:use_fff =
+"   \ stridx(s:cwd, resolve(expand('~/code')) . '/') == 0 ||
+"   \ stridx(s:cwd, resolve(expand('~/work')) . '/') == 0
+
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 " :so % reloads current file
@@ -6,6 +11,9 @@ call vundle#begin()
   Plugin 'mbbill/undotree'
   Plugin 'pineman/vim-buftabline'
   Plugin 'junegunn/fzf.vim'
+  " if s:use_fff
+  "   Plugin 'dmtrKovalenko/fff.nvim'
+  " endif
   "Plugin 'rmagatti/auto-session'
   Plugin 'kana/vim-textobj-user'
   Plugin 'beloglazov/vim-textobj-quotes' " provides q object
@@ -21,6 +29,10 @@ call vundle#end()
 filetype on
 set termguicolors
 colorscheme base16-oceanicnext
+" highlight FFFPreviewCursorLine guifg=#d8dee9 guibg=#1f2a33
+" highlight FFFPreviewCursorLineNr guifg=#d8dee9 guibg=#1f2a33
+" highlight FFFPreviewVisual guifg=#d8dee9 guibg=#263542
+" highlight FFFPreviewMatch guifg=#0f1117 guibg=#ebcb8b
 set colorcolumn=80
 set cursorline
 set clipboard=unnamedplus
@@ -70,6 +82,25 @@ set stl+=\ %l-%c\ %p%%
 set stl+=\ [%LL]
 set stl+=%1*%m%0*
 let g:fzf_preview_window = []
+" if s:use_fff
+" lua << EOF
+" require('fff').setup({
+"   hl = {
+"     winhl = {
+"       preview = table.concat({
+"         'Normal:NormalFloat',
+"         'FloatBorder:FloatBorder',
+"         'FloatTitle:Title',
+"         'CursorLine:FFFPreviewCursorLine',
+"         'CursorLineNr:FFFPreviewCursorLineNr',
+"         'Visual:FFFPreviewVisual',
+"         'IncSearch:FFFPreviewMatch',
+"       }, ','),
+"     },
+"   },
+" })
+" EOF
+" endif
 
 " j k multiline
 noremap j gj
@@ -109,6 +140,10 @@ vnoremap // y:let @/='\V'.escape(@",'/\')\|set hlsearch<CR>
 " gf: search word under cursor/selection - poor man's goto definition (like gd but not just file-wide)
 nnoremap gf :Rg <C-R><C-W><CR>
 vnoremap gf "zy :exec 'Rg ' . @z<CR>
+" if s:use_fff
+"   nnoremap gf <Cmd>lua require('fff').live_grep({ query = vim.fn.expand('<cword>') })<CR>
+"   vnoremap gf "zy:<C-U>lua require('fff').live_grep({ query = vim.fn.getreg('z') })<CR>
+" endif
 " gr: Search and replace word under cursor/selection
 silent! unmap grn
 silent! unmap gra
@@ -122,6 +157,11 @@ noremap gl <C-i>
 " fzf: fd on C-p and rg on C-f (plus gf)
 noremap <C-p> :Files<CR>
 noremap <C-F> :Rg<CR>
+" fff: file search on C-p and content search on C-f (plus gf)
+" if s:use_fff
+"   nnoremap <C-p> <Cmd>lua require('fff').find_files()<CR>
+"   nnoremap <C-F> <Cmd>lua require('fff').live_grep()<CR>
+" endif
 " keep last explicit yy on gp
 nnoremap gp "0p
 " = to set indentation (e.g. in visual or =ap)
@@ -188,7 +228,7 @@ if exists('g:vscode')
   noremap gl <Cmd>call VSCodeNotify("workbench.action.navigateForward")<CR>
 end
 
-if has('nvim')
+if has('nvim') && !exists('g:vscode')
   lua require('autosave')
   "lua require('claudecode').setup({ terminal_cmd = "claude --dangerously-skip-permissions --ide --chrome", terminal = { provider = require('claude_fullbuf') }, focus_after_send = true })
   vmap ` <Cmd>ClaudeCodeSend<CR>
